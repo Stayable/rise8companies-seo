@@ -10,7 +10,7 @@ Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for
 
 ## Backlog
 - [ ] Wire the contact form to a submission endpoint.
-- [ ] Deploy scaffold to a Vercel preview URL for Rob.
+- [ ] (Optional) Move the Vercel project from `stayable-admins-projects` to Rob's scope if preferred.
 - [ ] Verify the 301 map covers every old inbound URL before cutover.
 - [ ] DNS cutover — change only the web A/CNAME at SiteGround DNS; preserve MX + SPF (Microsoft 365). Deliberate, approved step only. Never touch the live SiteGround site before then.
 
@@ -19,6 +19,7 @@ Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for
 - [x] **Migration preflight** — CMS = WordPress/SiteGround; DNS = SiteGround NS; email = Microsoft 365 (preserve MX + SPF at cutover); web A `34.174.186.164`.
 - [x] **Content-editing decision = MDX / in-repo** (Kyle sole editor; no CMS). The SEO repo's WordPress-app-password model doesn't port since we're leaving WordPress.
 - [x] **Scaffold Next.js app** — Next 16 (App Router) + React 19 + TS + Tailwind v4 + MDX. All 8 routes build static; 301 redirect map wired and verified at runtime. Neutral placeholder design pending Rob's Claude Design files.
+- [x] **Pushed to `origin/main`** and **deployed to Vercel** (team `stayable-admins-projects`): https://rise8companies-seo.vercel.app — real domain untouched (DNS still on SiteGround).
 
 ## Completed (earlier)
 - [x] Scaffold repo: `CLAUDE.md`, `PLAN.md`, `start.bat` one-click launcher.
