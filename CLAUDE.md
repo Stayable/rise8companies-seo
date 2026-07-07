@@ -1,10 +1,19 @@
 # CLAUDE.md
 
-Guidance for Claude Code working in this repository. **New session? Read `start.md` first.**
+Guidance for Claude Code working in this repository. **Launch via `start.bat`** (double-click — it pulls latest from the repo, then starts Claude Code in this folder).
 
 ## Project
 
 **rise8companies.com Revamp** — a from-scratch **content refresh + redesign** of RISE8 Companies' corporate website. Rebuild as a **Next.js app on Vercel**, migrating off the current SiteGround/WordPress site. Focus: content quality, design fidelity, and a clean build. (SEO is out of scope for this repo — it lives in the separate Stayable/SEO repo.)
+
+## Getting started (new session)
+
+- **Repo remote (already connected):** `https://github.com/Stayable/rise8companies-seo.git`. Confirm with `git remote -v`.
+- **First tasks, in order:**
+  1. Verify the remote and that you're in the `rise8companies-seo/` folder.
+  2. **Generate the site-state snapshot** → `snapshot/site-state.md`: crawl/read the *current* rise8companies.com (read-only) and capture every page, URL, heading structure, copy summary, nav/architecture, and assets. This is the baseline Kyle sends Rob and the content rewrite works from.
+  3. **Preflight the migration facts** (record in the snapshot): current CMS/stack; where DNS + email/MX are hosted (must not break RISE8 email at cutover); full URL inventory for the 301 redirect map.
+  4. **Scaffold the Next.js app** only after the snapshot exists and the content-editing decision (below) is made.
 
 ## Business context
 
