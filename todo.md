@@ -3,7 +3,8 @@
 Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for full detail and `CLAUDE.md` for guardrails.
 
 ## Current Sprint
-- [ ] **Send snapshot + approach message to Rob** for go-ahead (message text in `PLAN.md`).
+- [ ] **Send snapshot + approach message to Rob** for go-ahead (message text in `PLAN.md`); include the preview URL https://rise8companies-seo.vercel.app.
+- [ ] **[Cross-repo / SEO] Rotate the exposed WordPress app password** — `SEO/CLAUDE.md` line 26 has a live-looking `WP_APP_PASSWORD` committed in plaintext (also in git history). Rotate in WP Admin, move to `.env` only.
 - [ ] **Get Rob's design files** (Claude Design) → integrate components into the scaffold.
 - [ ] **Content rewrite** — real copy per page → Rob approves before it ships. Verify every figure (unit/property/employee counts, bio claims) before use.
 - [ ] **Clean up current site (independent of rebuild):** unpublish/redirect the 11 public HR-doc posts (exposure flag — snapshot §4c); unify header vs footer "Investors" link.
