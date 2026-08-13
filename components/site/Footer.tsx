@@ -5,7 +5,10 @@ const isExternal = (href: string) => /^(https?:|mailto:)/.test(href)
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
+    // id="contact" is the landing point for the /contact-us and /careers 301s.
+    // The design dropped the Contact section, but those old URLs still have
+    // inbound links, and the contact addresses live down here now.
+    <footer className="site-footer" id="contact">
       <div className="foot-inner">
         <div className="brand-col">
           <div className="logo">
