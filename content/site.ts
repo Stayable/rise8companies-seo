@@ -331,33 +331,35 @@ export const FEATURED_PROPERTY_IDS = [
   'st-augustine',
 ] as const
 
+/**
+ * The two principals. `fullBio` feeds the biography panel below the cards — each
+ * principal's bio sits in the column under their own card, so adding Crystal's is
+ * just filling in her `fullBio` array. An empty array leaves that column blank.
+ */
 export const PRINCIPALS = [
   {
     name: 'Robert Beyer',
     role: 'Founder & Principal',
     bio: 'Founder of RISE8 Companies. Leads strategy, capital deployment, and the integrated platform thesis.',
-    initials: 'RB',
     photo: '/leadership/robert-beyer.png',
+    // Every claim here is specific and checkable, and none of it is verified.
+    // See REVIEW.md §1 before this ships.
+    fullBio: [
+      'Robert Beyer is the founder and managing principal of RISE8 Companies, with more than 20 years of commercial real estate experience. His background spans acquisitions, dispositions, property management, debt and equity raising, joint ventures, loan restructuring, law, and financial advisory work.',
+      'Before founding RISE8, Beyer was Executive Vice President and General Counsel of a real estate investment and management firm holding $750 million in apartment, commercial, and lodging properties. He previously served as a Vice President at RELATED.',
+      "Beyer earned a B.B.A. in Finance from the University of Miami, a J.D., magna cum laude, from UNLV's William S. Boyd School of Law, and an LL.M. in Taxation from New York University School of Law. He is a member of the Nevada State Bar and holds a Florida real estate broker's license.",
+    ],
   },
   {
     name: 'Crystal Johnson',
     role: 'Principal',
     bio: 'Operations leadership across the RISE8 portfolio. Oversees property management, staffing, and performance.',
-    initials: 'CJ',
     photo: '/leadership/crystal-johnson.png',
+    // TODO: awaiting Crystal's biography. Drop the paragraphs in here and the
+    // second column fills itself — no layout change needed.
+    fullBio: [] as string[],
   },
-] as const
-
-/**
- * Rob's full biography, per the current design. Every claim here is specific and
- * checkable — years of experience, the $750M figure, the RELATED role, and the
- * degrees and licences. None of it has been verified. See REVIEW.md #5.
- */
-export const FULL_BIO = [
-  'Robert Beyer is the founder and managing principal of RISE8 Companies, with more than 20 years of commercial real estate experience. His background spans acquisitions, dispositions, property management, debt and equity raising, joint ventures, loan restructuring, law, and financial advisory work.',
-  'Before founding RISE8, Beyer was Executive Vice President and General Counsel of a real estate investment and management firm holding $750 million in apartment, commercial, and lodging properties. He previously served as a Vice President at RELATED.',
-  "Beyer earned a B.B.A. in Finance from the University of Miami, a J.D., magna cum laude, from UNLV's William S. Boyd School of Law, and an LL.M. in Taxation from New York University School of Law. He is a member of the Nevada State Bar and holds a Florida real estate broker's license.",
-] as const
+]
 
 /**
  * Hidden for now — Kyle asked that only the two principals show. Kept here rather

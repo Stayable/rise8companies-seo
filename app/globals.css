@@ -1267,11 +1267,20 @@ section {
   flex: none;
   background: rgba(255, 255, 255, 0.05);
 }
+/* Two columns, aligned with the two principal cards above: each principal's
+   biography sits under their own card. A principal with no bio leaves an empty
+   column rather than pushing the other one wide. */
 .bio-panel {
-  background: var(--navy);
-  padding: 48px 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--ink);
   border: 1px solid var(--ink);
   border-top: none;
+}
+.bio-col {
+  background: var(--navy);
+  padding: 48px 40px;
 }
 .bio-panel .k {
   font: 500 9px/1 var(--sans);
@@ -2390,6 +2399,7 @@ section {
   }
   .lead-tier1,
   .lead-tier2,
+  .bio-panel,
   .eh-meta,
   .sub-cta-contact {
     grid-template-columns: 1fr;
@@ -2503,7 +2513,13 @@ section {
     border-bottom: none;
   }
   .bio-panel {
+    grid-template-columns: 1fr;
+  }
+  .bio-col {
     padding: 32px 24px;
+  }
+  .bio-col:empty {
+    display: none;
   }
   .lead-principal,
   .lead-director {

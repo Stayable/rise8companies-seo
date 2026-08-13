@@ -6,7 +6,6 @@ import Footer from '@/components/site/Footer'
 import {
   EVERYBODYS_HOME,
   FEATURED_PROPERTY_IDS,
-  FULL_BIO,
   HERO,
   INDEX_ROWS,
   LETTER,
@@ -239,12 +238,22 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div className="bio-panel">
-              <div className="k">Full biography</div>
-              {FULL_BIO.map((para) => (
-                <p key={para.slice(0, 24)}>{para}</p>
-              ))}
-            </div>
+            {PRINCIPALS.some((p) => p.fullBio.length > 0) ? (
+              <div className="bio-panel">
+                {PRINCIPALS.map((p) => (
+                  <div className="bio-col" key={p.name}>
+                    {p.fullBio.length > 0 ? (
+                      <>
+                        <div className="k">Full biography</div>
+                        {p.fullBio.map((para) => (
+                          <p key={para.slice(0, 24)}>{para}</p>
+                        ))}
+                      </>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
         </section>
 

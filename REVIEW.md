@@ -28,6 +28,10 @@ and this is the sort of copy that gets read closely by investors and counsel:
 Confirm all eight, individually. The bar admission and the broker's licence in
 particular are matters of public record and should be stated exactly.
 
+**Crystal has no biography yet.** The panel is two columns, aligned with the two
+principal cards; hers is the empty right-hand column. Send her paragraphs and they
+drop into `PRINCIPALS[1].fullBio` in `content/site.ts` — no layout change needed.
+
 **Rob's title is inconsistent on the same page.** The leadership card says "Founder
 & Principal", the letter is signed "Rob Beyer, **CEO**", and the biography says
 "founder and **managing principal**". Pick one.
