@@ -1,9 +1,11 @@
 /**
  * All site copy and data in one place.
  *
- * Source of truth: `RISE8 WEBSITE/` (Rob's Claude Design export). Copy is carried
- * through as written there, except for clear typo fixes. Every unverified figure,
- * date, and claim is listed in `REVIEW.md` and must be confirmed before cutover.
+ * Source of truth: `RISE8 Companies.pdf` (Rob's current Claude Design render,
+ * 2026-08-14). It supersedes the older `RISE8 WEBSITE/` HTML export: the values
+ * section replaced the five principles, the chronology and the platform split
+ * were dropped, and Rob's full biography was added. Copy is carried through as
+ * written. Every unverified figure, date, and claim is listed in `REVIEW.md`.
  */
 
 export const SITE = {
@@ -29,30 +31,27 @@ export const SITE = {
 } as const
 
 export const NAV = [
-  { href: '/#platform', label: 'Platform', id: 'platform' },
   { href: '/#about', label: 'About', id: 'about' },
   { href: '/#portfolio', label: 'Portfolio', id: 'portfolio' },
   { href: '/#leadership', label: 'Leadership', id: 'leadership' },
   { href: '/#community', label: 'Community', id: 'community' },
   { href: '/#invest', label: 'Investors', id: 'invest' },
-  { href: '/#contact', label: 'Contact', id: 'contact' },
 ] as const
 
 export const TOC = [
   { id: 'top', label: 'Home' },
-  { id: 'platform', label: 'Platform' },
   { id: 'about', label: 'About' },
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'leadership', label: 'Leadership' },
   { id: 'community', label: 'Community' },
   { id: 'invest', label: 'Invest' },
-  { id: 'contact', label: 'Contact' },
 ] as const
 
 export const HERO = {
   titleLead: 'Extended-stay hospitality, ',
   titleEm: 'end to end.',
   sub: 'One firm. Every function. No seams. That is the moat.',
+  cta: 'Explore RISE8',
 }
 
 /** The five-row index strip under the hero. */
@@ -63,7 +62,8 @@ export const INDEX_ROWS = [
     discipline: 'Brand',
     brief:
       'The proprietary brand our entire portfolio operates under. Franchise-free, direct-booking.',
-    href: '/#platform',
+    href: SITE.stayable,
+    external: true,
   },
   {
     num: '02',
@@ -71,6 +71,7 @@ export const INDEX_ROWS = [
     discipline: 'Operations',
     brief: 'In-house operator for every property. Built for our own assets, not sold as a service.',
     href: '/management',
+    external: false,
   },
   {
     num: '03',
@@ -78,6 +79,7 @@ export const INDEX_ROWS = [
     discipline: 'Capital',
     brief: 'Capital structured in-house, beside underwriting and operations.',
     href: '/real-estate-finance',
+    external: false,
   },
   {
     num: '04',
@@ -85,6 +87,7 @@ export const INDEX_ROWS = [
     discipline: 'Construction',
     brief: 'Ground-up and value-add construction, delivered to our own brand standard.',
     href: '/development',
+    external: false,
   },
   {
     num: '05',
@@ -92,6 +95,7 @@ export const INDEX_ROWS = [
     discipline: 'Nonprofit · 501(c)(3)',
     brief: 'Stable housing and practical support for underhoused individuals and families.',
     href: '/#community',
+    external: false,
   },
 ] as const
 
@@ -148,45 +152,51 @@ export const LETTER = [
   'We built RISE8 to change that. A single platform controlling the full value chain, aligned around one thesis: excellent operations compound.',
 ] as const
 
-export const TIMELINE = [
+/**
+ * Eight values. Replaces the five principles and the chronology timeline that
+ * were in the older HTML export — the current design drops both.
+ */
+export const VALUES = [
   {
-    year: '2014',
-    head: 'Founding.',
-    desc: 'RISE8 is incorporated in Florida around a vertically integrated thesis.',
-    active: true,
+    num: 'I',
+    name: 'Integrity',
+    desc: 'We treat everyone with respect and keep our word. We believe in "win-win."',
   },
   {
-    year: '2017',
-    head: 'First property.',
-    desc: 'Acquisition of the first Florida extended-stay asset.',
-    active: false,
+    num: 'II',
+    name: 'Accountability',
+    desc: 'We take responsibility for everything we do. We do not point fingers.',
   },
   {
-    year: '2020',
-    head: 'Stayable launched.',
-    desc: 'The proprietary brand replaces franchise flags across the portfolio.',
-    active: true,
+    num: 'III',
+    name: 'Innovation',
+    desc: 'We encourage new ideas and take risks to do things differently.',
   },
   {
-    year: '2023',
-    head: 'Real Estate Finance in-house.',
-    desc: 'Real estate finance is internalized. Capital work accelerates.',
-    active: false,
+    num: 'IV',
+    name: 'Profitability',
+    desc: 'We continually seek ways to increase revenue, reduce costs, and eliminate waste.',
   },
   {
-    year: 'Today',
-    head: 'Eight properties.',
-    desc: '1,150 keys, 100+ team, six Florida markets.',
-    active: true,
+    num: 'V',
+    name: 'Communication',
+    desc: 'Open, clear, and timely communication without fear.',
   },
-] as const
-
-export const PRINCIPLES = [
-  { num: 'I', name: 'Resilience', desc: 'We get up one more time than we fall.' },
-  { num: 'II', name: 'Integrity', desc: 'Transparent underwriting, operations, and reporting.' },
-  { num: 'III', name: 'Excellence', desc: 'A high bar for every room, every stay, every partner.' },
-  { num: 'IV', name: 'Innovation', desc: 'Data-led from the revenue line to the work order.' },
-  { num: 'V', name: 'Collaboration', desc: 'In concert with investors, guests, and the team.' },
+  {
+    num: 'VI',
+    name: 'Teamwork',
+    desc: 'Different strengths make us valuable as a collective unit.',
+  },
+  {
+    num: 'VII',
+    name: 'Living Fully',
+    desc: 'Dedicated to our loved ones as much as our work.',
+  },
+  {
+    num: 'VIII',
+    name: 'Doing Well by Doing Good',
+    desc: 'Returns to our investors, employees, and communities.',
+  },
 ] as const
 
 /** Property IDs match the RISE8 canonical list. `keys: null` = not yet verified. */
@@ -327,13 +337,26 @@ export const PRINCIPALS = [
     role: 'Founder & Principal',
     bio: 'Founder of RISE8 Companies. Leads strategy, capital deployment, and the integrated platform thesis.',
     initials: 'RB',
+    photo: '/leadership/robert-beyer.png',
   },
   {
     name: 'Crystal Johnson',
     role: 'Principal',
     bio: 'Operations leadership across the RISE8 portfolio. Oversees property management, staffing, and performance.',
     initials: 'CJ',
+    photo: '/leadership/crystal-johnson.png',
   },
+] as const
+
+/**
+ * Rob's full biography, per the current design. Every claim here is specific and
+ * checkable — years of experience, the $750M figure, the RELATED role, and the
+ * degrees and licences. None of it has been verified. See REVIEW.md #5.
+ */
+export const FULL_BIO = [
+  'Robert Beyer is the founder and managing principal of RISE8 Companies, with more than 20 years of commercial real estate experience. His background spans acquisitions, dispositions, property management, debt and equity raising, joint ventures, loan restructuring, law, and financial advisory work.',
+  'Before founding RISE8, Beyer was Executive Vice President and General Counsel of a real estate investment and management firm holding $750 million in apartment, commercial, and lodging properties. He previously served as a Vice President at RELATED.',
+  "Beyer earned a B.B.A. in Finance from the University of Miami, a J.D., magna cum laude, from UNLV's William S. Boyd School of Law, and an LL.M. in Taxation from New York University School of Law. He is a member of the Nevada State Bar and holds a Florida real estate broker's license.",
 ] as const
 
 /**
@@ -572,7 +595,7 @@ export const FOOTER_COLUMNS = [
   {
     title: 'Platform',
     links: [
-      { label: 'Stayable', href: SITE.stayable },
+      { label: 'Stayable Extended Stay Suites', href: SITE.stayable },
       { label: 'RISE8 Management', href: '/management' },
       { label: 'RISE8 Real Estate Finance', href: '/real-estate-finance' },
       { label: 'RISE8 Development', href: '/development' },
@@ -584,8 +607,7 @@ export const FOOTER_COLUMNS = [
       { label: 'About us', href: '/#about' },
       { label: 'Leadership', href: '/#leadership' },
       { label: 'Portfolio', href: '/#portfolio' },
-      { label: "Everybody's Home Inc.", href: '/#community' },
-      { label: 'Contact', href: '/#contact' },
+      { label: "Everybody's Home Inc.", href: EVERYBODYS_HOME.url },
     ],
   },
   {

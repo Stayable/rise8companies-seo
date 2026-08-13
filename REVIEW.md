@@ -1,72 +1,107 @@
-# Review before cutover — unverified content & missing links
+# Review before cutover — unverified content & open questions
 
-Everything below came out of Rob's Claude Design export (`RISE8 WEBSITE/`). It is
-carried into the build as written, because inventing a replacement would be worse.
-None of it has been verified against a source. **Each item needs a yes/no from Rob
-before `rise8companies.com` points at this site.**
+The build now follows **`RISE8 Companies.pdf`** (Rob's current Claude Design render,
+read 2026-08-14), which supersedes the older `RISE8 WEBSITE/` HTML export. Copy is
+carried through as written. Nothing below has been verified against a source.
+**Each item needs a yes/no from Rob before `rise8companies.com` points here.**
 
 Edit answers directly into `content/site.ts` — all copy and data live there.
 
 ---
 
-## Factual conflicts (resolve these first)
+## 1. Rob's biography — the highest-risk item on the page
 
-**1. Headquarters city.** The design's home footer and Management page say
-*"Jacksonville, Florida · Est. 2014."* The design's Real Estate Finance page says
-*"Headquarters: Boca Raton, Florida,"* and so do `CLAUDE.md` and the RISE8 org
-profile. The build currently ships **Jacksonville** (`SITE.locale`). One of these is
-wrong on a live corporate site — confirm which.
+The design adds a full biography. Every sentence makes a specific, checkable claim,
+and this is the sort of copy that gets read closely by investors and counsel:
 
-**2. "Est. 2014" / the chronology.** 2014 founding, 2017 first property, 2020
-Stayable launch, 2023 finance brought in-house. Unverified — all four dates.
+- "more than 20 years of commercial real estate experience"
+- "Executive Vice President and General Counsel of a real estate investment and
+  management firm holding **$750 million** in apartment, commercial, and lodging
+  properties"
+- "previously served as a **Vice President at RELATED**"
+- "B.B.A. in Finance from the **University of Miami**"
+- "**J.D., magna cum laude**, from UNLV's William S. Boyd School of Law"
+- "**LL.M. in Taxation** from New York University School of Law"
+- "member of the **Nevada State Bar**"
+- "holds a **Florida real estate broker's license**"
 
-**3. Portfolio scale.** The home page says **1,150 keys**; the Real Estate Finance
-design page said *"we own and operate 1,300+ units."* I removed the 1,300+ figure
-rather than publish two numbers that contradict each other. Confirm the real key
-count and whether it is stated anywhere else.
+Confirm all eight, individually. The bar admission and the broker's licence in
+particular are matters of public record and should be stated exactly.
 
-**4. Other unverified figures.** "6 Florida markets", "100% Stayable branded",
-"100+ team", and per-property key counts (128 Jacksonville North, 196 Kissimmee
-East, 64 Jacksonville West). Five of eight properties show "—" because the design
-had no number for them.
+**Rob's title is inconsistent on the same page.** The leadership card says "Founder
+& Principal", the letter is signed "Rob Beyer, **CEO**", and the biography says
+"founder and **managing principal**". Pick one.
 
-**5. Leadership.** Robert Beyer (Founder & Principal), Crystal Johnson (Principal),
-and directors Shay Harper, Gerardo Sandoval, Shayla Shane — names, titles, and both
-bios need confirmation. The design used empty image slots, so the build shows
-initials in place of portraits. **Real headshots needed.**
+## 2. Headquarters city
 
-**6. Property photography.** All eight photos are now pulled from
-**rentstayable.com** — each property uses the same hero image its own Stayable page
-uses, so the two sites match. One exception: Davenport's page image is a 1980×366
-banner that cannot crop into a card, so it uses
-`davenport_exterior_building_01_crop` from the same media library instead. The
-three cards above the map are Orlando, Kissimmee East, and Davenport.
+The design says **Jacksonville, Florida · Est. 2014** in the footer. `CLAUDE.md` and
+the RISE8 org profile say **Boca Raton**, and the design's own Real Estate Finance
+page says Boca Raton. The build ships Jacksonville. One of these is wrong on a live
+corporate site.
 
-**7. Everybody's Home details.** Miami office address, phone `(305) 782-9225`, and
-`eh-info@everybodyshome.org` are carried from the design. Confirm they are current.
+## 3. Numbers
 
-**8. Contact addresses.** `investors@`, `press@`, and `careers@` are on the
-`rise8mgmt.com` domain; lending uses `finance@rise8companies.com`. Confirm all four
-route somewhere a human reads.
+- **"Six Florida markets"** in the stats band, but the map legend in the design
+  reads *"Eight pins · five markets."* The two contradict each other. Counting the
+  register — Lakeland, Jacksonville, Kissimmee, Orlando, St. Augustine, Davenport —
+  gives six, so the build says six in both places. Confirm.
+- **1,150 keys**, **8 properties**, **100% Stayable branded** — unverified.
+- Per-property key counts: 128 Jacksonville North, 196 Kissimmee East, 64
+  Jacksonville West. The other five show "—" because no figure was given.
+- **Est. 2014** — unverified.
+
+## 4. Leadership photos
+
+Robert Beyer's and Crystal Johnson's headshots were extracted from the PDF, so they
+are only **196 × 195** and **240 × 216**. They display at 120 px and hold up, but
+they will soften on a retina screen. Send the originals.
+
+## 5. Everybody's Home details
+
+Miami office address, phone `(305) 782-9225`, and `eh-info@everybodyshome.org` are
+carried from the design. Confirm they are current.
+
+## 6. Contact addresses
+
+`investors@`, `press@`, and `careers@` are on **rise8mgmt.com**; lending uses
+`finance@rise8companies.com`. Confirm all four reach a human.
 
 ---
 
-## Copy changed from the design (flagging so it is not a surprise)
+## Where the build deviates from the PDF, and why
 
-- **RISE8 Management description.** The design read *"A global team of dedicated
-  assassins."* Replaced with a plain description of the function. If that line was
-  deliberate, say so and I will put it back.
-- Typo fixes carried silently: "ousekeeping" → "housekeeping", "mainteanance" →
-  "maintenance", "Multi-disciplinary licensed" → "Multi-disciplinary and licensed".
-- Hero subhead had a comma splice — *"One firm. Every function, No seams."* — now
-  *"One firm. Every function. No seams. That is the moat."*
-- Founder's letter was signed *"The founder, Chairman"*; now signed **Robert Beyer,
-  Founder**. Confirm the correct title (Chairman? Founder & CEO? Principal?).
-- The design shipped two different Real Estate Finance pages. The build uses the
-  **CRE Lending** version (bridge / mezzanine / preferred equity, no hard numbers).
-  The other version carries a full term sheet — $10M–$100M bridge, 75% max LTV,
-  13–15% mezzanine pricing, non-recourse, SOFR spreads. **I did not publish those
-  numbers.** If Rob wants that page live, he needs to confirm every figure first.
+**The company index shows five rows; the PDF shows one.** In the design, the index
+table under the hero has its full №/Company/Discipline/Brief header but only a
+single row — `01 · RISE8 Development`. That reads as a mid-edit state rather than an
+intent, and a four-column table with one row looks like a bug. The build lists all
+five (Stayable, Management, Real Estate Finance, Development, Everybody's Home). Say
+the word and I will trim it to match.
+
+**The map legend says six markets, not five.** See §3.
+
+**Footer links that point nowhere.** The design's Company column includes **News**
+and the Investors column lists **Criteria** and **Quarterly letters** — none of which
+exist as pages. The build drops News and substitutes Investor portal / Request
+access, which work today. Decide whether to build those pages or leave it.
+
+**Two lines not carried over.** The Management description in the older export read
+*"A global team of dedicated assassins."* And the alternate Real Estate Finance page
+carried a full term sheet — $10M–$100M bridge, 75% max LTV, 13–15% mezzanine
+pricing, SOFR spreads, non-recourse. Unverified financial terms do not go on a live
+lending page. Both are available if Rob wants them.
+
+**Legal pages.** `/privacy-policy` and `/terms-of-use` are stubs marked `noindex`.
+Real terms must be ported from the current WordPress site and reviewed by counsel
+(jurisdiction: Palm Beach County) before go-live.
+
+---
+
+## Dropped from the older export — confirm these were intentional
+
+The current design no longer has: the **chronology timeline** (2014 → today), the
+**"Who we are"** section, the **platform split** (photo + four-company rail), the
+**five principles** (replaced by eight values), and the **Contact section** (contact
+addresses now live only in the footer).
 
 ---
 
@@ -75,26 +110,23 @@ route somewhere a human reads.
 - Investor Portal → `https://invest.rise8companies.com/`
 - Stayable → `https://rentstayable.com/`
 - Everybody's Home → `https://everybodyshome.org/`
-- Portfolio register "Book →" → each property's own Stayable page
+- Property cards and register rows → each property's own Stayable page
   (`rentstayable.com/lakeland/`, `/jacksonville-north/`, `/kissimmee-east/`,
   `/orlando/`, `/jacksonville-west/`, `/kissimmee-west/`, `/st-augustine/`,
-  `/davenport/`). Confirm this is the right destination rather than a booking
-  engine deep link.
+  `/davenport/`). Confirm this is the right destination rather than a booking-engine
+  deep link.
 
-## Pages that are still placeholders
+## Property photography
 
-- `/privacy-policy` and `/terms-of-use` — both are stubs marked `noindex`. Real
-  terms must be ported from the current WordPress site and reviewed by counsel
-  (jurisdiction: Palm Beach County) before go-live.
-- The design footer linked a **News** section that does not exist. It is not in the
-  build. Decide whether to add one or drop it permanently.
-- There is no **careers page**. `/careers` currently 301s to the contact section.
+All eight photos come from **rentstayable.com** — each property uses the same hero
+image its own Stayable page uses, so the two sites match. One exception: Davenport's
+page image is a 1980 × 366 banner that cannot crop into a card, so it uses
+`davenport_exterior_building_01_crop` from the same media library.
 
 ---
 
 ## Not in scope of this build
 
-The four company pages in the design export exist as layout explorations with
-multiple unreconciled variants. The build implements one variant each for
-Management, Real Estate Finance, and Development. Stayable has no page of its own —
-it links out to `rentstayable.com`.
+The company pages (Management, Real Estate Finance, Development) still come from the
+older HTML export — the PDF covers the home page only. If those were redesigned too,
+send that render.
