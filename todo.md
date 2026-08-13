@@ -20,6 +20,9 @@ Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for
 - [ ] Set the canonical hostname in Vercel → Settings → Domains (`www` → apex, or the reverse). Not urgent; both currently serve.
 - [ ] Submit the sitemap in Google Search Console / Bing and confirm the property URL.
 
+> Email addresses verified 2026-08-14 — `ir@`, `finance@`, `info@` (RISE8) and
+> `eh-info@` (Everybody's Home) all confirmed live and monitored.
+
 ## Content punch list (shipped as-is by decision — see `REVIEW.md`)
 - [ ] **Rob's biography** — 20+ years, $750M firm, VP at RELATED, three degrees, Nevada Bar, Florida broker's licence. None verified; bar admission and licence are public record. Highest-priority item.
 - [ ] **Rob's title is inconsistent** — "Founder & Principal" on the card, "CEO" on the letter, "managing principal" in the bio.
@@ -30,6 +33,7 @@ Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for
 - [ ] Crystal's bio says "resident experience"; confirm that over "guest" for extended-stay.
 
 ## DNS follow-ups (`snapshot/dns-zone.md`)
+- [ ] **Forward `investors@` / `press@` / `careers@` on rise8mgmt.com** — removed from the site but still in Google's index and in address books from the old pages.
 - [ ] **Fix the staging-host bug on the old WordPress site** — its privacy policy still gives `corporate@kylee23.sg-host.com`, a mailbox that does not exist. Fixed on the new site (now `info@rise8companies.com`), but the old page stays in Google's index until corrected or retired.
 - [ ] **Identify `1522905413783._domainkey`** — an unaccounted-for DKIM selector.
 - [ ] **`mail.rise8companies.com` points at SiteGround** while mail runs on Microsoft 365. Check nothing uses it.

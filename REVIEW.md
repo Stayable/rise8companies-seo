@@ -85,10 +85,20 @@ they will soften on a retina screen. Send the originals.
 Miami office address, phone `(305) 782-9225`, and `eh-info@everybodyshome.org` are
 carried from the design. Confirm they are current.
 
-## 6. Contact addresses
+## 6. Contact addresses — RESOLVED
 
-`investors@`, `press@`, and `careers@` are on **rise8mgmt.com**; lending uses
-`finance@rise8companies.com`. Confirm all four reach a human.
+All four addresses on the site are confirmed live and monitored (2026-08-14):
+
+| Address | Where |
+|---|---|
+| `ir@rise8companies.com` | Home — footer Contact, "Contact IR" button |
+| `finance@rise8companies.com` | Real Estate Finance — "Connect with the REF team" |
+| `info@rise8companies.com` | Privacy Policy, Terms of Use |
+| `eh-info@everybodyshome.org` | Everybody's Home section (nonprofit, not RISE8) |
+
+`investors@`, `press@` and `careers@` on **rise8mgmt.com** were removed from the
+site. They were on the old WordPress pages, so they remain in Google's index and in
+people's address books — worth forwarding rather than letting them bounce.
 
 ---
 
@@ -114,13 +124,13 @@ carried a full term sheet — $10M–$100M bridge, 75% max LTV, 13–15% mezzani
 pricing, SOFR spreads, non-recourse. Unverified financial terms do not go on a live
 lending page. Both are available if Rob wants them.
 
-**Legal pages — ported, contact address corrected.** `/privacy-policy` (15 sections)
+**Legal pages — ported, contact address corrected and confirmed.** `/privacy-policy` (15 sections)
 and `/terms-of-use` (7 sections) carry the real copy from the live site, verbatim.
 One correction was needed: the live Privacy Policy has a **SiteGround staging host
 baked into it** — a link to `kylee23.sg-host.com` and, in three places, a contact
 address of **`corporate@kylee23.sg-host.com`**, a mailbox that does not exist. A
 find-and-replace artefact from the original build. All three now read
-**`info@rise8companies.com`** per Kyle.
+**`info@rise8companies.com`**, confirmed live.
 
 Still worth fixing on the existing WordPress site — that bug is live on
 rise8companies.com's old policy right now for anyone still hitting a stale DNS
