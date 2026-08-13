@@ -8,8 +8,14 @@ Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for
 (`76.76.21.21`). Mail confirmed working end to end — inbound test delivered to
 `rb@rise8companies.com` after the flip. `invest.rise8companies.com` unaffected.
 
+> **StatusCake alerted "down" during cutover and has since recovered by itself.**
+> Cause was the certificate gap: Vercel only requests a cert once it sees DNS
+> pointing at it, so HTTPS fails the handshake for a few minutes in between. Not a
+> misconfiguration, and nothing to change — but expect the same on any future
+> domain move, and it is worth knowing before reading today's uptime figures.
+
 ## Watch for the next 48 hours
-- [ ] **Google's resolver (`8.8.8.8`) was still serving the old apex** from the 24-hour TTL at cutover. It ages out on its own — spot-check that it has moved.
+- [ ] **Google's resolver (`8.8.8.8`) is still serving the old apex** from the 24-hour TTL. Harmless — SiteGround is still up and serving — but until it ages out, some visitors and monitoring nodes still see the WordPress site. Do not judge traffic or uptime numbers until it clears.
 - [ ] **Raise TTLs back to `3600`** on the apex and `www` once things look settled.
 - [ ] Set the canonical hostname in Vercel → Settings → Domains (`www` → apex, or the reverse). Not urgent; both currently serve.
 - [ ] Submit the sitemap in Google Search Console / Bing and confirm the property URL.
