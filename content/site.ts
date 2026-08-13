@@ -11,8 +11,8 @@
 export const SITE = {
   name: 'RISE8 Companies',
   url: 'https://rise8companies.com',
-  // Kyle set this to Boca Raton temporarily, matching CLAUDE.md and the Real Estate
-  // Finance page. The design PDF's footer still says Jacksonville — see REVIEW.md #2.
+  // Confirmed by Rob, 2026-08-14. The design PDF's footer still reads Jacksonville;
+  // that is the one now out of date, not this. See REVIEW.md #2.
   locale: 'Boca Raton, Florida',
   founded: '2014',
   proverb: {
@@ -199,7 +199,11 @@ export const VALUES = [
   },
 ] as const
 
-/** Property IDs match the RISE8 canonical list. `keys: null` = not yet verified. */
+/**
+ * Property IDs match the RISE8 canonical list. `keys: null` = not yet verified.
+ * `desc` is condensed from each property's own meta description on
+ * rentstayable.com, so the copy is RISE8's own rather than invented here.
+ */
 export const PROPERTIES = [
   {
     id: 'lakeland',
@@ -211,6 +215,8 @@ export const PROPERTIES = [
     tags: ['I-4 corridor', 'Tampa / Orlando'],
     keys: null,
     image: '/properties/lakeland.webp',
+    desc:
+      'Extended-stay suites with weekly and monthly rates, no credit check, free Wi-Fi, and pet-friendly rooms near I-4.',
     booking: 'https://rentstayable.com/lakeland/',
     pin: { left: '42%', top: '52%' },
     pinLabel: '01 · Lakeland',
@@ -225,6 +231,8 @@ export const PROPERTIES = [
     tags: ['8 floors', 'Available 2026'],
     keys: '128',
     image: '/properties/jacksonville-north.webp',
+    desc:
+      'Furnished extended-stay suites in Jacksonville North. Pet-friendly, no credit check, weekly or monthly.',
     booking: 'https://rentstayable.com/jacksonville-north/',
     pin: { left: '34%', top: '16%' },
     pinLabel: '02 · Jacksonville N.',
@@ -239,6 +247,8 @@ export const PROPERTIES = [
     tags: ['Largest', 'Central FL'],
     keys: '196',
     image: '/properties/kissimmee-east.webp',
+    desc:
+      'Extended-stay suites near the Orlando attractions. Furnished, free Wi-Fi, flexible weekly or monthly rates.',
     booking: 'https://rentstayable.com/kissimmee-east/',
     pin: { left: '55%', top: '60%' },
     pinLabel: '03 · Kissimmee E.',
@@ -253,6 +263,8 @@ export const PROPERTIES = [
     tags: ['Florida Mall', 'OCCC · 15 min'],
     keys: null,
     image: '/properties/orlando.webp',
+    desc:
+      'Furnished kitchenette suites with no credit check, free Wi-Fi, and weekly and monthly rates.',
     booking: 'https://rentstayable.com/orlando/',
     pin: { left: '50%', top: '55%' },
     pinLabel: '04 · Orlando',
@@ -268,6 +280,8 @@ export const PROPERTIES = [
     keys: '64',
     // FLAG: no Jacksonville West exterior in the design export — see REVIEW.md #6.
     image: '/properties/jacksonville-west.webp',
+    desc:
+      'Furnished suites with no credit check, free Wi-Fi, on-site laundry, and weekly and monthly rates.',
     booking: 'https://rentstayable.com/jacksonville-west/',
     pin: { left: '38%', top: '24%' },
     pinLabel: '05 · Jacksonville W.',
@@ -282,6 +296,8 @@ export const PROPERTIES = [
     tags: ['10 mi · Disney'],
     keys: null,
     image: '/properties/kissimmee-west.webp',
+    desc:
+      'No credit check, furnished suites, and a pool — low weekly and monthly rates near Disney.',
     booking: 'https://rentstayable.com/kissimmee-west/',
     pin: { left: '44%', top: '62%' },
     pinLabel: '06 · Kissimmee W.',
@@ -296,6 +312,8 @@ export const PROPERTIES = [
     tags: ['Historic district', 'I-95'],
     keys: null,
     image: '/properties/st-augustine.webp',
+    desc:
+      'Furnished extended-stay suites near historic downtown St. Augustine. Coastal, with flexible weekly and monthly rates.',
     booking: 'https://rentstayable.com/st-augustine/',
     pin: { left: '48%', top: '32%' },
     pinLabel: '07 · St. Augustine',
@@ -310,6 +328,8 @@ export const PROPERTIES = [
     tags: ['I-4', 'Orlando / Tampa'],
     keys: null,
     image: '/properties/davenport.webp',
+    desc:
+      'Affordable furnished suites near Walt Disney World. Free Wi-Fi, pool, and flexible weekly or monthly rates.',
     booking: 'https://rentstayable.com/davenport/',
     pin: { left: '40%', top: '70%' },
     pinLabel: '08 · Davenport',

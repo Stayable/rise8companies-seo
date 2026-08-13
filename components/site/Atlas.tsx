@@ -3,7 +3,15 @@
 import { useState } from 'react'
 import { PROPERTIES } from '@/content/site'
 
-/** The Florida map + property register. Hovering either side highlights the other. */
+type Property = (typeof PROPERTIES)[number]
+
+/**
+ * Full-width Florida map. Hovering, focusing, or tapping a pin opens a card with
+ * the property's photo, description, and booking links.
+ *
+ * Each pin and its card share a wrapper so the pointer can travel from one to the
+ * other without the card closing — otherwise the buttons would be unclickable.
+ */
 export default function Atlas() {
   const [active, setActive] = useState<string | null>(null)
 
@@ -15,73 +23,91 @@ export default function Atlas() {
           <div className="fl-label">Florida</div>
         </div>
 
-        {PROPERTIES.map((p) => (
-          <button
-            key={p.id}
-            type="button"
-            className={`pin${active === p.id ? ' active' : ''}`}
-            style={{ left: p.pin.left, top: p.pin.top }}
-            onMouseEnter={() => setActive(p.id)}
-            onMouseLeave={() => setActive(null)}
-            onFocus={() => setActive(p.id)}
-            onBlur={() => setActive(null)}
-            aria-label={p.name}
-          />
-        ))}
-        {PROPERTIES.map((p) => (
-          <span
-            key={`${p.id}-label`}
-            className="pin-label"
-            style={{ left: p.pin.left, top: p.pin.top }}
-            aria-hidden="true"
-          >
-            {p.pinLabel}
-          </span>
-        ))}
+        {PROPERTIES.map((p) => {
+          const left = parseFloat(p.pin.left)
+          const top = parseFloat(p.pin.top)
+          // Open away from whichever edge the pin sits nearest.
+          const side = left > 52 ? 'left' : 'right'
+          const vert = top > 55 ? 'up' : 'down'
+          const isOpen = active === p.id
+
+          return (
+            <div
+              key={p.id}
+              className="pin-anchor"
+              style={{ left: p.pin.left, top: p.pin.top }}
+              onMouseEnter={() => setActive(p.id)}
+              onMouseLeave={() => setActive(null)}
+            >
+              <button
+                type="button"
+                className={`pin${isOpen ? ' active' : ''}`}
+                aria-expanded={isOpen}
+                aria-label={p.name}
+                onFocus={() => setActive(p.id)}
+                onClick={() => setActive(isOpen ? null : p.id)}
+              />
+              <span className={`pin-label${isOpen ? ' dim' : ''}`} aria-hidden="true">
+                {p.pinLabel}
+              </span>
+
+              {isOpen ? <PinCard p={p} side={side} vert={vert} /> : null}
+            </div>
+          )
+        })}
 
         <div className="legend">
           <b>Legend</b>
           Eight pins · six markets · I-4, I-95, I-295 corridors.
         </div>
       </div>
+    </div>
+  )
+}
 
-      <div className="atlas-list">
-        <div className="atlas-list-head">
-          <div className="k">The register</div>
-          <h3>Eight Florida properties.</h3>
+function PinCard({
+  p,
+  side,
+  vert,
+}: {
+  p: Property
+  side: 'left' | 'right'
+  vert: 'up' | 'down'
+}) {
+  return (
+    <div className={`pin-card ${side} ${vert}`}>
+      {p.image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={p.image} alt={p.name} loading="lazy" />
+      ) : null}
+      <div className="pin-card-body">
+        <div className="region">{p.region}</div>
+        <h4>{p.name}</h4>
+        <p className="addr">{p.address}</p>
+        <p className="desc">{p.desc}</p>
+
+        <div className="pin-card-meta">
+          {p.tags.map((t) => (
+            <span className="prop-tag" key={t}>
+              {t}
+            </span>
+          ))}
+          {p.keys ? (
+            <span className="keys">
+              {p.keys}
+              <sub>keys</sub>
+            </span>
+          ) : null}
         </div>
 
-        {PROPERTIES.map((p) => (
-          <a
-            key={p.id}
-            href={p.booking}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`prop${active === p.id ? ' active' : ''}`}
-            onMouseEnter={() => setActive(p.id)}
-            onMouseLeave={() => setActive(null)}
-          >
-            <div className="prop-num">{p.num}</div>
-            <div>
-              <h4 className="prop-name">{p.name}</h4>
-              <p className="prop-addr">{p.address}</p>
-              <div className="prop-tags">
-                {p.tags.map((t) => (
-                  <span key={t} className="prop-tag">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div>
-              <div className="prop-keys">
-                {p.keys ?? '—'}
-                <sub>keys</sub>
-              </div>
-              <span className="prop-link">Book →</span>
-            </div>
+        <div className="pin-card-cta">
+          <a href={p.booking} target="_blank" rel="noopener noreferrer" className="btn-primary btn-ink">
+            Book now →
           </a>
-        ))}
+          <a href={p.booking} target="_blank" rel="noopener noreferrer" className="pin-card-lease">
+            Start a lease →
+          </a>
+        </div>
       </div>
     </div>
   )

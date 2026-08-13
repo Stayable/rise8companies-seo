@@ -52,18 +52,16 @@ Property Manager at Stayable Lakeland, VP of Operations by **January 2025**, "mo
 than 20 years" of experience. Also note the bio says "resident experience" — RISE8
 is extended-stay, so confirm "resident" is the intended word rather than "guest".
 
-## 2. Headquarters city — set to Boca Raton, still needs a final answer
+## 2. Headquarters city — RESOLVED
 
-Kyle set this to **Boca Raton, Florida** temporarily, which matches `CLAUDE.md`, the
-RISE8 org profile, and the design's own Real Estate Finance page. The design PDF's
-footer still reads **Jacksonville, Florida · Est. 2014**, so the design and the site
-now disagree. Confirm which is correct and, if it is Boca Raton, get the footer in
-Claude Design changed too so the two stop drifting.
+**Boca Raton, Florida**, confirmed by Rob on 2026-08-14. The site is correct. The
+design PDF's footer still reads Jacksonville — that is the stale one now, so get it
+changed in Claude Design before the next export overwrites anything.
 
-One knock-on: the Management page's hero note reads "In-house since founding ·
-Boca Raton, Florida · Est. 2014" because it composes `SITE.locale`. If the *company*
-was founded in Jacksonville and only later moved to Boca Raton, that line is now
-wrong even though the footer is right. Worth a look.
+One knock-on still open: the Management page's hero note composes `SITE.locale` and
+now reads "In-house since founding · Boca Raton, Florida · Est. 2014". If RISE8 was
+*founded* in Jacksonville and moved later, that sentence is wrong even though the
+footer is right. Worth a look.
 
 ## 3. Numbers
 
@@ -137,6 +135,19 @@ The current design no longer has: the **chronology timeline** (2014 → today), 
 addresses now live only in the footer).
 
 ---
+
+## Portfolio map — "Start a lease" needs a real destination
+
+The map cards carry two calls to action, **Book now** and **Start a lease**. There is
+no separate leasing flow on rentstayable.com — I checked `/lease`, `/apply`,
+`/leasing`, `/application`, and `/book`, all 404 — so both currently point at the
+property's own Stayable page, which is where weekly and monthly stays are booked.
+If RISE8 has a dedicated lease application URL, send it and I will repoint the second
+link. Otherwise the two buttons should probably collapse into one.
+
+Property descriptions on those cards are condensed from each property's own meta
+description on rentstayable.com, so the wording is RISE8's rather than invented — but
+it was written for search engines. Worth a read for tone.
 
 ## Links — all resolved, nothing is a placeholder
 
