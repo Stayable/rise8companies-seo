@@ -620,6 +620,32 @@ export const FINANCE = {
     'RISE8 Real Estate Finance is a lending affiliate of RISE8 Companies. This page is informational and does not constitute a commitment to lend or an offer of financing.',
 } as const
 
+/**
+ * Careers. Copy ported verbatim from the WordPress page at /careers/, which the
+ * migration had been 301ing away. Applications run through JazzHR.
+ */
+export const CAREERS = {
+  eye: 'Careers',
+  h1Lead: 'Where do you ',
+  h1Em: 'fit?',
+  lede: 'We value team members committed to delivering exceptional and creative solutions for diverse customers. Those who live our values have abundant opportunities to expand their personal and professional horizons, reaching levels never thought possible.',
+  sectionKicker: 'A place for everyone',
+  sectionHeadLead: 'Fair, equitable, and ',
+  sectionHeadEm: 'competitive.',
+  body: [
+    'RISE8 Companies and its affiliates strive to offer all team members fair, equitable, and competitive compensation. Base pay is adjusted based on experience, cost of living, and contribution to the company success.',
+    'All team members and candidates are considered equally without attention to race, color, religion, sex, sexual orientation, gender identity, national origin, veteran, or disability status.',
+  ],
+  ctaKicker: 'Open positions',
+  ctaHeadLead: 'Florida or ',
+  ctaHeadEm: 'remote.',
+  ctaBody:
+    'Openings across the RISE8 portfolio — operations, property management, maintenance, and corporate roles.',
+  jobsUrl: 'https://stayablesuites.applytojob.com/apply/jobs/',
+  footNote:
+    'RISE8 Companies is an equal-opportunity employer. Applications are handled through our applicant tracking system.',
+} as const
+
 export const FOOTER_COLUMNS = [
   {
     title: 'Platform',
@@ -636,6 +662,7 @@ export const FOOTER_COLUMNS = [
       { label: 'About us', href: '/#about' },
       { label: 'Leadership', href: '/#leadership' },
       { label: 'Portfolio', href: '/#portfolio' },
+      { label: 'Careers', href: '/careers' },
       { label: "Everybody's Home Inc.", href: EVERYBODYS_HOME.url },
     ],
   },
