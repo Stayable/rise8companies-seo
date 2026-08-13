@@ -348,7 +348,7 @@ export default function HomePage() {
                 >
                   Investor relations
                 </a>
-                <a href={`mailto:${SITE.email.investors}`} className="btn-ghost">
+                <a href={`mailto:${SITE.email.ir}`} className="btn-ghost">
                   Contact IR →
                 </a>
               </div>

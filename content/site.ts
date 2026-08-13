@@ -24,6 +24,8 @@ export const SITE = {
   stayable: 'https://rentstayable.com/',
   email: {
     investors: 'investors@rise8mgmt.com',
+    // Investor relations — the "Contact IR" button on the home page only.
+    ir: 'ir@rise8companies.com',
     press: 'press@rise8mgmt.com',
     careers: 'careers@rise8mgmt.com',
     finance: 'finance@rise8companies.com',
