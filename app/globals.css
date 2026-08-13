@@ -510,8 +510,8 @@ section {
   transition: 0.2s;
 }
 .inline-link:hover {
-  color: var(--accent-deep);
-  border-bottom-color: var(--accent-deep);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 /* ============ STATS BAND ============ */
@@ -542,7 +542,7 @@ section {
   color: var(--ink);
 }
 .stat .v sup {
-  color: var(--accent-deep);
+  color: var(--accent);
   font-size: 0.5em;
   vertical-align: 0.6em;
   margin-left: 2px;
@@ -702,13 +702,13 @@ section {
   padding-left: 8px;
 }
 .co-card:hover .co-link {
-  color: var(--accent-deep);
+  color: var(--accent);
 }
 .co-num {
   font-family: var(--serif);
   font-weight: 500;
   font-size: 30px;
-  color: var(--accent-deep);
+  color: var(--accent);
   line-height: 0.95;
   letter-spacing: -0.02em;
 }
@@ -766,7 +766,7 @@ section {
 .romaji {
   font-family: var(--serif);
   font-style: italic;
-  color: var(--accent-deep);
+  color: var(--accent);
   font-size: 22px;
   margin: 0 0 4px;
   letter-spacing: 0.02em;
@@ -915,7 +915,7 @@ section {
   font-family: var(--serif);
   font-weight: 500;
   font-size: 28px;
-  color: var(--accent-deep);
+  color: var(--accent);
   line-height: 1;
   margin-bottom: 10px;
 }
@@ -945,9 +945,11 @@ section {
   max-width: 62ch;
   margin: 0 0 48px;
 }
+/* Design showed three cards; the register now carries all eight, so this is a
+   4 × 2 grid instead of 3 × 1. */
 .prop-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2px;
   background: var(--ink);
   border: 1px solid var(--ink);
@@ -972,7 +974,7 @@ section {
   font: 500 9px/1 var(--sans);
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--accent-deep);
+  color: var(--accent);
   margin-bottom: 8px;
 }
 .prop-card .title {
@@ -1155,13 +1157,13 @@ section {
 }
 .prop:hover .prop-link,
 .prop.active .prop-link {
-  color: var(--accent-deep);
+  color: var(--accent);
 }
 .prop-num {
   font-family: var(--serif);
   font-weight: 500;
   font-size: 20px;
-  color: var(--accent-deep);
+  color: var(--accent);
   line-height: 1;
 }
 .prop-name {
@@ -1278,7 +1280,7 @@ section {
 }
 .lead-director .lead-role {
   letter-spacing: 0.24em;
-  color: var(--accent-deep);
+  color: var(--accent);
   margin-bottom: 6px;
 }
 .lead-name {
@@ -1328,7 +1330,7 @@ section {
   font-family: var(--serif);
   font-weight: 500;
   font-size: 26px;
-  color: var(--accent-deep);
+  color: var(--accent);
   letter-spacing: -0.02em;
   flex: none;
 }
@@ -1349,7 +1351,7 @@ section {
 .eh-lede {
   font-family: var(--serif);
   font-style: italic;
-  color: var(--accent-deep);
+  color: var(--accent);
   font-size: 22px;
   line-height: 1.45;
   margin: 0 0 18px;
@@ -1385,7 +1387,7 @@ section {
   font-family: var(--serif);
   font-weight: 500;
   font-size: 22px;
-  color: var(--accent-deep);
+  color: var(--accent);
 }
 .eh-pillar h4 {
   margin: 0 0 4px;
@@ -1523,8 +1525,8 @@ section {
   transition: 0.2s;
 }
 .contact-row .v a:hover {
-  color: var(--accent-deep);
-  border-bottom-color: var(--accent-deep);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 .portal-panel {
   background: var(--navy);
@@ -1774,7 +1776,7 @@ section {
   margin-bottom: 28px;
 }
 .sub-eye span {
-  color: var(--accent-deep);
+  color: var(--accent);
   margin: 0 8px;
 }
 .sub-h1 {
@@ -1788,7 +1790,7 @@ section {
 }
 .sub-h1 em {
   font-style: italic;
-  color: var(--accent-deep);
+  color: var(--accent);
 }
 .sub-lede {
   font-family: var(--serif);
@@ -1833,7 +1835,7 @@ section {
 }
 .irow .in {
   font: 500 18px/1 var(--serif);
-  color: var(--accent-deep);
+  color: var(--accent);
 }
 .irow .iname {
   font: 500 17px/1 var(--serif);
@@ -1965,7 +1967,7 @@ section {
 }
 .sub-sec-head h2 em {
   font-style: italic;
-  color: var(--accent-deep);
+  color: var(--accent);
 }
 .cap-grid {
   display: grid;
@@ -1985,7 +1987,7 @@ section {
 }
 .cap .n {
   font: 500 34px/1 var(--serif);
-  color: var(--accent-deep);
+  color: var(--accent);
   letter-spacing: -0.02em;
   margin-bottom: 14px;
 }
@@ -2047,7 +2049,7 @@ section {
 }
 .thesis-body em {
   font-style: italic;
-  color: var(--accent-deep);
+  color: var(--accent);
 }
 .prog-grid {
   display: grid;
@@ -2063,7 +2065,7 @@ section {
 }
 .prog-n {
   font: 500 34px/1 var(--serif);
-  color: var(--accent-deep);
+  color: var(--accent);
   letter-spacing: -0.02em;
   margin-bottom: 14px;
 }
@@ -2114,7 +2116,7 @@ section {
 }
 .prog-spec-v em {
   font-style: normal;
-  color: var(--accent-deep);
+  color: var(--accent);
   font-weight: 500;
 }
 .asset-grid {
@@ -2131,7 +2133,7 @@ section {
 }
 .asset .n {
   font: 500 22px/1 var(--serif);
-  color: var(--accent-deep);
+  color: var(--accent);
   margin-bottom: 12px;
 }
 .asset .name {
@@ -2342,7 +2344,8 @@ section {
   }
   .cap-grid,
   .prog-grid,
-  .asset-grid {
+  .asset-grid,
+  .prop-cards {
     grid-template-columns: 1fr 1fr;
   }
   .cap,

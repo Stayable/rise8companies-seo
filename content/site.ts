@@ -306,8 +306,20 @@ export const PROPERTIES = [
   },
 ] as const
 
-/** The three exteriors featured as cards above the atlas. */
-export const FEATURED_PROPERTY_IDS = ['orlando', 'kissimmee-east', 'davenport'] as const
+/**
+ * Photo cards above the atlas. The design mocked three; the register carries the
+ * full portfolio, so all eight are shown.
+ */
+export const FEATURED_PROPERTY_IDS = [
+  'orlando',
+  'kissimmee-east',
+  'davenport',
+  'lakeland',
+  'jacksonville-north',
+  'jacksonville-west',
+  'kissimmee-west',
+  'st-augustine',
+] as const
 
 export const PRINCIPALS = [
   {
@@ -323,6 +335,12 @@ export const PRINCIPALS = [
     initials: 'CJ',
   },
 ] as const
+
+/**
+ * Hidden for now — Kyle asked that only the two principals show. Kept here rather
+ * than deleted so the tier can be switched back on by flipping SHOW_DIRECTORS.
+ */
+export const SHOW_DIRECTORS = false
 
 export const DIRECTORS = [
   { name: 'Shay Harper', role: 'Director', initials: 'SH' },
@@ -369,7 +387,7 @@ export const EVERYBODYS_HOME = {
 
 export const MANAGEMENT = {
   dept: 'Management',
-  eye: '02 · Operations',
+  eye: 'Operations',
   h1Lead: 'We run',
   h1Rest: 'the rooms.',
   lede: 'RISE8 Management is the in-house operator for every property we own. No third-party manager. No franchise operator. The owner and the operator are the same entity — and that changes everything.',
@@ -429,7 +447,7 @@ export const MANAGEMENT = {
 
 export const DEVELOPMENT = {
   dept: 'Development',
-  eye: '04 · Construction & Development',
+  eye: 'Construction & Development',
   h1Lead: 'We build ',
   h1Em: 'what we own.',
   lede: 'RISE8 Development is vertically integrated — our construction, development, and management teams sit under one roof. When the builder is also the owner, every decision is made by someone who has to live with the result.',
@@ -460,7 +478,7 @@ export const DEVELOPMENT = {
 
 export const FINANCE = {
   dept: 'Real Estate Finance',
-  eye: '03 · Commercial real estate direct lending',
+  eye: 'Commercial real estate direct lending',
   h1Lead: 'Real estate capital, ',
   h1Em: 'reliably executed.',
   lede: 'RISE8 Real Estate Finance provides bridge loans, mezzanine debt, and preferred equity for acquisitions, recapitalizations, and transitional real estate — structured by owner-operators who underwrite from experience.',

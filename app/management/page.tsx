@@ -59,7 +59,7 @@ export default function ManagementPage() {
 
         <section className="sub-section" id="capabilities">
           <div className="sub-sec-head">
-            <span className="k">02 · Capabilities</span>
+            <span className="k">Capabilities</span>
             <h2>
               Built for ownership.
               <br />

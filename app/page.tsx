@@ -14,6 +14,7 @@ import {
   PRINCIPALS,
   PRINCIPLES,
   PROPERTIES,
+  SHOW_DIRECTORS,
   SITE,
   STATS,
   TIMELINE,
@@ -37,11 +38,7 @@ export default function HomePage() {
             </div>
             <div className="hero-inner">
               <div className="hero-top">
-                <div className="eyebrow">
-                  One parent <span style={{ color: 'var(--accent)' }}>·</span> Four operating
-                  companies <span style={{ color: 'var(--accent)' }}>·</span> Eight Florida
-                  properties
-                </div>
+                <div className="eyebrow" />
                 <div className="proverb">
                   <b>{SITE.proverb.kanji}</b>
                   <span>{SITE.proverb.romaji}</span>
@@ -144,7 +141,7 @@ export default function HomePage() {
         <section id="platform">
           <div className="wrap-tight">
             <div className="sec-head">
-              <div className="kicker">02 · Our platform</div>
+              <div className="kicker">Our platform</div>
               <h2>
                 Four operating companies under <em>one parent.</em>
               </h2>
@@ -196,7 +193,7 @@ export default function HomePage() {
         <section id="about" style={{ background: 'var(--paper-3)' }}>
           <div className="wrap">
             <div className="sec-head">
-              <div className="kicker">03 · About</div>
+              <div className="kicker">About</div>
               <h2>
                 A decade of building an <em>extended-stay platform.</em>
               </h2>
@@ -262,7 +259,7 @@ export default function HomePage() {
         <section id="portfolio">
           <div className="wrap-tight">
             <div className="sec-head">
-              <div className="kicker">04 · Portfolio</div>
+              <div className="kicker">Portfolio</div>
               <h2>
                 Eight Florida addresses, <em>one brand.</em>
               </h2>
@@ -301,13 +298,13 @@ export default function HomePage() {
         >
           <div className="wrap">
             <div className="sec-head">
-              <div className="kicker">06 · Leadership</div>
+              <div className="kicker">Leadership</div>
               <h2>
                 The people <em>accountable.</em>
               </h2>
             </div>
 
-            <div className="lead-tier1">
+            <div className="lead-tier1" style={SHOW_DIRECTORS ? undefined : { marginBottom: 0 }}>
               {PRINCIPALS.map((p) => (
                 <div className="lead-principal" key={p.name}>
                   <div
@@ -326,23 +323,25 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div className="lead-tier2">
-              {DIRECTORS.map((d) => (
-                <div className="lead-director" key={d.name}>
-                  <div
-                    className="portrait"
-                    style={{ width: 88, height: 88, fontSize: 22 }}
-                    aria-hidden="true"
-                  >
-                    {d.initials}
+            {SHOW_DIRECTORS ? (
+              <div className="lead-tier2">
+                {DIRECTORS.map((d) => (
+                  <div className="lead-director" key={d.name}>
+                    <div
+                      className="portrait"
+                      style={{ width: 88, height: 88, fontSize: 22 }}
+                      aria-hidden="true"
+                    >
+                      {d.initials}
+                    </div>
+                    <div>
+                      <div className="lead-role">{d.role}</div>
+                      <div className="lead-name">{d.name}</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="lead-role">{d.role}</div>
-                    <div className="lead-name">{d.name}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : null}
           </div>
         </section>
 
@@ -357,7 +356,7 @@ export default function HomePage() {
         >
           <div className="wrap">
             <div className="sec-head">
-              <div className="kicker">05 · Community</div>
+              <div className="kicker">Community</div>
               <h2>
                 An affiliated <em>nonprofit.</em>
               </h2>
@@ -435,7 +434,7 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                   className="btn-primary"
                 >
-                  Investor portal
+                  Investor relations
                 </a>
                 <a href={`mailto:${SITE.email.investors}`} className="btn-ghost">
                   Contact IR →
@@ -478,12 +477,6 @@ export default function HomePage() {
                     <div className="k">Careers</div>
                     <div className="v">
                       <a href={`mailto:${SITE.email.careers}`}>{SITE.email.careers}</a>
-                    </div>
-                  </div>
-                  <div className="contact-row">
-                    <div className="k">Lending</div>
-                    <div className="v">
-                      <a href={`mailto:${SITE.email.finance}`}>{SITE.email.finance}</a>
                     </div>
                   </div>
                   <div className="contact-row">
