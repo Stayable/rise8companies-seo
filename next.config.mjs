@@ -40,12 +40,15 @@ const goneToHome = [
 const nextConfig = {
   async redirects() {
     return [
+      // Explicit 301 rather than `permanent: true` (which emits 308). Both are
+      // permanent to Google, but 301 is what older crawlers and link-audit tools
+      // expect, and the migration plan specifies a 301 map.
       ...consolidated.map(([source, destination]) => ({
         source,
         destination,
-        permanent: true,
+        statusCode: 301,
       })),
-      ...goneToHome.map((source) => ({ source, destination: '/', permanent: true })),
+      ...goneToHome.map((source) => ({ source, destination: '/', statusCode: 301 })),
     ]
   },
 }
