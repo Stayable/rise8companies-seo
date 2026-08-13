@@ -51,55 +51,55 @@ They become a problem only later — see §8.
 
 ---
 
-## 3. Attach the domain in Vercel (safe — changes nothing live)
-
-The domain `rise8companies.com` already exists in the Vercel team
-`stayable-admins-projects`, currently used by the `investor-portal` project for the
-`invest.` subdomain. Adding the apex to this project does not affect that.
+## 3. Attach the domain in Vercel — DONE 2026-08-14
 
 ```bash
-npx vercel domains add rise8companies.com rise8companies-seo
-npx vercel domains add www.rise8companies.com rise8companies-seo
+npx vercel domains add rise8companies.com rise8companies-seo      # done
+npx vercel domains add www.rise8companies.com rise8companies-seo  # done
 ```
 
-Or in the dashboard: **Project `rise8companies-seo` → Settings → Domains → Add**.
+Both are now on project `rise8companies-seo`; `invest.rise8companies.com` stays on
+`investor-portal`, verified unchanged. Vercel reports "not configured properly"
+until step 5 — expected, and nothing about the live site changed.
 
-Vercel will report the domain as "Invalid Configuration" until step 4 — that is
-expected and harmless. Nothing about the live site changes at this stage.
-
-Set `www` to **redirect to** `rise8companies.com` (or the reverse, if Rob prefers
-`www`) so only one hostname is canonical.
+Still to decide: whether `www` redirects to the apex or the reverse, so only one
+hostname is canonical. Set it in **Settings → Domains** before or just after the flip.
 
 ---
 
-## 4. Promote the build to production
+## 4. Promote the build to production — DONE 2026-08-14
 
 ```bash
-npm run build          # must pass clean first
-npx vercel --prod
+npm run build
+npx vercel --prod   # dpl_EXRZZF6vqidsEsLxXJs9Ze3jqw96
 ```
+
+Serving at `https://rise8companies-seo.vercel.app`, waiting on DNS.
 
 ---
 
-## 5. Flip the two DNS records at SiteGround
+## 5. Flip the two DNS records at SiteGround — THE ONLY STEP LEFT
 
 **Site Tools → Domain → DNS Zone Editor** for `rise8companies.com`.
 
-Edit **only** these two:
+Change the **value** of these two rows. Do not change their type, do not delete and
+recreate them:
 
-| Host | Type | Old value | New value |
+| Name | Type | Old value | New value |
 |---|---|---|---|
-| `@` (apex) | A | `34.174.186.164` | `76.76.21.21` |
-| `www` | A → CNAME | `34.174.186.164` | `cname.vercel-dns.com` |
+| `rise8companies.com` | A | `34.174.186.164` | `76.76.21.21` |
+| `www.rise8companies.com` | A | `34.174.186.164` | `76.76.21.21` |
 
 Notes:
-- The apex must stay an **A record** — CNAME is not valid at a zone apex.
-- `76.76.21.21` is the value Vercel reports for this domain. Re-confirm it in the
-  Vercel dashboard at the moment you make the change rather than trusting this file.
-- If SiteGround will not let you convert `www` from A to CNAME, delete the `www` A
-  record first, then add the CNAME.
-- **Do not touch any other row in the zone.** In particular, leave MX, `_dmarc`,
-  `autodiscover`, and every TXT record exactly as they are.
+- `76.76.21.21` is what `vercel domains inspect` returns for **both** names. A
+  CNAME to `cname.vercel-dns.com` on `www` also works, but keeping both as A
+  records means two value edits rather than a delete-and-recreate — fewer ways to
+  get it wrong, and the apex has to be an A record regardless.
+- Re-confirm the IP in the Vercel dashboard at the moment you make the change
+  rather than trusting this file.
+- **Do not touch any other row in the zone** — all 26 are classified in
+  `snapshot/dns-zone.md`. In particular leave MX, SPF, `_dmarc`, `autodiscover`,
+  both `_domainkey` selectors, the Teams SRV/CNAME set, and `invest` alone.
 
 ---
 
