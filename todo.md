@@ -1,30 +1,47 @@
-# rise8companies.com Revamp — TODO
+# rise8companies.com — TODO
 
-Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for full detail and `CLAUDE.md` for guardrails.
+Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for detail and `CLAUDE.md` for guardrails.
 
-## Current Sprint
-- [ ] **Rob to answer `REVIEW.md`** — HQ city (Jacksonville vs Boca Raton), founding/chronology dates, key counts, leadership titles + headshots, Everybody's Home contact details. Nothing ships until these are settled.
-- [ ] **Get per-property booking URLs** for the portfolio register ("Book →" links are `#` today).
-- [ ] **Port privacy policy + terms of use** from the WordPress site; counsel review (Palm Beach County) before go-live.
-- [ ] **Decide on a News page** — the design footer linked one; it is not built.
-- [ ] **[Cross-repo / SEO] Rotate the exposed WordPress app password** — `SEO/CLAUDE.md` line 26 has a live-looking `WP_APP_PASSWORD` committed in plaintext (also in git history). Rotate in WP Admin, move to `.env` only.
-- [ ] **Clean up current site (independent of rebuild):** unpublish/redirect the 11 public HR-doc posts (exposure flag — snapshot §4c).
+## 🟢 LIVE — cut over 2026-08-14
 
-## Cutover (blocked on the above)
-- [ ] Lower TTL on apex + `www` to 300 at SiteGround, two days ahead.
-- [ ] Attach `rise8companies.com` + `www` to the `rise8companies-seo` Vercel project.
-- [ ] `npx vercel --prod`, then flip the two A/CNAME records — **runbook in `CUTOVER.md`**.
-- [ ] Verify MX / SPF / DMARC / autodiscover unchanged and send a test email both ways.
+`rise8companies.com` and `www` now serve the Next.js app from Vercel
+(`76.76.21.21`). Mail confirmed working end to end — inbound test delivered to
+`rb@rise8companies.com` after the flip. `invest.rise8companies.com` unaffected.
+
+## Watch for the next 48 hours
+- [ ] **Google's resolver (`8.8.8.8`) was still serving the old apex** from the 24-hour TTL at cutover. It ages out on its own — spot-check that it has moved.
+- [ ] **Raise TTLs back to `3600`** on the apex and `www` once things look settled.
+- [ ] Set the canonical hostname in Vercel → Settings → Domains (`www` → apex, or the reverse). Not urgent; both currently serve.
+- [ ] Submit the sitemap in Google Search Console / Bing and confirm the property URL.
+
+## Content punch list (shipped as-is by decision — see `REVIEW.md`)
+- [ ] **Rob's biography** — 20+ years, $750M firm, VP at RELATED, three degrees, Nevada Bar, Florida broker's licence. None verified; bar admission and licence are public record. Highest-priority item.
+- [ ] **Rob's title is inconsistent** — "Founder & Principal" on the card, "CEO" on the letter, "managing principal" in the bio.
+- [ ] **Confirm `corporate@rise8companies.com` exists** — the privacy policy names it as the only contact address.
+- [ ] **HQ city** — set to Boca Raton; the design PDF's footer still says Jacksonville. Get the design changed so they stop drifting.
+- [ ] **Management page** now reads "In-house since founding · Boca Raton · Est. 2014" — wrong if the firm was founded elsewhere.
+- [ ] Verify key counts, market count, and the chronology dates.
+- [ ] Real leadership headshots — the current ones were extracted from the PDF at 196×195 and 240×216.
+- [ ] Crystal's bio says "resident experience"; confirm that over "guest" for extended-stay.
+
+## DNS follow-ups (`snapshot/dns-zone.md`)
+- [ ] **Fix the staging-host bug on the old WordPress site while it is still live** — its privacy policy gives `corporate@kylee23.sg-host.com`, a mailbox that does not exist.
+- [ ] **Identify `1522905413783._domainkey`** — an unaccounted-for DKIM selector.
+- [ ] **`mail.rise8companies.com` points at SiteGround** while mail runs on Microsoft 365. Check nothing uses it.
+- [ ] **When SiteGround is cancelled, delete `mail`, `autoconfig`, `ftp`, `ssh`** — all still `A` → `34.174.186.164`. Once that IP is reassigned they become a subdomain-takeover risk. **Do not delete before then** — rollback depends on SiteGround serving.
 
 ## Backlog
-- [ ] Wire a contact form to a submission endpoint (site is mailto-only today).
-- [ ] Real leadership portraits (build shows initials).
-- [ ] Jacksonville West exterior photo (missing from the design export).
-- [ ] (Optional) Move the Vercel project from `stayable-admins-projects` to Rob's scope.
+- [ ] Wire a contact form to a submission endpoint (mailto-only today).
+- [ ] Decide on a News page — the design's footer linked one; it does not exist.
+- [ ] Jacksonville West has no exterior photo of its own.
+- [ ] **[Cross-repo / SEO] Rotate the exposed WordPress app password** — `SEO/CLAUDE.md` line 26 has a live-looking `WP_APP_PASSWORD` in plaintext, also in git history.
+- [ ] Unpublish/redirect the 11 public HR-doc posts on the old site (exposure flag — snapshot §4c).
 
-## Completed
-- [x] **Site snapshot** → `snapshot/site-state.md` (all pages, nav, copy, assets, 301 draft).
-- [x] **Migration preflight** — CMS = WordPress/SiteGround; DNS = SiteGround NS; email = Microsoft 365; web A `34.174.186.164`. Re-verified 2026-08-14.
-- [x] **Content-editing decision = in-repo TypeScript** (`content/site.ts`; Kyle sole editor, no CMS).
-- [x] **Built the real site from Rob's Claude Design export** (`RISE8 WEBSITE/`) — design system ported to `app/globals.css`; home + Management + Real Estate Finance + Development; 301 map covers the old URL inventory. Build passes clean.
-- [x] **Cutover runbook** → `CUTOVER.md`. **Content flags** → `REVIEW.md`.
+## Done
+- [x] Site snapshot, migration preflight, full DNS zone inventory (`snapshot/dns-zone.md`).
+- [x] Built from Rob's Claude Design PDF — eight values, full biographies, portfolio atlas, three company pages.
+- [x] Property photos from the supplied originals + rentstayable.com, optimised to WebP.
+- [x] Privacy policy and terms ported verbatim from the live site.
+- [x] Mobile menu; floating index gated to ≥1650px so it stops overlapping the register.
+- [x] 301 map verified live, including `/contact-us` and `/careers` landing on the footer anchor.
+- [x] **DNS cutover** — `CUTOVER.md`. Email, Teams, Intune, DKIM and the investor portal all verified intact.
