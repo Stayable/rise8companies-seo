@@ -137,18 +137,17 @@ addresses now live only in the footer).
 
 ---
 
-## Portfolio map — "Start a lease" needs a real destination
+## Portfolio map
 
-The map cards carry two calls to action, **Book now** and **Start a lease**. There is
-no separate leasing flow on rentstayable.com — I checked `/lease`, `/apply`,
-`/leasing`, `/application`, and `/book`, all 404 — so both currently point at the
-property's own Stayable page, which is where weekly and monthly stays are booked.
-If RISE8 has a dedicated lease application URL, send it and I will repoint the second
-link. Otherwise the two buttons should probably collapse into one.
+The map is pins and labels only — the hover card was removed. Property navigation
+runs through the eight photo cards above it, which link to each property's Stayable
+page.
 
-Property descriptions on those cards are condensed from each property's own meta
-description on rentstayable.com, so the wording is RISE8's rather than invented — but
-it was written for search engines. Worth a read for tone.
+Two things are kept in `content/site.ts` in case they are wanted later: a `desc` per
+property, condensed from that property's own meta description on rentstayable.com,
+and the note that **no leasing flow exists** on rentstayable.com (`/lease`, `/apply`,
+`/leasing`, `/application`, `/book` all 404) — so any future "Start a lease" call to
+action needs a real destination first.
 
 ## Links — all resolved, nothing is a placeholder
 

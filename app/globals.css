@@ -1079,20 +1079,15 @@ section {
   height: 0;
   z-index: 3;
 }
-.pin-anchor:hover,
-.pin-anchor:focus-within {
-  z-index: 20;
-}
 .pin {
   position: absolute;
+  display: block;
   width: 10px;
   height: 10px;
-  padding: 0;
   background: var(--accent);
   border: 1px solid var(--ink);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  cursor: pointer;
   z-index: 2;
   transition: 0.2s;
 }
@@ -1117,7 +1112,6 @@ section {
 .pin-label {
   position: absolute;
   transform: translate(10px, -8px);
-  transition: opacity 0.2s;
   font: 500 9px var(--sans);
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1128,125 +1122,6 @@ section {
   padding: 2px 6px;
   border: 0.5px solid var(--rule);
 }
-.pin-label.dim {
-  opacity: 0;
-}
-
-/* ---- Property card on hover / focus / tap ---- */
-.pin-card {
-  position: absolute;
-  width: 320px;
-  background: var(--paper-3);
-  border: 1px solid var(--ink);
-  box-shadow: var(--shadow-panel);
-  z-index: 30;
-  cursor: default;
-}
-.pin-card.right {
-  left: 22px;
-}
-.pin-card.left {
-  right: 22px;
-}
-.pin-card.down {
-  top: -12px;
-}
-.pin-card.up {
-  bottom: -12px;
-}
-.pin-card img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  display: block;
-  border-bottom: 1px solid var(--ink);
-}
-.pin-card-body {
-  padding: 20px 22px 22px;
-}
-.pin-card-body .region {
-  font: 500 9px/1 var(--sans);
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
-.pin-card-body h4 {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 1.1;
-  letter-spacing: -0.005em;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-.pin-card-body .addr {
-  font-family: var(--serif);
-  font-size: 12px;
-  line-height: 1.5;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-.pin-card-body .desc {
-  font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--ink-2);
-  margin-bottom: 16px;
-}
-.pin-card-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding-bottom: 16px;
-  border-bottom: 0.5px solid var(--rule);
-  margin-bottom: 16px;
-  font: 500 9px var(--sans);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.pin-card-meta .keys {
-  margin-left: auto;
-  font-family: var(--serif);
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  text-transform: none;
-  color: var(--ink);
-  white-space: nowrap;
-}
-.pin-card-meta .keys sub {
-  font: 500 9px var(--sans);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  bottom: 0;
-  margin-left: 3px;
-}
-.pin-card-cta {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-.pin-card-cta .btn-primary {
-  padding: 11px 18px;
-}
-.pin-card-lease {
-  font: 500 10px var(--sans);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink);
-  border-bottom: 0.5px solid var(--rule);
-  padding-bottom: 2px;
-  transition: 0.2s;
-}
-.pin-card-lease:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
-
 .atlas-map .legend {
   position: absolute;
   bottom: 32px;
@@ -2511,24 +2386,6 @@ section {
   }
   .atlas-map {
     min-height: 560px;
-  }
-  /* Narrow viewports cannot fit a 320px card beside a pin, so it becomes a
-     centred sheet over the map instead of trying to dodge the edges. */
-  .pin-card,
-  .pin-card.left,
-  .pin-card.right,
-  .pin-card.up,
-  .pin-card.down {
-    position: fixed;
-    left: 50%;
-    right: auto;
-    top: 50%;
-    bottom: auto;
-    transform: translate(-50%, -50%);
-    width: min(340px, calc(100vw - 40px));
-    max-height: 82vh;
-    overflow-y: auto;
-    z-index: 60;
   }
   .sec-body,
   .contact-split,
