@@ -11,9 +11,9 @@
 export const SITE = {
   name: 'RISE8 Companies',
   url: 'https://rise8companies.com',
-  // FLAG: design footer says "Jacksonville, Florida · Est. 2014"; CLAUDE.md and the
-  // REF design page say Boca Raton. Unresolved — see REVIEW.md #1.
-  locale: 'Jacksonville, Florida',
+  // Kyle set this to Boca Raton temporarily, matching CLAUDE.md and the Real Estate
+  // Finance page. The design PDF's footer still says Jacksonville — see REVIEW.md #2.
+  locale: 'Boca Raton, Florida',
   founded: '2014',
   proverb: {
     kanji: '七転び八起き',

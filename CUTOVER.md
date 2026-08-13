@@ -9,6 +9,9 @@ Vercel **without breaking RISE8 email**.
 
 ---
 
+> The complete zone — all 26 records, classified by what may and may not be
+> touched — is in **`snapshot/dns-zone.md`**. Read it before opening the editor.
+
 ## 1. Verified current state (checked 2026-08-14 against 8.8.8.8)
 
 | Record | Current value | Change at cutover? |
@@ -29,6 +32,11 @@ what keep it working. Vercel serves the web front end only and needs none of the
 **Do not switch the nameservers to Vercel.** That would move authority for the
 whole zone and drop every record not replicated there — including MX. The A/CNAME
 edit below is the entire job.
+
+**Four other records also point at SiteGround** — `mail`, `autoconfig`, `ftp`, and
+`ssh`, all `A` → `34.174.186.164`. **Leave every one of them alone on cutover day**:
+rollback depends on SiteGround still serving, and `ftp`/`ssh` are how you reach it.
+They become a problem only later — see §8.
 
 ---
 
@@ -139,3 +147,20 @@ SiteGround site was never modified, there is nothing else to undo.
   sitemap.
 - Only then consider decommissioning the SiteGround WordPress install — and keep
   the export.
+
+### And when SiteGround is actually cancelled — do not skip this
+
+Delete the four leftover `A` records: `mail`, `autoconfig`, `ftp`, `ssh`. Each still
+points at `34.174.186.164`. Once the host reassigns that IP, whoever receives it
+inherits four live hostnames on the RISE8 domain — a textbook subdomain-takeover
+setup, and the kind of thing that gets found by scanners long before it gets found
+by us.
+
+Two of them are worth checking even sooner:
+
+- **`mail.rise8companies.com`** points at SiteGround while mail actually runs on
+  Microsoft 365. Any client still configured against that hostname is talking to the
+  wrong server.
+- **`autoconfig.rise8companies.com`** serves SiteGround's client-setup settings.
+  Microsoft's equivalent, `autodiscover`, is configured correctly — this one is a
+  leftover that can hand out wrong mail settings.

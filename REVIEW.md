@@ -9,6 +9,11 @@ Edit answers directly into `content/site.ts` — all copy and data live there.
 
 ---
 
+> **Status:** Kyle has asked to ship as-is and correct these later. Nothing below
+> blocks the cutover any more — it is a punch list to work through after go-live.
+> The two worth doing soonest are Rob's biography (§1) and the privacy policy
+> contact address (under *Legal pages*), because both are public-facing assertions.
+
 ## 1. Rob's biography — the highest-risk item on the page
 
 The design adds a full biography. Every sentence makes a specific, checkable claim,
@@ -26,7 +31,9 @@ and this is the sort of copy that gets read closely by investors and counsel:
 - "holds a **Florida real estate broker's license**"
 
 Confirm all eight, individually. The bar admission and the broker's licence in
-particular are matters of public record and should be stated exactly.
+particular are matters of public record and should be stated exactly. **Kyle has
+decided to publish as-is and edit later** — flagging it here so the decision is on
+the record, not because it is unresolved.
 
 **Rob's title is inconsistent on the same page.** The leadership card says "Founder
 & Principal", the letter is signed "Rob Beyer, **CEO**", and the biography says
@@ -45,12 +52,18 @@ Property Manager at Stayable Lakeland, VP of Operations by **January 2025**, "mo
 than 20 years" of experience. Also note the bio says "resident experience" — RISE8
 is extended-stay, so confirm "resident" is the intended word rather than "guest".
 
-## 2. Headquarters city
+## 2. Headquarters city — set to Boca Raton, still needs a final answer
 
-The design says **Jacksonville, Florida · Est. 2014** in the footer. `CLAUDE.md` and
-the RISE8 org profile say **Boca Raton**, and the design's own Real Estate Finance
-page says Boca Raton. The build ships Jacksonville. One of these is wrong on a live
-corporate site.
+Kyle set this to **Boca Raton, Florida** temporarily, which matches `CLAUDE.md`, the
+RISE8 org profile, and the design's own Real Estate Finance page. The design PDF's
+footer still reads **Jacksonville, Florida · Est. 2014**, so the design and the site
+now disagree. Confirm which is correct and, if it is Boca Raton, get the footer in
+Claude Design changed too so the two stop drifting.
+
+One knock-on: the Management page's hero note reads "In-house since founding ·
+Boca Raton, Florida · Est. 2014" because it composes `SITE.locale`. If the *company*
+was founded in Jacksonville and only later moved to Boca Raton, that line is now
+wrong even though the footer is right. Worth a look.
 
 ## 3. Numbers
 
@@ -145,6 +158,14 @@ All eight are resized to 1400px wide and re-encoded as WebP (149–308 KB each, 
 from up to 6.4 MB); the masters stay in `Image files/` for re-cropping.
 
 ---
+
+## DNS
+
+The full zone — 26 records — is inventoried in `snapshot/dns-zone.md`, classified
+into what changes at cutover (two rows), what must never be touched (Microsoft 365
+mail, Teams, Intune, DKIM, the `send.` subdomain, the investor portal), and four
+stale `A` records still pointing at SiteGround that become a subdomain-takeover risk
+once that account is cancelled.
 
 ## Not in scope of this build
 
