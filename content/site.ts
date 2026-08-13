@@ -23,8 +23,8 @@ export const SITE = {
   investorPortal: 'https://invest.rise8companies.com/',
   stayable: 'https://rentstayable.com/',
   email: {
-    investors: 'investors@rise8mgmt.com',
-    // Investor relations — the "Contact IR" button on the home page only.
+    // Investor relations — the "Contact IR" button and the footer contact column.
+    // Replaced investors@rise8mgmt.com, which is no longer used anywhere on the site.
     ir: 'ir@rise8companies.com',
     press: 'press@rise8mgmt.com',
     careers: 'careers@rise8mgmt.com',
@@ -642,16 +642,12 @@ export const FOOTER_COLUMNS = [
   },
   {
     title: 'Investors',
-    links: [
-      { label: 'Thesis', href: '/#invest' },
-      { label: 'Investor portal', href: SITE.investorPortal },
-      { label: 'Request access', href: `mailto:${SITE.email.investors}` },
-    ],
+    links: [{ label: 'Investor portal', href: SITE.investorPortal }],
   },
   {
     title: 'Contact',
     links: [
-      { label: SITE.email.investors, href: `mailto:${SITE.email.investors}` },
+      { label: SITE.email.ir, href: `mailto:${SITE.email.ir}` },
       { label: SITE.email.press, href: `mailto:${SITE.email.press}` },
       { label: SITE.email.careers, href: `mailto:${SITE.email.careers}` },
     ],
