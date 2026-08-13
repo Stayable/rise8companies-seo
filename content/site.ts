@@ -26,8 +26,7 @@ export const SITE = {
     // Investor relations — the "Contact IR" button and the footer contact column.
     // Replaced investors@rise8mgmt.com, which is no longer used anywhere on the site.
     ir: 'ir@rise8companies.com',
-    press: 'press@rise8mgmt.com',
-    careers: 'careers@rise8mgmt.com',
+    // Still used by the Real Estate Finance page's "Connect with the REF team" CTA.
     finance: 'finance@rise8companies.com',
   },
 } as const
@@ -646,10 +645,6 @@ export const FOOTER_COLUMNS = [
   },
   {
     title: 'Contact',
-    links: [
-      { label: SITE.email.ir, href: `mailto:${SITE.email.ir}` },
-      { label: SITE.email.press, href: `mailto:${SITE.email.press}` },
-      { label: SITE.email.careers, href: `mailto:${SITE.email.careers}` },
-    ],
+    links: [{ label: SITE.email.ir, href: `mailto:${SITE.email.ir}` }],
   },
 ] as const
