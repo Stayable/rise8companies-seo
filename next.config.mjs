@@ -3,13 +3,14 @@
  * new site. Inventory source: `snapshot/site-state.md` §4.
  */
 
-// The old marketing pages the new site consolidates into the single-page home —
-// each 301s to its section anchor. /careers is NOT here: it has its own page again.
+// The old marketing pages. The new site consolidates them into the single-page
+// home, so each old path 301s to its section anchor.
 const consolidated = [
   ['/about-us', '/#about'],
   ['/culture-and-values', '/#about'],
   ['/investors', '/#invest'],
   ['/contact-us', '/#contact'],
+  ['/careers', '/#contact'],
   ['/leadership', '/#leadership'],
   ['/portfolio', '/#portfolio'],
 ]
