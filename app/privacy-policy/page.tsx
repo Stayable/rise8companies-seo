@@ -1,32 +1,19 @@
 import type { Metadata } from 'next'
-import { SubNav, SubFooter } from '@/components/site/SubPageChrome'
+import LegalDoc from '@/components/site/LegalDoc'
+import { PRIVACY_POLICY } from '@/content/legal'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  robots: { index: false, follow: true },
+  description:
+    'How RISE8 Companies collects, uses, and discloses information from visitors to rise8companies.com.',
 }
 
 export default function PrivacyPolicy() {
   return (
-    <>
-      <SubNav dept="Legal" />
-      <main id="main" className="doc">
-        <span className="kicker">Legal</span>
-        <h1>Privacy Policy</h1>
-        <p>
-          This page is a placeholder. The RISE8 Companies privacy policy must be ported from the
-          existing rise8companies.com page and reviewed by counsel before this site goes live.
-        </p>
-        <p>
-          Governing jurisdiction for review: Palm Beach County, Florida. Do not publish substantive
-          privacy terms here without legal sign-off.
-        </p>
-        <div className="meta">Not for publication · pending legal review</div>
-      </main>
-      <SubFooter
-        dept="Legal"
-        note="Placeholder page. Final privacy terms are pending review by counsel."
-      />
-    </>
+    <LegalDoc
+      title="Privacy Policy"
+      blocks={PRIVACY_POLICY}
+      note="Ported verbatim from the existing rise8companies.com privacy policy."
+    />
   )
 }

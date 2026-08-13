@@ -103,9 +103,16 @@ carried a full term sheet — $10M–$100M bridge, 75% max LTV, 13–15% mezzani
 pricing, SOFR spreads, non-recourse. Unverified financial terms do not go on a live
 lending page. Both are available if Rob wants them.
 
-**Legal pages.** `/privacy-policy` and `/terms-of-use` are stubs marked `noindex`.
-Real terms must be ported from the current WordPress site and reviewed by counsel
-(jurisdiction: Palm Beach County) before go-live.
+**Legal pages — now ported, one thing to confirm.** `/privacy-policy` (15 sections)
+and `/terms-of-use` (7 sections) carry the real copy from the live site, verbatim.
+One correction was needed: the live Privacy Policy had a **SiteGround staging host
+baked into it** — a link to `kylee23.sg-host.com` and, more seriously, a contact
+address of **`corporate@kylee23.sg-host.com`**. That is a find-and-replace artefact
+from the original build, and it means the current live policy points users at a
+mailbox that does not exist. Both now read `rise8companies.com`.
+**Confirm `corporate@rise8companies.com` is real and monitored** — it is the only
+address the privacy policy gives. Worth fixing on the existing WordPress site too,
+since that bug is live right now.
 
 ---
 
