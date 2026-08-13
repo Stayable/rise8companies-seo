@@ -28,13 +28,22 @@ and this is the sort of copy that gets read closely by investors and counsel:
 Confirm all eight, individually. The bar admission and the broker's licence in
 particular are matters of public record and should be stated exactly.
 
-**Crystal has no biography yet.** The panel is two columns, aligned with the two
-principal cards; hers is the empty right-hand column. Send her paragraphs and they
-drop into `PRINCIPALS[1].fullBio` in `content/site.ts` — no layout change needed.
-
 **Rob's title is inconsistent on the same page.** The leadership card says "Founder
 & Principal", the letter is signed "Rob Beyer, **CEO**", and the biography says
 "founder and **managing principal**". Pick one.
+
+## 1b. Crystal's biography — supplied, two small edits made
+
+Kyle supplied it, so it takes precedence over the design. Two changes on the way in:
+
+- **Her title.** The design card read "Principal"; the bio says **Vice President of
+  Operations**. The card now says Vice President of Operations. Confirm.
+- **"Rise8" → "RISE8"** throughout, per the brand rule in `CLAUDE.md`.
+
+Dated claims worth a second look before publication: joined **April 2023** as
+Property Manager at Stayable Lakeland, VP of Operations by **January 2025**, "more
+than 20 years" of experience. Also note the bio says "resident experience" — RISE8
+is extended-stay, so confirm "resident" is the intended word rather than "guest".
 
 ## 2. Headquarters city
 

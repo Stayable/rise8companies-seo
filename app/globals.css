@@ -1678,16 +1678,27 @@ section {
 }
 
 /* ============ RIGHT-RAIL TOC ============ */
+/* The floating index is fixed to the right edge, so it only works when it can
+   sit in the outer margin. The content column is max 1440px + 40px gutters and
+   the index needs ~124px, which means anything under ~1650px puts it on top of
+   the page — most visibly over the register's keys / Book column. So it is off
+   by default and only switches on once there is genuinely room. The sticky nav
+   covers section navigation at every other width. */
 .toc {
+  display: none;
   position: fixed;
   top: 50%;
   right: 24px;
   transform: translateY(-50%);
   z-index: 40;
-  display: flex;
   flex-direction: column;
   gap: 14px;
   pointer-events: none;
+}
+@media (min-width: 1650px) {
+  .toc {
+    display: flex;
+  }
 }
 .toc a {
   pointer-events: auto;
@@ -2376,7 +2387,6 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
   }
-  .toc,
   .nav-links {
     display: none;
   }

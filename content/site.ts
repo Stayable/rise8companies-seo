@@ -352,12 +352,18 @@ export const PRINCIPALS = [
   },
   {
     name: 'Crystal Johnson',
-    role: 'Principal',
+    // Supplied by Kyle. The design card read "Principal"; this is the real title.
+    role: 'Vice President of Operations',
     bio: 'Operations leadership across the RISE8 portfolio. Oversees property management, staffing, and performance.',
     photo: '/leadership/crystal-johnson.png',
-    // TODO: awaiting Crystal's biography. Drop the paragraphs in here and the
-    // second column fills itself — no layout change needed.
-    fullBio: [] as string[],
+    // "Rise8" normalised to "RISE8" throughout, per the brand rule in CLAUDE.md.
+    fullBio: [
+      'Crystal Johnson is Vice President of Operations for RISE8 Companies, with more than 20 years of experience in hospitality operations, sales, marketing, and multi-unit management.',
+      'Johnson began her career in hotel sales and marketing management before spending over a decade in restaurant operations leadership, managing high-volume locations and large teams. Her experience spans frontline execution through senior operations leadership, with a strong focus on performance, accountability, and service excellence.',
+      'She joined RISE8 Companies in April 2023 as Property Manager at Stayable Lakeland and advanced rapidly to Area Manager of Central Florida, Director of Operations, and Vice President of Operations by January 2025.',
+      'In her current role, Johnson oversees portfolio-wide operations, including occupancy and revenue performance, staffing and training, property standards, compliance, and budgeting. She drives company culture through disciplined operating systems, leadership development, and clear accountability standards that reinforce RISE8’s commitment to operational excellence and resident experience.',
+      'Johnson’s cross-sector background across hotels, restaurants, and extended-stay housing enables her to align day-to-day execution with executive strategy, supporting scalable growth and long-term asset performance.',
+    ],
   },
 ]
 
