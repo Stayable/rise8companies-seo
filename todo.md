@@ -23,7 +23,6 @@ Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for
 ## Content punch list (shipped as-is by decision — see `REVIEW.md`)
 - [ ] **Rob's biography** — 20+ years, $750M firm, VP at RELATED, three degrees, Nevada Bar, Florida broker's licence. None verified; bar admission and licence are public record. Highest-priority item.
 - [ ] **Rob's title is inconsistent** — "Founder & Principal" on the card, "CEO" on the letter, "managing principal" in the bio.
-- [ ] **Confirm `corporate@rise8companies.com` exists** — the privacy policy names it as the only contact address.
 - [ ] **HQ city** — set to Boca Raton; the design PDF's footer still says Jacksonville. Get the design changed so they stop drifting.
 - [ ] **Management page** now reads "In-house since founding · Boca Raton · Est. 2014" — wrong if the firm was founded elsewhere.
 - [ ] Verify key counts, market count, and the chronology dates.
@@ -31,7 +30,7 @@ Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for
 - [ ] Crystal's bio says "resident experience"; confirm that over "guest" for extended-stay.
 
 ## DNS follow-ups (`snapshot/dns-zone.md`)
-- [ ] **Fix the staging-host bug on the old WordPress site while it is still live** — its privacy policy gives `corporate@kylee23.sg-host.com`, a mailbox that does not exist.
+- [ ] **Fix the staging-host bug on the old WordPress site** — its privacy policy still gives `corporate@kylee23.sg-host.com`, a mailbox that does not exist. Fixed on the new site (now `info@rise8companies.com`), but the old page stays in Google's index until corrected or retired.
 - [ ] **Identify `1522905413783._domainkey`** — an unaccounted-for DKIM selector.
 - [ ] **`mail.rise8companies.com` points at SiteGround** while mail runs on Microsoft 365. Check nothing uses it.
 - [ ] **When SiteGround is cancelled, delete `mail`, `autoconfig`, `ftp`, `ssh`** — all still `A` → `34.174.186.164`. Once that IP is reassigned they become a subdomain-takeover risk. **Do not delete before then** — rollback depends on SiteGround serving.

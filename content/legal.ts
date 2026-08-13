@@ -51,7 +51,7 @@ export const PRIVACY_POLICY: LegalBlock[] = [
   { t: 'h', s: 'YOUR OPTIONS AND ACCESS TO YOUR PERSONAL INFORMATION' },
   { t: 'p', s: 'To access, review, or update your information stored by RISE8,you may contact your respective RISE8 office or account representative to have them update your information in our system. If you have any additional questions concerning access to or updating your personal information, please contact us at the information provided in the “Contact Us” section below.' },
   { t: 'h', s: 'CONTACT US' },
-  { t: 'p', s: 'We hope this Privacy Policy answers your questions about our collection, use and disclosure of your personal data. If you have additional questions about this Privacy Policy or the practices described herein, you may contact us at corporate@rise8companies.com' },
+  { t: 'p', s: 'We hope this Privacy Policy answers your questions about our collection, use and disclosure of your personal data. If you have additional questions about this Privacy Policy or the practices described herein, you may contact us at info@rise8companies.com' },
   { t: 'h', s: 'NON-EEA USER’S ACCEPTANCE OF THIS PRIVACY POLICY' },
   { t: 'p', s: 'By using the Services, you confirm that you have read and understood this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not use our Services at all. You may opt out of marketing communications at any time by contacting RISE8 using the information above.' },
   { t: 'h', s: 'REVISIONS TO THIS PRIVACY POLICY' },
@@ -83,7 +83,7 @@ export const PRIVACY_POLICY: LegalBlock[] = [
   { t: 'p', s: 'RISE8 COMPANIES' },
   { t: 'p', s: '8230 210TH ST S, Ste. 2' },
   { t: 'p', s: 'Boca Raton FL 33433' },
-  { t: 'p', s: 'Email: corporate@rise8companies.com' },
+  { t: 'p', s: 'Email: info@rise8companies.com' },
   { t: 'p', s: 'RISE8’s agent information is provided pursuant to the Digital Millennium Copyright Act, 17 U.S.C. § 512(c)(2).' },
 ]
 
@@ -108,7 +108,7 @@ export const TERMS_OF_USE: LegalBlock[] = [
   { t: 'p', s: 'RISE8 COMPANIES' },
   { t: 'p', s: '8230 210TH ST S, Ste. 2' },
   { t: 'p', s: 'Boca Raton FL 33433' },
-  { t: 'p', s: 'Email: corporate@rise8companies.com' },
+  { t: 'p', s: 'Email: info@rise8companies.com' },
   { t: 'p', s: 'If any provision of these Terms of Use is held to be invalid or unenforceable in any jurisdiction, such provision shall be deemed modified to the minimum extent necessary so that such provision shall no longer be held to be invalid or unenforceable, and these Terms of Use shall be interpreted so as to achieve the intent expressed herein to the greatest extent possible in the jurisdiction in question. Any such modification, invalidity or unenforceability shall be strictly limited both to such provision and to such jurisdiction.' },
   { t: 'p', s: '“RISE8” and related marks, images and symbols are the exclusive properties of an affiliate of RISE8 IP LLC.' },
 ]
