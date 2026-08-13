@@ -1,0 +1,283 @@
+<!-- @dsCard group="Website" viewport="1440x1200" name="RISE8 REF — CRE Lending landing" subtitle="One-page direct lending landing: bridge, mezzanine, preferred equity" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercial Real Estate Lending — RISE8 Real Estate Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+<style>
+:root{
+  --ink:#25272C;--ink-2:#3D3F44;--muted:#5E6166;--muted-2:#8F9197;
+  --rule:#B4BBC4;--rule-soft:#CDD2DA;--paper:#DCE3EB;--paper-2:#D2DAE3;--paper-3:#E8ECF2;
+  --navy:#1F2126;--accent:#4DC8D3;--accent-ink:#007882;
+  --serif:'EB Garamond',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(31,33,38,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-in{max-width:1280px;margin:0 auto;padding:18px 40px;display:flex;align-items:center}
+.nav-logo{display:flex;align-items:center;gap:14px;color:#E3E3E3}
+.nav-mark{width:38px;height:38px;border:.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font:500 14px/1 var(--serif);color:var(--accent)}
+.nav-name{font:500 16px/1 var(--serif);letter-spacing:.06em}
+.nav-dept{font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.3);padding-left:14px;margin-left:6px;border-left:.5px solid rgba(255,255,255,.1)}
+.nav-links{display:flex;gap:28px;margin-left:auto;font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;align-items:center}
+.nav-links a{color:rgba(227,227,227,.5);transition:color .15s}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:9px 16px;border:.5px solid var(--accent);color:var(--accent)!important;transition:.2s}
+.nav-cta:hover{background:var(--accent);color:var(--navy)!important}
+
+/* ── HERO ── */
+.hero{background:var(--navy);position:relative;overflow:hidden;padding:118px 40px 0}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0 1px,transparent 1px 3px);pointer-events:none}
+.hero-in{max-width:1280px;margin:0 auto;position:relative;z-index:1}
+.hero-eye{font:500 9px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(227,227,227,.35);margin-bottom:36px}
+.hero-eye span{color:var(--accent);margin:0 8px}
+.hero-h{font:500 84px/.95 var(--serif);letter-spacing:-.018em;color:#E8E8E8;margin-bottom:30px;max-width:15ch}
+.hero-h em{font-style:italic;color:var(--accent)}
+.hero-rule{width:56px;height:1px;background:var(--accent);margin-bottom:30px}
+.hero-p{font-family:var(--serif);font-size:21px;line-height:1.6;color:rgba(227,227,227,.62);max-width:48ch;margin-bottom:64px}
+.hero-stats{display:flex;border-top:.5px solid rgba(255,255,255,.12);border-bottom:.5px solid rgba(255,255,255,.12)}
+.hstat{padding:34px 44px 34px 0;margin-right:44px;border-right:.5px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:8px}
+.hstat:last-child{border-right:none}
+.hstat-v{font:500 46px/1 var(--serif);color:#E3E3E3;letter-spacing:-.015em}
+.hstat-v em{color:var(--accent);font-style:normal}
+.hstat-l{font:500 9px/1.4 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.35)}
+
+/* ── PROGRAMS ── */
+.sec{padding:88px 40px}
+.sec-head{max-width:1280px;margin:0 auto 56px;padding-bottom:20px;border-bottom:1px solid var(--ink)}
+.sec-eye{font:500 9px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.sec-h{font:500 46px/1.03 var(--serif);letter-spacing:-.012em;color:var(--ink);max-width:20ch}
+.sec-h em{font-style:italic;color:var(--accent)}
+.sec-intro{font-family:var(--serif);font-size:18px;line-height:1.6;color:var(--muted);max-width:52ch;margin-top:18px}
+
+.programs{background:var(--paper-3);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.prog-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ink);border:1px solid var(--ink)}
+.prog{background:var(--paper);padding:44px 36px 40px;display:flex;flex-direction:column;position:relative;transition:background .2s}
+.prog:hover{background:var(--paper-3)}
+.prog-n{font:500 12px/1 var(--sans);letter-spacing:.24em;color:var(--accent-ink)}
+.prog-name{font:500 34px/1.05 var(--serif);letter-spacing:-.01em;color:var(--ink);margin:20px 0 6px}
+.prog-tier{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--muted);margin-bottom:24px;padding-bottom:22px;border-bottom:.5px solid var(--rule)}
+.prog-desc{font-family:var(--serif);font-size:16.5px;line-height:1.65;color:var(--ink-2);margin-bottom:26px}
+.prog-specs{display:flex;flex-direction:column;gap:0;margin-top:auto}
+.prog-spec{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:.5px solid var(--rule-soft)}
+.prog-spec-k{font:500 9px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.prog-spec-v{font-family:var(--serif);font-size:15px;color:var(--ink);text-align:right}
+.prog-spec-v em{color:var(--accent-ink);font-style:normal}
+
+/* ── ASSET CLASSES ── */
+.assets{background:var(--paper-2);border-bottom:1px solid var(--ink)}
+.asset-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--rule);border:1px solid var(--rule)}
+.asset{background:var(--paper);padding:30px 30px 34px;display:flex;flex-direction:column;gap:8px;min-height:150px;justify-content:flex-end;transition:.2s}
+.asset:hover{background:var(--navy)}
+.asset:hover .asset-name,.asset:hover .asset-desc{color:#E3E3E3}
+.asset:hover .asset-num{color:var(--accent)}
+.asset-num{font:500 9px/1 var(--sans);letter-spacing:.2em;color:var(--muted);margin-bottom:auto}
+.asset-name{font:500 26px/1.1 var(--serif);letter-spacing:-.008em;color:var(--ink);transition:color .2s}
+.asset-desc{font-family:var(--serif);font-size:14px;color:var(--muted);line-height:1.5;transition:color .2s}
+
+/* ── WHY ── */
+.why{background:var(--navy);-webkit-font-smoothing:antialiased}
+.why-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);margin-top:56px}
+.why-card{background:var(--navy);padding:40px 36px 46px}
+.why-i{font:500 30px/1 var(--serif);color:var(--accent);margin-bottom:24px}
+.why-name{font:500 24px/1.15 var(--serif);color:#E3E3E3;letter-spacing:-.008em;margin-bottom:14px}
+.why-desc{font-family:var(--serif);font-size:16px;line-height:1.65;color:rgba(227,227,227,.6)}
+.why .sec-head{border-color:rgba(255,255,255,.1)}
+.why .sec-eye{color:rgba(227,227,227,.3)}
+.why .sec-h{color:#E3E3E3}
+
+/* ── PROCESS ── */
+.proc{background:var(--paper)}
+.proc-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ink);border:1px solid var(--ink)}
+.step{background:var(--paper-3);padding:38px 30px 42px;display:flex;flex-direction:column}
+.step-n{font:500 40px/1 var(--serif);color:var(--accent);margin-bottom:26px}
+.step-name{font:500 20px/1.15 var(--serif);color:var(--ink);margin-bottom:14px;padding-bottom:16px;border-bottom:.5px solid var(--rule)}
+.step-desc{font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--muted)}
+
+/* ── CTA ── */
+.cta{background:var(--navy);padding:100px 40px;text-align:center;-webkit-font-smoothing:antialiased;border-top:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 90% at 50% 120%,rgba(77,200,211,.12),transparent 70%);pointer-events:none}
+.cta-in{max-width:760px;margin:0 auto;position:relative;z-index:1}
+.cta-eye{font:500 9px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(227,227,227,.35);margin-bottom:26px}
+.cta-h{font:500 56px/1.02 var(--serif);letter-spacing:-.015em;color:#E8E8E8;margin-bottom:24px}
+.cta-h em{font-style:italic;color:var(--accent)}
+.cta-p{font-family:var(--serif);font-size:19px;line-height:1.6;color:rgba(227,227,227,.6);margin-bottom:44px;max-width:48ch;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-flex;align-items:center;gap:12px;padding:17px 34px;background:var(--accent);color:var(--navy);font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;transition:.25s cubic-bezier(.2,.8,.2,1)}
+.cta-btn:hover{background:#fff;transform:translateY(-2px)}
+.cta-btn .arw{transition:transform .25s}
+.cta-btn:hover .arw{transform:translateX(4px)}
+.cta-contact{margin-top:40px;padding-top:32px;border-top:.5px solid rgba(255,255,255,.1);display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.cc-item{display:flex;flex-direction:column;gap:5px}
+.cc-k{font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.3)}
+.cc-v{font-family:var(--serif);font-size:16px;color:rgba(227,227,227,.75)}
+
+/* ── FOOTER ── */
+.foot{background:#191B1F;padding:40px;border-top:1px solid rgba(255,255,255,.06)}
+.foot-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-brand{display:flex;align-items:center;gap:12px;color:rgba(227,227,227,.55);font:500 12px/1 var(--serif);letter-spacing:.05em}
+.foot-mark{width:28px;height:28px;border:.5px solid rgba(77,200,211,.5);display:flex;align-items:center;justify-content:center;font:500 11px/1 var(--serif);color:var(--accent)}
+.foot-note{font:400 12px/1.5 var(--sans);color:rgba(227,227,227,.32);max-width:52ch}
+
+@media (max-width:1080px){
+  .prog-grid,.asset-grid,.why-grid{grid-template-columns:1fr 1fr}
+  .proc-grid{grid-template-columns:1fr 1fr}
+  .hero-h{font-size:64px}
+}
+@media (max-width:680px){
+  .prog-grid,.asset-grid,.why-grid,.proc-grid{grid-template-columns:1fr}
+  .hero-h{font-size:46px}.sec-h{font-size:34px}.cta-h{font-size:38px}
+  .hero-stats{flex-direction:column}.hstat{border-right:none;border-bottom:.5px solid rgba(255,255,255,.12);margin-right:0;padding:24px 0}
+  .nav-links a:not(.nav-cta){display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="RISE8 Website.html">
+      <div class="nav-mark">R8</div>
+      <div class="nav-name">RISE8</div>
+      <div class="nav-dept">Real Estate Finance</div>
+    </a>
+    <div class="nav-links">
+      <a href="#programs">Programs</a>
+      <a href="#sectors">Sectors</a>
+      <a class="nav-cta" href="#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-in">
+    <div class="hero-eye">RISE8 Real Estate Finance <span>/</span> Commercial Real Estate Direct Lending</div>
+    <h1 class="hero-h">Real estate capital, <em>reliably executed.</em></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-p">RISE8 Real Estate Finance provides bridge loans, mezzanine debt, and preferred equity for acquisitions, recapitalizations, and transitional real estate — structured by owner-operators who underwrite from experience.</p>
+  </div>
+</header>
+
+<!-- PROGRAMS -->
+<section class="programs sec" id="programs">
+  <div class="sec-head">
+    <div class="sec-eye">Direct Lending Solutions</div>
+    <h2 class="sec-h">Three ways to <em>complete the stack.</em></h2>
+    <p class="sec-intro">Senior to subordinate, RISE8 REF lends across the capital structure — sized to your business plan and your timeline.</p>
+  </div>
+  <div class="prog-grid">
+    <div class="prog">
+      <div class="prog-n">01</div>
+      <div class="prog-name">Bridge Loans</div>
+      <div class="prog-tier">Senior secured · transitional</div>
+      <p class="prog-desc">Short-term senior financing for acquisitions, recapitalizations, renovations, and lease-up — capital that moves at the speed of your transaction.</p>
+      <div class="prog-specs">
+        <div class="prog-spec"><span class="prog-spec-k">Position</span><span class="prog-spec-v"><em>Senior</em> secured</span></div>
+        <div class="prog-spec"><span class="prog-spec-k">Term</span><span class="prog-spec-v">12–36 months</span></div>
+        <div class="prog-spec"><span class="prog-spec-k">Use</span><span class="prog-spec-v">Acquisition · reposition</span></div>
+      </div>
+    </div>
+    <div class="prog">
+      <div class="prog-n">02</div>
+      <div class="prog-name">Mezzanine</div>
+      <div class="prog-tier">Subordinated debt</div>
+      <p class="prog-desc">Subordinated capital that complements senior debt and extends proceeds — flexible structuring that fills the gap without diluting control.</p>
+      <div class="prog-specs">
+        <div class="prog-spec"><span class="prog-spec-k">Position</span><span class="prog-spec-v"><em>Subordinate</em> to senior</span></div>
+        <div class="prog-spec"><span class="prog-spec-k">Structure</span><span class="prog-spec-v">Current + accrued</span></div>
+        <div class="prog-spec"><span class="prog-spec-k">Use</span><span class="prog-spec-v">Proceeds · gap fill</span></div>
+      </div>
+    </div>
+    <div class="prog">
+      <div class="prog-n">03</div>
+      <div class="prog-name">Preferred Equity</div>
+      <div class="prog-tier">Structured equity</div>
+      <p class="prog-desc">Structured equity for recapitalizations, partner buyouts, and complex capital-stack solutions — aligned capital that shares the upside on your terms.</p>
+      <div class="prog-specs">
+        <div class="prog-spec"><span class="prog-spec-k">Position</span><span class="prog-spec-v"><em>Preferred</em> equity</span></div>
+        <div class="prog-spec"><span class="prog-spec-k">Return</span><span class="prog-spec-v">Pref + participation</span></div>
+        <div class="prog-spec"><span class="prog-spec-k">Use</span><span class="prog-spec-v">Recap · buyout</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSET CLASSES -->
+<section class="assets sec" id="sectors">
+  <div class="sec-head">
+    <div class="sec-eye">Asset Classes</div>
+    <h2 class="sec-h">Lending across the <em>property types we know.</em></h2>
+    <p class="sec-intro">Structured for speed and execution — grounded in real operating experience across Florida's high-growth markets.</p>
+  </div>
+  <div class="asset-grid">
+    <div class="asset"><div class="asset-num">01</div><div class="asset-name">Extended-Stay</div><div class="asset-desc">Our home category — hotels and furnished-suite assets.</div></div>
+    <div class="asset"><div class="asset-num">02</div><div class="asset-name">Multifamily</div><div class="asset-desc">Value-add and stabilized rental communities.</div></div>
+    <div class="asset"><div class="asset-num">03</div><div class="asset-name">Hospitality</div><div class="asset-desc">Select-service and limited-service hotels.</div></div>
+    <div class="asset"><div class="asset-num">04</div><div class="asset-name">Retail</div><div class="asset-desc">Neighborhood and net-lease retail assets.</div></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why sec">
+  <div class="sec-head">
+    <div class="sec-eye">Why Borrowers Choose RISE8 REF</div>
+    <h2 class="sec-h">Execution-focused capital, backed by <em>operating expertise.</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-i">&#9633;</div>
+      <div class="why-name">Speed &amp; Certainty of Execution</div>
+      <p class="why-desc">We lend from our own balance sheet with in-house underwriting and decision-making authority — no committees you'll never meet, no last-minute re-trades.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-i">&#9671;</div>
+      <div class="why-name">Flexible Capital Solutions</div>
+      <p class="why-desc">Bridge, mezzanine, or preferred equity — structured around your business plan and capitalization strategy rather than a rigid box.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-i">&#9673;</div>
+      <div class="why-name">Deep Operating Expertise</div>
+      <p class="why-desc">We own and operate 1,300+ units ourselves. We underwrite your deal the way we underwrite our own — because we've been the borrower.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="connect">
+  <div class="cta-in">
+    <div class="cta-eye">Let's Structure Your Next Transaction</div>
+    <h2 class="cta-h">Have a deal that needs <em>the right capital?</em></h2>
+    <p class="cta-p">Connect with the RISE8 Real Estate Finance team to discuss bridge, mezzanine, and preferred equity solutions for your next transaction.</p>
+    <a class="cta-btn" href="mailto:finance@rise8companies.com?subject=CRE%20Lending%20Inquiry">Connect with the REF Team <span class="arw">&rarr;</span></a>
+    <div class="cta-contact">
+      <div class="cc-item"><div class="cc-k">Email</div><div class="cc-v">finance@rise8companies.com</div></div>
+      <div class="cc-item"><div class="cc-k">Headquarters</div><div class="cc-v">Boca Raton, Florida</div></div>
+      <div class="cc-item"><div class="cc-k">Markets</div><div class="cc-v">Central &amp; North Florida</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-in">
+    <a class="foot-brand" href="RISE8 Website.html">
+      <div class="foot-mark">R8</div>
+      RISE8 Companies · Real Estate Finance
+    </a>
+    <p class="foot-note">RISE8 Real Estate Finance is a lending affiliate of RISE8 Companies. This page is informational and does not constitute a commitment to lend or an offer of financing.</p>
+  </div>
+</footer>
+
+</body>
+</html>

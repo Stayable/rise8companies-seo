@@ -1,0 +1,50 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Two-column content" subtitle="Lede + supporting copy beside a list" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  html, body { margin: 0; }
+  .slide { width: 1280px; height: 720px; position: relative; background: var(--paper); color: var(--ink); display: flex; flex-direction: column; }
+  .inner { flex: 1; padding: 72px 88px 0; display: flex; flex-direction: column; }
+  .head { display: grid; grid-template-columns: auto 1fr; gap: 60px; border-top: 1px solid var(--ink); padding-top: 28px; margin-bottom: 56px; align-items: baseline; }
+  .kicker { font: 500 13px var(--sans); letter-spacing: .3em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  h2 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 52px; line-height: 1.02; letter-spacing: -.012em; color: var(--ink); max-width: 20ch; }
+  h2 em { font-style: italic; color: var(--accent); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .lede { font-family: var(--serif); font-style: italic; color: var(--accent); font-size: 30px; line-height: 1.4; margin: 0; }
+  .body { font-family: var(--serif); font-size: 21px; line-height: 1.6; color: var(--ink-2); margin: 0; max-width: 46ch; }
+  .reg { display: grid; }
+  .row { display: grid; grid-template-columns: 44px 1fr; gap: 20px; padding: 20px 0; border-bottom: .5px solid var(--rule); align-items: baseline; }
+  .row:first-child { border-top: .5px solid var(--rule); }
+  .row .n { font-family: var(--serif); font-weight: 500; font-size: 26px; color: var(--accent); }
+  .row .t { font-family: var(--serif); font-weight: 500; font-size: 22px; color: var(--ink); margin: 0 0 4px; letter-spacing: -.005em; }
+  .row .d { font-family: var(--serif); font-size: 15px; color: var(--muted); margin: 0; line-height: 1.5; }
+  .foot { display: flex; justify-content: space-between; align-items: center; padding: 24px 88px; margin-top: auto; font: 500 11px var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="inner">
+    <div class="head">
+      <div class="kicker">The thesis</div>
+      <h2>Internalize what the industry <em>fragments.</em></h2>
+    </div>
+    <div class="cols">
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <p class="lede">One ownership. One thesis. Every incentive pointing the same direction.</p>
+        <p class="body">By consolidating acquisition, development, financing, and operations under a single platform, we remove the misaligned incentives that erode returns in third-party hospitality.</p>
+      </div>
+      <div class="reg">
+        <div class="row"><div class="n">I</div><div><p class="t">Brand</p><p class="d">Stayable — franchise-free, direct-booking.</p></div></div>
+        <div class="row"><div class="n">II</div><div><p class="t">Operations</p><p class="d">In-house management for every property.</p></div></div>
+        <div class="row"><div class="n">III</div><div><p class="t">Capital</p><p class="d">Real estate finance structured in-house.</p></div></div>
+        <div class="row"><div class="n">IV</div><div><p class="t">Construction</p><p class="d">Built to our own brand standard.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>RISE8 Companies</span><span>05</span></div>
+</div>
+</body>
+</html>

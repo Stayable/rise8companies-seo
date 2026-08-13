@@ -1,0 +1,30 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Statement / quote" subtitle="Large italic serif statement on paper" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  html, body { margin: 0; }
+  .slide { width: 1280px; height: 720px; position: relative; background: var(--paper); color: var(--ink); display: flex; flex-direction: column; }
+  .inner { flex: 1; padding: 80px 96px; display: flex; flex-direction: column; justify-content: center; }
+  .mark { font-family: var(--serif); font-size: 120px; line-height: .6; color: var(--accent); height: 60px; }
+  blockquote { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 56px; line-height: 1.18; letter-spacing: -.01em; color: var(--ink); max-width: 24ch; }
+  blockquote em { font-style: italic; color: var(--accent); }
+  .attr { display: flex; align-items: center; gap: 16px; margin-top: 48px; }
+  .attr .line { width: 48px; height: 1px; background: var(--ink); }
+  .attr .who { font: 500 12px var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
+  .foot { display: flex; justify-content: space-between; align-items: center; padding: 28px 96px; border-top: .5px solid var(--rule); font: 500 11px var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="inner">
+    <div class="mark">“</div>
+    <blockquote>Excellent operations <em>compound.</em> A stable address changes what a person can build next.</blockquote>
+    <div class="attr"><span class="line"></span><span class="who">The founder · Chairman</span></div>
+  </div>
+  <div class="foot"><span>RISE8 Companies</span><span>Est. 2014</span></div>
+</div>
+</body>
+</html>

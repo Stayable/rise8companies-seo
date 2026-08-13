@@ -1,0 +1,23 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Paper surfaces" subtitle="Cool blue-grey light surfaces — page, recess, panel" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: #fff; }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .sw { padding: 22px 18px 16px; min-height: 116px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .name { font: var(--label-sm); letter-spacing: var(--track-label-tight); text-transform: uppercase; color: var(--muted); }
+  .hex { font-family: var(--serif); font-size: 18px; color: var(--ink); margin-top: 4px; }
+  .var { font: 500 10px var(--sans); color: var(--muted-2); margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw" style="background: var(--paper)"><div class="name">Page</div><div class="hex">#DCE3EB</div><div class="var">--paper</div></div>
+    <div class="sw" style="background: var(--paper-2)"><div class="name">Recess</div><div class="hex">#D2DAE3</div><div class="var">--paper-2</div></div>
+    <div class="sw" style="background: var(--paper-3)"><div class="name">Panel</div><div class="hex">#E8ECF2</div><div class="var">--paper-3</div></div>
+  </div>
+</body>
+</html>

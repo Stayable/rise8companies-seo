@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="design_doc_mode" content="canvas">
+<title>RISE8 Management — Layout Explorations</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#25272C;--ink-2:#3D3F44;--muted:#5E6166;
+  --rule:#B4BBC4;--paper:#DCE3EB;--paper-2:#D2DAE3;--paper-3:#E8ECF2;
+  --navy:#1F2126;--accent:#4DC8D3;
+  --serif:'EB Garamond',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+a{color:inherit;text-decoration:none}
+body{background:#747474;min-width:4800px;min-height:2600px}
+
+.fl{font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#c8c8c8;margin-bottom:14px;white-space:nowrap}
+.fl em{font:normal 12px/1 var(--sans);letter-spacing:0;text-transform:none;color:#aaa;margin-left:10px}
+.ab{box-shadow:0 16px 64px rgba(0,0,0,.5);width:1440px;overflow:hidden}
+
+/* ── SHARED NAV ── */
+.nav{background:rgba(31,33,38,.97);border-bottom:1px solid rgba(255,255,255,.06);-webkit-font-smoothing:antialiased}
+.nav-in{padding:18px 40px;display:flex;align-items:center;gap:32px}
+.nav-logo{display:flex;align-items:center;gap:14px;color:#E3E3E3}
+.nav-mark{width:40px;height:40px;border:.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font:500 15px/1 var(--serif);color:var(--accent);letter-spacing:.02em}
+.nav-name{font:500 17px/1 var(--serif);letter-spacing:.06em}
+.nav-dept{font:500 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.3);padding-left:14px;margin-left:4px;border-left:.5px solid rgba(255,255,255,.1)}
+.nav-links{display:flex;gap:28px;margin-left:auto;font:500 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.5)}
+.nav-back{color:rgba(227,227,227,.28)!important;padding-right:20px;margin-right:4px;border-right:.5px solid rgba(255,255,255,.1);font-size:9px}
+.nav-on{color:#fff}
+
+/* ── SHARED STATS ── */
+.sband{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.sband-in{padding:48px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.sv{font:500 64px/.95 var(--serif);letter-spacing:-.02em;color:var(--ink)}
+.sv sup{color:var(--accent);font-size:.5em;vertical-align:.6em;margin-left:2px}
+.sl{font:500 11px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-top:8px;display:block}
+.sn{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--muted);margin-top:4px}
+
+/* ── SHARED FOOTER ── */
+.foot{background:var(--navy);color:rgba(227,227,227,.65);padding:48px 40px 28px;border-top:.5px solid rgba(255,255,255,.07);-webkit-font-smoothing:antialiased}
+.foot-g{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:32px;border-bottom:.5px solid rgba(255,255,255,.07);margin-bottom:20px}
+.foot h4{font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+.foot-br p{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(227,227,227,.42);line-height:1.65;margin-top:12px;max-width:32ch}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.foot a{font-family:var(--serif);font-size:14px;color:rgba(227,227,227,.6)}
+.foot-bot{display:flex;justify-content:space-between;font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.28)}
+.foot-bot em{font-family:var(--serif);font-style:italic;font-size:12px;letter-spacing:0;text-transform:none;color:rgba(227,227,227,.38)}
+
+/* ═══════════════════════════════
+   V1 — LEDGER
+═══════════════════════════════ */
+#v1{background:var(--paper);-webkit-font-smoothing:antialiased}
+#v1 .sband{background:var(--paper-2)}
+
+#v1 .hero{display:grid;grid-template-columns:1fr 388px;min-height:480px;border-bottom:1px solid var(--ink)}
+#v1 .hl{padding:72px 56px 64px 40px;border-right:1px solid var(--ink);display:flex;flex-direction:column;justify-content:space-between}
+#v1 .eye{font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+#v1 .eye span{color:var(--accent);margin:0 8px}
+#v1 .hh{font:500 76px/.96 var(--serif);letter-spacing:-.015em;color:var(--ink);margin-bottom:24px}
+#v1 .hh em{font-style:italic;color:var(--accent)}
+#v1 .hp{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--muted);max-width:46ch}
+#v1 .hnote{font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding-top:28px;border-top:.5px solid var(--rule);margin-top:auto}
+
+#v1 .hr{padding:40px;background:var(--paper-3);display:flex;flex-direction:column}
+#v1 .hrk{font:500 9px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+#v1 .irow{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:14px 0;border-bottom:.5px solid var(--rule);align-items:baseline}
+#v1 .irow:last-child{border-bottom:none}
+#v1 .in{font:500 18px/1 var(--serif);color:var(--accent)}
+#v1 .iname{font:500 17px/1 var(--serif);color:var(--ink);letter-spacing:-.005em}
+#v1 .idisc{font:500 9px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+
+#v1 .caps{padding:80px 40px}
+#v1 .chd{border-top:1px solid var(--ink);padding-top:20px;margin-bottom:48px;display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:baseline}
+#v1 .chdk{font:500 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+#v1 .chdh{font:500 42px/1.05 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+#v1 .chdh em{font-style:italic;color:var(--accent)}
+#v1 .cgrid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink)}
+#v1 .cc{padding:36px 32px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+#v1 .cc:nth-child(3n){border-right:none}
+#v1 .cc:nth-child(n+4){border-bottom:none}
+#v1 .ccn{font:500 34px/1 var(--serif);color:var(--accent);letter-spacing:-.02em;margin-bottom:14px}
+#v1 .ccname{font:500 20px/1.1 var(--serif);color:var(--ink);letter-spacing:-.005em;margin-bottom:10px}
+#v1 .ccdesc{font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--muted)}
+
+#v1 .qb{background:var(--navy);padding:72px 40px;display:grid;grid-template-columns:72px 1fr;gap:64px;align-items:center;border-top:1px solid var(--ink);-webkit-font-smoothing:antialiased}
+#v1 .qbk{font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.3);writing-mode:vertical-rl;transform:rotate(180deg)}
+#v1 .qbq{font-family:var(--serif);font-style:italic;font-size:28px;line-height:1.4;color:#E3E3E3;letter-spacing:-.005em}
+#v1 .qbq em{font-style:normal;color:var(--accent)}
+
+/* ═══════════════════════════════
+   V2 — COMMAND
+═══════════════════════════════ */
+#v2{background:var(--navy);-webkit-font-smoothing:antialiased}
+#v2 .sband{background:rgba(0,0,0,.22);border-top-color:rgba(255,255,255,.07);border-bottom-color:rgba(255,255,255,.07)}
+#v2 .sv{color:#E3E3E3}
+#v2 .sv sup{color:var(--accent)}
+#v2 .sl{color:rgba(227,227,227,.38)}
+#v2 .sn{color:rgba(227,227,227,.28)}
+
+#v2 .hero{min-height:520px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:100px 40px 88px;border-bottom:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden}
+#v2 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 65%, rgba(77,200,211,.09), transparent 55%)}
+#v2 .hero::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.01) 0 1px,transparent 1px 4px);pointer-events:none}
+#v2 .eye{font:500 10px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:rgba(227,227,227,.32);margin-bottom:44px;position:relative;z-index:1}
+#v2 .hh{font:500 96px/.93 var(--serif);letter-spacing:-.018em;color:#E3E3E3;margin-bottom:36px;position:relative;z-index:1}
+#v2 .hh em{font-style:italic;color:var(--accent)}
+#v2 .hrule{width:56px;height:1px;background:var(--accent);margin:0 auto 32px;position:relative;z-index:1}
+#v2 .hp{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.55;color:rgba(227,227,227,.58);max-width:42ch;position:relative;z-index:1}
+
+#v2 .fns{border-top:1px solid rgba(255,255,255,.06)}
+#v2 .fs{display:grid;grid-template-columns:96px 1fr 1fr;gap:48px;padding:36px 40px;border-bottom:1px solid rgba(255,255,255,.06);align-items:start}
+#v2 .fs:last-child{border-bottom:none}
+#v2 .fsn{font:500 72px/.9 var(--serif);color:rgba(77,200,211,.13);letter-spacing:-.03em}
+#v2 .fsname{font:500 26px/1.1 var(--serif);color:#E3E3E3;letter-spacing:-.01em;margin-bottom:8px}
+#v2 .fsdisc{font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(77,200,211,.6)}
+#v2 .fsdesc{font-family:var(--serif);font-size:15px;line-height:1.65;color:rgba(227,227,227,.48);padding-top:4px}
+
+#v2 .anch{border-top:1px solid rgba(255,255,255,.07);padding:80px 40px;text-align:center;position:relative;overflow:hidden}
+#v2 .anch::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%, rgba(77,200,211,.07), transparent 55%)}
+#v2 .achk{font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.27);margin-bottom:22px;position:relative}
+#v2 .achh{font:500 48px/1.1 var(--serif);color:#E3E3E3;letter-spacing:-.01em;max-width:22ch;margin:0 auto;position:relative}
+#v2 .achh em{font-style:italic;color:var(--accent)}
+
+/* ═══════════════════════════════
+   V3 — FIELD MANUAL
+═══════════════════════════════ */
+#v3{background:var(--paper);-webkit-font-smoothing:antialiased}
+
+#v3 .hero{background:var(--navy);padding:88px 40px 72px;position:relative;overflow:hidden}
+#v3 .hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0 1px,transparent 1px 3px);pointer-events:none}
+#v3 .hin{position:relative;z-index:1;max-width:820px}
+#v3 .eye{font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.37);margin-bottom:24px}
+#v3 .eye span{color:var(--accent);margin:0 6px}
+#v3 .hh{font:500 68px/.97 var(--serif);letter-spacing:-.014em;color:#E3E3E3;margin-bottom:24px}
+#v3 .hh em{font-style:italic;color:var(--accent)}
+#v3 .hbody{font-family:var(--serif);font-size:18px;line-height:1.7;color:rgba(227,227,227,.67);max-width:52ch;margin-bottom:36px}
+#v3 .hmeta{display:flex;gap:48px;padding-top:28px;border-top:.5px solid rgba(255,255,255,.12)}
+#v3 .hm{display:flex;flex-direction:column;gap:5px}
+#v3 .hmv{font:500 28px/1 var(--serif);color:#E3E3E3;letter-spacing:-.01em}
+#v3 .hml{font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.37);margin-top:4px}
+
+#v3 .arts{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+#v3 .art{display:grid;grid-template-columns:196px 1fr;border-bottom:1px solid var(--ink);background:var(--paper)}
+#v3 .art:last-child{border-bottom:none}
+#v3 .art:nth-child(even){background:var(--paper-3)}
+#v3 .al{padding:48px 40px;border-right:1px solid var(--ink);display:flex;flex-direction:column;gap:10px}
+#v3 .asym{font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+#v3 .an{font:500 52px/1 var(--serif);color:var(--accent);letter-spacing:-.02em}
+#v3 .ar{padding:48px 56px}
+#v3 .ark{font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+#v3 .arname{font:500 28px/1.15 var(--serif);color:var(--ink);letter-spacing:-.01em;margin-bottom:16px}
+#v3 .ardesc{font-family:var(--serif);font-size:16px;line-height:1.75;color:#3D3F44;max-width:56ch;margin-bottom:18px}
+#v3 .atags{display:flex;gap:8px;flex-wrap:wrap}
+#v3 .atag{font:500 9px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:4px 10px;border:.5px solid var(--rule)}
+
+#v3 .phil{background:var(--navy);padding:88px 40px;display:grid;grid-template-columns:260px 1fr;gap:80px;align-items:start;-webkit-font-smoothing:antialiased}
+#v3 .phil-lk{font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.32)}
+#v3 .phil-lh{font:500 36px/1.1 var(--serif);color:#E3E3E3;letter-spacing:-.01em;margin:12px 0 0;max-width:12ch}
+#v3 .phil-r p{font-family:var(--serif);font-size:18px;line-height:1.8;color:rgba(227,227,227,.7);margin-bottom:22px;max-width:54ch}
+#v3 .phil-r p:last-child{margin:0}
+#v3 .phil-r em{font-style:italic;color:var(--accent)}
+
+/* ── SHARED TEAM SECTION ── */
+.team{padding:80px 40px;border-top:1px solid var(--ink)}
+.team-hd{border-top:1px solid var(--ink);padding-top:20px;margin-bottom:56px;display:flex;align-items:baseline;gap:60px}
+.team-hdk{font:500 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+.team-hdh{font:500 42px/1.05 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+.team-hdh em{font-style:italic;color:var(--accent)}
+.team-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:40px 24px}
+.team-card{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.team-name{font:500 14px/1.35 var(--serif);color:var(--ink);letter-spacing:-.003em}
+.team-dark{background:var(--navy);border-top-color:rgba(255,255,255,.07)}
+.team-dark .team-hd{border-top-color:rgba(255,255,255,.1)}
+.team-dark .team-hdk{color:rgba(227,227,227,.38)}
+.team-dark .team-hdh{color:#E3E3E3}
+.team-dark .team-name{color:rgba(227,227,227,.8)}
+
+.team-t1-row{display:grid;grid-template-columns:repeat(2,200px);gap:48px;justify-content:center;padding-bottom:40px}
+.team-t2-row{display:grid;grid-template-columns:repeat(3,170px);gap:40px;justify-content:center;padding-bottom:56px}
+.team-name-t1{font:500 17px/1.3 var(--serif);letter-spacing:-.005em}
+.team-name-t2{font:500 15px/1.3 var(--serif);letter-spacing:-.003em}
+.team-divider{border-top:.5px solid var(--rule);margin-bottom:56px}
+.team-dark .team-divider{border-top-color:rgba(255,255,255,.1)}
+</style>
+<script src="image-slot.js"></script>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     01 — LEDGER
+════════════════════════════════════════════ -->
+<div style="position:absolute;left:80px;top:60px" data-screen-label="01 — Ledger">
+  <p class="fl">01 — Ledger <em>Paper-dominant · editorial grid · operational precision</em></p>
+  <div class="ab" id="v1">
+
+    <nav class="nav"><div class="nav-in">
+      <div class="nav-logo">
+        <div class="nav-mark">R8</div>
+        <span class="nav-name">RISE8</span>
+        <span class="nav-dept">Management</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-back">← RISE8.com</a>
+        <a href="#">Capabilities</a>
+        <a href="#">Properties</a>
+        <a href="#" class="nav-on">Management</a>
+        <a href="#">Careers</a>
+      </div>
+    </div></nav>
+
+    <div class="hero">
+      <div class="hl">
+        <div>
+          <p class="eye">RISE8 Companies <span>·</span> 02 · Operations</p>
+          <h1 class="hh">We run<br>the rooms.</h1>
+          <p class="hp">RISE8 Management is the in-house operator for every property we own. No third-party manager. No franchise operator. The owner and the operator are the same entity — and that changes everything.</p>
+        </div>
+        <p class="hnote">In-house since founding · Jacksonville, Florida · Est. 2014</p>
+      </div>
+      <div class="hr">
+        <span class="hrk">Functions</span>
+        <div class="irow"><div class="in">I</div><div><div class="iname">Revenue Management</div><div class="idisc">Pricing · Channels · Forecasting</div></div></div>
+        <div class="irow"><div class="in">II</div><div><div class="iname">Guest Experience</div><div class="idisc">Check-In · Service · Satisfaction</div></div></div>
+        <div class="irow"><div class="in">III</div><div><div class="iname">Housekeeping &amp; EVS</div><div class="idisc">Standards · Inspection · Turnover</div></div></div>
+        <div class="irow"><div class="in">IV</div><div><div class="iname">Preventive Maintenance</div><div class="idisc">Work Orders · Vendors · Life-Cycle</div></div></div>
+        <div class="irow"><div class="in">V</div><div><div class="iname">People &amp; Training</div><div class="idisc">Hiring · SOPs · Culture</div></div></div>
+        <div class="irow"><div class="in">VI</div><div><div class="iname">Technology</div><div class="idisc">PMS · Channels · Reporting</div></div></div>
+      </div>
+    </div>
+
+    <div class="sband"><div class="sband-in">
+      <div><div class="sv">1,150</div><span class="sl">Keys managed</span></div>
+      <div><div class="sv">8</div><span class="sl">Properties</span></div>
+      <div><div class="sv">6</div><span class="sl">Florida markets</span></div>
+      <div><div class="sv" style="font-size:50px">&lt;&nbsp;100</div><span class="sl">Team</span><div class="sn">US + offshore</div></div>
+    </div></div>
+
+    <div class="caps">
+      <div class="chd">
+        <span class="chdk">02 · Capabilities</span>
+        <h2 class="chdh">Built for ownership.<br><em>Run by ownership.</em></h2>
+      </div>
+      <div class="cgrid">
+        <div class="cc"><div class="ccn">I</div><div class="ccname">Revenue Management</div><p class="ccdesc">Dynamic pricing, OTA channel mix, and RevPAR optimization managed in-house. Full access to asset-level data means decisions are faster and better than any third-party firm.</p></div>
+        <div class="cc"><div class="ccn">II</div><div class="ccname">Guest Experience</div><p class="ccdesc">From first confirmation to checkout, the experience is ours to own. Service protocols, satisfaction scoring, and service recovery — built for extended-stay guests.</p></div>
+        <div class="cc"><div class="ccn">III</div><div class="ccname">Housekeeping &amp; EVS</div><p class="ccdesc">Turnover speed and room quality are the core of extended-stay operations. We set the standard, run the inspection, and control the supply chain.</p></div>
+        <div class="cc"><div class="ccn">IV</div><div class="ccname">Preventive Maintenance</div><p class="ccdesc">Scheduled maintenance, work orders, and vendor coordination to protect asset value and minimize guest impact. The maintenance team reports to operations.</p></div>
+        <div class="cc"><div class="ccn">V</div><div class="ccname">People &amp; Training</div><p class="ccdesc">In-house hiring, structured onboarding, and SOPs built for our environment. US-based team supported by offshore VA staffing for revenue and administrative functions.</p></div>
+        <div class="cc"><div class="ccn">VI</div><div class="ccname">Technology</div><p class="ccdesc">PMS integration, channel management, and reporting dashboards built around ownership needs. The data belongs to the asset — we control the platform.</p></div>
+      </div>
+    </div>
+
+    <div class="qb">
+      <span class="qbk">Philosophy</span>
+      <blockquote class="qbq">"When the operator is also the owner, there is no principal-agent problem. The incentives are <em>identical.</em> Operations is the competitive advantage."</blockquote>
+    </div>
+
+    
+    
+    <footer class="foot"><div class="foot-g">
+      <div class="foot-br"><h4>RISE8 Management</h4><p>The in-house operator for every property in the RISE8 portfolio. Answerable to ownership — never to a third party.</p></div>
+      <div><h4>Capabilities</h4><ul><li><a href="#">Revenue Management</a></li><li><a href="#">Guest Experience</a></li><li><a href="#">Housekeeping</a></li><li><a href="#">Maintenance</a></li><li><a href="#">People &amp; Training</a></li><li><a href="#">Technology</a></li></ul></div>
+      <div><h4>RISE8 Companies</h4><ul><li><a href="#">Stayable Suites</a></li><li><a href="#">Real Estate Finance</a></li><li><a href="#">Development</a></li><li><a href="#">RISE8 Foundation</a></li></ul></div>
+    </div><div class="foot-bot"><span>© 2026 RISE8 Companies · Jacksonville, Florida</span><em>Nana korobi, ya oki.</em></div></footer>
+
+  </div>
+</div>
+
+</body>
+</html>

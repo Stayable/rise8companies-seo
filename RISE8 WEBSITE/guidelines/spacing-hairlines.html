@@ -1,0 +1,29 @@
+<!-- @dsCard group="Spacing" viewport="700x200" name="Hairlines & rules" subtitle="0.5px dividers + 1px section tops define structure" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--paper); padding: 26px 32px; }
+  .label { font: var(--label-sm); letter-spacing: var(--track-label-tight); text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+  .demo { margin-bottom: 22px; }
+  .strong { border-top: 1px solid var(--ink); }
+  .hair { border-top: .5px solid var(--rule); }
+  .soft { border-top: .5px solid var(--rule-soft); }
+  .row { display: grid; grid-template-columns: 36px 1fr auto; gap: 16px; padding: 14px 0; align-items: baseline; }
+  .num { font-family: var(--serif); font-weight: 500; font-size: 18px; color: var(--accent); }
+  .nm { font-family: var(--serif); font-size: 18px; color: var(--ink); }
+  .lk { font: var(--label-sm); letter-spacing: .22em; text-transform: uppercase; color: var(--ink); }
+</style>
+</head>
+<body>
+  <div class="demo">
+    <p class="label">1px ink — section top</p>
+    <div class="strong"></div>
+  </div>
+  <p class="label">0.5px rule — register rows</p>
+  <div class="row hair"><div class="num">01</div><div class="nm">Stayable</div><div class="lk">View →</div></div>
+  <div class="row hair"><div class="num">02</div><div class="nm">RISE8 Management</div><div class="lk">View →</div></div>
+</body>
+</html>

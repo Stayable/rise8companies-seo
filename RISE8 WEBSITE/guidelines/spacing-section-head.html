@@ -1,0 +1,21 @@
+<!-- @dsCard group="Spacing" viewport="700x220" name="Section-head pattern" subtitle="Kicker + serif headline over a 1px ink rule" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--paper); padding: 30px 32px; }
+  .sec-head { display: grid; grid-template-columns: auto 1fr; gap: 48px; border-top: 1px solid var(--ink); padding-top: 22px; align-items: baseline; }
+  .kicker { font: var(--label-lg); letter-spacing: var(--track-label-wide); text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  h2 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 44px; line-height: 1.02; letter-spacing: -.01em; color: var(--ink); max-width: 22ch; }
+  em { font-style: italic; color: var(--accent); }
+</style>
+</head>
+<body>
+  <div class="sec-head">
+    <div class="kicker">02 · Our platform</div>
+    <h2>Four operating companies under <em>one parent.</em></h2>
+  </div>
+</body>
+</html>

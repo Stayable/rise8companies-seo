@@ -1,0 +1,44 @@
+/* ============================================================
+   RISE8 — Spacing, layout & line tokens
+   The system is built on hairlines and a wide editorial measure.
+   Almost nothing is rounded; almost nothing casts a shadow.
+   ============================================================ */
+:root {
+  /* --- Spacing scale (4px base) --- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-30: 120px;  /* default section padding-y */
+  --space-44: 176px;  /* spacious section padding-y */
+
+  /* --- Layout --- */
+  --max-width: 1440px;       /* page container */
+  --gutter:    40px;         /* horizontal page padding */
+  --gutter-sm: 20px;         /* mobile horizontal padding */
+  --section-pad: 120px;      /* default vertical rhythm */
+
+  /* --- Borders / rules --- */
+  --hairline:  0.5px;        /* the signature divider weight */
+  --rule-strong: 1px;        /* structural section-top border */
+  --radius:    0;            /* the brand is square — no radii */
+
+  /* --- Elevation --- */
+  /* Shadows are rare. The only real shadow in the system is the
+     floating tweak/utility panel; surfaces are distinguished by
+     paper tone + hairlines, not elevation. */
+  --shadow-panel: 0 20px 40px -20px rgba(20, 24, 31, 0.30);
+
+  /* --- Motion --- */
+  --ease:      cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:  0.15s;
+  --dur:       0.2s;
+}

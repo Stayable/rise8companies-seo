@@ -1,0 +1,44 @@
+/* ============================================================
+   RISE8 — Color tokens
+   An editorial, almanac-style palette: cool blue-grey "paper"
+   surfaces, near-black ink text, a dark navy inverted surface,
+   and a single teal accent. No gradients in the system layer;
+   color does the work through hairline rules and type.
+   ============================================================ */
+:root {
+  /* --- Ink (text / dark structure) --- */
+  --ink:        #25272C;   /* primary text, 1px structural rules */
+  --ink-2:      #3D3F44;   /* secondary ink */
+  --muted:      #5E6166;   /* supporting copy, captions */
+  --muted-2:    #8F9197;   /* faintest labels on paper */
+
+  /* --- Rules / hairlines --- */
+  --rule:       #B4BBC4;   /* 0.5px hairline dividers */
+  --rule-soft:  #CDD2DA;   /* faintest dividers */
+
+  /* --- Paper (light surfaces) --- */
+  --paper:      #DCE3EB;   /* page background */
+  --paper-2:    #D2DAE3;   /* slightly recessed band (stats, map) */
+  --paper-3:    #E8ECF2;   /* raised panel (rails, cards, sections) */
+
+  /* --- Navy (inverted dark surface) --- */
+  --navy:       #1F2126;   /* hero, index strip, CTA, footer */
+  --navy-text:  #E3E3E3;   /* headings on navy */
+
+  /* --- Accent (teal) --- */
+  --accent:     #4DC8D3;   /* the one accent: links, numerals, italics */
+  --accent-deep:#007882;   /* accent pressed / on-light contrast */
+
+  /* --- Semantic aliases --- */
+  --text-strong:    var(--ink);
+  --text-body:      var(--ink);
+  --text-muted:     var(--muted);
+  --text-on-dark:   var(--navy-text);
+  --surface-page:   var(--paper);
+  --surface-recess: var(--paper-2);
+  --surface-panel:  var(--paper-3);
+  --surface-invert: var(--navy);
+  --border-hairline: var(--rule);
+  --border-strong:   var(--ink);
+  --link:           var(--accent);
+}

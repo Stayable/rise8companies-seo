@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RISE8 Companies — Wireframe Explorations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700&family=Fraunces:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1D3A;
+    --navy-2:#162D50;
+    --gold:#C8A96E;
+    --gold-soft:#E8D9B8;
+    --ink:#1a1a1a;
+    --line:#2a2a2a;
+    --paper:#FBFAF5;
+    --paper-2:#F4F1E8;
+    --muted:#6B7280;
+    --sketch:'Kalam',cursive;
+    --hand:'Caveat',cursive;
+    --sans:'Inter',system-ui,sans-serif;
+    --serif:'Fraunces',Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+
+  /* -------- App chrome -------- */
+  .app{display:flex;flex-direction:column;min-height:100vh}
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--navy);color:#fff;
+    border-bottom:2px solid var(--gold);
+  }
+  .topbar-inner{
+    max-width:1600px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand-mark{
+    width:34px;height:34px;border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-weight:700;color:var(--gold);
+    letter-spacing:-.02em;
+  }
+  .brand-name{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.02em}
+  .brand-sub{font-size:11px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.15em;margin-top:2px}
+
+  .tabs{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+  .tab{
+    background:transparent;border:1px solid rgba(255,255,255,.15);color:#fff;
+    padding:8px 14px;font:500 13px var(--sans);cursor:pointer;letter-spacing:.02em;
+    transition:all .15s;
+  }
+  .tab:hover{border-color:var(--gold);color:var(--gold)}
+  .tab.active{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:600}
+
+  .controls{display:flex;gap:12px;align-items:center;padding:10px 24px;background:var(--paper-2);border-bottom:1px dashed #c8bfa8;flex-wrap:wrap}
+  .ctl{display:flex;align-items:center;gap:8px;font:500 12px var(--sans);color:#444;text-transform:uppercase;letter-spacing:.08em}
+  .toggle{
+    position:relative;width:40px;height:22px;background:#ccc;border-radius:22px;cursor:pointer;transition:.2s;border:none;padding:0;
+  }
+  .toggle::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;background:#fff;border-radius:50%;transition:.2s}
+  .toggle.on{background:var(--gold)}
+  .toggle.on::after{left:20px}
+  .ctl-meta{margin-left:auto;font-family:var(--hand);color:#555;font-size:16px}
+
+  /* -------- Page area -------- */
+  .page{padding:28px 20px 60px;max-width:1600px;margin:0 auto;width:100%}
+
+  .page-head{
+    margin-bottom:18px;
+    display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;
+    border-bottom:1.5px solid #1a1a1a;padding-bottom:12px;
+  }
+  .page-head h1{
+    margin:0;font-family:var(--hand);font-weight:700;font-size:40px;line-height:1;color:var(--navy);
+  }
+  .page-head .meta{font-family:var(--sketch);font-size:14px;color:#555}
+  .page-head .crumb{
+    font-family:var(--sketch);font-size:12px;color:#777;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;
+  }
+
+  /* -------- Variation grid -------- */
+  .variations{
+    display:grid;gap:28px;
+    grid-template-columns:repeat(3,1fr);
+  }
+  @media (max-width:1400px){.variations{grid-template-columns:1fr}}
+
+  .variation{
+    background:#fff;border:1.5px solid #1a1a1a;
+    box-shadow:6px 6px 0 #e6dfc9;
+    display:flex;flex-direction:column;
+  }
+  .v-head{
+    padding:14px 16px;border-bottom:1px dashed #999;
+    display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+    background:var(--paper);
+  }
+  .v-num{
+    font-family:var(--serif);font-weight:700;font-size:28px;color:var(--gold);line-height:1;
+  }
+  .v-title{font-family:var(--hand);font-weight:700;font-size:26px;color:var(--navy);line-height:1}
+  .v-tag{
+    font-family:var(--sketch);font-size:11px;color:#777;letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid #bbb;padding:2px 8px;margin-left:auto;
+  }
+  .v-desc{padding:10px 16px;font-family:var(--sketch);font-size:13px;color:#555;line-height:1.5;border-bottom:1px dashed #ccc}
+
+  .devices{padding:18px;display:grid;grid-template-columns:1fr 120px;gap:16px;align-items:start}
+  @media (max-width:640px){.devices{grid-template-columns:1fr}}
+
+  /* -------- Frames (shared wireframe aesthetic) -------- */
+  .frame{
+    border:1.5px solid var(--line);
+    background:var(--paper);
+    position:relative;
+  }
+  .frame-label{
+    position:absolute;top:-10px;left:10px;background:var(--paper);padding:0 6px;
+    font-family:var(--sketch);font-size:11px;color:#888;letter-spacing:.1em;text-transform:uppercase;
+  }
+
+  /* Desktop frame: 16:10 roughly */
+  .desktop{aspect-ratio:16/12;overflow:hidden;width:100%}
+  .mobile{aspect-ratio:9/18;overflow:hidden;width:100%;max-width:120px;justify-self:end}
+  @media (max-width:640px){.mobile{justify-self:center;max-width:130px}}
+
+  /* Inner mockup scales via transform so we can write at natural sizes */
+  .canvas{
+    position:relative;width:100%;height:100%;
+    display:flex;flex-direction:column;
+    background:#fff;
+  }
+
+  /* -------- Wireframe primitives -------- */
+  .box{border:1px solid #333;background:#fff}
+  .box.dark{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .box.gold{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+  .box.ghost{border-style:dashed;background:#f6f3ea}
+  .box.image{
+    background:
+      linear-gradient(135deg,transparent 49.5%,#333 49.5%,#333 50.5%,transparent 50.5%),
+      linear-gradient(45deg,transparent 49.5%,#333 49.5%,#333 50.5%,transparent 50.5%),
+      #efe9d6;
+  }
+  .scrawl{font-family:var(--sketch);font-weight:400;color:#333;line-height:1.25}
+  .hand{font-family:var(--hand);color:var(--navy)}
+  .label{font-family:var(--sketch);font-size:9px;color:#777;letter-spacing:.1em;text-transform:uppercase}
+  .line{height:1px;background:#999}
+  .squiggle{
+    background-image:radial-gradient(circle,#555 1px,transparent 1.2px);
+    background-size:6px 2px;background-repeat:repeat-x;
+    height:2px;
+  }
+  .fake-text{background:#d9d4c0;border-radius:1px;display:block}
+  .ft{height:5px;background:#cfcab5;margin:2px 0;border-radius:1px}
+  .ft.w1{width:60%}.ft.w2{width:85%}.ft.w3{width:40%}.ft.w4{width:95%}.ft.w5{width:70%}
+
+  /* Sketchy border effect — applies when vibe=sketch */
+  .sketch .box{
+    border-radius:2px;
+    box-shadow:
+      0.5px 0.5px 0 #444,
+      -0.5px 0 0 #444;
+  }
+  .sketch .box.image,.sketch .box.dark,.sketch .box.gold{box-shadow:none}
+  .sketch .scrawl,.sketch .hand{transform:rotate(-.3deg)}
+
+  /* -------- Annotations -------- */
+  .annot{
+    position:absolute;font-family:var(--hand);color:#b45309;font-size:13px;line-height:1.1;
+    pointer-events:none;z-index:2;white-space:nowrap;
+  }
+  .annot::before{
+    content:"";position:absolute;background:#b45309;
+  }
+  .annot.arrow-l::before{left:-18px;top:8px;width:15px;height:1.5px}
+  .annot.arrow-l::after{content:"";position:absolute;left:-18px;top:5px;width:0;height:0;border-right:6px solid #b45309;border-top:4px solid transparent;border-bottom:4px solid transparent}
+  .annot-wrap{display:none}
+  .annots-on .annot-wrap{display:block}
+
+  /* -------- Canvas layouts (generic helpers) -------- */
+  .nav{display:flex;align-items:center;padding:6px 10px;gap:8px;border-bottom:1px solid #333;background:#fff;flex:0 0 auto}
+  .nav .logo{font-family:var(--serif);font-weight:700;font-size:11px;color:var(--navy)}
+  .nav .dots{display:flex;gap:6px;margin-left:auto}
+  .nav .dot{width:18px;height:3px;background:#888}
+  .nav .cta{padding:2px 6px;border:1px solid var(--gold);color:var(--gold);font:600 8px var(--sans);text-transform:uppercase;letter-spacing:.1em}
+
+  .nav-m{display:flex;align-items:center;padding:4px 6px;border-bottom:1px solid #333}
+  .nav-m .logo{font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)}
+  .nav-m .burger{margin-left:auto;width:12px;height:8px;display:flex;flex-direction:column;justify-content:space-between}
+  .nav-m .burger::before,.nav-m .burger::after{content:"";height:1.5px;background:#333}
+  .nav-m .burger span{height:1.5px;background:#333}
+
+  .stack{display:flex;flex-direction:column}
+  .row{display:flex}
+  .col{display:flex;flex-direction:column}
+  .grow{flex:1 1 auto}
+
+  /* -------- Specific blocks -------- */
+  .hero-pad{padding:12px}
+  .tile{
+    border:1px solid #333;padding:6px;background:#fff;display:flex;flex-direction:column;gap:4px;min-height:0;
+  }
+  .tile .ico{width:14px;height:14px;border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font:700 9px var(--sans)}
+  .tile .t{font-family:var(--serif);font-weight:700;font-size:9px;color:var(--navy)}
+  .tile .d{font:400 7px var(--sans);color:#555;line-height:1.3}
+
+  .metric{display:flex;flex-direction:column;align-items:center;gap:2px;color:#fff}
+  .metric .v{font-family:var(--serif);font-weight:700;font-size:16px;color:var(--gold);line-height:1}
+  .metric .l{font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+  .pc{border:1px solid #333;background:#fff;display:flex;flex-direction:column;overflow:hidden}
+  .pc .img{aspect-ratio:16/10;background:
+    linear-gradient(135deg,transparent 49.5%,#666 49.5%,#666 50.5%,transparent 50.5%),
+    linear-gradient(45deg,transparent 49.5%,#666 49.5%,#666 50.5%,transparent 50.5%),
+    #ece6d2}
+  .pc .body{padding:5px 6px;display:flex;flex-direction:column;gap:2px}
+  .pc .badge{font:600 6px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:1px 4px;align-self:flex-start}
+  .pc .n{font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)}
+  .pc .a{font:400 6.5px var(--sans);color:#666}
+
+  /* footer strip */
+  .foot{background:var(--navy);color:#fff;padding:8px 10px;display:flex;gap:10px;align-items:flex-start}
+  .foot .col{gap:2px;flex:1}
+  .foot .h{font:600 7px var(--sans);text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:2px}
+  .foot .l{font:400 6px var(--sans);color:rgba(255,255,255,.7)}
+
+  /* Map stylized */
+  .map{
+    background:
+      repeating-linear-gradient(45deg,#e8e2cb 0 2px,transparent 2px 8px),
+      repeating-linear-gradient(-45deg,#e0d9bd 0 2px,transparent 2px 12px),
+      #efe9d6;
+    position:relative;border:1px solid #333;
+  }
+  .pin{position:absolute;width:8px;height:8px;background:var(--gold);border:1.5px solid var(--navy);border-radius:50% 50% 50% 0;transform:translate(-50%,-100%) rotate(-45deg)}
+  .pin.lg{width:11px;height:11px}
+
+  /* Mobile frame */
+  .mob .nav-m{padding:3px 5px}
+  .mob .hero-pad{padding:6px}
+
+  /* Summary card */
+  .summary{
+    background:#fff;border:1.5px solid #1a1a1a;padding:18px 20px;margin-bottom:22px;
+    box-shadow:4px 4px 0 var(--gold-soft);
+    display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px;
+  }
+  @media (max-width:900px){.summary{grid-template-columns:1fr}}
+  .summary h2{margin:0 0 6px;font-family:var(--hand);font-size:26px;color:var(--navy)}
+  .summary p,.summary li{font-family:var(--sketch);font-size:13px;color:#444;line-height:1.5;margin:0}
+  .summary ul{margin:0;padding-left:18px}
+  .summary .col h3{margin:0 0 4px;font-family:var(--sans);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:600}
+
+  /* Axes pill strip */
+  .axes{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .axes .pill{font-family:var(--sketch);font-size:11px;padding:2px 8px;border:1px dashed #8a7740;color:#6b5a2b;background:#fbf5e0}
+
+  /* When annotations toggled off, fade rationale */
+  .no-annots .v-desc{opacity:.5}
+
+  /* Hide non-active page */
+  .page[hidden]{display:none}
+
+  /* Small helpful bits */
+  .chip{display:inline-flex;align-items:center;gap:4px;padding:1px 6px;border:1px solid #888;font:500 8px var(--sans);color:#444;letter-spacing:.08em;text-transform:uppercase}
+
+  /* Section dividers inside canvas */
+  .sec-div{height:1px;background:#ddd}
+
+  /* Value cards (about) */
+  .vcard{border:1px solid #333;padding:5px 6px;display:flex;gap:5px;align-items:flex-start;background:#fff}
+  .vcard .n{width:14px;height:14px;border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font:700 8px var(--serif);flex-shrink:0}
+  .vcard .t{font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)}
+  .vcard .d{font:400 6.5px var(--sans);color:#666;line-height:1.25}
+
+  /* Company logos/tiles variant */
+  .co-logo{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+    border:1px solid #333;background:#fff;padding:6px;
+  }
+  .co-logo .glyph{width:16px;height:16px;border:1.5px solid var(--navy);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:10px}
+  .co-logo.featured .glyph{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+  .co-logo .n{font-family:var(--serif);font-weight:700;font-size:7px;color:var(--navy);text-align:center}
+
+  /* large type for hero display */
+  .hero-h{font-family:var(--serif);font-weight:700;color:var(--navy);line-height:1.05}
+
+  /* Creative flags */
+  .flag-creative{
+    background:var(--gold);color:var(--navy);font:700 9px var(--sans);
+    padding:2px 8px;letter-spacing:.1em;text-transform:uppercase;
+  }
+
+  /* scroll hint */
+  .scroll-hint{font-family:var(--hand);color:#999;font-size:12px;text-align:center;margin-top:24px}
+
+  /* simple tag list */
+  .tag-row{display:flex;gap:4px;flex-wrap:wrap}
+  .tag-row .t{font:500 6.5px var(--sans);padding:1px 4px;border:1px solid #aaa;color:#555;letter-spacing:.05em;text-transform:uppercase}
+</style>
+</head>
+<body class="vibe-mid annots-on">
+
+<div class="app">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">R8</div>
+        <div>
+          <div class="brand-name">RISE8 Companies</div>
+          <div class="brand-sub">Wireframe Explorations · v1</div>
+        </div>
+      </div>
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-page="home">Home</button>
+        <button class="tab" data-page="platform">Our Platform</button>
+        <button class="tab" data-page="about">About Us</button>
+        <button class="tab" data-page="portfolio">Portfolio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="ctl">
+      <span>Sketchy vibe</span>
+      <button class="toggle" id="t-vibe" aria-label="Toggle sketchy vibe"></button>
+    </div>
+    <div class="ctl">
+      <span>Annotations</span>
+      <button class="toggle on" id="t-annot" aria-label="Toggle annotations"></button>
+    </div>
+    <div class="ctl">
+      <span>Brand accent</span>
+      <button class="toggle on" id="t-accent" aria-label="Toggle brand accent"></button>
+    </div>
+    <div class="ctl-meta">3 variations × 4 pages · desktop + mobile · mid-fi</div>
+  </div>
+
+  <!-- HOME -->
+  <section class="page" id="p-home" data-screen-label="Home Wireframes">
+    <div class="page-head">
+      <div>
+        <div class="crumb">Page 01 of 04</div>
+        <h1>Home — "Tell the RISE8 story on first scroll"</h1>
+      </div>
+      <div class="meta">3 distinct structural approaches · desktop + mobile</div>
+    </div>
+
+    <div class="summary">
+      <div class="col">
+        <h3>Goal</h3>
+        <h2>What should Home accomplish?</h2>
+        <p>Explain that RISE8 is a parent holding 4 affiliated companies, prove scale quickly (1,300+ keys, 7 properties), and give investors + guests + operators each a clear next step.</p>
+      </div>
+      <div class="col">
+        <h3>What varies across the 3 options</h3>
+        <ul>
+          <li><b>V1</b> — Conventional: hero → metrics → 4-tile platform → featured props.</li>
+          <li><b>V2</b> — "Holding company" framing: parent/child family tree dominates the fold.</li>
+          <li><b>V3</b> — Bold swing: a single vertical list of companies as the hero.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Axes explored</h3>
+        <div class="axes">
+          <span class="pill">hero density</span>
+          <span class="pill">company emphasis</span>
+          <span class="pill">scroll order</span>
+          <span class="pill">metaphor</span>
+          <span class="pill">info-first vs. brand-first</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="variations">
+
+      <!-- HOME V1: Conventional corporate -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">01</div>
+          <div class="v-title">The classic</div>
+          <div class="v-tag">Safe · expected</div>
+        </div>
+        <div class="v-desc">Textbook corporate home: big hero, metric strip, 4-tile overview, featured properties. Low risk, high clarity — matches the existing blueprint.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav">
+                <div class="logo">RISE8</div>
+                <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="cta">Investor Login</div>
+              </div>
+              <!-- Hero -->
+              <div class="box dark" style="padding:14px;flex:0 0 38%;display:flex;flex-direction:column;justify-content:center;gap:6px;position:relative">
+                <div class="label" style="color:var(--gold)">VERTICALLY INTEGRATED HOSPITALITY</div>
+                <div class="hero-h" style="color:#fff;font-size:22px;max-width:60%">Building the future of extended-stay.</div>
+                <div style="font:400 8px var(--sans);color:rgba(255,255,255,.6);max-width:50%">Four companies. One platform. 1,300+ keys across Florida.</div>
+                <div style="display:flex;gap:6px;margin-top:4px">
+                  <div class="box gold" style="padding:3px 8px;font:600 8px var(--sans)">Explore Platform</div>
+                  <div class="box" style="padding:3px 8px;font:600 8px var(--sans);color:#fff;border-color:#fff;background:transparent">Invest With Us</div>
+                </div>
+                <div class="annot-wrap"><div class="annot arrow-l" style="right:10px;top:10px">85vh hero, dark overlay</div></div>
+              </div>
+              <!-- Metrics -->
+              <div class="box" style="background:var(--navy-2);border-color:var(--navy-2);display:flex;justify-content:space-around;padding:10px 12px">
+                <div class="metric"><div class="v">1,300+</div><div class="l">Keys</div></div>
+                <div class="metric"><div class="v">7</div><div class="l">Properties</div></div>
+                <div class="metric"><div class="v">100+</div><div class="l">Team</div></div>
+                <div class="metric"><div class="v">5</div><div class="l">Markets</div></div>
+              </div>
+              <!-- Overview split -->
+              <div style="padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <div class="label">WHO WE ARE</div>
+                  <div class="hero-h" style="font-size:12px">One Platform. Complete Control.</div>
+                  <div class="ft w4"></div><div class="ft w2"></div><div class="ft w5"></div>
+                  <div class="hand" style="font-size:10px;color:var(--gold);margin-top:2px">Read Our Story →</div>
+                </div>
+                <div class="box image" style="min-height:60px"></div>
+              </div>
+              <!-- 4 tiles -->
+              <div style="padding:8px 10px 10px;background:var(--paper-2)">
+                <div class="label" style="text-align:center;margin-bottom:4px">FOUR PILLARS · ONE VISION</div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px">
+                  <div class="tile"><div class="ico">S</div><div class="t">Stayable</div><div class="d">Guest-facing brand</div></div>
+                  <div class="tile"><div class="ico">M</div><div class="t">Management</div><div class="d">In-house ops</div></div>
+                  <div class="tile"><div class="ico">F</div><div class="t">REF</div><div class="d">Capital</div></div>
+                  <div class="tile"><div class="ico">D</div><div class="t">Development</div><div class="d">Build & renovate</div></div>
+                </div>
+              </div>
+              <!-- Featured properties strip -->
+              <div style="padding:8px 10px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+                <div class="pc"><div class="img"></div><div class="body"><span class="badge">FL</span><div class="n">Orlando</div><div class="a">8700 S. Orange Blossom</div></div></div>
+                <div class="pc"><div class="img"></div><div class="body"><span class="badge">FL</span><div class="n">Kissimmee W</div><div class="a">5399 W. Irlo Bronson</div></div></div>
+                <div class="pc"><div class="img"></div><div class="body"><span class="badge">FL</span><div class="n">Jacksonville W</div><div class="a">910 Suemac Rd</div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div class="box dark" style="padding:8px;min-height:120px;display:flex;flex-direction:column;justify-content:center;gap:3px">
+                <div class="label" style="color:var(--gold);font-size:6px">VERT. INTEGRATED</div>
+                <div style="font-family:var(--serif);font-weight:700;font-size:10px;color:#fff;line-height:1.1">Building the future of extended-stay.</div>
+                <div class="box gold" style="padding:2px 5px;font:600 6px var(--sans);align-self:flex-start;margin-top:3px">Platform →</div>
+              </div>
+              <div style="background:var(--navy-2);padding:6px;display:grid;grid-template-columns:1fr 1fr;gap:4px">
+                <div class="metric"><div class="v" style="font-size:10px">1,300+</div><div class="l" style="font-size:5px">Keys</div></div>
+                <div class="metric"><div class="v" style="font-size:10px">7</div><div class="l" style="font-size:5px">Props</div></div>
+              </div>
+              <div style="padding:6px;display:flex;flex-direction:column;gap:3px">
+                <div class="tile" style="padding:3px"><div class="t" style="font-size:7px">Stayable</div></div>
+                <div class="tile" style="padding:3px"><div class="t" style="font-size:7px">Management</div></div>
+                <div class="tile" style="padding:3px"><div class="t" style="font-size:7px">REF</div></div>
+                <div class="tile" style="padding:3px"><div class="t" style="font-size:7px">Development</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOME V2: Family tree -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">02</div>
+          <div class="v-title">The parent + 4</div>
+          <div class="v-tag">Holding co. framing</div>
+        </div>
+        <div class="v-desc">Leads with the structural story: RISE8 at the top, four affiliated companies branching below. Useful if investors should grasp the portfolio-of-companies first.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav">
+                <div class="logo">RISE8</div>
+                <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="cta">Investor Login</div>
+              </div>
+              <!-- Hero with tree -->
+              <div style="padding:16px 14px;flex:0 0 56%;display:flex;flex-direction:column;gap:8px;background:linear-gradient(180deg,var(--paper) 0%,#fff 100%);position:relative">
+                <div class="label">A FAMILY OF COMPANIES</div>
+                <div class="hero-h" style="font-size:19px;max-width:70%">One parent. Four operating companies. A fully aligned hospitality platform.</div>
+                <!-- tree -->
+                <div style="margin-top:8px;display:flex;flex-direction:column;align-items:center;gap:0">
+                  <div class="box" style="background:var(--navy);color:#fff;padding:5px 14px;font-family:var(--serif);font-weight:700;font-size:12px;border-color:var(--navy)">RISE8 Companies</div>
+                  <div style="width:1.5px;height:14px;background:var(--navy)"></div>
+                  <div style="width:70%;height:1.5px;background:var(--navy);position:relative">
+                    <div style="position:absolute;top:0;left:0;width:1.5px;height:10px;background:var(--navy)"></div>
+                    <div style="position:absolute;top:0;left:33%;width:1.5px;height:10px;background:var(--navy)"></div>
+                    <div style="position:absolute;top:0;left:66%;width:1.5px;height:10px;background:var(--navy)"></div>
+                    <div style="position:absolute;top:0;right:0;width:1.5px;height:10px;background:var(--navy)"></div>
+                  </div>
+                  <div style="width:70%;display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:8px">
+                    <div class="co-logo featured"><div class="glyph">S</div><div class="n">Stayable Suites</div><div class="label" style="font-size:6px">Brand</div></div>
+                    <div class="co-logo"><div class="glyph">M</div><div class="n">RISE8 Management</div><div class="label" style="font-size:6px">Operations</div></div>
+                    <div class="co-logo"><div class="glyph">F</div><div class="n">RISE8 REF</div><div class="label" style="font-size:6px">Capital</div></div>
+                    <div class="co-logo"><div class="glyph">D</div><div class="n">RISE8 Development</div><div class="label" style="font-size:6px">Build</div></div>
+                  </div>
+                </div>
+                <div class="annot-wrap"><div class="annot" style="right:16px;top:30px">Org chart IS the hero visual</div></div>
+              </div>
+              <!-- Metric strip -->
+              <div class="box dark" style="display:flex;justify-content:space-around;padding:8px 12px">
+                <div class="metric"><div class="v" style="font-size:14px">1,300+</div><div class="l">Keys</div></div>
+                <div class="metric"><div class="v" style="font-size:14px">7</div><div class="l">Properties</div></div>
+                <div class="metric"><div class="v" style="font-size:14px">100+</div><div class="l">Team</div></div>
+                <div class="metric"><div class="v" style="font-size:14px">5</div><div class="l">Markets</div></div>
+              </div>
+              <!-- What each does -->
+              <div style="padding:10px;display:grid;grid-template-columns:repeat(2,1fr);gap:6px">
+                <div style="display:flex;gap:5px;align-items:flex-start"><div class="co-logo" style="width:22px;height:22px;padding:0"><div class="glyph" style="width:14px;height:14px;font-size:8px">S</div></div><div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:var(--navy)">Stayable Suites</div><div class="ft w4"></div><div class="ft w2"></div></div></div>
+                <div style="display:flex;gap:5px;align-items:flex-start"><div class="co-logo" style="width:22px;height:22px;padding:0"><div class="glyph" style="width:14px;height:14px;font-size:8px">M</div></div><div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:var(--navy)">Management</div><div class="ft w4"></div><div class="ft w2"></div></div></div>
+                <div style="display:flex;gap:5px;align-items:flex-start"><div class="co-logo" style="width:22px;height:22px;padding:0"><div class="glyph" style="width:14px;height:14px;font-size:8px">F</div></div><div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:var(--navy)">REF</div><div class="ft w4"></div><div class="ft w2"></div></div></div>
+                <div style="display:flex;gap:5px;align-items:flex-start"><div class="co-logo" style="width:22px;height:22px;padding:0"><div class="glyph" style="width:14px;height:14px;font-size:8px">D</div></div><div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:var(--navy)">Development</div><div class="ft w4"></div><div class="ft w2"></div></div></div>
+              </div>
+              <!-- CTA -->
+              <div class="box" style="background:linear-gradient(135deg,var(--navy),var(--navy-2));padding:10px 12px;color:#fff;display:flex;align-items:center;gap:8px;border:none">
+                <div style="flex:1"><div style="font-family:var(--serif);font-weight:700;font-size:11px">Invest in extended-stay</div><div style="font:400 7px var(--sans);color:rgba(255,255,255,.65)">Join accredited investors backing the platform.</div></div>
+                <div class="box gold" style="padding:3px 8px;font:600 8px var(--sans)">Investor Hub →</div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div style="padding:6px;display:flex;flex-direction:column;align-items:center;gap:4px">
+                <div class="label" style="font-size:6px">FAMILY OF COMPANIES</div>
+                <div style="font-family:var(--serif);font-weight:700;font-size:9px;color:var(--navy);text-align:center;line-height:1.15">One parent. Four companies.</div>
+                <div class="box" style="background:var(--navy);color:#fff;padding:2px 8px;font-family:var(--serif);font-weight:700;font-size:7px;margin-top:4px;border-color:var(--navy)">RISE8</div>
+                <div style="width:1px;height:8px;background:var(--navy)"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;width:100%">
+                  <div class="co-logo featured" style="padding:3px"><div class="glyph" style="width:10px;height:10px;font-size:6px">S</div><div class="n" style="font-size:5px">Stayable</div></div>
+                  <div class="co-logo" style="padding:3px"><div class="glyph" style="width:10px;height:10px;font-size:6px">M</div><div class="n" style="font-size:5px">Mgmt</div></div>
+                  <div class="co-logo" style="padding:3px"><div class="glyph" style="width:10px;height:10px;font-size:6px">F</div><div class="n" style="font-size:5px">REF</div></div>
+                  <div class="co-logo" style="padding:3px"><div class="glyph" style="width:10px;height:10px;font-size:6px">D</div><div class="n" style="font-size:5px">Dev</div></div>
+                </div>
+              </div>
+              <div class="box dark" style="padding:6px;display:grid;grid-template-columns:1fr 1fr;gap:3px;border:none">
+                <div class="metric"><div class="v" style="font-size:9px">1,300+</div><div class="l" style="font-size:5px">Keys</div></div>
+                <div class="metric"><div class="v" style="font-size:9px">7</div><div class="l" style="font-size:5px">Props</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOME V3: Bold list -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">03</div>
+          <div class="v-title">The masthead</div>
+          <div class="v-tag"><span class="flag-creative">Creative swing</span></div>
+        </div>
+        <div class="v-desc">A single editorial masthead: the 4 companies stacked as a giant typeset list, each a link to its own landing page. Less "corporate," more "portfolio of ventures." Statement-forward.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav" style="background:var(--paper)">
+                <div class="logo">RISE8 Cos.</div>
+                <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="cta">Investor Login</div>
+              </div>
+              <!-- Editorial masthead -->
+              <div style="padding:16px 20px 8px;flex:1;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper);position:relative">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                  <div>
+                    <div class="label">RISE8 COMPANIES · EST. FL</div>
+                    <div class="hero-h" style="font-size:15px;max-width:240px;margin-top:4px">A holding company building extended-stay hospitality, end to end.</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div class="hand" style="font-size:11px;color:var(--gold)">七転び八起き</div>
+                    <div class="label" style="font-size:7px">Fall seven, rise eight</div>
+                  </div>
+                </div>
+
+                <!-- BIG LIST -->
+                <div style="display:flex;flex-direction:column;border-top:1.5px solid var(--navy);margin-top:10px">
+                  <div style="display:grid;grid-template-columns:24px 1fr 70px 50px;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #333">
+                    <div class="label">01</div>
+                    <div style="font-family:var(--serif);font-weight:700;font-size:18px;color:var(--navy)">Stayable Suites <span style="color:var(--gold);font-weight:500;font-size:10px;font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase">Brand</span></div>
+                    <div class="label">7 props · 1,300+</div>
+                    <div class="hand" style="font-size:12px;color:var(--gold);text-align:right">Visit →</div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:24px 1fr 70px 50px;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #333">
+                    <div class="label">02</div>
+                    <div style="font-family:var(--serif);font-weight:700;font-size:18px;color:var(--navy)">RISE8 Management <span style="color:var(--gold);font-weight:500;font-size:10px;font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase">Operations</span></div>
+                    <div class="label">100+ team</div>
+                    <div class="hand" style="font-size:12px;color:var(--gold);text-align:right">Visit →</div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:24px 1fr 70px 50px;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #333">
+                    <div class="label">03</div>
+                    <div style="font-family:var(--serif);font-weight:700;font-size:18px;color:var(--navy)">RISE8 REF <span style="color:var(--gold);font-weight:500;font-size:10px;font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase">Capital</span></div>
+                    <div class="label">In-house</div>
+                    <div class="hand" style="font-size:12px;color:var(--gold);text-align:right">Visit →</div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:24px 1fr 70px 50px;align-items:center;gap:8px;padding:6px 0;border-bottom:1.5px solid var(--navy)">
+                    <div class="label">04</div>
+                    <div style="font-family:var(--serif);font-weight:700;font-size:18px;color:var(--navy)">RISE8 Development <span style="color:var(--gold);font-weight:500;font-size:10px;font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase">Build</span></div>
+                    <div class="label">GC in-house</div>
+                    <div class="hand" style="font-size:12px;color:var(--gold);text-align:right">Visit →</div>
+                  </div>
+                </div>
+                <div class="annot-wrap"><div class="annot" style="right:20px;bottom:90px">Each row → its own landing page</div></div>
+              </div>
+              <!-- footer info strip -->
+              <div class="box dark" style="display:flex;justify-content:space-between;padding:8px 14px;border:none">
+                <div class="metric" style="align-items:flex-start"><div class="v" style="font-size:12px">1,300+</div><div class="l">Keys</div></div>
+                <div class="metric" style="align-items:flex-start"><div class="v" style="font-size:12px">7</div><div class="l">Properties</div></div>
+                <div class="metric" style="align-items:flex-start"><div class="v" style="font-size:12px">5</div><div class="l">Markets</div></div>
+                <div class="box gold" style="padding:3px 8px;font:600 8px var(--sans);align-self:center">Invest With Us →</div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m" style="background:var(--paper)"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div style="padding:6px;background:var(--paper);flex:1;display:flex;flex-direction:column;gap:4px">
+                <div class="label" style="font-size:5px">EST. FL</div>
+                <div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy);line-height:1.15">Holding co. building extended-stay, end to end.</div>
+                <div style="border-top:1px solid var(--navy);margin-top:4px;display:flex;flex-direction:column">
+                  <div style="padding:3px 0;border-bottom:1px solid #333;display:flex;justify-content:space-between"><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">01 Stayable</div><div class="hand" style="font-size:8px;color:var(--gold)">→</div></div>
+                  <div style="padding:3px 0;border-bottom:1px solid #333;display:flex;justify-content:space-between"><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">02 Management</div><div class="hand" style="font-size:8px;color:var(--gold)">→</div></div>
+                  <div style="padding:3px 0;border-bottom:1px solid #333;display:flex;justify-content:space-between"><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">03 REF</div><div class="hand" style="font-size:8px;color:var(--gold)">→</div></div>
+                  <div style="padding:3px 0;border-bottom:1px solid var(--navy);display:flex;justify-content:space-between"><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">04 Development</div><div class="hand" style="font-size:8px;color:var(--gold)">→</div></div>
+                </div>
+              </div>
+              <div class="box dark" style="padding:5px;display:flex;justify-content:space-between;border:none">
+                <div class="metric"><div class="v" style="font-size:8px">1,300+</div><div class="l" style="font-size:5px">Keys</div></div>
+                <div class="box gold" style="padding:2px 5px;font:600 6px var(--sans);align-self:center">Invest →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OUR PLATFORM -->
+  <section class="page" id="p-platform" data-screen-label="Our Platform Wireframes" hidden>
+    <div class="page-head">
+      <div>
+        <div class="crumb">Page 02 of 04</div>
+        <h1>Our Platform — "The 4 affiliated companies"</h1>
+      </div>
+      <div class="meta">Stayable treated as sub-brand · 3 structural approaches</div>
+    </div>
+
+    <div class="summary">
+      <div class="col">
+        <h3>Goal</h3>
+        <h2>Give each company its due — without losing the parent narrative.</h2>
+        <p>You said expand beyond a single Our Platform page into individual company landing pages. This page becomes the index / lobby that sends visitors to each.</p>
+      </div>
+      <div class="col">
+        <h3>What varies</h3>
+        <ul>
+          <li><b>V1</b> — Anchored one-pager (matches existing blueprint).</li>
+          <li><b>V2</b> — Tabbed cockpit: pick a company, content swaps inline.</li>
+          <li><b>V3</b> — Four standalone cards that deep-link to four micro-sites.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Axes explored</h3>
+        <div class="axes">
+          <span class="pill">one-page vs. hub</span>
+          <span class="pill">depth of each co.</span>
+          <span class="pill">stayable prominence</span>
+          <span class="pill">nav pattern</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="variations">
+
+      <!-- PLATFORM V1: Long anchored scroller -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">01</div>
+          <div class="v-title">Anchored scroller</div>
+          <div class="v-tag">Matches existing spec</div>
+        </div>
+        <div class="v-desc">One long page with four alternating sections. Anchor nav at top. Low friction; good SEO; keeps everything on a single URL.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav">
+                <div class="logo">RISE8</div>
+                <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="cta">Investor Login</div>
+              </div>
+              <!-- hero -->
+              <div class="box dark" style="padding:14px;flex:0 0 26%;display:flex;flex-direction:column;justify-content:center;gap:4px;border:none">
+                <div class="label" style="color:var(--gold)">WHAT WE DO</div>
+                <div class="hero-h" style="color:#fff;font-size:20px">Our Platform</div>
+                <div style="font:400 8px var(--sans);color:rgba(255,255,255,.65);max-width:50%">Four integrated business lines. One unified platform.</div>
+              </div>
+              <!-- Sticky anchor strip -->
+              <div style="display:flex;gap:0;background:var(--paper-2);border-bottom:1px solid #333;position:relative">
+                <div style="padding:6px 10px;border-right:1px solid #333;font:600 8px var(--sans);color:var(--navy);background:var(--gold)">#stayable</div>
+                <div style="padding:6px 10px;border-right:1px solid #333;font:600 8px var(--sans);color:#555">#management</div>
+                <div style="padding:6px 10px;border-right:1px solid #333;font:600 8px var(--sans);color:#555">#ref</div>
+                <div style="padding:6px 10px;font:600 8px var(--sans);color:#555">#development</div>
+                <div class="annot-wrap"><div class="annot" style="right:10px;top:6px">sticky anchor nav</div></div>
+              </div>
+              <!-- Section A -->
+              <div style="padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center">
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <div class="label">BRAND</div>
+                  <div class="hero-h" style="font-size:13px">Stayable Suites</div>
+                  <div class="ft w4"></div><div class="ft w2"></div><div class="ft w5"></div>
+                  <div class="tag-row" style="margin-top:3px"><span class="t">Furnished</span><span class="t">Weekly+</span><span class="t">No OTA</span></div>
+                </div>
+                <div class="box image" style="height:70px"></div>
+              </div>
+              <div class="sec-div"></div>
+              <!-- Section B reversed -->
+              <div style="padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center;background:var(--paper-2)">
+                <div class="box image" style="height:70px"></div>
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <div class="label">OPERATIONS</div>
+                  <div class="hero-h" style="font-size:13px">RISE8 Management</div>
+                  <div class="ft w4"></div><div class="ft w2"></div>
+                  <div class="tag-row" style="margin-top:3px"><span class="t">Rev mgmt</span><span class="t">Guest svc</span></div>
+                </div>
+              </div>
+              <div class="sec-div"></div>
+              <div style="padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center">
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <div class="label">CAPITAL</div>
+                  <div class="hero-h" style="font-size:13px">RISE8 REF</div>
+                  <div class="ft w4"></div><div class="ft w3"></div>
+                </div>
+                <div class="box image" style="height:50px"></div>
+              </div>
+              <div style="padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center;background:var(--paper-2)">
+                <div class="box image" style="height:50px"></div>
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <div class="label">CONSTRUCTION</div>
+                  <div class="hero-h" style="font-size:13px">RISE8 Development</div>
+                  <div class="ft w4"></div><div class="ft w3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div class="box dark" style="padding:6px;border:none"><div class="label" style="color:var(--gold);font-size:5px">WHAT WE DO</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:#fff">Our Platform</div></div>
+              <div style="background:var(--paper-2);padding:3px 4px;display:flex;gap:3px;overflow:hidden"><div style="font:600 5px var(--sans);padding:1px 3px;background:var(--gold);color:var(--navy)">Stayable</div><div style="font:600 5px var(--sans);padding:1px 3px;color:#555">Mgmt</div><div style="font:600 5px var(--sans);padding:1px 3px;color:#555">REF</div><div style="font:600 5px var(--sans);padding:1px 3px;color:#555">Dev</div></div>
+              <div style="padding:5px;display:flex;flex-direction:column;gap:4px">
+                <div><div class="label" style="font-size:5px">BRAND</div><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">Stayable Suites</div><div class="ft w4"></div></div>
+                <div class="box image" style="height:30px"></div>
+                <div><div class="label" style="font-size:5px">OPS</div><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">Management</div><div class="ft w4"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLATFORM V2: Tabbed cockpit -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">02</div>
+          <div class="v-title">Tabbed cockpit</div>
+          <div class="v-tag">Interactive</div>
+        </div>
+        <div class="v-desc">Platform page becomes an interactive hub: select a company on the left, detailed view swaps on the right. Each company feels "alive" without leaving the page. Great for comparison.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav">
+                <div class="logo">RISE8</div>
+                <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="cta">Investor Login</div>
+              </div>
+              <div style="padding:10px 14px 4px;background:var(--paper)">
+                <div class="label">OUR PLATFORM</div>
+                <div class="hero-h" style="font-size:16px">Explore our four companies.</div>
+              </div>
+              <div style="display:grid;grid-template-columns:140px 1fr;gap:0;flex:1;border-top:1px solid #333;position:relative">
+                <!-- Left rail -->
+                <div style="display:flex;flex-direction:column;background:var(--navy);color:#fff">
+                  <div style="padding:10px;background:var(--gold);color:var(--navy);display:flex;gap:6px;align-items:center;border-bottom:1px solid rgba(0,0,0,.2)">
+                    <div style="width:16px;height:16px;border:1.5px solid var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:9px">S</div>
+                    <div><div style="font-family:var(--serif);font-weight:700;font-size:9px">Stayable</div><div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;opacity:.7">Brand</div></div>
+                  </div>
+                  <div style="padding:10px;display:flex;gap:6px;align-items:center;border-bottom:1px solid rgba(255,255,255,.1)">
+                    <div style="width:16px;height:16px;border:1.5px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:9px">M</div>
+                    <div><div style="font-family:var(--serif);font-weight:700;font-size:9px">Management</div><div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;opacity:.5">Operations</div></div>
+                  </div>
+                  <div style="padding:10px;display:flex;gap:6px;align-items:center;border-bottom:1px solid rgba(255,255,255,.1)">
+                    <div style="width:16px;height:16px;border:1.5px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:9px">F</div>
+                    <div><div style="font-family:var(--serif);font-weight:700;font-size:9px">REF</div><div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;opacity:.5">Capital</div></div>
+                  </div>
+                  <div style="padding:10px;display:flex;gap:6px;align-items:center">
+                    <div style="width:16px;height:16px;border:1.5px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:9px">D</div>
+                    <div><div style="font-family:var(--serif);font-weight:700;font-size:9px">Development</div><div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;opacity:.5">Build</div></div>
+                  </div>
+                </div>
+                <!-- Right panel -->
+                <div style="padding:10px;display:flex;flex-direction:column;gap:6px">
+                  <div class="box image" style="height:70px"></div>
+                  <div class="hero-h" style="font-size:13px">Stayable Suites</div>
+                  <div style="font:400 7.5px var(--sans);color:#555;line-height:1.4">Our proprietary extended-stay brand. Full control over standards, pricing, and guest experience.</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:3px">
+                    <div class="tile"><div class="t" style="font-size:8px">In-room kitchens</div><div class="d">Every suite</div></div>
+                    <div class="tile"><div class="t" style="font-size:8px">Direct booking</div><div class="d">No OTA dep.</div></div>
+                    <div class="tile"><div class="t" style="font-size:8px">Weekly+monthly</div><div class="d">Flex lease</div></div>
+                    <div class="tile"><div class="t" style="font-size:8px">Loyalty</div><div class="d">Repeat guests</div></div>
+                  </div>
+                  <div style="display:flex;gap:5px;margin-top:3px"><div class="box gold" style="padding:2px 6px;font:600 7px var(--sans)">rentstayable.com →</div><div class="box" style="padding:2px 6px;font:600 7px var(--sans);border-color:var(--navy);color:var(--navy)">7 Properties</div></div>
+                </div>
+                <div class="annot-wrap"><div class="annot" style="left:150px;top:15px">Click rail → swap detail panel</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div style="padding:5px"><div class="label" style="font-size:5px">OUR PLATFORM</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:var(--navy)">Four companies.</div></div>
+              <div style="background:var(--paper-2);padding:4px;display:flex;gap:3px;overflow:hidden;border-top:1px solid #333;border-bottom:1px solid #333"><div class="chip" style="background:var(--gold);border-color:var(--gold);color:var(--navy)">Stayable</div><div class="chip">Mgmt</div><div class="chip">REF</div></div>
+              <div style="padding:5px;display:flex;flex-direction:column;gap:3px">
+                <div class="box image" style="height:40px"></div>
+                <div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">Stayable Suites</div>
+                <div class="ft w4"></div><div class="ft w2"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px">
+                  <div class="tile" style="padding:3px"><div class="t" style="font-size:6px">Kitchens</div></div>
+                  <div class="tile" style="padding:3px"><div class="t" style="font-size:6px">Direct book</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLATFORM V3: Hub + 4 landing pages -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">03</div>
+          <div class="v-title">Hub &amp; spokes</div>
+          <div class="v-tag"><span class="flag-creative">Creative swing</span></div>
+        </div>
+        <div class="v-desc">Platform becomes a lobby: four big doors, each opening to its own micro-site (/stayable, /management, /ref, /development). Best if each company deserves real estate. Shown: hub + preview of a spoke page.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — hub</div>
+            <div class="canvas">
+              <div class="nav">
+                <div class="logo">RISE8</div>
+                <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="cta">Investor Login</div>
+              </div>
+              <div style="padding:10px 14px">
+                <div class="label">OUR PLATFORM</div>
+                <div class="hero-h" style="font-size:15px">Four companies. Four doors.</div>
+                <div style="font:400 8px var(--sans);color:#666;margin-top:3px;max-width:60%">Each of our companies has its own home. Start wherever fits you best.</div>
+              </div>
+              <!-- 2x2 big doors -->
+              <div style="padding:0 14px 14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;position:relative">
+                <div class="box" style="background:var(--navy);color:#fff;padding:10px;display:flex;flex-direction:column;justify-content:space-between;border-color:var(--navy);min-height:80px">
+                  <div>
+                    <div style="font-size:6px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)">01 · BRAND</div>
+                    <div style="font-family:var(--serif);font-weight:700;font-size:14px;margin-top:2px">Stayable Suites</div>
+                    <div style="font:400 7px var(--sans);color:rgba(255,255,255,.65);margin-top:3px">The guest-facing, 7-property extended-stay brand.</div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px">
+                    <div style="font-family:var(--hand);font-size:11px;color:var(--gold)">→ /stayable</div>
+                    <div class="label" style="color:rgba(255,255,255,.5);font-size:6px">7 PROPS · 1,300+ KEYS</div>
+                  </div>
+                </div>
+                <div class="box" style="background:#fff;padding:10px;display:flex;flex-direction:column;justify-content:space-between;min-height:80px">
+                  <div>
+                    <div style="font-size:6px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)">02 · OPERATIONS</div>
+                    <div style="font-family:var(--serif);font-weight:700;font-size:14px;color:var(--navy);margin-top:2px">RISE8 Management</div>
+                    <div style="font:400 7px var(--sans);color:#555;margin-top:3px">In-house ops, revenue mgmt, guest services.</div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px">
+                    <div style="font-family:var(--hand);font-size:11px;color:var(--gold)">→ /management</div>
+                    <div class="label" style="font-size:6px">100+ TEAM</div>
+                  </div>
+                </div>
+                <div class="box" style="background:#fff;padding:10px;display:flex;flex-direction:column;justify-content:space-between;min-height:80px">
+                  <div>
+                    <div style="font-size:6px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)">03 · CAPITAL</div>
+                    <div style="font-family:var(--serif);font-weight:700;font-size:14px;color:var(--navy);margin-top:2px">RISE8 REF</div>
+                    <div style="font:400 7px var(--sans);color:#555;margin-top:3px">Real estate finance &amp; capital structuring.</div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px">
+                    <div style="font-family:var(--hand);font-size:11px;color:var(--gold)">→ /ref</div>
+                    <div class="label" style="font-size:6px">IN-HOUSE</div>
+                  </div>
+                </div>
+                <div class="box" style="background:#fff;padding:10px;display:flex;flex-direction:column;justify-content:space-between;min-height:80px">
+                  <div>
+                    <div style="font-size:6px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)">04 · CONSTRUCTION</div>
+                    <div style="font-family:var(--serif);font-weight:700;font-size:14px;color:var(--navy);margin-top:2px">RISE8 Development</div>
+                    <div style="font:400 7px var(--sans);color:#555;margin-top:3px">Ground-up build + value-add renovation.</div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px">
+                    <div style="font-family:var(--hand);font-size:11px;color:var(--gold)">→ /development</div>
+                    <div class="label" style="font-size:6px">GC IN-HOUSE</div>
+                  </div>
+                </div>
+                <div class="annot-wrap"><div class="annot" style="right:14px;top:4px">Each tile = its own page</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Spoke pg.</div>
+            <div class="canvas mob">
+              <div class="nav-m"><div class="logo">Stayable</div><div class="burger"><span></span></div></div>
+              <div class="box dark" style="padding:5px;border:none"><div class="label" style="font-size:5px;color:var(--gold)">A RISE8 COMPANY</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:#fff">Stayable Suites</div><div style="font:400 6px var(--sans);color:rgba(255,255,255,.6);margin-top:2px">The extended-stay brand.</div></div>
+              <div style="padding:5px;display:flex;flex-direction:column;gap:3px">
+                <div class="box image" style="height:40px"></div>
+                <div class="ft w4"></div><div class="ft w2"></div>
+                <div class="box gold" style="padding:2px 4px;font:600 6px var(--sans);align-self:flex-start;margin-top:2px">Book now →</div>
+                <div class="label" style="font-size:5px;margin-top:3px">7 LOCATIONS</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
+                  <div class="tile" style="padding:3px"><div class="t" style="font-size:6px">Orlando</div></div>
+                  <div class="tile" style="padding:3px"><div class="t" style="font-size:6px">Kissimmee</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="page" id="p-about" data-screen-label="About Us Wireframes" hidden>
+    <div class="page-head">
+      <div>
+        <div class="crumb">Page 03 of 04</div>
+        <h1>About Us — "Nana korobi yaoki"</h1>
+      </div>
+      <div class="meta">Story-driven · mission, vision, 5 values</div>
+    </div>
+
+    <div class="summary">
+      <div class="col">
+        <h3>Goal</h3>
+        <h2>Humanize the parent company.</h2>
+        <p>The name RISE8 comes from 七転び八起き — "fall seven, rise eight." That's a great thread to pull. These three options differ on how dominant the story is vs. the metrics and values.</p>
+      </div>
+      <div class="col">
+        <h3>What varies</h3>
+        <ul>
+          <li><b>V1</b> — Standard sectioned page (spec-accurate).</li>
+          <li><b>V2</b> — Timeline: origin story as a narrative spine.</li>
+          <li><b>V3</b> — Manifesto: the proverb fills the screen, values underneath.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Axes explored</h3>
+        <div class="axes">
+          <span class="pill">story vs. spec</span>
+          <span class="pill">values layout</span>
+          <span class="pill">mission/vision treatment</span>
+          <span class="pill">tone</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="variations">
+
+      <!-- ABOUT V1 -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">01</div>
+          <div class="v-title">Standard sections</div>
+          <div class="v-tag">Safe</div>
+        </div>
+        <div class="v-desc">Follows the existing blueprint: hero → founding narrative → mission/vision cards → five values → leadership CTA.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav"><div class="logo">RISE8</div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><div class="cta">Investor Login</div></div>
+              <div class="box dark" style="padding:14px;flex:0 0 24%;display:flex;flex-direction:column;justify-content:center;border:none">
+                <div class="label" style="color:var(--gold)">ABOUT RISE8</div>
+                <div class="hero-h" style="color:#fff;font-size:18px">Our Story</div>
+                <div style="font:400 7px var(--sans);color:rgba(255,255,255,.65);max-width:50%;margin-top:3px">Built on resilience, driven by purpose.</div>
+              </div>
+              <div style="padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center">
+                <div class="box image" style="height:70px"></div>
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <div class="label">OUR BEGINNING</div>
+                  <div class="hero-h" style="font-size:14px;color:var(--gold);font-family:var(--serif)">七転び八起き</div>
+                  <div style="font:500 8px var(--sans);color:#777">"Fall seven, rise eight"</div>
+                  <div class="ft w4"></div><div class="ft w2"></div><div class="ft w5"></div>
+                </div>
+              </div>
+              <!-- Mission / vision -->
+              <div style="padding:10px;background:var(--paper-2);display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div class="box" style="padding:8px;background:#fff"><div class="label">MISSION</div><div class="hero-h" style="font-size:10px">Why we exist</div><div class="ft w4"></div><div class="ft w2"></div></div>
+                <div class="box" style="padding:8px;background:#fff"><div class="label">VISION</div><div class="hero-h" style="font-size:10px">Where we're going</div><div class="ft w4"></div><div class="ft w2"></div></div>
+              </div>
+              <!-- Values 5 across -->
+              <div style="padding:10px">
+                <div class="label">WHAT DRIVES US</div>
+                <div class="hero-h" style="font-size:12px;margin-bottom:6px">Five core values</div>
+                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:5px">
+                  <div class="vcard"><div class="n">1</div><div><div class="t">Resilience</div><div class="d">Rise eight.</div></div></div>
+                  <div class="vcard"><div class="n">2</div><div><div class="t">Integrity</div><div class="d">Transparent.</div></div></div>
+                  <div class="vcard"><div class="n">3</div><div><div class="t">Excellence</div><div class="d">High bar.</div></div></div>
+                  <div class="vcard"><div class="n">4</div><div><div class="t">Innovation</div><div class="d">Data-led.</div></div></div>
+                  <div class="vcard"><div class="n">5</div><div><div class="t">Collab.</div><div class="d">Teamwork.</div></div></div>
+                </div>
+              </div>
+              <div class="box" style="background:linear-gradient(135deg,var(--navy),var(--navy-2));padding:10px;color:#fff;display:flex;align-items:center;gap:8px;border:none">
+                <div style="flex:1;font-family:var(--serif);font-weight:700;font-size:11px">Meet the team behind RISE8</div>
+                <div class="box gold" style="padding:3px 8px;font:600 8px var(--sans)">Leadership →</div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div class="box dark" style="padding:5px;border:none"><div class="label" style="color:var(--gold);font-size:5px">ABOUT</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:#fff">Our Story</div></div>
+              <div style="padding:5px;display:flex;flex-direction:column;gap:3px">
+                <div class="box image" style="height:40px"></div>
+                <div style="font-family:var(--serif);font-weight:700;font-size:9px;color:var(--gold)">七転び八起き</div>
+                <div class="ft w4"></div><div class="ft w2"></div>
+                <div class="label" style="font-size:5px;margin-top:4px">VALUES</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
+                  <div class="vcard" style="padding:2px"><div class="n" style="width:10px;height:10px;font-size:6px">1</div><div class="t" style="font-size:6px">Resilience</div></div>
+                  <div class="vcard" style="padding:2px"><div class="n" style="width:10px;height:10px;font-size:6px">2</div><div class="t" style="font-size:6px">Integrity</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT V2 timeline -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">02</div>
+          <div class="v-title">Founder's timeline</div>
+          <div class="v-tag">Narrative-led</div>
+        </div>
+        <div class="v-desc">A horizontal (desktop) / vertical (mobile) timeline runs through the page. Moments in the company's history become the scroll structure. Values live in the margin.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav"><div class="logo">RISE8</div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><div class="cta">Investor Login</div></div>
+              <div style="padding:10px 14px"><div class="label">ABOUT · 七転び八起き</div><div class="hero-h" style="font-size:16px">A decade of getting back up.</div></div>
+              <!-- Timeline -->
+              <div style="padding:12px 14px;flex:1;position:relative">
+                <!-- spine -->
+                <div style="position:absolute;left:24px;right:24px;top:50%;height:2px;background:var(--navy)"></div>
+                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;position:relative">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                    <div style="font-family:var(--hand);font-size:12px;color:var(--navy)">origin</div>
+                    <div class="ft w4" style="height:4px"></div>
+                    <div style="width:10px;height:10px;background:var(--gold);border:2px solid var(--navy);border-radius:50%;z-index:1"></div>
+                    <div class="label">2014</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                    <div class="ft w4" style="height:4px"></div>
+                    <div class="ft w3" style="height:4px"></div>
+                    <div style="width:10px;height:10px;background:#fff;border:2px solid var(--navy);border-radius:50%;z-index:1"></div>
+                    <div class="label">2017</div>
+                    <div style="font-family:var(--hand);font-size:10px;color:#555">first prop.</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                    <div style="font-family:var(--hand);font-size:12px;color:var(--navy)">Stayable</div>
+                    <div class="ft w4" style="height:4px"></div>
+                    <div style="width:10px;height:10px;background:var(--gold);border:2px solid var(--navy);border-radius:50%;z-index:1"></div>
+                    <div class="label">2020</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                    <div class="ft w4" style="height:4px"></div>
+                    <div class="ft w3" style="height:4px"></div>
+                    <div style="width:10px;height:10px;background:#fff;border:2px solid var(--navy);border-radius:50%;z-index:1"></div>
+                    <div class="label">2023</div>
+                    <div style="font-family:var(--hand);font-size:10px;color:#555">REF launch</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                    <div style="font-family:var(--hand);font-size:12px;color:var(--navy)">7 props.</div>
+                    <div class="ft w4" style="height:4px"></div>
+                    <div style="width:10px;height:10px;background:var(--gold);border:2px solid var(--navy);border-radius:50%;z-index:1"></div>
+                    <div class="label">today</div>
+                  </div>
+                </div>
+                <div class="annot-wrap"><div class="annot" style="left:14px;top:10px">Alternating above/below</div></div>
+              </div>
+              <!-- Mission/Vision inline -->
+              <div style="padding:10px 14px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;background:var(--paper-2)">
+                <div><div class="label">MANIFESTO</div><div class="hero-h" style="font-size:12px">Vertical integration, because misalignment is expensive.</div><div class="ft w4"></div></div>
+                <div class="box" style="padding:6px"><div class="label">MISSION</div><div class="ft w4"></div><div class="ft w2"></div></div>
+                <div class="box" style="padding:6px"><div class="label">VISION</div><div class="ft w4"></div><div class="ft w2"></div></div>
+              </div>
+              <!-- Values as single row of chips -->
+              <div style="padding:8px 14px;display:flex;gap:5px;flex-wrap:wrap"><span class="chip" style="border-color:var(--navy);color:var(--navy)">1 · Resilience</span><span class="chip">2 · Integrity</span><span class="chip">3 · Excellence</span><span class="chip">4 · Innovation</span><span class="chip">5 · Collaboration</span></div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div style="padding:5px"><div class="label" style="font-size:5px">ABOUT · 七転び八起き</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:var(--navy)">A decade of rising.</div></div>
+              <div style="padding:5px;flex:1;position:relative">
+                <div style="position:absolute;left:14px;top:5px;bottom:5px;width:2px;background:var(--navy)"></div>
+                <div style="display:flex;gap:6px;padding:4px 0;margin-left:8px"><div style="width:8px;height:8px;background:var(--gold);border:2px solid var(--navy);border-radius:50%"></div><div><div class="label" style="font-size:5px">2014</div><div style="font-family:var(--hand);font-size:8px">origin</div></div></div>
+                <div style="display:flex;gap:6px;padding:4px 0;margin-left:8px"><div style="width:8px;height:8px;background:#fff;border:2px solid var(--navy);border-radius:50%"></div><div><div class="label" style="font-size:5px">2017</div><div style="font-size:6px">first property</div></div></div>
+                <div style="display:flex;gap:6px;padding:4px 0;margin-left:8px"><div style="width:8px;height:8px;background:var(--gold);border:2px solid var(--navy);border-radius:50%"></div><div><div class="label" style="font-size:5px">2020</div><div style="font-size:6px">Stayable</div></div></div>
+                <div style="display:flex;gap:6px;padding:4px 0;margin-left:8px"><div style="width:8px;height:8px;background:var(--gold);border:2px solid var(--navy);border-radius:50%"></div><div><div class="label" style="font-size:5px">now</div><div style="font-size:6px">7 properties</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT V3 manifesto -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">03</div>
+          <div class="v-title">Manifesto</div>
+          <div class="v-tag"><span class="flag-creative">Creative swing</span></div>
+        </div>
+        <div class="v-desc">Open with the proverb at display scale. Values become small paragraphs in a 5-column bottom band. High-impact, editorial. Best paired with a strong founder photo.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav" style="background:#fff"><div class="logo">RISE8</div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><div class="cta">Investor Login</div></div>
+              <!-- full bleed manifesto -->
+              <div style="flex:1;background:var(--paper);display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative">
+                <div style="padding:20px 14px;display:flex;flex-direction:column;justify-content:center;gap:8px;border-right:1.5px solid var(--navy)">
+                  <div class="label">OUR NAME</div>
+                  <div style="font-family:var(--serif);font-weight:700;font-size:28px;color:var(--navy);line-height:1">七転び八起き</div>
+                  <div style="font-family:var(--serif);font-weight:500;font-size:14px;color:var(--gold);font-style:italic">Nana korobi yaoki.</div>
+                  <div style="font-family:var(--serif);font-weight:700;font-size:20px;color:var(--navy);line-height:1.1">Fall seven times.<br/>Rise eight.</div>
+                  <div style="font:400 8px var(--sans);color:#555;line-height:1.5;margin-top:4px">Every property, every deal, every hire — built on getting up one more time than we fell.</div>
+                </div>
+                <div class="box image" style="border:none;border-left:1.5px solid var(--navy)"></div>
+                <div class="annot-wrap"><div class="annot" style="left:14px;top:10px">Display type IS the hero</div></div>
+              </div>
+              <!-- values band -->
+              <div class="box dark" style="padding:10px 14px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;border:none">
+                <div><div style="font-family:var(--serif);font-weight:700;font-size:18px;color:var(--gold);line-height:1">01</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:#fff;margin-top:2px">Resilience</div><div style="font:400 6px var(--sans);color:rgba(255,255,255,.65);line-height:1.3">Always rise.</div></div>
+                <div><div style="font-family:var(--serif);font-weight:700;font-size:18px;color:var(--gold);line-height:1">02</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:#fff;margin-top:2px">Integrity</div><div style="font:400 6px var(--sans);color:rgba(255,255,255,.65);line-height:1.3">Transparent.</div></div>
+                <div><div style="font-family:var(--serif);font-weight:700;font-size:18px;color:var(--gold);line-height:1">03</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:#fff;margin-top:2px">Excellence</div><div style="font:400 6px var(--sans);color:rgba(255,255,255,.65);line-height:1.3">High bar.</div></div>
+                <div><div style="font-family:var(--serif);font-weight:700;font-size:18px;color:var(--gold);line-height:1">04</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:#fff;margin-top:2px">Innovation</div><div style="font:400 6px var(--sans);color:rgba(255,255,255,.65);line-height:1.3">Smarter.</div></div>
+                <div><div style="font-family:var(--serif);font-weight:700;font-size:18px;color:var(--gold);line-height:1">05</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:#fff;margin-top:2px">Collab.</div><div style="font:400 6px var(--sans);color:rgba(255,255,255,.65);line-height:1.3">Teamwork.</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div style="padding:8px;flex:1;background:var(--paper);display:flex;flex-direction:column;justify-content:center;gap:3px">
+                <div class="label" style="font-size:5px">OUR NAME</div>
+                <div style="font-family:var(--serif);font-weight:700;font-size:14px;color:var(--navy);line-height:1">七転び八起き</div>
+                <div style="font-family:var(--serif);font-weight:500;font-size:8px;color:var(--gold);font-style:italic">Nana korobi yaoki.</div>
+                <div style="font-family:var(--serif);font-weight:700;font-size:11px;color:var(--navy);line-height:1.1">Fall seven.<br/>Rise eight.</div>
+              </div>
+              <div class="box dark" style="padding:5px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;border:none">
+                <div><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--gold)">01</div></div>
+                <div><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--gold)">02</div></div>
+                <div><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--gold)">03</div></div>
+                <div><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--gold)">04</div></div>
+                <div><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--gold)">05</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="page" id="p-portfolio" data-screen-label="Portfolio Wireframes" hidden>
+    <div class="page-head">
+      <div>
+        <div class="crumb">Page 04 of 04</div>
+        <h1>Portfolio — "7 Florida properties, 1,300+ keys"</h1>
+      </div>
+      <div class="meta">Stats · map · property cards → Stayable booking</div>
+    </div>
+
+    <div class="summary">
+      <div class="col">
+        <h3>Goal</h3>
+        <h2>Two audiences, one page.</h2>
+        <p>Investors want scale + markets; travelers want to find a property near them and click "Book." The three options differ on which audience leads.</p>
+      </div>
+      <div class="col">
+        <h3>What varies</h3>
+        <ul>
+          <li><b>V1</b> — Stats → map → grid (spec-accurate).</li>
+          <li><b>V2</b> — Map-first: big interactive map, cards scroll inside a side panel.</li>
+          <li><b>V3</b> — Directory index: typeset list, no imagery above the fold.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Axes explored</h3>
+        <div class="axes">
+          <span class="pill">map vs. grid lead</span>
+          <span class="pill">density</span>
+          <span class="pill">audience priority</span>
+          <span class="pill">booking prominence</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="variations">
+
+      <!-- PORTFOLIO V1 -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">01</div>
+          <div class="v-title">Stats → map → grid</div>
+          <div class="v-tag">Spec accurate</div>
+        </div>
+        <div class="v-desc">Follows the blueprint exactly: hero, dark stats bar, embedded map, then 3-column grid of the 7 properties. Each card has a Book CTA that links out to rentstayable.com.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav"><div class="logo">RISE8</div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><div class="cta">Investor Login</div></div>
+              <div class="box dark" style="padding:12px;flex:0 0 22%;display:flex;flex-direction:column;justify-content:center;border:none">
+                <div class="label" style="color:var(--gold)">OUR PROPERTIES</div>
+                <div class="hero-h" style="color:#fff;font-size:18px">Portfolio</div>
+                <div style="font:400 7px var(--sans);color:rgba(255,255,255,.65);margin-top:3px">Extended-stay across high-growth FL markets.</div>
+              </div>
+              <!-- stats -->
+              <div class="box" style="background:var(--navy-2);display:flex;justify-content:space-around;padding:8px;border:none">
+                <div class="metric"><div class="v" style="font-size:13px">1,300+</div><div class="l">Keys</div></div>
+                <div class="metric"><div class="v" style="font-size:13px">7</div><div class="l">Properties</div></div>
+                <div class="metric"><div class="v" style="font-size:13px">5</div><div class="l">Markets</div></div>
+                <div class="metric"><div class="v" style="font-size:13px">100%</div><div class="l">Stayable</div></div>
+              </div>
+              <!-- map -->
+              <div class="map" style="height:80px;margin:10px 14px">
+                <div class="pin" style="left:30%;top:35%"></div>
+                <div class="pin" style="left:45%;top:55%"></div>
+                <div class="pin" style="left:48%;top:58%"></div>
+                <div class="pin" style="left:42%;top:62%"></div>
+                <div class="pin" style="left:50%;top:70%"></div>
+                <div class="pin" style="left:35%;top:30%"></div>
+                <div class="pin" style="left:47%;top:65%"></div>
+              </div>
+              <!-- grid -->
+              <div style="padding:0 14px 10px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+                <div class="pc"><div class="img"></div><div class="body"><span class="badge">FL</span><div class="n">Jacksonville W</div><div class="a">910 Suemac Rd</div><div class="box gold" style="padding:1px 4px;font:600 6px var(--sans);align-self:flex-start;margin-top:2px">Book →</div></div></div>
+                <div class="pc"><div class="img"></div><div class="body"><span class="badge">FL</span><div class="n">Kissimmee E</div><div class="a">2295 Irlo Bronson</div><div class="box gold" style="padding:1px 4px;font:600 6px var(--sans);align-self:flex-start;margin-top:2px">Book →</div></div></div>
+                <div class="pc"><div class="img"></div><div class="body"><span class="badge">FL</span><div class="n">Kissimmee W</div><div class="a">5399 W. Irlo</div><div class="box gold" style="padding:1px 4px;font:600 6px var(--sans);align-self:flex-start;margin-top:2px">Book →</div></div></div>
+                <div class="pc"><div class="img"></div><div class="body"><span class="badge">FL</span><div class="n">Lakeland</div><div class="a">4645 N. Socrum</div></div></div>
+                <div class="pc"><div class="img"></div><div class="body"><span class="badge">FL</span><div class="n">Orlando</div><div class="a">8700 OBT</div></div></div>
+                <div class="pc"><div class="img"></div><div class="body"><span class="badge">FL</span><div class="n">St. Augustine</div><div class="a">2535 SR 16</div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div class="box dark" style="padding:5px;border:none"><div class="label" style="color:var(--gold);font-size:5px">OUR PROPERTIES</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:#fff">Portfolio</div></div>
+              <div class="box" style="background:var(--navy-2);padding:4px;display:grid;grid-template-columns:1fr 1fr;gap:2px;border:none">
+                <div class="metric"><div class="v" style="font-size:8px">1,300+</div><div class="l" style="font-size:5px">Keys</div></div>
+                <div class="metric"><div class="v" style="font-size:8px">7</div><div class="l" style="font-size:5px">Props</div></div>
+              </div>
+              <div class="map" style="height:35px;margin:4px"><div class="pin" style="left:35%;top:40%"></div><div class="pin" style="left:50%;top:60%"></div><div class="pin" style="left:45%;top:55%"></div></div>
+              <div style="padding:4px;display:flex;flex-direction:column;gap:3px">
+                <div class="pc"><div class="img" style="aspect-ratio:20/7"></div><div class="body"><div class="n" style="font-size:6px">Jacksonville W</div><div class="a" style="font-size:5px">910 Suemac Rd</div></div></div>
+                <div class="pc"><div class="img" style="aspect-ratio:20/7"></div><div class="body"><div class="n" style="font-size:6px">Kissimmee E</div><div class="a" style="font-size:5px">2295 Irlo Bronson</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORTFOLIO V2 map-first -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">02</div>
+          <div class="v-title">Map-first</div>
+          <div class="v-tag">Traveler-led</div>
+        </div>
+        <div class="v-desc">Huge map on the right, scrollable property list on the left. Click a pin → card highlights. Best for the "find a place near me" use case. Stats live in a slim top strip.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav"><div class="logo">RISE8</div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><div class="cta">Investor Login</div></div>
+              <!-- slim stats strip -->
+              <div style="padding:6px 14px;display:flex;gap:14px;align-items:center;background:var(--paper);border-bottom:1px solid #333">
+                <div class="label">PORTFOLIO</div>
+                <div style="font:600 9px var(--sans);color:var(--navy)">1,300+ keys</div>
+                <div style="font:600 9px var(--sans);color:var(--navy)">7 properties</div>
+                <div style="font:600 9px var(--sans);color:var(--navy)">5 markets</div>
+                <div style="margin-left:auto;display:flex;gap:3px"><span class="chip" style="background:var(--navy);color:#fff;border-color:var(--navy)">All</span><span class="chip">Central FL</span><span class="chip">North FL</span></div>
+              </div>
+              <!-- 2-pane -->
+              <div style="display:grid;grid-template-columns:200px 1fr;flex:1;position:relative">
+                <div style="overflow:hidden;border-right:1px solid #333;background:#fff">
+                  <div style="padding:6px 8px;border-bottom:1px solid #eee;display:flex;gap:6px;align-items:flex-start;background:var(--paper-2)">
+                    <div class="box image" style="width:30px;height:26px;flex-shrink:0"></div>
+                    <div style="flex:1"><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">Orlando</div><div class="a" style="font-size:6px;color:#666">OBT · 8700</div><div style="font:600 6px var(--sans);color:var(--gold)">Book →</div></div>
+                  </div>
+                  <div style="padding:6px 8px;border-bottom:1px solid #eee;display:flex;gap:6px;align-items:flex-start">
+                    <div class="box image" style="width:30px;height:26px;flex-shrink:0"></div>
+                    <div style="flex:1"><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">Kissimmee E</div><div class="a" style="font-size:6px;color:#666">196 rooms</div></div>
+                  </div>
+                  <div style="padding:6px 8px;border-bottom:1px solid #eee;display:flex;gap:6px;align-items:flex-start">
+                    <div class="box image" style="width:30px;height:26px;flex-shrink:0"></div>
+                    <div style="flex:1"><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">Kissimmee W</div><div class="a" style="font-size:6px;color:#666">Disney · 10mi</div></div>
+                  </div>
+                  <div style="padding:6px 8px;border-bottom:1px solid #eee;display:flex;gap:6px;align-items:flex-start">
+                    <div class="box image" style="width:30px;height:26px;flex-shrink:0"></div>
+                    <div style="flex:1"><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">Lakeland</div><div class="a" style="font-size:6px;color:#666">I-4 Exit 33</div></div>
+                  </div>
+                  <div style="padding:6px 8px;border-bottom:1px solid #eee;display:flex;gap:6px;align-items:flex-start">
+                    <div class="box image" style="width:30px;height:26px;flex-shrink:0"></div>
+                    <div style="flex:1"><div style="font-family:var(--serif);font-weight:700;font-size:8px;color:var(--navy)">Jacksonville W</div><div class="a" style="font-size:6px;color:#666">64 rooms · '24 reno</div></div>
+                  </div>
+                </div>
+                <div class="map" style="border:none">
+                  <div class="pin lg" style="left:35%;top:18%;background:var(--navy);border-color:var(--gold)"></div>
+                  <div class="pin" style="left:45%;top:50%"></div>
+                  <div class="pin" style="left:50%;top:55%"></div>
+                  <div class="pin" style="left:42%;top:62%"></div>
+                  <div class="pin" style="left:48%;top:70%"></div>
+                  <div class="pin" style="left:38%;top:28%"></div>
+                  <div class="pin" style="left:52%;top:60%"></div>
+                </div>
+                <div class="annot-wrap"><div class="annot" style="left:200px;top:10px">Click pin ↔ list highlight</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div class="map" style="height:45px;border:none"><div class="pin" style="left:35%;top:30%"></div><div class="pin" style="left:50%;top:55%"></div><div class="pin" style="left:45%;top:60%"></div><div class="pin" style="left:48%;top:70%"></div></div>
+              <div style="padding:4px;display:flex;flex-direction:column;gap:3px">
+                <div style="padding:3px;border:1px solid #333;display:flex;gap:3px"><div class="box image" style="width:16px;height:12px"></div><div><div style="font-family:var(--serif);font-weight:700;font-size:6px;color:var(--navy)">Orlando</div><div style="font-size:5px;color:#666">OBT · 8700</div></div></div>
+                <div style="padding:3px;border:1px solid #333;display:flex;gap:3px"><div class="box image" style="width:16px;height:12px"></div><div><div style="font-family:var(--serif);font-weight:700;font-size:6px;color:var(--navy)">Kissimmee E</div><div style="font-size:5px;color:#666">196 rms</div></div></div>
+                <div style="padding:3px;border:1px solid #333;display:flex;gap:3px"><div class="box image" style="width:16px;height:12px"></div><div><div style="font-family:var(--serif);font-weight:700;font-size:6px;color:var(--navy)">Lakeland</div><div style="font-size:5px;color:#666">I-4</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORTFOLIO V3 directory -->
+      <div class="variation">
+        <div class="v-head">
+          <div class="v-num">03</div>
+          <div class="v-title">Typeset directory</div>
+          <div class="v-tag"><span class="flag-creative">Creative swing</span></div>
+        </div>
+        <div class="v-desc">No big imagery above the fold. The portfolio reads like a magazine contents page — typeset with city, address, keys, booking link. Imagery lives inside expanded rows. Feels considered, institutional.</div>
+        <div class="devices">
+          <div class="frame desktop">
+            <div class="frame-label">Desktop — 1440</div>
+            <div class="canvas">
+              <div class="nav" style="background:var(--paper)"><div class="logo">RISE8</div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><div class="cta">Investor Login</div></div>
+              <div style="padding:14px;background:var(--paper);display:flex;justify-content:space-between;align-items:flex-end">
+                <div>
+                  <div class="label">PORTFOLIO · A DIRECTORY</div>
+                  <div class="hero-h" style="font-size:20px">Seven Florida addresses.</div>
+                </div>
+                <div style="text-align:right"><div style="font-family:var(--serif);font-weight:700;font-size:22px;color:var(--gold);line-height:1">1,300+</div><div class="label">keys managed</div></div>
+              </div>
+              <!-- Directory list -->
+              <div style="padding:0 14px 14px;background:var(--paper);flex:1">
+                <div style="display:grid;grid-template-columns:20px 70px 1fr 80px 60px 40px;gap:8px;padding:4px 0;border-top:1.5px solid var(--navy);border-bottom:1px solid var(--navy);font:600 6px var(--sans);color:#888;letter-spacing:.1em;text-transform:uppercase">
+                  <div>#</div><div>Market</div><div>Address</div><div>Keys</div><div>Notes</div><div></div>
+                </div>
+                <div style="display:grid;grid-template-columns:20px 70px 1fr 80px 60px 40px;gap:8px;padding:5px 0;border-bottom:1px solid #ccc;align-items:center">
+                  <div class="label">01</div><div style="font-family:var(--serif);font-weight:700;font-size:10px;color:var(--navy)">Jacksonville</div><div style="font:400 8px var(--sans);color:#555">910 Suemac Road, JAX</div><div style="font:600 9px var(--sans)">64</div><div class="label" style="font-size:6px">'24 reno</div><div class="hand" style="font-size:11px;color:var(--gold);text-align:right">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:20px 70px 1fr 80px 60px 40px;gap:8px;padding:5px 0;border-bottom:1px solid #ccc;align-items:center">
+                  <div class="label">02</div><div style="font-family:var(--serif);font-weight:700;font-size:10px;color:var(--navy)">Kissimmee E</div><div style="font:400 8px var(--sans);color:#555">2295 E. Irlo Bronson Hwy</div><div style="font:600 9px var(--sans)">196</div><div class="label" style="font-size:6px">largest</div><div class="hand" style="font-size:11px;color:var(--gold);text-align:right">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:20px 70px 1fr 80px 60px 40px;gap:8px;padding:5px 0;border-bottom:1px solid #ccc;align-items:center;background:var(--paper-2)">
+                  <div class="label">03</div><div style="font-family:var(--serif);font-weight:700;font-size:10px;color:var(--navy)">Kissimmee W</div><div style="font:400 8px var(--sans);color:#555">5399 W. Irlo Bronson Hwy</div><div style="font:600 9px var(--sans)">—</div><div class="label" style="font-size:6px">Disney 10mi</div><div class="hand" style="font-size:11px;color:var(--gold);text-align:right">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:20px 70px 1fr 80px 60px 40px;gap:8px;padding:5px 0;border-bottom:1px solid #ccc;align-items:center">
+                  <div class="label">04</div><div style="font-family:var(--serif);font-weight:700;font-size:10px;color:var(--navy)">Lakeland</div><div style="font:400 8px var(--sans);color:#555">4645 N. Socrum Loop Rd</div><div style="font:600 9px var(--sans)">—</div><div class="label" style="font-size:6px">I-4 Ex 33</div><div class="hand" style="font-size:11px;color:var(--gold);text-align:right">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:20px 70px 1fr 80px 60px 40px;gap:8px;padding:5px 0;border-bottom:1px solid #ccc;align-items:center">
+                  <div class="label">05</div><div style="font-family:var(--serif);font-weight:700;font-size:10px;color:var(--navy)">Orlando</div><div style="font:400 8px var(--sans);color:#555">8700 S. Orange Blossom Trail</div><div style="font:600 9px var(--sans)">—</div><div class="label" style="font-size:6px">FL Mall</div><div class="hand" style="font-size:11px;color:var(--gold);text-align:right">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:20px 70px 1fr 80px 60px 40px;gap:8px;padding:5px 0;border-bottom:1px solid #ccc;align-items:center;background:var(--paper-2)">
+                  <div class="label">06</div><div style="font-family:var(--serif);font-weight:700;font-size:10px;color:var(--navy)">St. Augustine</div><div style="font:400 8px var(--sans);color:#555">2535 State Road 16</div><div style="font:600 9px var(--sans)">—</div><div class="label" style="font-size:6px">historic</div><div class="hand" style="font-size:11px;color:var(--gold);text-align:right">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:20px 70px 1fr 80px 60px 40px;gap:8px;padding:5px 0;border-bottom:1.5px solid var(--navy);align-items:center">
+                  <div class="label">07</div><div style="font-family:var(--serif);font-weight:700;font-size:10px;color:var(--navy)">Davenport</div><div style="font:400 8px var(--sans);color:#555">44199 Hwy 27</div><div style="font:600 9px var(--sans)">—</div><div class="label" style="font-size:6px">I-4 corridor</div><div class="hand" style="font-size:11px;color:var(--gold);text-align:right">Book</div>
+                </div>
+                <div class="annot-wrap"><div class="annot" style="right:14px;top:80px">Hover row → image + long desc slides down</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile">
+            <div class="frame-label">Mobile</div>
+            <div class="canvas mob">
+              <div class="nav-m" style="background:var(--paper)"><div class="logo">RISE8</div><div class="burger"><span></span></div></div>
+              <div style="padding:5px;background:var(--paper)"><div class="label" style="font-size:5px">PORTFOLIO</div><div style="font-family:var(--serif);font-weight:700;font-size:9px;color:var(--navy);line-height:1.1">Seven FL addresses.</div></div>
+              <div style="padding:0 5px 5px;background:var(--paper);flex:1;display:flex;flex-direction:column">
+                <div style="display:flex;justify-content:space-between;padding:3px 0;border-top:1.5px solid var(--navy);border-bottom:1px solid #ccc"><div><span class="label" style="font-size:5px">01 ·</span> <span style="font-family:var(--serif);font-weight:700;font-size:7px;color:var(--navy)">Jacksonville</span></div><div class="hand" style="font-size:7px;color:var(--gold)">Book →</div></div>
+                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #ccc"><div><span class="label" style="font-size:5px">02 ·</span> <span style="font-family:var(--serif);font-weight:700;font-size:7px;color:var(--navy)">Kissimmee E</span></div><div class="hand" style="font-size:7px;color:var(--gold)">Book →</div></div>
+                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #ccc"><div><span class="label" style="font-size:5px">03 ·</span> <span style="font-family:var(--serif);font-weight:700;font-size:7px;color:var(--navy)">Kissimmee W</span></div><div class="hand" style="font-size:7px;color:var(--gold)">Book →</div></div>
+                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #ccc"><div><span class="label" style="font-size:5px">04 ·</span> <span style="font-family:var(--serif);font-weight:700;font-size:7px;color:var(--navy)">Lakeland</span></div><div class="hand" style="font-size:7px;color:var(--gold)">Book →</div></div>
+                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #ccc"><div><span class="label" style="font-size:5px">05 ·</span> <span style="font-family:var(--serif);font-weight:700;font-size:7px;color:var(--navy)">Orlando</span></div><div class="hand" style="font-size:7px;color:var(--gold)">Book →</div></div>
+                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #ccc"><div><span class="label" style="font-size:5px">06 ·</span> <span style="font-family:var(--serif);font-weight:700;font-size:7px;color:var(--navy)">St. Augustine</span></div><div class="hand" style="font-size:7px;color:var(--gold)">Book →</div></div>
+                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1.5px solid var(--navy)"><div><span class="label" style="font-size:5px">07 ·</span> <span style="font-family:var(--serif);font-weight:700;font-size:7px;color:var(--navy)">Davenport</span></div><div class="hand" style="font-size:7px;color:var(--gold)">Book →</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="scroll-hint">— end of wireframes · scroll back up to switch pages —</div>
+  </section>
+
+</div>
+
+<script>
+  // Tab navigation
+  const tabs = document.querySelectorAll('#tabs .tab');
+  const pages = {
+    home: document.getElementById('p-home'),
+    platform: document.getElementById('p-platform'),
+    about: document.getElementById('p-about'),
+    portfolio: document.getElementById('p-portfolio'),
+  };
+  function setPage(name){
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.page === name));
+    Object.entries(pages).forEach(([k, el]) => { el.hidden = (k !== name); });
+    try { localStorage.setItem('rise8-wf-page', name); } catch(e){}
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+  tabs.forEach(t => t.addEventListener('click', () => setPage(t.dataset.page)));
+  try { const saved = localStorage.getItem('rise8-wf-page'); if (saved && pages[saved]) setPage(saved); } catch(e){}
+
+  // Toggles
+  function bindToggle(id, onKey, applyFn, initial){
+    const btn = document.getElementById(id);
+    let state = initial;
+    const apply = () => { btn.classList.toggle('on', state); applyFn(state); try{localStorage.setItem(onKey, state?'1':'0')}catch(e){} };
+    try { const s = localStorage.getItem(onKey); if (s !== null) state = s === '1'; } catch(e){}
+    btn.addEventListener('click', () => { state = !state; apply(); });
+    apply();
+  }
+  bindToggle('t-vibe', 'rise8-wf-vibe', on => document.body.classList.toggle('sketch', on), false);
+  bindToggle('t-annot','rise8-wf-annot', on => document.body.classList.toggle('annots-on', on) + document.body.classList.toggle('no-annots', !on), true);
+  bindToggle('t-accent','rise8-wf-accent', on => {
+    document.documentElement.style.setProperty('--gold', on ? '#C8A96E' : '#888');
+    document.documentElement.style.setProperty('--gold-soft', on ? '#E8D9B8' : '#d8d8d8');
+  }, true);
+</script>
+</body>
+</html>

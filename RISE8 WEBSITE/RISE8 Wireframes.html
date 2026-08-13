@@ -1,0 +1,1258 @@
+<!-- @dsCard group="Website" viewport="1440x980" name="RISE8 Wireframes" subtitle="Low-fidelity layout exploration for the marketing site" -->
+<!DOCTYPE html><html lang="en"><head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE8 Companies — Institutional Wireframes v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Institutional palette — ink on cream, muted accents */
+    --ink:#14181F;
+    --ink-2:#2A3140;
+    --muted:#636B7A;
+    --muted-2:#8E94A0;
+    --rule:#C9C4B8;
+    --rule-soft:#E4DFD2;
+    --paper:#F5F1E8;
+    --paper-2:#EDE7D7;
+    --paper-3:#FAF7EF;
+    --navy:#1A2438;
+    --gold:#8C6E3A;     /* deeper, more institutional */
+    --gold-ink:#5E4820;
+    --accent:#8C6E3A;
+
+    --serif:'EB Garamond', Georgia, 'Times New Roman', serif;
+    --sans:'Inter', system-ui, -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+  /* ============ APP CHROME ============ */
+  .app{display:flex;flex-direction:column;min-height:100vh}
+
+  .topbar{position:sticky;top:0;z-index:50;background:var(--navy);color:#EDE7D7;border-bottom:1px solid rgba(255,255,255,.08)}
+  .topbar-inner{max-width:1680px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand-mark{width:38px;height:38px;border:0.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:500;font-size:14px;color:var(--gold);letter-spacing:.02em}
+  .brand-name{font-family:var(--serif);font-weight:500;font-size:17px;letter-spacing:.04em}
+  .brand-sub{font-size:10px;color:rgba(237,231,215,.5);text-transform:uppercase;letter-spacing:.22em;margin-top:3px;font-weight:500}
+
+  .tabs{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+  .tab{background:transparent;border:none;border-bottom:1px solid transparent;color:rgba(237,231,215,.6);padding:10px 16px;font:500 12px var(--sans);cursor:pointer;letter-spacing:.14em;text-transform:uppercase;transition:all .2s}
+  .tab:hover{color:#fff}
+  .tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+  /* ============ TWEAKS PANEL ============ */
+  .tweaks-btn{
+    position:fixed;bottom:24px;right:24px;z-index:100;
+    background:var(--navy);color:var(--gold);
+    border:0.5px solid var(--gold);
+    padding:10px 18px;font:500 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;
+    cursor:pointer;
+  }
+  .tweaks-btn:hover{background:var(--gold);color:var(--navy)}
+  .tweaks-panel{
+    position:fixed;bottom:70px;right:24px;z-index:100;
+    width:300px;background:#fff;border:0.5px solid var(--ink);
+    box-shadow:0 20px 60px rgba(20,24,31,.25);
+    padding:22px 24px;font-family:var(--sans);
+    display:none;
+  }
+  .tweaks-panel.open{display:block}
+  .tweaks-panel h4{margin:0 0 4px;font:500 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .tweaks-panel h3{margin:0 0 18px;font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);border-bottom:0.5px solid var(--rule);padding-bottom:10px}
+  .tw-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:0.5px solid var(--rule-soft)}
+  .tw-row:last-child{border-bottom:none}
+  .tw-label{font:500 12px var(--sans);color:var(--ink)}
+  .tw-sub{font-size:10px;color:var(--muted);margin-top:1px;letter-spacing:.05em}
+  .toggle{position:relative;width:36px;height:20px;background:#d4cfc2;cursor:pointer;border:none;padding:0;transition:.2s;flex-shrink:0}
+  .toggle::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;background:#fff;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+  .toggle.on{background:var(--gold)}
+  .toggle.on::after{left:18px}
+  .tw-select{display:flex;gap:4px}
+  .tw-chip{padding:4px 10px;font:500 10px var(--sans);letter-spacing:.1em;text-transform:uppercase;border:0.5px solid var(--rule);cursor:pointer;background:transparent;color:var(--muted);transition:.15s}
+  .tw-chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .tw-chip:hover{border-color:var(--ink)}
+
+  /* ============ PAGE HEADER ============ */
+  .page{max-width:1680px;margin:0 auto;padding:48px 32px 80px;width:100%}
+  .page-head{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;border-top:1px solid var(--ink);padding-top:24px;margin-bottom:48px}
+  .page-head .kicker{font:500 10px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .page-head h1{margin:0 0 16px;font-family:var(--serif);font-weight:500;font-size:56px;line-height:1.02;letter-spacing:-.01em;color:var(--ink)}
+  .page-head .lede{font-family:var(--serif);font-weight:400;font-style:italic;font-size:19px;line-height:1.5;color:var(--muted);max-width:56ch}
+  .page-meta{border-left:1px solid var(--rule);padding-left:32px;display:flex;flex-direction:column;gap:20px}
+  .page-meta .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:8px;border-bottom:0.5px solid var(--rule-soft)}
+  .page-meta .k{font:500 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .page-meta .v{font-family:var(--serif);font-weight:500;font-size:15px;color:var(--ink);text-align:right}
+
+  /* ============ VARIATION GRID ============ */
+  .variations{display:grid;gap:56px;grid-template-columns:repeat(3,1fr)}
+  @media (max-width:1500px){.variations{grid-template-columns:1fr;gap:72px}}
+
+  .variation{display:flex;flex-direction:column;gap:20px}
+  .v-meta{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--ink)}
+  .v-num{font-family:var(--serif);font-weight:500;font-size:32px;color:var(--gold);line-height:1;letter-spacing:-.02em}
+  .v-title{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);line-height:1.1}
+  .v-sub{font:500 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .v-desc{font-family:var(--serif);font-weight:400;font-size:14px;line-height:1.55;color:var(--muted);max-width:58ch}
+
+  .devices{display:grid;grid-template-columns:1fr 140px;gap:20px;align-items:start}
+  @media (max-width:640px){.devices{grid-template-columns:1fr}}
+
+  .frame{background:#fff;border:0.5px solid var(--ink-2);position:relative;box-shadow:0 1px 0 rgba(20,24,31,.04), 0 20px 40px -20px rgba(20,24,31,.15)}
+  .frame-label{position:absolute;top:-11px;left:14px;background:var(--paper);padding:0 8px;font:500 9px var(--sans);color:var(--muted);letter-spacing:.22em;text-transform:uppercase}
+
+  .desktop{aspect-ratio:16/11;overflow:hidden}
+  .mobile{aspect-ratio:9/18;overflow:hidden;width:100%}
+
+  .canvas{position:relative;width:100%;height:100%;display:flex;flex-direction:column;background:#fff;overflow:hidden}
+
+  /* ============ REUSABLE MOCK PRIMITIVES ============ */
+  .mk-nav{flex:0 0 auto;display:flex;align-items:center;padding:10px 18px;gap:14px;border-bottom:0.5px solid var(--rule);background:#fff;font-family:var(--serif)}
+  .mk-nav.dark{background:var(--navy);color:var(--paper-2);border-bottom-color:rgba(255,255,255,.1)}
+  .mk-nav .logo{font-family:var(--serif);font-weight:500;font-size:11px;letter-spacing:.15em;color:inherit}
+  .mk-nav .links{display:flex;gap:14px;margin-left:auto;font:500 7.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:inherit;opacity:.8}
+  .mk-nav .login{padding:3px 8px;border:0.5px solid var(--gold);color:var(--gold);font:500 7px var(--sans);letter-spacing:.2em;text-transform:uppercase}
+  .mk-nav-m{flex:0 0 auto;display:flex;align-items:center;padding:6px 10px;border-bottom:0.5px solid var(--rule);background:#fff}
+  .mk-nav-m.dark{background:var(--navy);color:var(--paper-2);border-bottom-color:rgba(255,255,255,.1)}
+  .mk-nav-m .logo{font-family:var(--serif);font-weight:500;font-size:9px;letter-spacing:.14em;color:inherit}
+  .mk-nav-m .burger{margin-left:auto;display:flex;flex-direction:column;gap:2px}
+  .mk-nav-m .burger span{width:12px;height:1px;background:currentColor;display:block}
+
+  /* Photograph placeholder — duotone institutional look */
+  .photo{
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(140,110,58,.25), transparent 60%),
+      radial-gradient(ellipse at 70% 65%, rgba(26,36,56,.35), transparent 55%),
+      linear-gradient(160deg, #2f3a4f 0%, #4a4030 50%, #8c6e3a 100%);
+    position:relative;overflow:hidden;
+  }
+  .photo::after{content:"";position:absolute;inset:0;background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at 50% 100%, rgba(0,0,0,.3), transparent 60%)}
+  .photo.warm{background:
+    radial-gradient(ellipse at 30% 30%, rgba(240,210,150,.35), transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(80,50,20,.5), transparent 55%),
+    linear-gradient(160deg, #c9a573 0%, #8c6e3a 60%, #3a2e18 100%)}
+  .photo.cool{background:
+    radial-gradient(ellipse at 30% 30%, rgba(200,210,230,.3), transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(10,20,40,.6), transparent 55%),
+    linear-gradient(160deg, #7a8495 0%, #3a4458 60%, #1a2438 100%)}
+  .photo.architecture{background:
+    linear-gradient(0deg, rgba(20,24,31,.4), rgba(20,24,31,.1)),
+    linear-gradient(90deg, #2a3140 0 30%, #3a4152 30% 30.5%, #2a3140 30.5% 58%, #3a4152 58% 58.5%, #2a3140 58.5%)}
+
+  /* Text placeholders */
+  .lede-txt{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.005em;color:var(--ink)}
+  .body-txt{font-family:var(--serif);font-weight:400;line-height:1.5;color:var(--muted);font-size:7px}
+  .kicker-txt{font:500 6.5px var(--sans);letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+  .kicker-txt.gold{color:var(--gold)}
+  .kicker-txt.lite{color:rgba(237,231,215,.6)}
+
+  .rule{height:0.5px;background:var(--rule)}
+  .rule-ink{height:1px;background:var(--ink)}
+
+  .ft{height:3.5px;background:rgba(99,107,122,.25);margin:2px 0}
+  .ft.w1{width:60%}.ft.w2{width:85%}.ft.w3{width:40%}.ft.w4{width:95%}.ft.w5{width:72%}
+  .ft.dk{background:rgba(237,231,215,.25)}
+
+  /* Serif numeric display */
+  .numeral{font-family:var(--serif);font-weight:500;color:var(--ink);line-height:.95;letter-spacing:-.02em}
+
+  /* Links with arrow */
+  .mk-link{font:500 7px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:6px;border-bottom:0.5px solid var(--ink);padding-bottom:2px}
+  .mk-link.gold{color:var(--gold);border-bottom-color:var(--gold)}
+  .mk-link.lite{color:var(--paper);border-bottom-color:var(--paper)}
+
+  /* Metric row */
+  .metric-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule)}
+  .metric-row.dk{border-color:rgba(237,231,215,.15)}
+  .metric{padding:10px 12px;border-right:0.5px solid var(--rule);display:flex;flex-direction:column;gap:3px}
+  .metric:last-child{border-right:none}
+  .metric .v{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);line-height:.95;letter-spacing:-.02em}
+  .metric .l{font:500 6px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .metric-row.dk .metric{border-right-color:rgba(237,231,215,.15)}
+  .metric-row.dk .v{color:var(--paper)}
+  .metric-row.dk .l{color:rgba(237,231,215,.55)}
+
+  /* Property card institutional */
+  .ipc{display:flex;flex-direction:column;background:#fff;border:none}
+  .ipc .img{aspect-ratio:4/3}
+  .ipc .body{padding:7px 0 4px}
+  .ipc .num{font-family:var(--serif);font-weight:500;font-size:10px;color:var(--gold);letter-spacing:.05em}
+  .ipc .n{font-family:var(--serif);font-weight:500;font-size:10px;color:var(--ink);margin-top:2px}
+  .ipc .a{font:400 6px var(--sans);color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+
+  /* Company row */
+  .co-row{display:grid;grid-template-columns:30px 1fr 60px 50px;gap:10px;padding:10px 0;border-bottom:0.5px solid var(--rule);align-items:baseline}
+  .co-row .num{font-family:var(--serif);font-weight:500;font-size:13px;color:var(--gold);letter-spacing:-.02em}
+  .co-row .n{font-family:var(--serif);font-weight:500;font-size:14px;color:var(--ink)}
+  .co-row .cat{font:500 7px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-left:8px}
+  .co-row .meta{font:500 7px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right}
+  .co-row .arrow{font-family:var(--serif);font-size:12px;color:var(--ink);text-align:right}
+
+  /* Map */
+  .mk-map{background:
+    repeating-linear-gradient(45deg,var(--paper-2) 0 1px,transparent 1px 10px),
+    repeating-linear-gradient(-45deg,var(--paper-2) 0 1px,transparent 1px 14px),
+    var(--paper);
+    position:relative}
+  .mk-map .pin{position:absolute;width:6px;height:6px;background:var(--gold);border:1px solid var(--ink);border-radius:50%;transform:translate(-50%,-50%)}
+  .mk-map .pin.lg{width:9px;height:9px;background:var(--ink)}
+  .mk-map .pin::after{content:"";position:absolute;inset:-3px;border:0.5px solid var(--gold);border-radius:50%;opacity:.4}
+
+  /* Footer strip */
+  .mk-foot{margin-top:auto;background:var(--navy);color:var(--paper-2);padding:10px 18px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;font:500 6px var(--sans);letter-spacing:.12em;text-transform:uppercase}
+  .mk-foot .h{color:var(--gold);margin-bottom:4px;font-size:6.5px}
+  .mk-foot .l{color:rgba(237,231,215,.55);font-size:5.5px;line-height:1.6;letter-spacing:.08em;text-transform:none}
+
+  /* Utility */
+  .pad{padding:16px 18px}
+  .pad-lg{padding:20px 24px}
+  .row-flex{display:flex}
+  .col-flex{display:flex;flex-direction:column}
+  .flex-1{flex:1}
+  .gap-s{gap:4px}.gap-m{gap:8px}.gap-l{gap:14px}
+
+  /* ============ SUMMARY CARD ============ */
+  .summary{
+    background:#fff;border:0.5px solid var(--ink-2);margin-bottom:64px;
+    display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:0;
+  }
+  .summary > div{padding:28px 32px;border-right:0.5px solid var(--rule)}
+  .summary > div:last-child{border-right:none}
+  .summary h3{margin:0 0 4px;font:500 10px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  .summary h2{margin:0 0 12px;font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);line-height:1.2}
+  .summary p{margin:0;font-family:var(--serif);font-weight:400;font-size:14px;line-height:1.55;color:var(--muted)}
+  .summary ul{margin:10px 0 0;padding:0;list-style:none;font-family:var(--serif);font-size:13px;color:var(--muted);line-height:1.6}
+  .summary li{padding:6px 0;border-top:0.5px solid var(--rule-soft)}
+  .summary li:first-child{border-top:none}
+  .summary li b{color:var(--ink);font-weight:600}
+  .summary .axes{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+  .summary .axes span{font:500 9px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:4px 8px;border:0.5px solid var(--rule)}
+  @media (max-width:1100px){.summary{grid-template-columns:1fr}.summary > div{border-right:none;border-bottom:0.5px solid var(--rule)}}
+
+  /* ============ PAGE VISIBILITY ============ */
+  .page[hidden]{display:none}
+
+  /* ============ TWEAKS: FIDELITY MODE ============ */
+  /* Mode: 'institutional' (default), 'wireframe' (low-fi) */
+  body.mode-wireframe .photo{background:repeating-linear-gradient(45deg,var(--paper-2) 0 6px,var(--paper) 6px 12px) !important}
+  body.mode-wireframe .photo::after{display:none}
+  body.mode-wireframe .frame{box-shadow:none;border-color:var(--muted)}
+
+  /* Mode: density */
+  body.density-spacious .page{padding:72px 48px 120px}
+  body.density-spacious .page-head{padding-top:40px;margin-bottom:72px}
+  body.density-spacious .page-head h1{font-size:72px}
+  body.density-spacious .variations{gap:96px}
+
+  /* Mode: accent hue */
+  body.accent-navy{--gold:#2A3140;--gold-ink:#14181F}
+  body.accent-rust{--gold:#8A3A1A;--gold-ink:#5A2410}
+
+  /* Hide annotations globally is handled inline */
+  body.no-annots .annot{display:none}
+  .annot{position:absolute;font:500 9px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding:3px 8px;background:rgba(245,241,232,.95);border:0.5px solid var(--gold);pointer-events:none;z-index:3;white-space:nowrap}
+</style>
+</head>
+<body class="mode-institutional density-comfortable accent-navy" data-cc-id="cc-1" style="cursor: crosshair; font-family: -apple-system;">
+
+<!-- TWEAKS DEFAULTS -->
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "fidelity": "institutional",
+  "density": "comfortable",
+  "accent": "rust",
+  "annotations": true,
+  "darkHero": true
+}/*EDITMODE-END*/;
+</script>
+
+<div class="app">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">R8</div>
+        <div>
+          <div class="brand-name">RISE8 Companies</div>
+          <div class="brand-sub">Wireframes · v2 · Institutional</div>
+        </div>
+      </div>
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-page="home">Home</button>
+        <button class="tab" data-page="platform">Our Platform</button>
+        <button class="tab" data-page="about">About</button>
+        <button class="tab" data-page="portfolio">Portfolio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================== HOME =========================== -->
+  <section class="page" id="p-home" data-screen-label="Home Wireframes v2">
+    <div class="page-head">
+      <div>
+        <div class="kicker">01 · Home</div>
+        <h1>Home page — three institutional directions</h1>
+        <p class="lede">Three structural approaches modeled on the restraint of firms like Madison Realty Capital: serif display type, generous whitespace, editorial photography, muted accents. No marketing flourish.</p>
+      </div>
+      <div class="page-meta">
+        <div class="row"><span class="k">Audience</span><span class="v">Investors · operators · LPs</span></div>
+        <div class="row"><span class="k">Device</span><span class="v">Desktop &amp; mobile</span></div>
+        <div class="row"><span class="k">Fidelity</span><span class="v">Mid-institutional</span></div>
+        <div class="row"><span class="k">Variations</span><span class="v">3 distinct</span></div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div>
+        <h3>What to accomplish</h3>
+        <h2>Convey scale and integration in the first screen, without shouting.</h2>
+        <p>RISE8 is a parent holding four companies. The first screen should establish the holding-company frame, show credibility (keys · properties · markets), and route three distinct audiences to their next step.</p>
+      </div>
+      <div>
+        <h3>How these three differ</h3>
+        <ul>
+          <li><b>01 · Dispatch.</b> Masthead + editorial lede. Institutional, press-like.</li>
+          <li><b>02 · Portfolio index.</b> A typeset table of the four companies, over a single full-bleed photograph.</li>
+          <li><b>03 · Full-bleed image.</b> Madison-style: quiet hero photo, two lines of copy, one link.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Axes explored</h3>
+        <div class="axes">
+          <span>typography-led</span><span>image-led</span><span>table-led</span><span>restraint</span><span>scroll order</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="variations">
+
+      <!-- HOME V1: Dispatch -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">01</div><div class="v-title">The dispatch</div><div class="v-sub">Editorial · Serif-led</div></div>
+        <div class="v-desc">A masthead with rule dividers. One generous serif statement. A row of metrics rendered as a typeset table, not as colorful tiles. Below the fold, the four companies appear as a ruled list.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav"><div class="logo">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span><span>News</span></div><div class="login">Investor Login</div></div>
+              <!-- Masthead -->
+              <div style="padding:20px 24px 10px;background:var(--paper-3);border-bottom:1px solid var(--ink);display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end">
+                <div>
+                  <div class="kicker-txt">Vol. I · Spring 2026 · Florida</div>
+                  <div class="lede-txt" style="font-size:26px;margin-top:6px;max-width:22ch">Extended-stay hospitality, end to end.</div>
+                </div>
+                <div style="text-align:right">
+                  <div class="kicker-txt">Est. 2014</div>
+                  <div style="font-family:var(--serif);font-style:italic;color:var(--gold);font-size:11px;margin-top:2px">Nana korobi yaoki.</div>
+                </div>
+              </div>
+              <!-- Lede paragraphs two-column -->
+              <div style="padding:14px 24px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;border-bottom:0.5px solid var(--rule)">
+                <div>
+                  <div class="kicker-txt">The platform</div>
+                  <div style="font-family:var(--serif);font-size:10px;line-height:1.55;color:var(--ink);margin-top:4px">RISE8 controls the full value chain of extended-stay hospitality — from acquiring the land and underwriting the capital to pouring the slab, running the front desk, and setting the rate. One ownership, one thesis.</div>
+                </div>
+                <div class="col-flex gap-s">
+                  <div class="kicker-txt">Companies</div>
+                  <div style="font-family:var(--serif);font-size:9px;line-height:1.55;color:var(--muted);margin-top:4px">Stayable Suites · RISE8 Management · RISE8 REF · RISE8 Development.</div>
+                </div>
+                <div class="col-flex gap-s">
+                  <div class="kicker-txt">Footprint</div>
+                  <div style="font-family:var(--serif);font-size:9px;line-height:1.55;color:var(--muted);margin-top:4px">Five Florida markets. 1,300+ keys. 100+ operating team.</div>
+                </div>
+              </div>
+              <!-- Metric table -->
+              <div class="metric-row">
+                <div class="metric"><span class="v">1,300+</span><span class="l">Keys managed</span></div>
+                <div class="metric"><span class="v">7</span><span class="l">Properties</span></div>
+                <div class="metric"><span class="v">100+</span><span class="l">Team members</span></div>
+                <div class="metric"><span class="v">5</span><span class="l">US markets</span></div>
+              </div>
+              <!-- Companies list -->
+              <div style="padding:18px 24px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+                  <div class="kicker-txt">The four companies</div>
+                  <div class="mk-link">View platform →</div>
+                </div>
+                <div class="co-row"><div class="num">01</div><div><span class="n">Stayable Suites</span><span class="cat">Brand</span></div><div class="meta">7 props · 1,300 keys</div><div class="arrow">→</div></div>
+                <div class="co-row"><div class="num">02</div><div><span class="n">RISE8 Management</span><span class="cat">Operations</span></div><div class="meta">In-house</div><div class="arrow">→</div></div>
+                <div class="co-row"><div class="num">03</div><div><span class="n">RISE8 REF</span><span class="cat">Capital</span></div><div class="meta">Debt · equity</div><div class="arrow">→</div></div>
+                <div class="co-row" style="border-bottom-color:var(--ink)"><div class="num">04</div><div><span class="n">RISE8 Development</span><span class="cat">Construction</span></div><div class="meta">GC · PIP</div><div class="arrow">→</div></div>
+              </div>
+              <div class="mk-foot">
+                <div><div class="h">RISE8</div><div class="l">Jacksonville, FL<br>Est. 2014</div></div>
+                <div><div class="h">Platform</div><div class="l">Stayable<br>Management<br>REF · Development</div></div>
+                <div><div class="h">Investors</div><div class="l">Thesis<br>Criteria<br>Investor Login</div></div>
+                <div><div class="h">Contact</div><div class="l">investors@rise8<br>press@rise8<br>careers@rise8</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m"><div class="logo">RISE8</div><div class="burger"><span></span><span></span><span></span></div></div>
+              <div style="padding:10px;border-bottom:1px solid var(--ink)">
+                <div class="kicker-txt" style="font-size:5.5px">Vol. I · 2026</div>
+                <div class="lede-txt" style="font-size:12px;margin-top:3px">A vertically integrated extended-stay company.</div>
+              </div>
+              <div style="padding:8px 10px;border-bottom:0.5px solid var(--rule)">
+                <div class="body-txt">RISE8 controls the full value chain across seven Florida properties operated under a single brand.</div>
+              </div>
+              <div class="metric-row" style="grid-template-columns:1fr 1fr">
+                <div class="metric"><span class="v" style="font-size:14px">1,300+</span><span class="l">Keys</span></div>
+                <div class="metric"><span class="v" style="font-size:14px">7</span><span class="l">Properties</span></div>
+              </div>
+              <div style="padding:8px 10px">
+                <div class="kicker-txt" style="font-size:5.5px;margin-bottom:4px">Companies</div>
+                <div class="co-row" style="grid-template-columns:20px 1fr 12px;padding:5px 0"><div class="num" style="font-size:9px">01</div><div class="n" style="font-size:9px">Stayable</div><div class="arrow" style="font-size:9px">→</div></div>
+                <div class="co-row" style="grid-template-columns:20px 1fr 12px;padding:5px 0"><div class="num" style="font-size:9px">02</div><div class="n" style="font-size:9px">Management</div><div class="arrow" style="font-size:9px">→</div></div>
+                <div class="co-row" style="grid-template-columns:20px 1fr 12px;padding:5px 0"><div class="num" style="font-size:9px">03</div><div class="n" style="font-size:9px">REF</div><div class="arrow" style="font-size:9px">→</div></div>
+                <div class="co-row" style="grid-template-columns:20px 1fr 12px;padding:5px 0;border-bottom-color:var(--ink)"><div class="num" style="font-size:9px">04</div><div class="n" style="font-size:9px">Development</div><div class="arrow" style="font-size:9px">→</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOME V2: Portfolio index over image -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">02</div><div class="v-title">Portfolio index</div><div class="v-sub">Image · Typeset table</div></div>
+        <div class="v-desc">A single full-bleed architectural photograph sits behind a typeset index of the four companies — like a table of contents. Below, a ruled data strip. Quietly confident.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav dark"><div class="logo" style="color:var(--paper)">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span></div><div class="login">Investor Login</div></div>
+              <!-- Full bleed hero -->
+              <div style="position:relative;flex:0 0 60%;overflow:hidden">
+                <div class="photo cool" style="position:absolute;inset:0"></div>
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(20,24,31,.15) 0%, rgba(20,24,31,.55) 100%)"></div>
+                <div style="position:relative;height:100%;padding:24px;display:flex;flex-direction:column;justify-content:space-between">
+                  <div class="kicker-txt lite">A holding company of four</div>
+                  <div>
+                    <div class="lede-txt" style="color:var(--paper);font-size:34px;max-width:14ch">Extended-stay hospitality, end to end.</div>
+                    <div style="font-family:var(--serif);font-style:italic;color:rgba(237,231,215,.7);font-size:12px;max-width:46ch;margin-top:8px">One parent. Four operating companies. Seven Florida properties. A single integrated platform.</div>
+                  </div>
+                  <!-- Table over image -->
+                  <div style="background:rgba(20,24,31,.72);backdrop-filter:blur(8px);border-top:0.5px solid rgba(237,231,215,.2);padding:12px 18px;margin:0 -24px -24px">
+                    <div style="display:grid;grid-template-columns:22px 1.4fr 1fr 60px;gap:14px;align-items:baseline;padding:5px 0;border-bottom:0.5px solid rgba(237,231,215,.15)">
+                      <div class="kicker-txt lite">#</div>
+                      <div class="kicker-txt lite">Company</div>
+                      <div class="kicker-txt lite">Discipline</div>
+                      <div></div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:22px 1.4fr 1fr 60px;gap:14px;align-items:baseline;padding:5px 0;border-bottom:0.5px solid rgba(237,231,215,.12)">
+                      <div style="font-family:var(--serif);color:var(--gold);font-size:11px">01</div>
+                      <div style="font-family:var(--serif);font-size:13px;color:var(--paper)">Stayable Suites</div>
+                      <div class="kicker-txt" style="color:rgba(237,231,215,.6)">Brand</div>
+                      <div class="mk-link lite" style="font-size:6px">View →</div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:22px 1.4fr 1fr 60px;gap:14px;align-items:baseline;padding:5px 0;border-bottom:0.5px solid rgba(237,231,215,.12)">
+                      <div style="font-family:var(--serif);color:var(--gold);font-size:11px">02</div>
+                      <div style="font-family:var(--serif);font-size:13px;color:var(--paper)">RISE8 Management</div>
+                      <div class="kicker-txt" style="color:rgba(237,231,215,.6)">Operations</div>
+                      <div class="mk-link lite" style="font-size:6px">View →</div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:22px 1.4fr 1fr 60px;gap:14px;align-items:baseline;padding:5px 0;border-bottom:0.5px solid rgba(237,231,215,.12)">
+                      <div style="font-family:var(--serif);color:var(--gold);font-size:11px">03</div>
+                      <div style="font-family:var(--serif);font-size:13px;color:var(--paper)">RISE8 REF</div>
+                      <div class="kicker-txt" style="color:rgba(237,231,215,.6)">Capital</div>
+                      <div class="mk-link lite" style="font-size:6px">View →</div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:22px 1.4fr 1fr 60px;gap:14px;align-items:baseline;padding:5px 0">
+                      <div style="font-family:var(--serif);color:var(--gold);font-size:11px">04</div>
+                      <div style="font-family:var(--serif);font-size:13px;color:var(--paper)">RISE8 Development</div>
+                      <div class="kicker-txt" style="color:rgba(237,231,215,.6)">Construction</div>
+                      <div class="mk-link lite" style="font-size:6px">View →</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Data strip -->
+              <div class="metric-row" style="border-top:none">
+                <div class="metric"><span class="v">1,300+</span><span class="l">Keys</span></div>
+                <div class="metric"><span class="v">7</span><span class="l">Properties</span></div>
+                <div class="metric"><span class="v">5</span><span class="l">Markets</span></div>
+                <div class="metric"><span class="v">100%</span><span class="l">Stayable branded</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m dark"><div class="logo" style="color:var(--paper)">RISE8</div><div class="burger" style="color:var(--paper)"><span></span><span></span><span></span></div></div>
+              <div style="position:relative;flex:0 0 50%;overflow:hidden">
+                <div class="photo cool" style="position:absolute;inset:0"></div>
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(20,24,31,.2), rgba(20,24,31,.7))"></div>
+                <div style="position:relative;padding:8px;height:100%;display:flex;flex-direction:column;justify-content:space-between">
+                  <div class="kicker-txt lite" style="font-size:5px">A holding co. of four</div>
+                  <div class="lede-txt" style="color:var(--paper);font-size:13px">Extended-stay, end to end.</div>
+                </div>
+              </div>
+              <div style="padding:6px 10px">
+                <div class="co-row" style="grid-template-columns:16px 1fr 10px;padding:4px 0"><div class="num" style="font-size:8px">01</div><div class="n" style="font-size:8px">Stayable</div><div class="arrow" style="font-size:8px">→</div></div>
+                <div class="co-row" style="grid-template-columns:16px 1fr 10px;padding:4px 0"><div class="num" style="font-size:8px">02</div><div class="n" style="font-size:8px">Management</div><div class="arrow" style="font-size:8px">→</div></div>
+                <div class="co-row" style="grid-template-columns:16px 1fr 10px;padding:4px 0"><div class="num" style="font-size:8px">03</div><div class="n" style="font-size:8px">REF</div><div class="arrow" style="font-size:8px">→</div></div>
+                <div class="co-row" style="grid-template-columns:16px 1fr 10px;padding:4px 0"><div class="num" style="font-size:8px">04</div><div class="n" style="font-size:8px">Development</div><div class="arrow" style="font-size:8px">→</div></div>
+              </div>
+              <div class="metric-row" style="grid-template-columns:1fr 1fr">
+                <div class="metric"><span class="v" style="font-size:13px">1,300+</span><span class="l">Keys</span></div>
+                <div class="metric"><span class="v" style="font-size:13px">7</span><span class="l">Props</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOME V3: Madison-style restraint -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">03</div><div class="v-title">Quiet hero</div><div class="v-sub">Madison-style · Minimal</div></div>
+        <div class="v-desc">The whole first screen is a single photograph with one serif sentence and one link. Proof of scale lives one scroll down in a silent number ladder. This is the most restrained option.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <!-- Floating nav over image -->
+              <div style="position:relative;flex:0 0 68%;overflow:hidden">
+                <div class="photo architecture" style="position:absolute;inset:0"></div>
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(20,24,31,.4) 0%, rgba(20,24,31,.05) 40%, rgba(20,24,31,.55) 100%)"></div>
+                <div style="position:relative;height:100%;display:flex;flex-direction:column">
+                  <div class="mk-nav" style="background:transparent;border-bottom:0.5px solid rgba(237,231,215,.2);color:var(--paper)"><div class="logo" style="color:var(--paper)">RISE8&nbsp;COMPANIES</div><div class="links" style="color:rgba(237,231,215,.7)"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span><span>News</span><span>Contact</span></div><div class="login">Investor Login</div></div>
+                  <div style="flex:1;padding:32px 28px;display:flex;flex-direction:column;justify-content:flex-end;gap:14px">
+                    <div class="kicker-txt lite">RISE8 Companies</div>
+                    <div class="lede-txt" style="font-family: &quot;EB Garamond&quot;;color:var(--paper);font-size:40px;max-width:18ch;font-weight:500;line-height:1">Building, financing, and operating extended-stay hospitality.</div>
+                    <div style="display:flex;gap:14px;margin-top:8px">
+                      <div class="mk-link lite" style="font-size:8px">Explore our platform →</div>
+                      <div class="mk-link lite" style="font-size:8px;border-bottom-color:rgba(237,231,215,.4);color:rgba(237,231,215,.7)">Invest with us →</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Silent numeric ladder below -->
+              <div style="padding:16px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;border-top:1px solid var(--ink)">
+                <div><div class="kicker-txt">Keys</div><div class="numeral" style="font-size:26px;margin-top:4px">1,300<span style="color:var(--gold)">+</span></div></div>
+                <div><div class="kicker-txt">Properties</div><div class="numeral" style="font-size:26px;margin-top:4px">7</div></div>
+                <div><div class="kicker-txt">Markets</div><div class="numeral" style="font-size:26px;margin-top:4px">5</div></div>
+                <div><div class="kicker-txt">Team</div><div class="numeral" style="font-size:26px;margin-top:4px">100<span style="color:var(--gold)">+</span></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div style="position:relative;flex:0 0 70%;overflow:hidden">
+                <div class="photo architecture" style="position:absolute;inset:0"></div>
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(20,24,31,.5), rgba(20,24,31,.2) 40%, rgba(20,24,31,.65))"></div>
+                <div style="position:relative;height:100%;display:flex;flex-direction:column">
+                  <div class="mk-nav-m" style="background:transparent;color:var(--paper);border-bottom-color:rgba(237,231,215,.2)"><div class="logo" style="color:var(--paper)">RISE8</div><div class="burger" style="color:var(--paper)"><span></span><span></span><span></span></div></div>
+                  <div style="flex:1;padding:10px 10px 14px;display:flex;flex-direction:column;justify-content:flex-end">
+                    <div class="kicker-txt lite" style="font-size:5px">RISE8 Cos.</div>
+                    <div class="lede-txt" style="color:var(--paper);font-size:16px;margin-top:4px">Building, financing, &amp; operating extended-stay.</div>
+                    <div class="mk-link lite" style="font-size:6px;margin-top:8px">Platform →</div>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:1px solid var(--ink)">
+                <div><div class="kicker-txt" style="font-size:5px">Keys</div><div class="numeral" style="font-size:14px">1,300+</div></div>
+                <div><div class="kicker-txt" style="font-size:5px">Properties</div><div class="numeral" style="font-size:14px">7</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================== PLATFORM =========================== -->
+  <section class="page" id="p-platform" data-screen-label="Our Platform Wireframes v2" hidden="">
+    <div class="page-head">
+      <div>
+        <div class="kicker">02 · Our platform</div>
+        <h1>The four companies</h1>
+        <p class="lede">Stayable as a clearly articulated sub-brand; three RISE8-prefixed operating companies beside it. Presented as a holding-company index rather than marketing tiles.</p>
+      </div>
+      <div class="page-meta">
+        <div class="row"><span class="k">Pattern</span><span class="v">Hub + spokes</span></div>
+        <div class="row"><span class="k">Each co.</span><span class="v">Own landing page</span></div>
+        <div class="row"><span class="k">Stayable</span><span class="v">Sub-brand, primus inter pares</span></div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div><h3>What to accomplish</h3><h2>Give each company its own room without losing the parent.</h2><p>Three lobby patterns: index-first, photograph-anchored, and immersive. Each sends visitors onward to a dedicated /stayable, /management, /ref, /development page.</p></div>
+      <div><h3>How these differ</h3><ul>
+        <li><b>01 · Prospectus.</b> Four rows, fund-report-like.</li>
+        <li><b>02 · Side-by-side.</b> Tall photo column + editorial cards.</li>
+        <li><b>03 · Full-bleed quadrant.</b> Four image panes, hover reveals detail.</li>
+      </ul></div>
+      <div><h3>Axes explored</h3><div class="axes"><span>density</span><span>image weight</span><span>stayable prominence</span><span>depth</span></div></div>
+    </div>
+
+    <div class="variations">
+
+      <!-- PLATFORM V1: Prospectus -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">01</div><div class="v-title">The prospectus</div><div class="v-sub">Four rows · ruled</div></div>
+        <div class="v-desc">Reads like a page from an annual report. Each company is a full-width row with serif title, discipline, brief, and metrics. Every row links to its dedicated page.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav"><div class="logo">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span></div><div class="login">Investor Login</div></div>
+              <div style="padding:18px 24px 12px;border-bottom:1px solid var(--ink);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end">
+                <div><div class="kicker-txt">Our platform</div><div class="lede-txt" style="font-size:22px;margin-top:4px;max-width:18ch">Four operating companies under one parent.</div></div>
+                <div style="font-family:var(--serif);font-size:10px;line-height:1.55;color:var(--muted)">By internalizing what the industry fragments — acquisition, management, financing, construction — every incentive points the same direction.</div>
+              </div>
+              <!-- 4 rows -->
+              <div style="display:flex;flex-direction:column;flex:1">
+                <div style="display:grid;grid-template-columns:40px 100px 1.4fr 1fr 80px;gap:18px;padding:12px 24px;border-bottom:0.5px solid var(--rule);align-items:center">
+                  <div class="numeral" style="font-size:22px;color:var(--gold)">01</div>
+                  <div class="kicker-txt">Brand</div>
+                  <div><div class="lede-txt" style="font-size:13px">Stayable Suites</div><div style="font-family:var(--serif);font-size:8px;color:var(--muted);line-height:1.55;margin-top:2px">The proprietary brand our entire portfolio operates under. No franchise flag. Direct-booking first. Daily, weekly, monthly.</div></div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-family:var(--serif);font-size:9px;color:var(--ink)"><div><b>7</b> <span class="kicker-txt" style="font-size:5.5px">Properties</span></div><div><b>1,300+</b> <span class="kicker-txt" style="font-size:5.5px">Keys</span></div></div>
+                  <div class="mk-link" style="font-size:7px">View →</div>
+                </div>
+                <div style="display:grid;grid-template-columns:40px 100px 1.4fr 1fr 80px;gap:18px;padding:12px 24px;border-bottom:0.5px solid var(--rule);align-items:center">
+                  <div class="numeral" style="font-size:22px;color:var(--gold)">02</div>
+                  <div class="kicker-txt">Operations</div>
+                  <div><div class="lede-txt" style="font-size:13px">RISE8 Management</div><div style="font-family:var(--serif);font-size:8px;color:var(--muted);line-height:1.55;margin-top:2px">The in-house operator of every property in the portfolio. Revenue management, guest experience, housekeeping, maintenance, reporting.</div></div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-family:var(--serif);font-size:9px;color:var(--ink)"><div><b>100+</b> <span class="kicker-txt" style="font-size:5.5px">Team</span></div><div><b>7</b> <span class="kicker-txt" style="font-size:5.5px">Operated</span></div></div>
+                  <div class="mk-link" style="font-size:7px">View →</div>
+                </div>
+                <div style="display:grid;grid-template-columns:40px 100px 1.4fr 1fr 80px;gap:18px;padding:12px 24px;border-bottom:0.5px solid var(--rule);align-items:center">
+                  <div class="numeral" style="font-size:22px;color:var(--gold)">03</div>
+                  <div class="kicker-txt">Capital</div>
+                  <div><div class="lede-txt" style="font-size:13px">RISE8 REF</div><div style="font-family:var(--serif);font-size:8px;color:var(--muted);line-height:1.55;margin-top:2px">Structures the capital stack for every RISE8 acquisition. Debt, equity, institutional and accredited investor relationships — kept in-house.</div></div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-family:var(--serif);font-size:9px;color:var(--ink)"><div><b>In-house</b></div><div><b>Integrated</b></div></div>
+                  <div class="mk-link" style="font-size:7px">View →</div>
+                </div>
+                <div style="display:grid;grid-template-columns:40px 100px 1.4fr 1fr 80px;gap:18px;padding:12px 24px;border-bottom:1px solid var(--ink);align-items:center">
+                  <div class="numeral" style="font-size:22px;color:var(--gold)">04</div>
+                  <div class="kicker-txt">Construction</div>
+                  <div><div class="lede-txt" style="font-size:13px">RISE8 Development</div><div style="font-family:var(--serif);font-size:8px;color:var(--muted);line-height:1.55;margin-top:2px">Ground-up construction and property-improvement plans for the portfolio. General contracting on our own assets, to our own brand standard.</div></div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-family:var(--serif);font-size:9px;color:var(--ink)"><div><b>GC</b></div><div><b>PIP</b></div></div>
+                  <div class="mk-link" style="font-size:7px">View →</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m"><div class="logo">RISE8</div><div class="burger"><span></span><span></span><span></span></div></div>
+              <div style="padding:8px 10px;border-bottom:1px solid var(--ink)"><div class="kicker-txt" style="font-size:5px">Platform</div><div class="lede-txt" style="font-size:11px">Four companies, one parent.</div></div>
+              <div style="padding:6px 10px;border-bottom:0.5px solid var(--rule)"><div class="numeral" style="color:var(--gold);font-size:11px">01</div><div class="lede-txt" style="font-size:8px">Stayable Suites</div><div class="kicker-txt" style="font-size:4.5px">Brand · 7 props</div></div>
+              <div style="padding:6px 10px;border-bottom:0.5px solid var(--rule)"><div class="numeral" style="color:var(--gold);font-size:11px">02</div><div class="lede-txt" style="font-size:8px">Management</div><div class="kicker-txt" style="font-size:4.5px">Operations · 100+</div></div>
+              <div style="padding:6px 10px;border-bottom:0.5px solid var(--rule)"><div class="numeral" style="color:var(--gold);font-size:11px">03</div><div class="lede-txt" style="font-size:8px">RISE8 REF</div><div class="kicker-txt" style="font-size:4.5px">Capital</div></div>
+              <div style="padding:6px 10px;border-bottom:1px solid var(--ink)"><div class="numeral" style="color:var(--gold);font-size:11px">04</div><div class="lede-txt" style="font-size:8px">Development</div><div class="kicker-txt" style="font-size:4.5px">Construction</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLATFORM V2: side-by-side -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">02</div><div class="v-title">Tall photo, editorial rail</div><div class="v-sub">Image + index</div></div>
+        <div class="v-desc">Tall full-bleed photo of a Stayable property on the left; on the right, a stacked index of four cards — each with a short editorial brief and a rule. A "lobby" layout.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav"><div class="logo">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span></div><div class="login">Investor Login</div></div>
+              <div style="display:grid;grid-template-columns:44% 1fr;flex:1;min-height:0">
+                <div style="position:relative;overflow:hidden"><div class="photo warm" style="position:absolute;inset:0"></div><div style="position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)"><div class="kicker-txt lite">Our platform</div><div><div class="lede-txt" style="color:var(--paper);font-size:22px;max-width:13ch">Four companies.<br>One platform.</div><div style="font-family:var(--serif);font-style:italic;color:rgba(237,231,215,.7);font-size:10px;margin-top:6px;max-width:30ch">Stayable Suites — Orlando, pictured.</div></div></div></div>
+                <div style="padding:18px 24px;display:flex;flex-direction:column;gap:0;background:var(--paper-3)">
+                  <div style="padding:12px 0;border-bottom:0.5px solid var(--rule)">
+                    <div style="display:flex;justify-content:space-between;align-items:baseline"><div class="kicker-txt">Brand · 01</div><div class="mk-link" style="font-size:6.5px">View →</div></div>
+                    <div class="lede-txt" style="font-size:16px;margin-top:2px">Stayable Suites</div>
+                    <div style="font-family:var(--serif);font-size:9px;color:var(--muted);line-height:1.55;margin-top:3px">Proprietary brand. Seven properties, 1,300+ keys. Franchise-free, direct-booking first. Daily, weekly, monthly.</div>
+                  </div>
+                  <div style="padding:12px 0;border-bottom:0.5px solid var(--rule)">
+                    <div style="display:flex;justify-content:space-between;align-items:baseline"><div class="kicker-txt">Operations · 02</div><div class="mk-link" style="font-size:6.5px">View →</div></div>
+                    <div class="lede-txt" style="font-size:16px;margin-top:2px">RISE8 Management</div>
+                    <div style="font-family:var(--serif);font-size:9px;color:var(--muted);line-height:1.55;margin-top:3px">In-house operator of every RISE8 property. Revenue, guest experience, staffing, preventive maintenance — built for our own assets, not sold as a service.</div>
+                  </div>
+                  <div style="padding:12px 0;border-bottom:0.5px solid var(--rule)">
+                    <div style="display:flex;justify-content:space-between;align-items:baseline"><div class="kicker-txt">Capital · 03</div><div class="mk-link" style="font-size:6.5px">View →</div></div>
+                    <div class="lede-txt" style="font-size:16px;margin-top:2px">RISE8 REF</div>
+                    <div style="font-family:var(--serif);font-size:9px;color:var(--muted);line-height:1.55;margin-top:3px">Debt and equity. Capital structured in-house so underwriting and operations stay in the same conversation.</div>
+                  </div>
+                  <div style="padding:12px 0">
+                    <div style="display:flex;justify-content:space-between;align-items:baseline"><div class="kicker-txt">Construction · 04</div><div class="mk-link" style="font-size:6.5px">View →</div></div>
+                    <div class="lede-txt" style="font-size:16px;margin-top:2px">RISE8 Development</div>
+                    <div style="font-family:var(--serif);font-size:9px;color:var(--muted);line-height:1.55;margin-top:3px">Ground-up construction and property improvement. Executed to the brand standard we ourselves enforce as operator.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m"><div class="logo">RISE8</div><div class="burger"><span></span><span></span><span></span></div></div>
+              <div style="position:relative;flex:0 0 32%;overflow:hidden"><div class="photo warm" style="position:absolute;inset:0"></div><div style="position:absolute;inset:0;padding:8px;display:flex;flex-direction:column;justify-content:flex-end"><div class="lede-txt" style="color:var(--paper);font-size:12px">Four companies.<br>One platform.</div></div></div>
+              <div style="padding:6px 10px;display:flex;flex-direction:column">
+                <div style="padding:5px 0;border-bottom:0.5px solid var(--rule)"><div class="kicker-txt" style="font-size:4.5px">Brand · 01</div><div class="lede-txt" style="font-size:9px">Stayable Suites</div></div>
+                <div style="padding:5px 0;border-bottom:0.5px solid var(--rule)"><div class="kicker-txt" style="font-size:4.5px">Ops · 02</div><div class="lede-txt" style="font-size:9px">Management</div></div>
+                <div style="padding:5px 0;border-bottom:0.5px solid var(--rule)"><div class="kicker-txt" style="font-size:4.5px">Capital · 03</div><div class="lede-txt" style="font-size:9px">REF</div></div>
+                <div style="padding:5px 0"><div class="kicker-txt" style="font-size:4.5px">Construction · 04</div><div class="lede-txt" style="font-size:9px">Development</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLATFORM V3: quadrant -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">03</div><div class="v-title">Full-bleed quadrant</div><div class="v-sub">Image · immersive</div></div>
+        <div class="v-desc">Four edge-to-edge panels, each with its own photograph and a single serif title. Hover reveals a brief. Most visual; best if each company will have strong photography.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav dark"><div class="logo" style="color:var(--paper)">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span></div><div class="login">Investor Login</div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;flex:1;gap:0;min-height:0">
+                <div style="position:relative;overflow:hidden;border-right:0.5px solid var(--ink);border-bottom:0.5px solid var(--ink)"><div class="photo warm" style="position:absolute;inset:0"></div><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,31,.15),rgba(20,24,31,.65));padding:14px;display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)"><div class="kicker-txt lite">01 · Brand</div><div><div class="lede-txt" style="color:var(--paper);font-size:20px">Stayable Suites</div><div class="mk-link lite" style="font-size:6.5px;margin-top:6px">Enter →</div></div></div></div>
+                <div style="position:relative;overflow:hidden;border-bottom:0.5px solid var(--ink)"><div class="photo cool" style="position:absolute;inset:0"></div><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,31,.15),rgba(20,24,31,.65));padding:14px;display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)"><div class="kicker-txt lite">02 · Operations</div><div><div class="lede-txt" style="color:var(--paper);font-size:20px">RISE8 Management</div><div class="mk-link lite" style="font-size:6.5px;margin-top:6px">Enter →</div></div></div></div>
+                <div style="position:relative;overflow:hidden;border-right:0.5px solid var(--ink)"><div class="photo architecture" style="position:absolute;inset:0"></div><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,31,.15),rgba(20,24,31,.65));padding:14px;display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)"><div class="kicker-txt lite">03 · Capital</div><div><div class="lede-txt" style="color:var(--paper);font-size:20px">RISE8 REF</div><div class="mk-link lite" style="font-size:6.5px;margin-top:6px">Enter →</div></div></div></div>
+                <div style="position:relative;overflow:hidden"><div class="photo warm" style="position:absolute;inset:0;filter:hue-rotate(-10deg)"></div><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,31,.15),rgba(20,24,31,.65));padding:14px;display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)"><div class="kicker-txt lite">04 · Construction</div><div><div class="lede-txt" style="color:var(--paper);font-size:20px">RISE8 Development</div><div class="mk-link lite" style="font-size:6.5px;margin-top:6px">Enter →</div></div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m dark"><div class="logo" style="color:var(--paper)">RISE8</div><div class="burger" style="color:var(--paper)"><span></span><span></span><span></span></div></div>
+              <div style="display:grid;grid-template-rows:1fr 1fr 1fr 1fr;flex:1;min-height:0">
+                <div style="position:relative;overflow:hidden;border-bottom:0.5px solid var(--ink)"><div class="photo warm" style="position:absolute;inset:0"></div><div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,24,31,.65),rgba(20,24,31,.15));padding:8px;display:flex;flex-direction:column;justify-content:center;color:var(--paper)"><div class="kicker-txt lite" style="font-size:5px">01 · Brand</div><div class="lede-txt" style="color:var(--paper);font-size:10px">Stayable Suites</div></div></div>
+                <div style="position:relative;overflow:hidden;border-bottom:0.5px solid var(--ink)"><div class="photo cool" style="position:absolute;inset:0"></div><div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,24,31,.65),rgba(20,24,31,.15));padding:8px;display:flex;flex-direction:column;justify-content:center;color:var(--paper)"><div class="kicker-txt lite" style="font-size:5px">02 · Ops</div><div class="lede-txt" style="color:var(--paper);font-size:10px">Management</div></div></div>
+                <div style="position:relative;overflow:hidden;border-bottom:0.5px solid var(--ink)"><div class="photo architecture" style="position:absolute;inset:0"></div><div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,24,31,.65),rgba(20,24,31,.15));padding:8px;display:flex;flex-direction:column;justify-content:center;color:var(--paper)"><div class="kicker-txt lite" style="font-size:5px">03 · Capital</div><div class="lede-txt" style="color:var(--paper);font-size:10px">REF</div></div></div>
+                <div style="position:relative;overflow:hidden"><div class="photo warm" style="position:absolute;inset:0;filter:hue-rotate(-10deg)"></div><div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,24,31,.65),rgba(20,24,31,.15));padding:8px;display:flex;flex-direction:column;justify-content:center;color:var(--paper)"><div class="kicker-txt lite" style="font-size:5px">04 · Build</div><div class="lede-txt" style="color:var(--paper);font-size:10px">Development</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================== ABOUT =========================== -->
+  <section class="page" id="p-about" data-screen-label="About Wireframes v2" hidden="">
+    <div class="page-head">
+      <div>
+        <div class="kicker">03 · About</div>
+        <h1>七転び八起き — the firm's story</h1>
+        <p class="lede">The founding narrative carries this page. Three approaches, each quieter than the last.</p>
+      </div>
+      <div class="page-meta">
+        <div class="row"><span class="k">Spine</span><span class="v">Nana korobi yaoki</span></div>
+        <div class="row"><span class="k">Values</span><span class="v">Five, displayed as a table</span></div>
+        <div class="row"><span class="k">Mission / vision</span><span class="v">Paired cards</span></div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div><h3>What to accomplish</h3><h2>A founder's story that reads like a letter, not a pitch.</h2><p>Values belong at the bottom as evidence, not as a hero.</p></div>
+      <div><h3>How these differ</h3><ul>
+        <li><b>01 · Chairman's letter.</b> Type-set letter in two columns.</li>
+        <li><b>02 · Timeline.</b> A horizontal chronology from 2014 to now.</li>
+        <li><b>03 · Manifesto.</b> Oversized proverb on cream; paragraph underneath.</li>
+      </ul></div>
+      <div><h3>Axes explored</h3><div class="axes"><span>tone</span><span>imagery</span><span>chronology</span><span>values layout</span></div></div>
+    </div>
+
+    <div class="variations">
+
+      <!-- ABOUT V1: letter -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">01</div><div class="v-title">Founder's letter</div><div class="v-sub">Two-column serif</div></div>
+        <div class="v-desc">A typeset letter. Small portrait in the margin. Values as a ruled table at the bottom. Reads like the opening of an annual report.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav"><div class="logo">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span></div><div class="login">Investor Login</div></div>
+              <div style="padding:20px 24px 12px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;border-bottom:1px solid var(--ink)">
+                <div><div class="kicker-txt">About · Our story</div><div class="lede-txt" style="font-size:22px;margin-top:4px">A letter from the founder.</div></div>
+                <div style="font-family:var(--serif);font-style:italic;color:var(--gold);font-size:16px;text-align:right">七転び八起き <span style="color:var(--muted);font-style:normal;font-size:9px;letter-spacing:.2em;text-transform:uppercase">· Fall seven, rise eight</span></div>
+              </div>
+              <div style="padding:16px 24px;display:grid;grid-template-columns:90px 1fr 1fr;gap:20px;flex:1">
+                <div><div class="photo warm" style="width:80px;height:100px"></div><div class="kicker-txt" style="margin-top:6px">Founder</div><div style="font-family:var(--serif);font-size:9px;font-style:italic;color:var(--muted);margin-top:2px">[Name], Chairman</div></div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <div class="lede-txt" style="font-size:11px;font-style:italic">Dear reader,</div>
+                  <div style="font-family:var(--serif);font-size:9px;line-height:1.65;color:var(--ink)">RISE8 was founded on a simple premise drawn from an old Japanese proverb: no matter how many times you fall, you always get back up — one more time.</div>
+                  <div style="font-family:var(--serif);font-size:9px;line-height:1.65;color:var(--ink)">Extended-stay hospitality has been underserved by owners who fragment acquisition, development, financing, management, and brand across misaligned stakeholders.</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <div style="font-family:var(--serif);font-size:9px;line-height:1.65;color:var(--ink)">We built RISE8 to change that. A single platform controlling the full value chain, aligned around one thesis: excellent operations compound.</div>
+                  <div style="font-family:var(--serif);font-size:9px;line-height:1.65;color:var(--ink)">What follows is an account of the companies we have built, the properties we own and operate, and the investors who stand beside us.</div>
+                  <div style="font-family:var(--serif);font-style:italic;color:var(--ink);font-size:10px;margin-top:4px">— With respect,</div>
+                </div>
+              </div>
+              <!-- Values table -->
+              <div style="padding:12px 24px;border-top:1px solid var(--ink);background:var(--paper-3)">
+                <div class="kicker-txt" style="margin-bottom:6px">Principles · in practice</div>
+                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0">
+                  <div style="padding-right:10px;border-right:0.5px solid var(--rule)"><div class="numeral" style="color:var(--gold);font-size:16px">I</div><div class="lede-txt" style="font-size:11px;margin-top:2px">Resilience</div><div class="body-txt">Rise once more.</div></div>
+                  <div style="padding:0 10px;border-right:0.5px solid var(--rule)"><div class="numeral" style="color:var(--gold);font-size:16px">II</div><div class="lede-txt" style="font-size:11px;margin-top:2px">Integrity</div><div class="body-txt">Transparent.</div></div>
+                  <div style="padding:0 10px;border-right:0.5px solid var(--rule)"><div class="numeral" style="color:var(--gold);font-size:16px">III</div><div class="lede-txt" style="font-size:11px;margin-top:2px">Excellence</div><div class="body-txt">A high bar.</div></div>
+                  <div style="padding:0 10px;border-right:0.5px solid var(--rule)"><div class="numeral" style="color:var(--gold);font-size:16px">IV</div><div class="lede-txt" style="font-size:11px;margin-top:2px">Innovation</div><div class="body-txt">Data-led.</div></div>
+                  <div style="padding-left:10px"><div class="numeral" style="color:var(--gold);font-size:16px">V</div><div class="lede-txt" style="font-size:11px;margin-top:2px">Collaboration</div><div class="body-txt">In concert.</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m"><div class="logo">RISE8</div><div class="burger"><span></span><span></span><span></span></div></div>
+              <div style="padding:10px;border-bottom:1px solid var(--ink)"><div class="kicker-txt" style="font-size:5px">Our story</div><div class="lede-txt" style="font-size:12px">A founder's letter.</div><div style="font-family:var(--serif);font-style:italic;color:var(--gold);font-size:10px;margin-top:3px">七転び八起き</div></div>
+              <div style="padding:8px 10px;display:flex;gap:8px"><div class="photo warm" style="width:40px;height:50px;flex-shrink:0"></div><div class="body-txt">RISE8 was founded on a simple premise drawn from a Japanese proverb: always get back up, one more time.</div></div>
+              <div style="padding:8px 10px;border-top:0.5px solid var(--rule);background:var(--paper-3)"><div class="kicker-txt" style="font-size:4.5px">Principles</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><div class="numeral" style="color:var(--gold);font-size:10px">I</div><div class="lede-txt" style="font-size:8px">Resilience</div></div><div><div class="numeral" style="color:var(--gold);font-size:10px">II</div><div class="lede-txt" style="font-size:8px">Integrity</div></div><div><div class="numeral" style="color:var(--gold);font-size:10px">III</div><div class="lede-txt" style="font-size:8px">Excellence</div></div><div><div class="numeral" style="color:var(--gold);font-size:10px">IV</div><div class="lede-txt" style="font-size:8px">Innovation</div></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT V2: timeline -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">02</div><div class="v-title">A chronology</div><div class="v-sub">Horizontal timeline</div></div>
+        <div class="v-desc">A typeset timeline along the page's vertical rhythm. Each moment gets a short heading and a line of prose. Reads like a dossier.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav"><div class="logo">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span></div><div class="login">Investor Login</div></div>
+              <div style="padding:20px 24px 14px;border-bottom:1px solid var(--ink)"><div class="kicker-txt">A brief chronology</div><div class="lede-txt" style="font-size:22px;margin-top:4px;max-width:18ch">A decade of building an extended-stay platform.</div></div>
+              <div style="padding:20px 24px;flex:1;position:relative">
+                <div style="position:absolute;left:24px;right:24px;top:38px;height:1px;background:var(--ink)"></div>
+                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative">
+                  <div><div class="numeral" style="font-size:16px;color:var(--ink)">2014</div><div style="width:8px;height:8px;background:var(--gold);border:1px solid var(--ink);margin:8px 0;position:relative;z-index:1"></div><div class="lede-txt" style="font-size:10px">Founding.</div><div class="body-txt">RISE8 is incorporated in Florida around a vertically integrated thesis.</div></div>
+                  <div><div class="numeral" style="font-size:16px;color:var(--ink)">2017</div><div style="width:8px;height:8px;background:#fff;border:1px solid var(--ink);margin:8px 0;position:relative;z-index:1"></div><div class="lede-txt" style="font-size:10px">First property.</div><div class="body-txt">Acquisition of the first Florida extended-stay asset.</div></div>
+                  <div><div class="numeral" style="font-size:16px;color:var(--ink)">2020</div><div style="width:8px;height:8px;background:var(--gold);border:1px solid var(--ink);margin:8px 0;position:relative;z-index:1"></div><div class="lede-txt" style="font-size:10px">Stayable launched.</div><div class="body-txt">The proprietary brand replaces franchise flags across the portfolio.</div></div>
+                  <div><div class="numeral" style="font-size:16px;color:var(--ink)">2023</div><div style="width:8px;height:8px;background:#fff;border:1px solid var(--ink);margin:8px 0;position:relative;z-index:1"></div><div class="lede-txt" style="font-size:10px">REF in-house.</div><div class="body-txt">Real estate finance is internalized. Capital work accelerates.</div></div>
+                  <div><div class="numeral" style="font-size:16px;color:var(--ink)">Today</div><div style="width:8px;height:8px;background:var(--gold);border:1px solid var(--ink);margin:8px 0;position:relative;z-index:1"></div><div class="lede-txt" style="font-size:10px">Seven properties.</div><div class="body-txt">1,300+ keys. 100+ team members. Five Florida markets.</div></div>
+                </div>
+              </div>
+              <div style="padding:12px 24px;border-top:1px solid var(--ink);background:var(--paper-3);display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:28px;align-items:start">
+                <div><div class="kicker-txt">Mission</div><div class="lede-txt" style="font-size:12px;margin-top:3px">Exceptional value through operational control of the full value chain.</div></div>
+                <div><div class="kicker-txt">Vision</div><div class="lede-txt" style="font-size:12px;margin-top:3px">The premier owner-operator of extended-stay hospitality in the US.</div></div>
+                <div><div class="kicker-txt">Principles</div><div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:4px"><span class="kicker-txt" style="padding:2px 6px;border:0.5px solid var(--rule)">I · Resilience</span><span class="kicker-txt" style="padding:2px 6px;border:0.5px solid var(--rule)">II · Integrity</span><span class="kicker-txt" style="padding:2px 6px;border:0.5px solid var(--rule)">III · Excellence</span></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m"><div class="logo">RISE8</div><div class="burger"><span></span><span></span><span></span></div></div>
+              <div style="padding:8px 10px;border-bottom:1px solid var(--ink)"><div class="kicker-txt" style="font-size:5px">A chronology</div><div class="lede-txt" style="font-size:11px">A decade of building.</div></div>
+              <div style="padding:8px 10px;flex:1;position:relative">
+                <div style="position:absolute;left:16px;top:12px;bottom:12px;width:1px;background:var(--ink)"></div>
+                <div style="display:flex;gap:8px;padding:4px 0 6px;margin-left:11px"><div style="width:6px;height:6px;background:var(--gold);border:1px solid var(--ink);margin-top:3px;flex-shrink:0"></div><div><div class="numeral" style="font-size:10px">2014</div><div class="lede-txt" style="font-size:8px">Founding.</div></div></div>
+                <div style="display:flex;gap:8px;padding:4px 0 6px;margin-left:11px"><div style="width:6px;height:6px;background:#fff;border:1px solid var(--ink);margin-top:3px;flex-shrink:0"></div><div><div class="numeral" style="font-size:10px">2017</div><div class="lede-txt" style="font-size:8px">First property.</div></div></div>
+                <div style="display:flex;gap:8px;padding:4px 0 6px;margin-left:11px"><div style="width:6px;height:6px;background:var(--gold);border:1px solid var(--ink);margin-top:3px;flex-shrink:0"></div><div><div class="numeral" style="font-size:10px">2020</div><div class="lede-txt" style="font-size:8px">Stayable.</div></div></div>
+                <div style="display:flex;gap:8px;padding:4px 0 6px;margin-left:11px"><div style="width:6px;height:6px;background:var(--gold);border:1px solid var(--ink);margin-top:3px;flex-shrink:0"></div><div><div class="numeral" style="font-size:10px">Today</div><div class="lede-txt" style="font-size:8px">7 properties.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT V3: manifesto -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">03</div><div class="v-title">Manifesto</div><div class="v-sub">Display type · minimal</div></div>
+        <div class="v-desc">The proverb fills the first screen at display scale; translation sits below in italics; a short paragraph follows. Values become a discreet ruled row at the bottom.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav"><div class="logo">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span></div><div class="login">Investor Login</div></div>
+              <div style="padding:28px 24px;flex:1;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;background:var(--paper-3);border-bottom:1px solid var(--ink)">
+                <div>
+                  <div class="kicker-txt">The firm's name</div>
+                  <div style="font-family:var(--serif);font-weight:500;font-size:62px;color:var(--ink);line-height:.95;letter-spacing:-.02em;margin-top:6px">七転び八起き</div>
+                  <div style="font-family:var(--serif);font-style:italic;color:var(--gold);font-size:18px;margin-top:8px">Nana korobi yaoki.</div>
+                  <div class="lede-txt" style="font-size:28px;margin-top:6px;max-width:14ch;line-height:1.05">Fall seven times. Rise eight.</div>
+                  <div style="font-family:var(--serif);font-size:10px;line-height:1.65;color:var(--muted);margin-top:10px;max-width:48ch">The proverb is not a slogan. It is the operating premise of the firm. Extended-stay hospitality has been underserved by owners who fragment acquisition, development, financing, management, and brand across misaligned stakeholders. We built RISE8 to get up one more time than we fell — and to keep every incentive pointed the same direction.</div>
+                </div>
+                <div class="photo warm" style="aspect-ratio:4/5"></div>
+              </div>
+              <div style="padding:12px 24px;display:grid;grid-template-columns:auto repeat(5,1fr);gap:24px;align-items:baseline">
+                <div class="kicker-txt">Principles</div>
+                <div><div class="numeral" style="color:var(--gold);font-size:13px">I</div><div class="lede-txt" style="font-size:10px">Resilience</div></div>
+                <div><div class="numeral" style="color:var(--gold);font-size:13px">II</div><div class="lede-txt" style="font-size:10px">Integrity</div></div>
+                <div><div class="numeral" style="color:var(--gold);font-size:13px">III</div><div class="lede-txt" style="font-size:10px">Excellence</div></div>
+                <div><div class="numeral" style="color:var(--gold);font-size:13px">IV</div><div class="lede-txt" style="font-size:10px">Innovation</div></div>
+                <div><div class="numeral" style="color:var(--gold);font-size:13px">V</div><div class="lede-txt" style="font-size:10px">Collaboration</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m"><div class="logo">RISE8</div><div class="burger"><span></span><span></span><span></span></div></div>
+              <div style="padding:14px 10px;flex:1;background:var(--paper-3);display:flex;flex-direction:column;justify-content:center;gap:4px">
+                <div class="kicker-txt" style="font-size:5px">The firm's name</div>
+                <div style="font-family:var(--serif);font-weight:500;font-size:24px;color:var(--ink);line-height:.95">七転び八起き</div>
+                <div style="font-family:var(--serif);font-style:italic;color:var(--gold);font-size:10px">Nana korobi yaoki.</div>
+                <div class="lede-txt" style="font-size:13px">Fall seven. Rise eight.</div>
+                <div class="photo warm" style="aspect-ratio:16/9;margin-top:6px"></div>
+              </div>
+              <div style="padding:5px 10px;border-top:1px solid var(--ink);display:grid;grid-template-columns:repeat(5,1fr);gap:3px">
+                <div><div class="numeral" style="color:var(--gold);font-size:9px">I</div></div>
+                <div><div class="numeral" style="color:var(--gold);font-size:9px">II</div></div>
+                <div><div class="numeral" style="color:var(--gold);font-size:9px">III</div></div>
+                <div><div class="numeral" style="color:var(--gold);font-size:9px">IV</div></div>
+                <div><div class="numeral" style="color:var(--gold);font-size:9px">V</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================== PORTFOLIO =========================== -->
+  <section class="page" id="p-portfolio" data-screen-label="Portfolio Wireframes v2" hidden="">
+    <div class="page-head">
+      <div>
+        <div class="kicker">04 · Portfolio</div>
+        <h1>Seven Florida addresses, one brand.</h1>
+        <p class="lede">Portfolio pages on institutional real-estate sites typically function as a register: orderly, ruled, typeset. Three approaches below.</p>
+      </div>
+      <div class="page-meta">
+        <div class="row"><span class="k">Keys</span><span class="v">1,300+</span></div>
+        <div class="row"><span class="k">Properties</span><span class="v">7</span></div>
+        <div class="row"><span class="k">Markets</span><span class="v">5 · FL</span></div>
+        <div class="row"><span class="k">Brand</span><span class="v">100% Stayable</span></div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div><h3>Two audiences</h3><h2>Investors want the register; travelers want the map.</h2><p>Each variation biases one.</p></div>
+      <div><h3>How these differ</h3><ul>
+        <li><b>01 · Register.</b> Typeset table, no imagery above the fold.</li>
+        <li><b>02 · Atlas.</b> Map and image grid side by side.</li>
+        <li><b>03 · Catalog.</b> Full-width per-property rows with imagery.</li>
+      </ul></div>
+      <div><h3>Axes explored</h3><div class="axes"><span>image weight</span><span>booking prominence</span><span>scannability</span><span>cadence</span></div></div>
+    </div>
+
+    <div class="variations">
+
+      <!-- PORTFOLIO V1: register -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">01</div><div class="v-title">The register</div><div class="v-sub">Typeset table</div></div>
+        <div class="v-desc">No imagery above the fold. The portfolio reads like a ship's manifest — market, address, keys, notes, booking link. Hover expands a row to show a photograph.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav"><div class="logo">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span></div><div class="login">Investor Login</div></div>
+              <div style="padding:20px 24px 12px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;border-bottom:1px solid var(--ink)">
+                <div><div class="kicker-txt">Portfolio · a register</div><div class="lede-txt" style="font-size:22px;margin-top:4px">Seven Florida addresses, 1,300+ keys.</div></div>
+                <div style="display:flex;gap:12px;align-items:baseline;font-family:var(--serif);font-size:11px"><span>All</span><span style="color:var(--muted)">Central FL</span><span style="color:var(--muted)">Northeast FL</span></div>
+              </div>
+              <div style="padding:0 24px;flex:1;overflow:hidden">
+                <div style="display:grid;grid-template-columns:28px 100px 1fr 60px 130px 50px;gap:16px;padding:8px 0;border-bottom:1px solid var(--ink);align-items:baseline">
+                  <div class="kicker-txt">№</div><div class="kicker-txt">Market</div><div class="kicker-txt">Address</div><div class="kicker-txt" style="text-align:right">Keys</div><div class="kicker-txt">Notes</div><div></div>
+                </div>
+                <div style="display:grid;grid-template-columns:28px 100px 1fr 60px 130px 50px;gap:16px;padding:9px 0;border-bottom:0.5px solid var(--rule);align-items:baseline">
+                  <div class="numeral" style="font-size:11px;color:var(--gold)">01</div>
+                  <div class="lede-txt" style="font-size:11px">Jacksonville</div>
+                  <div style="font-family:var(--serif);font-size:10px;color:var(--muted)">910 Suemac Road, Jacksonville, FL 32254</div>
+                  <div class="numeral" style="font-size:11px;text-align:right">64</div>
+                  <div class="kicker-txt">'24 renovation · I-295</div>
+                  <div class="mk-link" style="font-size:6.5px">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:28px 100px 1fr 60px 130px 50px;gap:16px;padding:9px 0;border-bottom:0.5px solid var(--rule);align-items:baseline">
+                  <div class="numeral" style="font-size:11px;color:var(--gold)">02</div>
+                  <div class="lede-txt" style="font-size:11px">Kissimmee East</div>
+                  <div style="font-family:var(--serif);font-size:10px;color:var(--muted)">2295 E. Irlo Bronson Memorial Hwy, Kissimmee, FL</div>
+                  <div class="numeral" style="font-size:11px;text-align:right">196</div>
+                  <div class="kicker-txt">Largest · Central FL</div>
+                  <div class="mk-link" style="font-size:6.5px">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:28px 100px 1fr 60px 130px 50px;gap:16px;padding:9px 0;border-bottom:0.5px solid var(--rule);align-items:baseline;background:var(--paper-3)">
+                  <div class="numeral" style="font-size:11px;color:var(--gold)">03</div>
+                  <div class="lede-txt" style="font-size:11px">Kissimmee West</div>
+                  <div style="font-family:var(--serif);font-size:10px;color:var(--muted)">5399 W. Irlo Bronson Memorial Hwy, Kissimmee, FL</div>
+                  <div class="numeral" style="font-size:11px;text-align:right">—</div>
+                  <div class="kicker-txt">10mi to Disney</div>
+                  <div class="mk-link" style="font-size:6.5px">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:28px 100px 1fr 60px 130px 50px;gap:16px;padding:9px 0;border-bottom:0.5px solid var(--rule);align-items:baseline">
+                  <div class="numeral" style="font-size:11px;color:var(--gold)">04</div>
+                  <div class="lede-txt" style="font-size:11px">Lakeland</div>
+                  <div style="font-family:var(--serif);font-size:10px;color:var(--muted)">4645 N. Socrum Loop Road, Lakeland, FL 33809</div>
+                  <div class="numeral" style="font-size:11px;text-align:right">—</div>
+                  <div class="kicker-txt">I-4 · Tampa / Orlando</div>
+                  <div class="mk-link" style="font-size:6.5px">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:28px 100px 1fr 60px 130px 50px;gap:16px;padding:9px 0;border-bottom:0.5px solid var(--rule);align-items:baseline">
+                  <div class="numeral" style="font-size:11px;color:var(--gold)">05</div>
+                  <div class="lede-txt" style="font-size:11px">Orlando</div>
+                  <div style="font-family:var(--serif);font-size:10px;color:var(--muted)">8700 S. Orange Blossom Trail, Orlando, FL 32809</div>
+                  <div class="numeral" style="font-size:11px;text-align:right">—</div>
+                  <div class="kicker-txt">Florida Mall · OCCC</div>
+                  <div class="mk-link" style="font-size:6.5px">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:28px 100px 1fr 60px 130px 50px;gap:16px;padding:9px 0;border-bottom:0.5px solid var(--rule);align-items:baseline;background:var(--paper-3)">
+                  <div class="numeral" style="font-size:11px;color:var(--gold)">06</div>
+                  <div class="lede-txt" style="font-size:11px">St. Augustine</div>
+                  <div style="font-family:var(--serif);font-size:10px;color:var(--muted)">2535 State Road 16, St. Augustine, FL 32092</div>
+                  <div class="numeral" style="font-size:11px;text-align:right">—</div>
+                  <div class="kicker-txt">Historic district · I-95</div>
+                  <div class="mk-link" style="font-size:6.5px">Book</div>
+                </div>
+                <div style="display:grid;grid-template-columns:28px 100px 1fr 60px 130px 50px;gap:16px;padding:9px 0;border-bottom:1px solid var(--ink);align-items:baseline">
+                  <div class="numeral" style="font-size:11px;color:var(--gold)">07</div>
+                  <div class="lede-txt" style="font-size:11px">Davenport</div>
+                  <div style="font-family:var(--serif);font-size:10px;color:var(--muted)">44199 Hwy 27, Davenport, FL 33897</div>
+                  <div class="numeral" style="font-size:11px;text-align:right">—</div>
+                  <div class="kicker-txt">I-4 · Orlando / Tampa</div>
+                  <div class="mk-link" style="font-size:6.5px">Book</div>
+                </div>
+              </div>
+              <div class="metric-row">
+                <div class="metric"><span class="v">1,300+</span><span class="l">Keys</span></div>
+                <div class="metric"><span class="v">7</span><span class="l">Properties</span></div>
+                <div class="metric"><span class="v">5</span><span class="l">Markets</span></div>
+                <div class="metric"><span class="v">100%</span><span class="l">Stayable</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m"><div class="logo">RISE8</div><div class="burger"><span></span><span></span><span></span></div></div>
+              <div style="padding:8px 10px;border-bottom:1px solid var(--ink)"><div class="kicker-txt" style="font-size:5px">Portfolio · register</div><div class="lede-txt" style="font-size:11px">Seven FL addresses.</div></div>
+              <div style="padding:0 10px;flex:1">
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--rule)"><div><span class="numeral" style="color:var(--gold);font-size:9px">01</span> <span class="lede-txt" style="font-size:8px">Jacksonville</span></div><div class="mk-link" style="font-size:5px">Book</div></div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--rule)"><div><span class="numeral" style="color:var(--gold);font-size:9px">02</span> <span class="lede-txt" style="font-size:8px">Kissimmee E</span></div><div class="mk-link" style="font-size:5px">Book</div></div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--rule)"><div><span class="numeral" style="color:var(--gold);font-size:9px">03</span> <span class="lede-txt" style="font-size:8px">Kissimmee W</span></div><div class="mk-link" style="font-size:5px">Book</div></div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--rule)"><div><span class="numeral" style="color:var(--gold);font-size:9px">04</span> <span class="lede-txt" style="font-size:8px">Lakeland</span></div><div class="mk-link" style="font-size:5px">Book</div></div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--rule)"><div><span class="numeral" style="color:var(--gold);font-size:9px">05</span> <span class="lede-txt" style="font-size:8px">Orlando</span></div><div class="mk-link" style="font-size:5px">Book</div></div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--rule)"><div><span class="numeral" style="color:var(--gold);font-size:9px">06</span> <span class="lede-txt" style="font-size:8px">St. Augustine</span></div><div class="mk-link" style="font-size:5px">Book</div></div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--ink)"><div><span class="numeral" style="color:var(--gold);font-size:9px">07</span> <span class="lede-txt" style="font-size:8px">Davenport</span></div><div class="mk-link" style="font-size:5px">Book</div></div>
+              </div>
+              <div class="metric-row" style="grid-template-columns:1fr 1fr"><div class="metric"><span class="v" style="font-size:12px">1,300+</span><span class="l">Keys</span></div><div class="metric"><span class="v" style="font-size:12px">7</span><span class="l">Props</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORTFOLIO V2: atlas -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">02</div><div class="v-title">The atlas</div><div class="v-sub">Map + cards</div></div>
+        <div class="v-desc">A large state-of-Florida map on one side, a silent grid of small property cards on the other. Hovering either highlights the other. For travelers.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav"><div class="logo">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span></div><div class="login">Investor Login</div></div>
+              <div style="padding:14px 24px 10px;border-bottom:1px solid var(--ink);display:flex;justify-content:space-between;align-items:end"><div><div class="kicker-txt">Portfolio · atlas</div><div class="lede-txt" style="font-size:20px;margin-top:3px">Extended-stay across Florida.</div></div><div class="metric-row" style="grid-template-columns:repeat(3,auto);border-top:none;border-bottom:none"><div class="metric" style="padding:2px 12px"><span class="v" style="font-size:15px">1,300+</span><span class="l">Keys</span></div><div class="metric" style="padding:2px 12px"><span class="v" style="font-size:15px">7</span><span class="l">Props</span></div><div class="metric" style="padding:2px 12px;border-right:none"><span class="v" style="font-size:15px">5</span><span class="l">Markets</span></div></div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;flex:1;min-height:0">
+                <div class="mk-map" style="border-right:0.5px solid var(--ink)">
+                  <div class="pin lg" style="left:34%;top:22%"></div>
+                  <div class="pin" style="left:37%;top:30%"></div>
+                  <div class="pin" style="left:45%;top:55%"></div>
+                  <div class="pin" style="left:48%;top:58%"></div>
+                  <div class="pin" style="left:43%;top:62%"></div>
+                  <div class="pin" style="left:50%;top:68%"></div>
+                  <div class="pin" style="left:52%;top:60%"></div>
+                  <div style="position:absolute;bottom:14px;left:14px;font-family:var(--serif);font-style:italic;color:var(--muted);font-size:10px">Florida · seven addresses</div>
+                </div>
+                <div style="padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:hidden">
+                  <div class="ipc"><div class="img photo warm"></div><div class="body"><span class="num">01</span><div class="n">Jacksonville W.</div><div class="a">64 keys · I-295</div></div></div>
+                  <div class="ipc"><div class="img photo cool"></div><div class="body"><span class="num">02</span><div class="n">Kissimmee E.</div><div class="a">196 keys</div></div></div>
+                  <div class="ipc"><div class="img photo architecture"></div><div class="body"><span class="num">03</span><div class="n">Kissimmee W.</div><div class="a">10mi to Disney</div></div></div>
+                  <div class="ipc"><div class="img photo warm"></div><div class="body"><span class="num">04</span><div class="n">Lakeland</div><div class="a">I-4</div></div></div>
+                  <div class="ipc"><div class="img photo cool"></div><div class="body"><span class="num">05</span><div class="n">Orlando</div><div class="a">Florida Mall</div></div></div>
+                  <div class="ipc"><div class="img photo architecture"></div><div class="body"><span class="num">06</span><div class="n">St. Augustine</div><div class="a">I-95</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m"><div class="logo">RISE8</div><div class="burger"><span></span><span></span><span></span></div></div>
+              <div class="mk-map" style="flex:0 0 30%;border-bottom:1px solid var(--ink)">
+                <div class="pin lg" style="left:35%;top:22%"></div>
+                <div class="pin" style="left:45%;top:55%"></div>
+                <div class="pin" style="left:48%;top:60%"></div>
+                <div class="pin" style="left:42%;top:62%"></div>
+              </div>
+              <div style="padding:6px;display:grid;grid-template-columns:1fr 1fr;gap:4px">
+                <div class="ipc"><div class="img photo warm"></div><div class="body" style="padding:4px 0 2px"><span class="num" style="font-size:7px">01</span><div class="n" style="font-size:7px">Jacksonville W</div></div></div>
+                <div class="ipc"><div class="img photo cool"></div><div class="body" style="padding:4px 0 2px"><span class="num" style="font-size:7px">02</span><div class="n" style="font-size:7px">Kissimmee E</div></div></div>
+                <div class="ipc"><div class="img photo architecture"></div><div class="body" style="padding:4px 0 2px"><span class="num" style="font-size:7px">03</span><div class="n" style="font-size:7px">Kissimmee W</div></div></div>
+                <div class="ipc"><div class="img photo warm"></div><div class="body" style="padding:4px 0 2px"><span class="num" style="font-size:7px">04</span><div class="n" style="font-size:7px">Lakeland</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORTFOLIO V3: catalog -->
+      <div class="variation">
+        <div class="v-meta"><div class="v-num">03</div><div class="v-title">The catalog</div><div class="v-sub">Full-width rows</div></div>
+        <div class="v-desc">Each property is a full-width row: a horizontal photograph and a long typeset caption with address, keys, notes, a paragraph. Slow, generous scrolling. Feels like a monograph.</div>
+        <div class="devices">
+          <div class="frame desktop"><div class="frame-label">Desktop · 1440</div>
+            <div class="canvas">
+              <div class="mk-nav"><div class="logo">RISE8 COMPANIES</div><div class="links"><span>Platform</span><span>Portfolio</span><span>About</span><span>Investors</span></div><div class="login">Investor Login</div></div>
+              <div style="padding:18px 24px 10px;border-bottom:1px solid var(--ink)"><div class="kicker-txt">Portfolio · a catalog</div><div class="lede-txt" style="font-size:22px;margin-top:3px">A property-by-property account.</div></div>
+              <div style="flex:1;overflow:hidden">
+                <!-- row 1 -->
+                <div style="display:grid;grid-template-columns:45% 1fr;gap:0;border-bottom:1px solid var(--ink)">
+                  <div class="photo warm" style="aspect-ratio:16/9"></div>
+                  <div style="padding:14px 20px;display:flex;flex-direction:column;justify-content:space-between">
+                    <div><div style="display:flex;justify-content:space-between;align-items:baseline"><div class="kicker-txt">Property № 01 · Jacksonville</div><div class="numeral" style="font-size:13px">64 <span class="kicker-txt" style="font-size:6px">keys</span></div></div><div class="lede-txt" style="font-size:17px;margin-top:3px">Stayable Jacksonville West</div><div style="font-family:var(--serif);font-size:9px;color:var(--muted);line-height:1.6;margin-top:4px;max-width:50ch">910 Suemac Road. Renovated in 2024. Eight miles from downtown Jacksonville; quick access to I-295 and I-10. Indoor pool, weekly housekeeping, pet-friendly.</div></div>
+                    <div style="display:flex;gap:14px;align-items:baseline;margin-top:8px"><div class="mk-link" style="font-size:7px">Book on Stayable →</div><div class="kicker-txt">Daily · weekly · monthly</div></div>
+                  </div>
+                </div>
+                <!-- row 2 -->
+                <div style="display:grid;grid-template-columns:1fr 45%;gap:0;border-bottom:1px solid var(--ink)">
+                  <div style="padding:14px 20px;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper-3)">
+                    <div><div style="display:flex;justify-content:space-between;align-items:baseline"><div class="kicker-txt">Property № 02 · Kissimmee</div><div class="numeral" style="font-size:13px">196 <span class="kicker-txt" style="font-size:6px">keys</span></div></div><div class="lede-txt" style="font-size:17px;margin-top:3px">Stayable Kissimmee East</div><div style="font-family:var(--serif);font-size:9px;color:var(--muted);line-height:1.6;margin-top:4px;max-width:50ch">2295 E. Irlo Bronson Memorial Hwy. 8.2 miles from Gatorland. Outdoor pool, playground, on-site restaurant, arcade.</div></div>
+                    <div style="display:flex;gap:14px;align-items:baseline;margin-top:8px"><div class="mk-link" style="font-size:7px">Book on Stayable →</div><div class="kicker-txt">Central FL</div></div>
+                  </div>
+                  <div class="photo cool" style="aspect-ratio:16/9"></div>
+                </div>
+                <!-- row 3 -->
+                <div style="display:grid;grid-template-columns:45% 1fr;gap:0">
+                  <div class="photo architecture" style="aspect-ratio:16/9"></div>
+                  <div style="padding:14px 20px;display:flex;flex-direction:column;justify-content:space-between">
+                    <div><div style="display:flex;justify-content:space-between;align-items:baseline"><div class="kicker-txt">Property № 03 · Orlando</div><div class="numeral" style="font-size:13px">— <span class="kicker-txt" style="font-size:6px">keys</span></div></div><div class="lede-txt" style="font-size:17px;margin-top:3px">Stayable Orlando</div><div style="font-family:var(--serif);font-size:9px;color:var(--muted);line-height:1.6;margin-top:4px;max-width:50ch">8700 S. Orange Blossom Trail. Less than a mile from the Florida Mall; fifteen minutes to SeaWorld, Universal, and the OCCC.</div></div>
+                    <div style="display:flex;gap:14px;align-items:baseline;margin-top:8px"><div class="mk-link" style="font-size:7px">Book on Stayable →</div><div class="kicker-txt">Central FL</div></div>
+                  </div>
+                </div>
+                <!-- more indicator -->
+                <div style="padding:10px 24px;border-top:1px solid var(--ink);display:flex;justify-content:space-between"><div class="kicker-txt">Four more properties below</div><div class="mk-link" style="font-size:7px">Continue ↓</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame mobile"><div class="frame-label">Mobile</div>
+            <div class="canvas">
+              <div class="mk-nav-m"><div class="logo">RISE8</div><div class="burger"><span></span><span></span><span></span></div></div>
+              <div style="padding:6px 10px;border-bottom:1px solid var(--ink)"><div class="kicker-txt" style="font-size:5px">Catalog</div><div class="lede-txt" style="font-size:11px">Property by property.</div></div>
+              <div style="flex:1;overflow:hidden">
+                <div style="border-bottom:0.5px solid var(--rule)">
+                  <div class="photo warm" style="aspect-ratio:16/9"></div>
+                  <div style="padding:6px 10px"><div class="kicker-txt" style="font-size:4.5px">№ 01 · Jacksonville</div><div class="lede-txt" style="font-size:9px">Stayable Jacksonville West</div><div class="numeral" style="font-size:10px;margin-top:2px">64 <span class="kicker-txt" style="font-size:5px">keys</span></div></div>
+                </div>
+                <div style="border-bottom:0.5px solid var(--rule)">
+                  <div class="photo cool" style="aspect-ratio:16/9"></div>
+                  <div style="padding:6px 10px"><div class="kicker-txt" style="font-size:4.5px">№ 02 · Kissimmee</div><div class="lede-txt" style="font-size:9px">Kissimmee East</div><div class="numeral" style="font-size:10px;margin-top:2px">196 <span class="kicker-txt" style="font-size:5px">keys</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- TWEAKS PANEL -->
+<button class="tweaks-btn" id="tweaksBtn">Tweaks</button>
+<div class="tweaks-panel open" id="tweaksPanel">
+  <h4>Wireframe knobs</h4>
+  <h3>Tweaks</h3>
+
+  <div class="tw-row">
+    <div><div class="tw-label">Fidelity</div><div class="tw-sub">Institutional or wireframe</div></div>
+    <div class="tw-select" data-key="fidelity"><button class="tw-chip on" data-value="institutional">Inst.</button><button class="tw-chip" data-value="wireframe">Wire.</button></div>
+  </div>
+  <div class="tw-row">
+    <div><div class="tw-label">Density</div><div class="tw-sub">Margins &amp; hero scale</div></div>
+    <div class="tw-select" data-key="density"><button class="tw-chip on" data-value="comfortable">Comfy</button><button class="tw-chip" data-value="spacious">Spac.</button></div>
+  </div>
+  <div class="tw-row">
+    <div><div class="tw-label">Accent hue</div><div class="tw-sub">The subtle brand color</div></div>
+    <div class="tw-select" data-key="accent"><button class="tw-chip" data-value="gold">Gold</button><button class="tw-chip on" data-value="navy">Navy</button><button class="tw-chip" data-value="rust">Rust</button></div>
+  </div>
+  <div class="tw-row">
+    <div><div class="tw-label">Annotations</div><div class="tw-sub">Orange callouts on mocks</div></div>
+    <button class="toggle on" data-key="annotations"></button>
+  </div>
+  <div class="tw-row">
+    <div><div class="tw-label">Dark hero variant</div><div class="tw-sub">Hero 03 uses dark gradient</div></div>
+    <button class="toggle on" data-key="darkHero"></button>
+  </div>
+</div>
+
+<script>
+  // ---- Tab nav ----
+  const tabs = document.querySelectorAll('#tabs .tab');
+  const pages = {
+    home: document.getElementById('p-home'),
+    platform: document.getElementById('p-platform'),
+    about: document.getElementById('p-about'),
+    portfolio: document.getElementById('p-portfolio'),
+  };
+  function setPage(name){
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.page === name));
+    Object.entries(pages).forEach(([k, el]) => { el.hidden = (k !== name); });
+    try { localStorage.setItem('rise8-wf2-page', name); } catch(e){}
+    window.scrollTo({top:0});
+  }
+  tabs.forEach(t => t.addEventListener('click', () => setPage(t.dataset.page)));
+  try { const saved = localStorage.getItem('rise8-wf2-page'); if (saved && pages[saved]) setPage(saved); } catch(e){}
+
+  // ---- Tweaks panel ----
+  const panel = document.getElementById('tweaksPanel');
+  const btn = document.getElementById('tweaksBtn');
+  btn.addEventListener('click', () => panel.classList.toggle('open'));
+
+  // Persisted tweak state
+  let tweaks = {...TWEAK_DEFAULTS};
+  try { const s = localStorage.getItem('rise8-wf2-tweaks'); if (s) tweaks = {...tweaks, ...JSON.parse(s)}; } catch(e){}
+
+  function applyTweaks(){
+    const b = document.body;
+    // Clear mode classes
+    b.classList.remove('mode-institutional','mode-wireframe');
+    b.classList.add('mode-' + tweaks.fidelity);
+    b.classList.remove('density-comfortable','density-spacious');
+    b.classList.add('density-' + tweaks.density);
+    b.classList.remove('accent-gold','accent-navy','accent-rust');
+    b.classList.add('accent-' + tweaks.accent);
+    b.classList.toggle('no-annots', !tweaks.annotations);
+
+    // Update chip states
+    panel.querySelectorAll('.tw-select').forEach(sel => {
+      const key = sel.dataset.key;
+      sel.querySelectorAll('.tw-chip').forEach(ch => ch.classList.toggle('on', ch.dataset.value === tweaks[key]));
+    });
+    panel.querySelectorAll('.toggle[data-key]').forEach(t => {
+      t.classList.toggle('on', !!tweaks[t.dataset.key]);
+    });
+
+    try { localStorage.setItem('rise8-wf2-tweaks', JSON.stringify(tweaks)); } catch(e){}
+    // Post to host if EditMode on
+    try { window.parent.postMessage({type:'__edit_mode_set_keys', edits: tweaks}, '*'); } catch(e){}
+  }
+
+  panel.querySelectorAll('.tw-select').forEach(sel => {
+    sel.querySelectorAll('.tw-chip').forEach(ch => {
+      ch.addEventListener('click', () => {
+        tweaks[sel.dataset.key] = ch.dataset.value;
+        applyTweaks();
+      });
+    });
+  });
+  panel.querySelectorAll('.toggle[data-key]').forEach(t => {
+    t.addEventListener('click', () => {
+      tweaks[t.dataset.key] = !tweaks[t.dataset.key];
+      applyTweaks();
+    });
+  });
+
+  applyTweaks();
+
+  // ---- Edit mode protocol ----
+  window.addEventListener('message', (e) => {
+    const d = e.data;
+    if (!d || !d.type) return;
+    if (d.type === '__activate_edit_mode') panel.classList.add('open');
+    if (d.type === '__deactivate_edit_mode') panel.classList.remove('open');
+  });
+  try { window.parent.postMessage({type:'__edit_mode_available'}, '*'); } catch(e){}
+</script>
+
+
+</body></html>

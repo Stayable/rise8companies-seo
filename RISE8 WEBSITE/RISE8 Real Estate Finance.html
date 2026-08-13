@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Estate Finance — RISE8 Companies</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+<style>
+:root{
+  --ink:#25272C;--ink-2:#3D3F44;--muted:#5E6166;
+  --rule:#B4BBC4;--paper:#DCE3EB;--paper-2:#D2DAE3;--paper-3:#E8ECF2;
+  --navy:#1F2126;--accent:#4DC8D3;
+  --serif:'EB Garamond',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(31,33,38,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-in{max-width:1280px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;gap:0}
+.nav-logo{display:flex;align-items:center;gap:14px;color:#E3E3E3}
+.nav-mark{width:38px;height:38px;border:.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font:500 14px/1 var(--serif);color:var(--accent)}
+.nav-name{font:500 16px/1 var(--serif);letter-spacing:.06em}
+.nav-dept{font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.3);padding-left:14px;margin-left:6px;border-left:.5px solid rgba(255,255,255,.1)}
+.nav-links{display:flex;gap:28px;margin-left:auto;font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase}
+.nav-links a{color:rgba(227,227,227,.45);transition:color .15s}
+.nav-links a:hover{color:#fff}
+.nav-back{color:rgba(227,227,227,.25)!important;padding-right:20px;margin-right:6px;border-right:.5px solid rgba(255,255,255,.1)}
+.nav-on{color:#fff!important}
+
+/* ── HERO ── */
+.hero{background:var(--navy);position:relative;overflow:hidden;padding:120px 40px 100px}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0 1px,transparent 1px 3px);pointer-events:none}
+.hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(255,255,255,.06)}
+.hero-in{max-width:1280px;margin:0 auto;position:relative;z-index:1}
+.hero-eye{font:500 9px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(227,227,227,.35);margin-bottom:40px}
+.hero-eye span{color:var(--accent);margin:0 8px}
+.hero-h{font:500 88px/.93 var(--serif);letter-spacing:-.018em;color:#E8E8E8;margin-bottom:32px;max-width:16ch}
+.hero-h em{font-style:italic;color:var(--accent)}
+.hero-rule{width:56px;height:1px;background:var(--accent);margin-bottom:32px}
+.hero-p{font-family:var(--serif);font-size:20px;line-height:1.6;color:rgba(227,227,227,.62);max-width:46ch;margin-bottom:64px}
+.hero-pills{display:flex;gap:0;border:.5px solid rgba(255,255,255,.12)}
+.pill{padding:18px 32px;border-right:.5px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:7px}
+.pill:last-child{border-right:none}
+.pill-label{font:500 9px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.3)}
+.pill-val{font:500 22px/1 var(--serif);color:#E3E3E3;letter-spacing:-.01em}
+.pill-val em{color:var(--accent);font-style:normal}
+
+/* ── STACK SECTION ── */
+.stack{background:var(--paper-2);border-bottom:1px solid var(--ink);padding:80px 40px}
+.stack-in{max-width:1280px;margin:0 auto}
+.section-eye{font:500 9px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--ink);display:flex;align-items:center;justify-content:space-between}
+.section-h{font:500 44px/1.05 var(--serif);letter-spacing:-.01em;color:var(--ink);margin-bottom:56px}
+.section-h em{font-style:italic;color:var(--accent)}
+.stack-bar{display:grid;grid-template-columns:8fr 4fr 4fr 6fr;gap:2px;height:64px;margin-bottom:28px}
+.sb{display:flex;align-items:center;padding:0 20px;font:500 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+.sb-bridge{background:var(--accent);color:var(--navy)}
+.sb-mezz{background:#2E8FA3;color:#fff}
+.sb-pe{background:#1D5C6A;color:rgba(255,255,255,.9)}
+.sb-eq{background:var(--ink);color:rgba(255,255,255,.5)}
+.stack-labels{display:grid;grid-template-columns:8fr 4fr 4fr 6fr;gap:2px}
+.sl-col{display:flex;flex-direction:column;gap:4px;padding:12px 0 0}
+.sl-name{font:500 11px/1 var(--sans);letter-spacing:.06em;color:var(--ink)}
+.sl-sub{font-family:var(--serif);font-size:13px;color:var(--muted);font-style:italic}
+.stack-note{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--muted);margin-top:24px;padding-top:20px;border-top:.5px solid var(--rule)}
+
+/* ── PRODUCT SECTIONS ── */
+.product{border-bottom:1px solid var(--ink)}
+.product:nth-child(odd){background:var(--paper)}
+.product:nth-child(even){background:var(--paper-3)}
+.product-in{max-width:1280px;margin:0 auto;padding:88px 40px;display:grid;grid-template-columns:1fr 440px;gap:80px;align-items:start}
+.prod-tag{font:500 9px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.prod-tag::after{content:"";flex:1;height:.5px;background:var(--rule)}
+.prod-n{font:500 72px/.94 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:20px}
+.prod-n em{font-style:italic;color:var(--accent)}
+.prod-line{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--muted);margin-bottom:28px;line-height:1.45}
+.prod-desc{font-family:var(--serif);font-size:16px;line-height:1.8;color:var(--ink-2);max-width:50ch}
+.prod-uses{display:flex;flex-direction:column;gap:8px;margin-top:28px;padding-top:24px;border-top:.5px solid var(--rule)}
+.prod-use-label{font:500 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.prod-use{font-family:var(--serif);font-size:15px;color:var(--ink-2);padding-left:14px;border-left:2px solid var(--accent);line-height:1.4}
+
+/* ── TERM TABLE ── */
+.term-table{border:1px solid var(--ink);background:var(--paper)}
+.tt-head{background:var(--navy);padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+.tt-head-name{font:500 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:rgba(227,227,227,.5)}
+.tt-head-flag{font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.tt-row{display:grid;grid-template-columns:160px 1fr;border-bottom:.5px solid var(--rule)}
+.tt-row:last-child{border-bottom:none}
+.tt-k{padding:16px 24px;font:500 9px/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-right:.5px solid var(--rule)}
+.tt-v{padding:16px 24px;font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.35}
+.tt-v strong{color:var(--accent);font-weight:500}
+.tt-v em{font-style:italic}
+
+/* ── APPROACH ── */
+.approach{background:var(--navy);padding:100px 40px;-webkit-font-smoothing:antialiased}
+.approach-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:380px 1fr;gap:100px;align-items:start}
+.app-eye{font:500 9px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(227,227,227,.3);margin-bottom:16px}
+.app-h{font:500 48px/1.05 var(--serif);letter-spacing:-.01em;color:#E3E3E3;margin-bottom:28px}
+.app-h em{font-style:italic;color:var(--accent)}
+.app-rule{width:40px;height:1px;background:var(--accent)}
+.app-body p{font-family:var(--serif);font-size:18px;line-height:1.8;color:rgba(227,227,227,.68);margin-bottom:22px}
+.app-body p:last-child{margin:0}
+.app-body em{font-style:italic;color:var(--accent)}
+.criteria{margin-top:40px;padding-top:36px;border-top:.5px solid rgba(255,255,255,.1)}
+.crit-label{font:500 9px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.3);margin-bottom:20px}
+.crit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.07)}
+.crit-item{background:var(--navy);padding:20px 24px}
+.crit-k{font:500 9px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(77,200,211,.7);margin-bottom:6px}
+.crit-v{font-family:var(--serif);font-size:15px;color:rgba(227,227,227,.72);line-height:1.4}
+
+/* ── TRANSACTIONS ── */
+.txn{background:var(--paper-2);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:88px 40px}
+.txn-in{max-width:1280px;margin:0 auto}
+.txn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ink);border:1px solid var(--ink);margin-top:56px}
+.txn-card{display:flex;flex-direction:column;background:var(--paper)}
+.txn-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.txn-body{padding:28px 28px 32px;border-top:1px solid var(--ink);flex:1;display:flex;flex-direction:column;gap:10px}
+.txn-tag{font:500 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.txn-name{font:500 22px/1.15 var(--serif);color:var(--ink);letter-spacing:-.008em}
+.txn-loc{font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.txn-desc{font-family:var(--serif);font-size:14px;line-height:1.6;color:var(--muted);margin-top:6px}
+
+/* ── DEVELOPMENT ── */
+.dev{background:var(--navy);border-top:1px solid rgba(255,255,255,.07);padding:100px 40px;-webkit-font-smoothing:antialiased}
+.dev-in{max-width:1280px;margin:0 auto}
+.dev-eye{font:500 9px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(227,227,227,.3);padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:56px;display:flex;align-items:center;justify-content:space-between}
+.dev-cgc{display:flex;align-items:center;gap:10px;color:var(--accent)}
+.dev-cgc-mark{border:.5px solid var(--accent);padding:4px 10px;font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase}
+.dev-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:72px;align-items:start}
+.dev-h{font:500 68px/.95 var(--serif);letter-spacing:-.016em;color:#E3E3E3;margin-bottom:24px}
+.dev-h em{font-style:italic;color:var(--accent)}
+.dev-sub{font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.3);margin-bottom:10px}
+.dev-rule{width:40px;height:1px;background:var(--accent);margin-bottom:28px}
+.dev-p{font-family:var(--serif);font-size:17px;line-height:1.8;color:rgba(227,227,227,.65);margin-bottom:22px}
+.dev-p:last-child{margin:0}
+.dev-services-label{font:500 9px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.3);margin-bottom:24px;padding-top:36px;border-top:1px solid rgba(255,255,255,.08)}
+.dev-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06)}
+.dev-svc{background:var(--navy);padding:22px 24px;display:flex;align-items:flex-start;gap:14px}
+.dev-svc-n{font:600 10px/1 var(--sans);letter-spacing:.06em;color:rgba(77,200,211,.5);flex:none;margin-top:2px}
+.dev-svc-name{font-family:var(--serif);font-size:16px;line-height:1.3;color:rgba(227,227,227,.8)}
+
+/* ── FOOTER ── */
+.foot{background:var(--navy);padding:56px 40px 28px;border-top:.5px solid rgba(255,255,255,.07);-webkit-font-smoothing:antialiased}
+.foot-in{max-width:1280px;margin:0 auto}
+.foot-g{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:32px;border-bottom:.5px solid rgba(255,255,255,.07);margin-bottom:20px}
+.foot h4{font:500 9px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+.foot-br p{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(227,227,227,.4);line-height:1.65;margin-top:10px;max-width:32ch}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.foot a{font-family:var(--serif);font-size:14px;color:rgba(227,227,227,.55);transition:color .15s}
+.foot a:hover{color:#E3E3E3}
+.foot-bot{display:flex;justify-content:space-between;font:500 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.25)}
+.foot-bot em{font-family:var(--serif);font-style:italic;font-size:12px;letter-spacing:0;text-transform:none;color:rgba(227,227,227,.35)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <div class="nav-logo">
+      <div class="nav-mark">R8</div>
+      <span class="nav-name">RISE8</span>
+      <span class="nav-dept">Real Estate Finance</span>
+    </div>
+    <div class="nav-links">
+      <a href="RISE8 Website.html" class="nav-back">← RISE8.com</a>
+      <a href="#bridge">Bridge</a>
+      <a href="#mezzanine">Mezzanine</a>
+      <a href="#preferred">Preferred Equity</a>
+      <a href="#approach" class="nav-on">Approach</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-in">
+    <p class="hero-eye">RISE8 Companies <span>·</span> 03 · Real Estate Finance</p>
+    <h1 class="hero-h">Capital structured<br>from the<br><em>operator's seat.</em></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-p">Bridge, mezzanine, and preferred equity financing for multifamily. We underwrite the way owners think — because we are one.</p>
+    <div class="hero-pills">
+      <div class="pill">
+        <span class="pill-label">Bridge</span>
+        <span class="pill-val"><em>$10M</em> – $100M</span>
+      </div>
+      <div class="pill">
+        <span class="pill-label">Mezzanine</span>
+        <span class="pill-val"><em>$3M</em> – $10M</span>
+      </div>
+      <div class="pill">
+        <span class="pill-label">Preferred Equity</span>
+        <span class="pill-val"><em>$3M</em> – $10M</span>
+      </div>
+      <div class="pill">
+        <span class="pill-label">Max LTV</span>
+        <span class="pill-val">Up to <em>90%</em></span>
+      </div>
+      <div class="pill">
+        <span class="pill-label">Property Type</span>
+        <span class="pill-val"><em>Multifamily</em></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPITAL STACK -->
+<section class="stack">
+  <div class="stack-in">
+    <div class="section-eye"><span>Capital Structure</span><span>Where we sit</span></div>
+    <h2 class="section-h">Every layer of the stack.<br><em>We cover all three.</em></h2>
+    <div class="stack-bar">
+      <div class="sb sb-bridge">Bridge · Senior</div>
+      <div class="sb sb-mezz">Mezzanine</div>
+      <div class="sb sb-pe">Pref. Equity</div>
+      <div class="sb sb-eq">Equity</div>
+    </div>
+    <div class="stack-labels">
+      <div class="sl-col">
+        <div class="sl-name">Bridge / Senior Debt</div>
+        <div class="sl-sub">Up to 75% LTV · $10M–$100M · SOFR+</div>
+      </div>
+      <div class="sl-col">
+        <div class="sl-name">Mezzanine</div>
+        <div class="sl-sub">Up to 85% LTV · $3M–$10M · 13–15%</div>
+      </div>
+      <div class="sl-col">
+        <div class="sl-name">Preferred Equity</div>
+        <div class="sl-sub">Up to 90% LTV · $3M–$10M · 12–15%</div>
+      </div>
+      <div class="sl-col">
+        <div class="sl-name">Equity</div>
+        <div class="sl-sub">Borrower contributed</div>
+      </div>
+    </div>
+    <p class="stack-note">All products are available for well-located multifamily assets in strong markets with positive demographic, population, and employment trends.</p>
+  </div>
+</section>
+
+<!-- BRIDGE -->
+<section class="product" id="bridge">
+  <div class="product-in">
+    <div>
+      <div class="prod-tag">01 · Senior Financing</div>
+      <h2 class="prod-n">Bridge<br><em>Loan.</em></h2>
+      <p class="prod-line">Short-term capital for acquisitions, rehab, and lease-up — sized against exit value, not today's income.</p>
+      <p class="prod-desc">Our bridge product is built for multifamily operators who need speed and certainty of execution. Floating rate over SOFR, structured for 1 to 3 years with extension options — designed for deals that are being repositioned, stabilized, or taken through a value-add program.</p>
+      <div class="prod-uses">
+        <div class="prod-use-label">Eligible Transactions</div>
+        <div class="prod-use">Traditional acquisitions</div>
+        <div class="prod-use">Acquisitions with a rehab component</div>
+        <div class="prod-use">Nearly-completed new construction in lease-up</div>
+        <div class="prod-use">Stabilizing assets in strong markets</div>
+      </div>
+    </div>
+    <div>
+      <div class="term-table">
+        <div class="tt-head">
+          <span class="tt-head-name">Bridge Loan · Terms</span>
+          <span class="tt-head-flag">Senior · Non-Recourse</span>
+        </div>
+        <div class="tt-row"><div class="tt-k">Loan Amount</div><div class="tt-v"><strong>$10M – $100M</strong></div></div>
+        <div class="tt-row"><div class="tt-k">Loan Term</div><div class="tt-v">1 – 3 years · <em>extension options available</em></div></div>
+        <div class="tt-row"><div class="tt-k">Amortization</div><div class="tt-v">Interest only · case-by-case basis</div></div>
+        <div class="tt-row"><div class="tt-k">Interest Rate</div><div class="tt-v">Floating over <strong>CME SOFR</strong> · spread varies by risk</div></div>
+        <div class="tt-row"><div class="tt-k">Max LTV</div><div class="tt-v"><strong>75%</strong> of exit value</div></div>
+        <div class="tt-row"><div class="tt-k">Max LTC</div><div class="tt-v">Up to <strong>80%</strong> of approved costs</div></div>
+        <div class="tt-row"><div class="tt-k">Min DSCR</div><div class="tt-v">1.25x at exit · <em>lower considered w/ reserves</em></div></div>
+        <div class="tt-row"><div class="tt-k">Security</div><div class="tt-v">First mortgage lien on subject property</div></div>
+        <div class="tt-row"><div class="tt-k">Recourse</div><div class="tt-v">Non-recourse · standard carve-outs</div></div>
+        <div class="tt-row"><div class="tt-k">Prepayment</div><div class="tt-v">Generally permitted</div></div>
+        <div class="tt-row"><div class="tt-k">Property Type</div><div class="tt-v">Multifamily · strong markets</div></div>
+        <div class="tt-row"><div class="tt-k">Required Reports</div><div class="tt-v">Appraisal · PCA · Phase I Environmental</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEZZANINE -->
+<section class="product" id="mezzanine">
+  <div class="product-in">
+    <div>
+      <div class="prod-tag">02 · Subordinate Debt</div>
+      <h2 class="prod-n">Mezzanine<br><em>Financing.</em></h2>
+      <p class="prod-line">Subordinate debt that fills the gap between senior financing and equity — structured co-terminus with the senior loan.</p>
+      <p class="prod-desc">Mezzanine sits between the senior mortgage and equity in the capital structure. Secured by a pledge of ownership interests rather than a direct lien on the property, it gives owners access to leverage that conventional financing alone cannot provide. Interest only or fixed principal paydowns — structured to the deal.</p>
+      <div class="prod-uses">
+        <div class="prod-use-label">Typical Use Cases</div>
+        <div class="prod-use">Supplementing agency senior financing at closing</div>
+        <div class="prod-use">Existing mortgage loan augmentation</div>
+        <div class="prod-use">Reducing equity requirement on stabilized assets</div>
+        <div class="prod-use">Recapitalization of existing capital structures</div>
+      </div>
+    </div>
+    <div>
+      <div class="term-table">
+        <div class="tt-head">
+          <span class="tt-head-name">Mezzanine · Terms</span>
+          <span class="tt-head-flag">Subordinate · UCC Pledge</span>
+        </div>
+        <div class="tt-row"><div class="tt-k">Loan Amount</div><div class="tt-v"><strong>$3M – $10M</strong></div></div>
+        <div class="tt-row"><div class="tt-k">Loan Term</div><div class="tt-v">Co-terminus with senior loan</div></div>
+        <div class="tt-row"><div class="tt-k">Amortization</div><div class="tt-v">Interest only <em>or</em> fixed principal paydowns</div></div>
+        <div class="tt-row"><div class="tt-k">Interest Rate</div><div class="tt-v"><strong>13% – 15%</strong> fixed</div></div>
+        <div class="tt-row"><div class="tt-k">Max LTV</div><div class="tt-v"><strong>85%</strong> combined</div></div>
+        <div class="tt-row"><div class="tt-k">Min DSCR</div><div class="tt-v">As low as <strong>1.10x</strong> through mezz debt service</div></div>
+        <div class="tt-row"><div class="tt-k">Security</div><div class="tt-v">UCC pledge of ownership interests <em>or</em> preferred equity position</div></div>
+        <div class="tt-row"><div class="tt-k">Borrower</div><div class="tt-v">Single-asset entity</div></div>
+        <div class="tt-row"><div class="tt-k">Sponsorship</div><div class="tt-v">Established track record · appropriate net worth &amp; liquidity</div></div>
+        <div class="tt-row"><div class="tt-k">Prepayment</div><div class="tt-v">Generally permitted</div></div>
+        <div class="tt-row"><div class="tt-k">Property Type</div><div class="tt-v">Multifamily · agency senior debt</div></div>
+        <div class="tt-row"><div class="tt-k">Required Reports</div><div class="tt-v">Appraisal · PCA · Phase I Environmental</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREFERRED EQUITY -->
+<section class="product" id="preferred">
+  <div class="product-in">
+    <div>
+      <div class="prod-tag">03 · Junior Capital</div>
+      <h2 class="prod-n">Preferred<br><em>Equity.</em></h2>
+      <p class="prod-line">Junior capital that sits in the ownership structure rather than the debt stack — maximum leverage with the lightest DSCR threshold.</p>
+      <p class="prod-desc">Preferred equity sits inside the borrower's organizational structure rather than as a lien on the real estate. It offers the highest combined LTV of any RISE8 product — up to 90% — with a minimum DSCR as low as 1.05x through the preferred payments. Used in conjunction with new or existing agency mortgage financing.</p>
+      <div class="prod-uses">
+        <div class="prod-use-label">Typical Use Cases</div>
+        <div class="prod-use">Maximizing leverage on stabilized multifamily</div>
+        <div class="prod-use">New multifamily construction with agency senior debt</div>
+        <div class="prod-use">Supplementing existing financing at the ownership level</div>
+        <div class="prod-use">Structured alongside agency debt requiring co-termination</div>
+      </div>
+    </div>
+    <div>
+      <div class="term-table">
+        <div class="tt-head">
+          <span class="tt-head-name">Preferred Equity · Terms</span>
+          <span class="tt-head-flag">Junior · Ownership Position</span>
+        </div>
+        <div class="tt-row"><div class="tt-k">Loan Amount</div><div class="tt-v"><strong>$3M – $10M</strong></div></div>
+        <div class="tt-row"><div class="tt-k">Loan Term</div><div class="tt-v">Co-terminus with senior loan</div></div>
+        <div class="tt-row"><div class="tt-k">Amortization</div><div class="tt-v">Interest only <em>or</em> fixed principal paydowns</div></div>
+        <div class="tt-row"><div class="tt-k">Interest Rate</div><div class="tt-v"><strong>12% – 15%</strong> fixed</div></div>
+        <div class="tt-row"><div class="tt-k">Max LTV</div><div class="tt-v">Up to <strong>90%</strong> combined</div></div>
+        <div class="tt-row"><div class="tt-k">Min DSCR</div><div class="tt-v">As low as <strong>1.05x</strong> through preferred payments</div></div>
+        <div class="tt-row"><div class="tt-k">Security</div><div class="tt-v">Preferred equity position in borrower's org structure</div></div>
+        <div class="tt-row"><div class="tt-k">Borrower</div><div class="tt-v">Single-asset entity</div></div>
+        <div class="tt-row"><div class="tt-k">Sponsorship</div><div class="tt-v">Good credit · sufficient liquidity · demonstrated experience</div></div>
+        <div class="tt-row"><div class="tt-k">Prepayment</div><div class="tt-v">Generally permitted</div></div>
+        <div class="tt-row"><div class="tt-k">Property Type</div><div class="tt-v">Multifamily · existing &amp; new construction</div></div>
+        <div class="tt-row"><div class="tt-k">Required Reports</div><div class="tt-v">Appraisal · PCA · Phase I Environmental</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="approach">
+  <div class="approach-in">
+    <div>
+      <div class="app-eye">Our Approach</div>
+      <h2 class="app-h">We've sat on<br>your side of<br>the <em>table.</em></h2>
+      <div class="app-rule"></div>
+    </div>
+    <div class="app-body">
+      <p>RISE8 Real Estate Finance is the structured financing arm of RISE8 Companies — a vertically integrated real estate operating company that owns and manages multifamily properties across six Florida markets.</p>
+      <p>We don't underwrite from a spreadsheet. We underwrite from an operator's perspective — we know what it costs to turn a unit, what a deferred maintenance schedule looks like at exit, and what a true lease-up curve feels like from the inside. That context changes how we structure deals.</p>
+      <p><em>Certainty of execution is the product.</em> We know the asset class, we move quickly, and we don't retrade.</p>
+      <div class="criteria">
+        <div class="crit-label">Underwriting Criteria</div>
+        <div class="crit-grid">
+          <div class="crit-item"><div class="crit-k">Property Type</div><div class="crit-v">Multifamily — existing and new construction</div></div>
+          <div class="crit-item"><div class="crit-k">Market</div><div class="crit-v">Strong markets with positive demographic &amp; employment trends</div></div>
+          <div class="crit-item"><div class="crit-k">Sponsorship</div><div class="crit-v">Established track record · appropriate net worth &amp; liquidity</div></div>
+          <div class="crit-item"><div class="crit-k">Entity</div><div class="crit-v">Single-asset entity</div></div>
+          <div class="crit-item"><div class="crit-k">Senior Financing</div><div class="crit-v">Agency senior debt preferred for subordinate products</div></div>
+          <div class="crit-item"><div class="crit-k">Required Reports</div><div class="crit-v">Appraisal · Property Condition Assessment · Phase I</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSACTIONS -->
+<section class="txn" id="transactions">
+  <div class="txn-in">
+    <div class="section-eye"><span>RISE8 Companies · Portfolio</span><span>Representative Transactions</span></div>
+    <h2 class="section-h">Deals we've <em>done.</em></h2>
+    <div class="txn-grid">
+      <div class="txn-card">
+        <img class="txn-img" src="uploads/pasted-1782590299475-0.png" alt="Super 8 Orlando" />
+        <div class="txn-body">
+          <div class="txn-tag">Bridge · Value-Add</div>
+          <div class="txn-name">Super 8 Orlando</div>
+          <div class="txn-loc">Orlando, Florida</div>
+          <div class="txn-desc">Acquisition bridge financing for full-property value-add renovation. In-house construction oversight through RISE8 Development. Repositioned and stabilized under Stayable Suites brand.</div>
+        </div>
+      </div>
+      <div class="txn-card">
+        <img class="txn-img" src="uploads/9301 OBT" alt="9301 S. Orange Blossom Trail" />
+        <div class="txn-body">
+          <div class="txn-tag">Non-Performing Loan Acquisition</div>
+          <div class="txn-name">9301 S. Orange Blossom Trail</div>
+          <div class="txn-loc">Orlando, Florida</div>
+          <div class="txn-desc">Acquisition of a non-performing loan on an underperforming hospitality asset. Structured purchase followed by in-house management and operational repositioning.</div>
+        </div>
+      </div>
+      <div class="txn-card">
+        <img class="txn-img" src="uploads/Untitled Project - illustrationImage.png" alt="Davenport Portfolio" style="object-position:center 40%" />
+        <div class="txn-body">
+          <div class="txn-tag">Bridge · Acquisition</div>
+          <div class="txn-name">Davenport Motel</div>
+          <div class="txn-loc">Davenport, Florida</div>
+          <div class="txn-desc">Bridge loan financing for extended-stay acquisition and repositioning. In-house construction management through RISE8 Development LLC with full operational integration at close.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPMENT -->
+<section class="dev" id="development">
+  <div class="dev-in">
+    <div class="dev-eye">
+      <span>RISE8 Companies · 04 · Development &amp; Construction</span>
+      <div class="dev-cgc"><span class="dev-cgc-mark">CGC Licensed</span><span style="font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase">State of Florida</span></div>
+    </div>
+    <div class="dev-top">
+      <div>
+        <h2 class="dev-h">Built<br>in-<em>house.</em></h2>
+        <div class="dev-rule"></div>
+        <p class="dev-p">RISE8 Development LLC is a licensed Certified General Contractor in Florida. We perform in-house renovation through disciplined execution, rigorous cost control, and hands-on project management.</p>
+        <p class="dev-p">As an in-house construction platform fully integrated with RISE8's development and investment teams, we provide end-to-end construction oversight that enhances accountability, mitigates risk, and ensures alignment from preconstruction through project completion.</p>
+      </div>
+      <div>
+        <div class="dev-sub">Local Expertise. Standardized Process.</div>
+        <p class="dev-p">RISE8 Construction combines local market expertise with standardized processes to deliver projects on schedule, on budget, and to exacting quality standards. Our team works closely with design professionals, municipalities, and trade partners to manage complexity, maintain compliance, and deliver durable assets that perform over the long term.</p>
+      </div>
+    </div>
+    <div class="dev-services-label">Construction Services</div>
+    <div class="dev-grid">
+      <div class="dev-svc"><span class="dev-svc-n">01</span><span class="dev-svc-name">Pre-construction Planning &amp; Estimating</span></div>
+      <div class="dev-svc"><span class="dev-svc-n">02</span><span class="dev-svc-name">Architectural, Engineering &amp; Code Compliance</span></div>
+      <div class="dev-svc"><span class="dev-svc-n">03</span><span class="dev-svc-name">Construction Bidding &amp; Trade Management</span></div>
+      <div class="dev-svc"><span class="dev-svc-n">04</span><span class="dev-svc-name">Environmental &amp; Site Due Diligence Coordination</span></div>
+      <div class="dev-svc"><span class="dev-svc-n">05</span><span class="dev-svc-name">Procurement &amp; Contract Administration</span></div>
+      <div class="dev-svc"><span class="dev-svc-n">06</span><span class="dev-svc-name">Schedule, Cost &amp; Quality Control</span></div>
+      <div class="dev-svc"><span class="dev-svc-n">07</span><span class="dev-svc-name">Loss Prevention, Safety &amp; Risk Management</span></div>
+      <div class="dev-svc"><span class="dev-svc-n">08</span><span class="dev-svc-name">General Contracting &amp; Construction Supervision</span></div>
+      <div class="dev-svc"><span class="dev-svc-n">09</span><span class="dev-svc-name">Value-Add Renovations &amp; Repositioning</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-g">
+      <div class="foot-br">
+        <h4>RISE8 Real Estate Finance</h4>
+        <p>Structured financing for multifamily — bridge, mezzanine, and preferred equity — from an operator who knows the asset class.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#bridge">Bridge Loan</a></li>
+          <li><a href="#mezzanine">Mezzanine Financing</a></li>
+          <li><a href="#preferred">Preferred Equity</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>RISE8 Companies</h4>
+        <ul>
+          <li><a href="RISE8 Website.html">RISE8.com</a></li>
+          <li><a href="RISE8 Management.html">Management</a></li>
+          <li><a href="#">Stayable Suites</a></li>
+          <li><a href="#">Development</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 RISE8 Companies · Jacksonville, Florida</span>
+      <em>Nana korobi, ya oki.</em>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

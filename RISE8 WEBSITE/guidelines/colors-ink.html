@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Ink & text" subtitle="Near-black ink down to faint muted labels" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--paper); }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .sw { padding: 22px 16px 16px; min-height: 116px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .name { font: var(--label-sm); letter-spacing: var(--track-label-tight); text-transform: uppercase; }
+  .hex { font-family: var(--serif); font-size: 17px; margin-top: 4px; }
+  .var { font: 500 10px var(--sans); margin-top: 2px; opacity: .7; }
+  .light { color: var(--paper); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw light" style="background: var(--ink)"><div class="name">Ink</div><div class="hex">#25272C</div><div class="var">--ink</div></div>
+    <div class="sw light" style="background: var(--ink-2)"><div class="name">Ink 2</div><div class="hex">#3D3F44</div><div class="var">--ink-2</div></div>
+    <div class="sw light" style="background: var(--muted)"><div class="name">Muted</div><div class="hex">#5E6166</div><div class="var">--muted</div></div>
+    <div class="sw light" style="background: var(--muted-2)"><div class="name">Muted 2</div><div class="hex">#8F9197</div><div class="var">--muted-2</div></div>
+  </div>
+</body>
+</html>

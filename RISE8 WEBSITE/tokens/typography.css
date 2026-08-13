@@ -1,0 +1,37 @@
+/* ============================================================
+   RISE8 — Typography tokens
+   Two families do everything:
+   • EB Garamond — the editorial serif. Display headlines (weight
+     500), running body copy, and italics (used for emphasis and
+     "lede" lines, always tinted accent or muted).
+   • Inter — the sans. Used ONLY for uppercase, letter-spaced
+     labels, eyebrows, nav, buttons, and small meta. Never for
+     long-form body.
+   ============================================================ */
+:root {
+  /* --- Families --- */
+  --serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', system-ui, -apple-system, sans-serif;
+
+  /* --- Display (serif, weight 500, tight tracking) --- */
+  --display-hero:    500 clamp(48px, 6.6vw, 96px)/0.98 var(--serif); /* hero title */
+  --display-1:       500 clamp(36px, 4.5vw, 64px)/1.02 var(--serif); /* section H2 */
+  --display-2:       500 44px/1.0  var(--serif);                     /* large feature */
+  --display-3:       500 34px/1.05 var(--serif);                     /* sub-section H3 */
+  --serif-numeral:   500 64px/0.95 var(--serif);                     /* stat figures */
+  --letter-display:  -0.012em;                                       /* display tracking */
+
+  /* --- Serif body --- */
+  --serif-lede:      400 22px/1.45 var(--serif);   /* italic lede lines */
+  --serif-body:      400 18px/1.6  var(--serif);   /* running copy */
+  --serif-body-sm:   400 15px/1.55 var(--serif);   /* dense descriptions */
+  --serif-caption:   400 14px/1.55 var(--serif);   /* captions, footer links */
+
+  /* --- Sans labels (uppercase, tracked) --- */
+  --label-lg:        500 11px/1 var(--sans);   /* eyebrows, kickers */
+  --label-md:        500 10px/1 var(--sans);   /* meta, button text */
+  --label-sm:        500 9px/1  var(--sans);   /* tags, micro-labels */
+  --track-label:     0.26em;   /* default label tracking */
+  --track-label-tight: 0.22em;
+  --track-label-wide:  0.28em;
+}

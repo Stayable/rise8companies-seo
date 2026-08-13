@@ -1,0 +1,110 @@
+/* ============================================================
+   RISE8 — Base elements & primitive utility classes
+   Derived directly from the RISE8 Companies website. Provides
+   the element resets plus the small set of reusable class atoms
+   (labels, buttons, hairline rules, stats) that the brand uses
+   everywhere. Higher-level patterns live in the React components.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* --- Eyebrow / kicker label --------------------------------- */
+.rise-label {
+  font: var(--label-lg);
+  letter-spacing: var(--track-label-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rise-label--sm { font: var(--label-sm); letter-spacing: var(--track-label-tight); }
+.rise-label--on-dark { color: rgba(227, 227, 227, 0.55); }
+.rise-label .dot { color: var(--accent); margin: 0 8px; }
+
+/* --- Serif display & body ----------------------------------- */
+.rise-display {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: var(--letter-display);
+  color: var(--ink);
+  margin: 0;
+}
+.rise-display em { font-style: italic; color: var(--accent); font-weight: 500; }
+.rise-lede {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--accent);
+  font-size: 22px;
+  line-height: 1.45;
+  margin: 0;
+}
+.rise-body {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 0 18px;
+  max-width: 52ch;
+}
+
+/* --- Buttons ------------------------------------------------ */
+.rise-btn {
+  display: inline-block;
+  padding: 14px 24px;
+  background: var(--ink);
+  color: var(--paper);
+  border: var(--hairline) solid var(--ink);
+  font: var(--label-lg);
+  letter-spacing: var(--track-label-tight);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--dur) var(--ease);
+}
+.rise-btn:hover { background: transparent; color: var(--ink); }
+.rise-btn--ghost {
+  padding: 14px 0;
+  background: transparent;
+  border: none;
+  border-bottom: var(--hairline) solid var(--ink);
+  color: var(--ink);
+}
+.rise-btn--ghost:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.rise-btn--on-dark { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.rise-btn--on-dark:hover { background: transparent; color: var(--paper); }
+
+/* --- Hairline rule ------------------------------------------ */
+.rise-rule       { border: none; border-top: var(--rule-strong) solid var(--ink); margin: 0; }
+.rise-rule--hair { border-top: var(--hairline) solid var(--rule); }
+
+/* --- Tag / pill --------------------------------------------- */
+.rise-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border: var(--hairline) solid var(--rule);
+  font: var(--label-sm);
+  letter-spacing: var(--track-label-tight);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* --- Stat figure -------------------------------------------- */
+.rise-stat-v {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.rise-stat-v sup { color: var(--accent); font-size: 0.5em; vertical-align: 0.6em; margin-left: 2px; }

@@ -1,0 +1,31 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Section divider" subtitle="Numbered chapter break over a 1px rule" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  html, body { margin: 0; }
+  .slide { width: 1280px; height: 720px; position: relative; background: var(--paper-3); color: var(--ink); display: flex; flex-direction: column; }
+  .inner { flex: 1; padding: 72px 88px; display: flex; flex-direction: column; }
+  .num { font-family: var(--serif); font-weight: 500; font-size: 200px; line-height: .9; letter-spacing: -.03em; color: var(--accent); margin-top: auto; }
+  .head { display: grid; grid-template-columns: auto 1fr; gap: 60px; border-top: 1px solid var(--ink); padding-top: 28px; margin-top: 28px; align-items: baseline; }
+  .kicker { font: 500 13px var(--sans); letter-spacing: .3em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  h2 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 64px; line-height: 1.02; letter-spacing: -.012em; color: var(--ink); max-width: 22ch; }
+  h2 em { font-style: italic; color: var(--accent); }
+  .foot { display: flex; justify-content: space-between; align-items: center; padding: 28px 88px; border-top: .5px solid var(--rule); font: 500 11px var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="inner">
+    <div class="num">02</div>
+    <div class="head">
+      <div class="kicker">Our platform</div>
+      <h2>Four operating companies under <em>one parent.</em></h2>
+    </div>
+  </div>
+  <div class="foot"><span>RISE8 Companies</span><span>七転び八起き</span></div>
+</div>
+</body>
+</html>

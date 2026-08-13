@@ -1,7 +1,22 @@
-import createMDX from '@next/mdx'
+/**
+ * 301 map: every URL the current WordPress site serves must land somewhere on the
+ * new site. Inventory source: `snapshot/site-state.md` §4.
+ */
 
-// Old WordPress URLs that should not survive migration → 301 to home.
-// (WordPress junk pages + internal HR/ops docs that were public by mistake — see snapshot/site-state.md §4b/§4c.)
+// The old marketing pages. The new site consolidates them into the single-page
+// home, so each old path 301s to its section anchor.
+const consolidated = [
+  ['/about-us', '/#about'],
+  ['/culture-and-values', '/#about'],
+  ['/investors', '/#invest'],
+  ['/contact-us', '/#contact'],
+  ['/careers', '/#contact'],
+  ['/leadership', '/#leadership'],
+  ['/portfolio', '/#portfolio'],
+]
+
+// WordPress junk pages + internal HR/ops docs that were public by mistake
+// (snapshot §4b/§4c). These must not survive migration.
 const goneToHome = [
   '/home',
   '/home-page',
@@ -23,13 +38,16 @@ const goneToHome = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // The 8 real marketing pages keep their exact current paths (zero redirect / equity loss).
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   async redirects() {
-    return goneToHome.map((source) => ({ source, destination: '/', permanent: true }))
+    return [
+      ...consolidated.map(([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      })),
+      ...goneToHome.map((source) => ({ source, destination: '/', permanent: true })),
+    ]
   },
 }
 
-const withMDX = createMDX({})
-
-export default withMDX(nextConfig)
+export default nextConfig

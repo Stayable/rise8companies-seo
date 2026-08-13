@@ -1,0 +1,41 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Stats slide" subtitle="Four serif figures over a recessed band" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  html, body { margin: 0; }
+  .slide { width: 1280px; height: 720px; position: relative; background: var(--paper); color: var(--ink); display: flex; flex-direction: column; }
+  .inner { flex: 1; padding: 80px 88px 0; display: flex; flex-direction: column; }
+  .head { display: grid; grid-template-columns: auto 1fr; gap: 60px; border-top: 1px solid var(--ink); padding-top: 28px; align-items: baseline; }
+  .kicker { font: 500 13px var(--sans); letter-spacing: .3em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  h2 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 52px; line-height: 1.02; letter-spacing: -.012em; color: var(--ink); max-width: 22ch; }
+  h2 em { font-style: italic; color: var(--accent); }
+  .stats { margin-top: auto; background: var(--paper-2); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 56px 40px; border-right: .5px solid var(--rule); display: flex; flex-direction: column; gap: 12px; }
+  .stat:last-child { border-right: none; }
+  .v { font-family: var(--serif); font-weight: 500; font-size: 84px; line-height: .9; letter-spacing: -.02em; color: var(--ink); }
+  .v sup { color: var(--accent); font-size: .42em; vertical-align: .7em; margin-left: 2px; }
+  .l { font: 500 12px var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
+  .foot { display: flex; justify-content: space-between; align-items: center; padding: 24px 88px; font: 500 11px var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="inner">
+    <div class="head">
+      <div class="kicker">By the numbers</div>
+      <h2>A platform built for <em>operational control.</em></h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v">1,300<sup>+</sup></div><div class="l">Keys managed</div></div>
+      <div class="stat"><div class="v">8</div><div class="l">Properties</div></div>
+      <div class="stat"><div class="v">5</div><div class="l">Florida markets</div></div>
+      <div class="stat"><div class="v">100<sup>%</sup></div><div class="l">Stayable branded</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>RISE8 Companies</span><span>04</span></div>
+</div>
+</body>
+</html>

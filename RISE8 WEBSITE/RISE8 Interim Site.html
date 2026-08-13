@@ -1,0 +1,1060 @@
+<!-- @dsCard group="Website" viewport="1440x980" name="RISE8 Website — live" subtitle="The production single-page marketing site" -->
+<!-- @startingPoint section="Website" subtitle="Full RISE8 marketing site — hero, company index, platform, portfolio, footer" viewport="1440x980" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RISE8 Companies</title>
+<link rel="icon" href="favicon/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<script src="image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#25272C;
+    --ink-2:#3D3F44;
+    --muted:#5E6166;
+    --muted-2:#8F9197;
+    --rule:#B4BBC4;
+    --rule-soft:#CDD2DA;
+    --paper:#DCE3EB;
+    --paper-2:#D2DAE3;
+    --paper-3:#E8ECF2;
+    --navy:#1F2126;
+    --rust:#4DC8D3;
+    --rust-ink:#007882;
+    --accent:var(--rust);
+    --serif:'EB Garamond', Georgia, 'Times New Roman', serif;
+    --sans:'Inter', system-ui, -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit;text-decoration:none}
+
+  /* ============ TOP NAV ============ */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(31,33,38,.96);backdrop-filter:blur(8px);color:#EDE7D7;border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-inner{max-width:1440px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;gap:32px}
+  .logo{display:flex;align-items:center;gap:14px}
+  .logo .mark{width:40px;height:40px;border:0.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:500;font-size:15px;color:var(--accent);letter-spacing:.02em}
+  .logo .name{font-family:var(--serif);font-weight:500;font-size:17px;letter-spacing:.06em}
+  .nav-links{display:flex;gap:28px;font:500 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.72)}
+  .nav-links a{position:relative;padding:4px 0;transition:color .2s}
+  .nav-links a:hover,.nav-links a.active{color:#fff}
+  .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--accent)}
+  .login{margin-left:auto;padding:7px 14px;border:0.5px solid var(--accent);color:var(--accent);font:500 10px var(--sans);letter-spacing:.24em;text-transform:uppercase;transition:.2s;white-space:nowrap}
+  .login:hover{background:var(--accent);color:var(--navy)}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;height:78vh;min-height:600px;max-height:720px;overflow:hidden;background:var(--navy)}
+  .hero-bg{position:absolute;inset:0}
+  .hero-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,18,24,.1) 0%, rgba(15,18,24,.05) 40%, rgba(15,18,24,.75) 100%)}
+  .hero-arch{display:none}
+
+  .hero-inner{position:relative;height:100%;max-width:1440px;margin:0 auto;padding:56px 40px;display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)}
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
+  .eyebrow{font:500 11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.55)}
+  .eyebrow .dot{color:var(--accent);margin:0 8px}
+  .hero-top .proverb{text-align:right;font-family:var(--serif);font-style:italic;color:rgba(227,227,227,.55);font-size:15px}
+  .hero-top .proverb b{display:block;font-style:normal;font-weight:500;color:var(--accent);font-size:14px;letter-spacing:.05em;margin-bottom:4px}
+
+  .hero-title{font-family:var(--serif);font-weight:500;font-size:clamp(48px, 6.6vw, 96px);line-height:.98;letter-spacing:-.012em;color:#E3E3E3;max-width:18ch;margin:0 0 24px}
+  .hero-title em{font-style:italic;color:var(--accent);font-weight:500}
+  .hero-sub{font-family:var(--serif);font-style:italic;color:rgba(227,227,227,.72);font-size:19px;max-width:60ch;line-height:1.5;margin:0}
+
+  .hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:56px}
+  .hero-cta{display:flex;gap:20px;align-items:center}
+  .btn-primary{padding:14px 24px;background:var(--paper);color:var(--ink);font:500 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;transition:.2s;border:0.5px solid var(--paper)}
+  .btn-primary:hover{background:transparent;color:var(--paper)}
+  .btn-ghost{padding:14px 0;color:rgba(227,227,227,.85);font:500 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;border-bottom:0.5px solid rgba(227,227,227,.5);transition:.2s}
+  .btn-ghost:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+  /* Scroll index */
+  .scroll-hint{font:500 10px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.5);display:flex;align-items:center;gap:10px}
+  .scroll-hint .line{width:40px;height:0.5px;background:rgba(227,227,227,.4)}
+
+  /* ============ HOME: INDEX TABLE ============ */
+  .index-strip{background:var(--navy);color:var(--paper);border-top:0.5px solid rgba(227,227,227,.15);padding:0}
+  .index-inner{max-width:1440px;margin:0 auto;padding:28px 40px}
+  .index-head{display:grid;grid-template-columns:28px 1.4fr 1.2fr 1.4fr 90px;gap:24px;padding:10px 0;border-bottom:0.5px solid rgba(227,227,227,.2);align-items:baseline}
+  .index-head .h{font:500 10px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:rgba(227,227,227,.55)}
+  .index-row{display:grid;grid-template-columns:28px 1.4fr 1.2fr 1.4fr 90px;gap:24px;padding:22px 0;border-bottom:0.5px solid rgba(227,227,227,.12);align-items:baseline;transition:.2s;cursor:pointer}
+  .index-row:last-child{border-bottom:none}
+  .index-row:hover{background:rgba(255,255,255,.03)}
+  .index-row:hover .ix-link{color:var(--accent)}
+  .ix-num{font-family:var(--serif);color:var(--accent);font-size:22px;font-weight:500;line-height:1}
+  .ix-name{font-family:var(--serif);font-size:26px;color:#E3E3E3;font-weight:500;letter-spacing:-.005em;line-height:1.05}
+  .ix-disc{font:500 10px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:rgba(227,227,227,.6)}
+  .ix-desc{font-family:var(--serif);font-size:14px;color:rgba(227,227,227,.75);line-height:1.5}
+  .ix-link{font:500 10px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--paper);border-bottom:0.5px solid rgba(227,227,227,.5);padding-bottom:2px;justify-self:end;transition:.2s}
+
+  /* ============ STANDARD SECTION ============ */
+  section{position:relative}
+  .wrap{max-width:1440px;margin:0 auto;padding:120px 40px}
+  .wrap-tight{max-width:1440px;margin:0 auto;padding:80px 40px}
+
+  .sec-head{display:grid;grid-template-columns:auto 1fr;gap:60px;border-top:1px solid var(--ink);padding-top:24px;margin-bottom:56px;align-items:baseline}
+  .sec-head .kicker{font:500 11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .sec-head h2{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(36px, 4.5vw, 64px);line-height:1.02;letter-spacing:-.01em;color:var(--ink);max-width:22ch}
+  .sec-head em{font-style:italic;color:var(--accent)}
+
+  .sec-body{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:40px}
+  .sec-body .col p{font-family:var(--serif);font-size:18px;line-height:1.6;color:var(--ink);margin:0 0 18px;max-width:52ch}
+  .sec-body .col p.lede{font-style:italic;color:var(--accent);font-size:22px;line-height:1.45}
+
+  /* ============ STATS BAND ============ */
+  .stats{background:var(--paper-2);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .stats-inner{max-width:1440px;margin:0 auto;padding:48px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+  .stat{display:flex;flex-direction:column;gap:8px}
+  .stat .v{font-family:var(--serif);font-weight:500;font-size:64px;line-height:.95;letter-spacing:-.02em;color:var(--ink)}
+  .stat .v sup{color:var(--accent);font-size:.5em;vertical-align:.6em;margin-left:2px}
+  .stat .l{font:500 11px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+  .stat .n{font-family:var(--serif);font-size:14px;color:var(--muted);font-style:italic;margin-top:2px}
+
+  /* ============ PLATFORM: TALL PHOTO + RAIL ============ */
+  .platform-split{display:grid;grid-template-columns:44% 1fr;gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .platform-photo{position:relative;min-height:880px;overflow:hidden;background:var(--ink)}
+  .platform-photo .img{position:absolute;inset:0;background:
+    radial-gradient(ellipse at 30% 30%, rgba(180,230,235,.25), transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(0,90,100,.55), transparent 55%),
+    linear-gradient(160deg, #6fb8c0 0%, #228e98 60%, #10353a 100%)}
+  .platform-photo .img::before{content:"";position:absolute;inset:0;background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0 1px, transparent 1px 3px)}
+  .platform-photo .img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(20,24,31,.2) 0%, rgba(20,24,31,.6) 100%)}
+  /* Faux interior — window and lamp */
+  .platform-photo .win{position:absolute;top:18%;right:12%;width:42%;height:52%;background:linear-gradient(180deg, rgba(255,220,180,.35) 0%, rgba(255,200,140,.1) 60%, transparent 100%);border:0.5px solid rgba(255,220,180,.3);box-shadow:inset 0 0 60px rgba(0,0,0,.4)}
+  .platform-photo .win::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:0.5px;background:rgba(0,0,0,.4)}
+  .platform-photo .win::after{content:"";position:absolute;top:50%;left:0;right:0;height:0.5px;background:rgba(0,0,0,.4)}
+  .platform-photo .caption{position:absolute;bottom:40px;left:40px;right:40px;color:var(--paper);z-index:2}
+  .platform-photo .caption .k{font:500 10px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.6)}
+  .platform-photo .caption h3{margin:12px 0 10px;font-family:var(--serif);font-weight:500;font-size:44px;line-height:1;letter-spacing:-.01em;color:#E3E3E3}
+  .platform-photo .caption p{margin:0;font-family:var(--serif);font-style:italic;font-size:16px;color:rgba(227,227,227,.75);max-width:34ch}
+
+  .platform-rail{background:var(--paper-3);padding:56px 56px}
+  .platform-rail .rail-head{padding-bottom:24px;border-bottom:1px solid var(--ink);margin-bottom:0}
+  .platform-rail .rail-head .k{font:500 11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .platform-rail .rail-head h2{margin:10px 0 0;font-family:var(--serif);font-weight:500;font-size:40px;line-height:1.05;letter-spacing:-.01em;color:var(--ink);max-width:18ch}
+
+  .co-card{padding:26px 0;border-bottom:0.5px solid var(--rule);display:grid;grid-template-columns:40px 1fr auto;gap:20px;align-items:start;transition:.2s}
+  .co-card:last-child{border-bottom:none}
+  .co-card:hover{padding-left:8px}
+  .co-card:hover .co-link{color:var(--accent)}
+  .co-num{font-family:var(--serif);font-weight:500;font-size:30px;color:var(--accent);line-height:.95;letter-spacing:-.02em}
+  .co-meta{}
+  .co-k{font:500 10px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .co-name{font-family:var(--serif);font-weight:500;font-size:26px;color:var(--ink);letter-spacing:-.005em;line-height:1.08;margin:0 0 8px}
+  .co-desc{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--muted);margin:0;max-width:52ch}
+  .co-link{font:500 10px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);white-space:nowrap;padding-top:14px;transition:.2s}
+
+  /* ============ ABOUT: CHRONOLOGY ============ */
+  .about-head{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:end;margin-bottom:64px}
+  .about-head .proverb-block{}
+  .kanji{font-family:var(--serif);font-weight:500;font-size:clamp(64px,8.2vw,128px);color:var(--ink);line-height:.95;letter-spacing:-.02em;margin:0 0 12px}
+  .romaji{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:22px;margin:0 0 4px;letter-spacing:.02em}
+  .transl{font-family:var(--serif);font-weight:500;font-size:28px;color:var(--ink);margin:0;letter-spacing:-.005em}
+  .about-head .letter p{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink);margin:0 0 14px;max-width:50ch}
+  .about-head .letter p em{font-style:italic;color:var(--muted)}
+  .about-head .letter .sig{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:15px;margin-top:20px}
+
+  .chron{border-top:1px solid var(--ink);padding-top:48px}
+  .chron-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px}
+  .chron-head .k{font:500 11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .chron-head h3{margin:0;font-family:var(--serif);font-weight:500;font-size:34px;color:var(--ink);letter-spacing:-.005em}
+
+  .timeline{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:32px;padding-top:32px}
+  .timeline::before{content:"";position:absolute;top:44px;left:0;right:0;height:0.5px;background:var(--ink)}
+  .t-item{position:relative}
+  .t-dot{width:10px;height:10px;background:#fff;border:1px solid var(--ink);position:relative;z-index:1;margin-bottom:20px}
+  .t-dot.active{background:var(--accent)}
+  .t-year{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px}
+  .t-head{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);line-height:1.2;margin-bottom:6px}
+  .t-desc{font-family:var(--serif);font-size:13px;line-height:1.55;color:var(--muted);max-width:26ch}
+
+  /* Principles */
+  .principles{margin-top:96px;border-top:1px solid var(--ink);padding-top:40px}
+  .principles-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px}
+  .principles-head .k{font:500 11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .principles-head h3{margin:0;font-family:var(--serif);font-weight:500;font-size:34px;color:var(--ink)}
+  .principles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .p-item{padding:24px 24px;border-right:0.5px solid var(--rule);border-top:0.5px solid var(--rule)}
+  .p-item:nth-child(4n+1){padding-left:0}
+  .p-item:nth-child(4n){border-right:none;padding-right:0}
+  .p-item:nth-child(-n+4){border-top:none;padding-top:0}
+  .p-num{font-family:var(--serif);font-weight:500;font-size:28px;color:var(--accent);line-height:1;margin-bottom:10px}
+  .p-name{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);margin:0 0 8px;letter-spacing:-.005em}
+  .p-desc{font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--muted);margin:0}
+
+  /* ============ PORTFOLIO: ATLAS ============ */
+  .atlas{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .atlas-map{position:relative;min-height:820px;background:var(--paper-2);
+    background-image:
+      repeating-linear-gradient(45deg, rgba(77,200,211,.06) 0 1px, transparent 1px 14px),
+      repeating-linear-gradient(-45deg, rgba(31,33,38,.04) 0 1px, transparent 1px 18px);
+    border-right:0.5px solid var(--ink)}
+  .atlas-map .fl{position:absolute;inset:20px 40px 50px 40px;
+    /* Abstract Florida shape via clip-path */
+    background:linear-gradient(160deg, rgba(77,200,211,.08), rgba(31,33,38,.05));
+    clip-path:polygon(10% 12%, 70% 12%, 70% 38%, 85% 56%, 90% 84%, 55% 94%, 30% 82%, 10% 48%);
+    border:0.5px solid rgba(20,24,31,.35)}
+  .atlas-map .fl-label{position:absolute;top:30%;left:45%;font-family:var(--serif);font-style:italic;color:var(--muted);font-size:18px;letter-spacing:.05em;writing-mode:vertical-rl;transform:rotate(-2deg)}
+  .pin{position:absolute;width:10px;height:10px;background:var(--accent);border:1px solid var(--ink);border-radius:50%;transform:translate(-50%,-50%);cursor:pointer;z-index:2;transition:.2s}
+  .pin::after{content:"";position:absolute;inset:-5px;border:0.5px solid var(--accent);border-radius:50%;opacity:.4;transition:.2s}
+  .pin:hover,.pin.active{transform:translate(-50%,-50%) scale(1.25)}
+  .pin:hover::after,.pin.active::after{inset:-10px;opacity:.8}
+  .pin-label{position:absolute;transform:translate(10px,-8px);font:500 9px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);white-space:nowrap;pointer-events:none;background:var(--paper-2);padding:2px 6px;border:0.5px solid var(--rule)}
+  .atlas-map .legend{position:absolute;bottom:32px;left:40px;font-family:var(--serif);font-style:italic;color:var(--muted);font-size:14px}
+  .atlas-map .legend b{display:block;font-style:normal;font-family:var(--sans);font-weight:500;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink);margin-bottom:6px}
+  .atlas-map .compass{position:absolute;top:32px;right:32px;width:52px;height:52px;border:0.5px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;font-style:italic;color:var(--ink)}
+  .atlas-map .compass::before{content:"N";position:absolute;top:4px;left:50%;transform:translateX(-50%);font:500 8px var(--sans);letter-spacing:.2em;color:var(--muted)}
+
+  .atlas-list{padding:40px 56px;background:var(--paper-3)}
+  .atlas-list-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:18px;border-bottom:1px solid var(--ink);margin-bottom:4px}
+  .atlas-list-head .k{font:500 11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .atlas-list-head h3{margin:8px 0 0;font-family:var(--serif);font-weight:500;font-size:32px;color:var(--ink);letter-spacing:-.005em}
+
+  .prop{display:grid;grid-template-columns:36px 1fr auto;gap:16px;padding:18px 0;border-bottom:0.5px solid var(--rule);align-items:baseline;transition:.2s;cursor:pointer}
+  .prop:last-child{border-bottom:none}
+  .prop:hover,.prop.active{padding-left:8px}
+  .prop:hover .prop-link,.prop.active .prop-link{color:var(--accent)}
+  .prop-num{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--accent);line-height:1}
+  .prop-body{}
+  .prop-name{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ink);letter-spacing:-.005em;margin:0 0 2px}
+  .prop-addr{font-family:var(--serif);font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 4px}
+  .prop-tags{display:flex;gap:10px;flex-wrap:wrap;font:500 9px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .prop-tag{padding:2px 8px;border:0.5px solid var(--rule)}
+  .prop-keys{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);letter-spacing:-.01em;text-align:right;white-space:nowrap}
+  .prop-keys sub{font:500 9px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);vertical-align:1px;margin-left:3px}
+  .prop-link{font:500 9px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-top:6px;transition:.2s;display:block;text-align:right}
+
+  /* ============ CTA BAND ============ */
+  .cta-band{background:var(--navy);color:var(--paper);border-top:1px solid var(--navy);border-bottom:1px solid var(--navy)}
+  .cta-inner{max-width:1440px;margin:0 auto;padding:96px 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+  .cta-inner .k{font:500 11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(227,227,227,.55)}
+  .cta-inner h2{margin:14px 0 0;font-family:var(--serif);font-weight:500;font-size:56px;line-height:1.05;letter-spacing:-.01em;color:#E3E3E3;max-width:16ch}
+  .cta-inner h2 em{font-style:italic;color:var(--accent)}
+  .cta-inner .right{display:flex;flex-direction:column;gap:24px}
+  .cta-inner p{font-family:var(--serif);font-size:17px;line-height:1.6;color:rgba(227,227,227,.82);margin:0;max-width:50ch}
+  .cta-row{display:flex;gap:24px;margin-top:8px}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--navy);color:rgba(227,227,227,.7);padding:60px 40px 40px;border-top:0.5px solid rgba(227,227,227,.1)}
+  .foot-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:0.5px solid rgba(227,227,227,.1)}
+  .foot-inner .brand-col .logo{margin-bottom:20px}
+  .foot-inner .brand-col p{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(227,227,227,.5);margin:0;max-width:34ch;line-height:1.6}
+  .foot-inner h4{margin:0 0 16px;font:500 10px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
+  .foot-inner ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+  .foot-inner a{font-family:var(--serif);font-size:14px;color:rgba(227,227,227,.7);transition:.15s}
+  .foot-inner a:hover{color:var(--paper)}
+  .foot-bottom{max-width:1440px;margin:32px auto 0;display:flex;justify-content:space-between;align-items:center;font:500 10px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(227,227,227,.35)}
+  .foot-bottom .proverb{font-family:var(--serif);font-style:italic;font-size:13px;letter-spacing:0;text-transform:none;color:rgba(227,227,227,.5)}
+
+  /* ============ SCROLL TOC (right rail) ============ */
+  .toc{position:fixed;top:50%;right:24px;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:14px;pointer-events:none}
+  .toc a{pointer-events:auto;display:flex;align-items:center;gap:12px;font:500 9px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);transition:.2s}
+  .toc a .d{width:8px;height:8px;border:1px solid var(--muted);background:transparent;transition:.2s}
+  .toc a.active{color:var(--ink)}
+  .toc a.active .d{background:var(--accent);border-color:var(--ink)}
+  .toc a .lbl{opacity:0;transform:translateX(4px);transition:.2s}
+  .toc a:hover .lbl,.toc a.active .lbl{opacity:1;transform:translateX(0)}
+
+  /* Responsive */
+  @media (max-width:1100px){
+    .platform-split, .atlas{grid-template-columns:1fr}
+    .platform-photo{min-height:560px}
+    .atlas-map{min-height:520px}
+    .sec-body{grid-template-columns:1fr;gap:32px}
+    .about-head{grid-template-columns:1fr;gap:40px}
+    .timeline{grid-template-columns:repeat(2,1fr);gap:32px}
+    .principles-grid{grid-template-columns:repeat(2,1fr);gap:0 24px}
+    .principles-grid .p-item{padding:24px 0 24px 24px;border-right:none}
+    .principles-grid .p-item:nth-child(odd){padding-left:0}
+    .principles-grid .p-item:nth-child(-n+2){border-top:none;padding-top:0}
+    .timeline::before{display:none}
+    .stats-inner{grid-template-columns:1fr 1fr}
+    .cta-inner{grid-template-columns:1fr;gap:32px}
+    .foot-inner{grid-template-columns:1fr 1fr;gap:32px}
+    .toc{display:none}
+    .nav-links{display:none}
+  }
+  @media (max-width:600px){
+    .wrap,.wrap-tight{padding:64px 20px}
+    .hero-inner{padding:40px 20px}
+    .index-inner{padding:20px}
+    .index-head,.index-row{grid-template-columns:24px 1fr;row-gap:6px}
+    .index-head .h:nth-child(3),.index-head .h:nth-child(4),.index-head .h:nth-child(5){display:none}
+    .index-row .ix-disc,.index-row .ix-desc,.index-row .ix-link{grid-column:2}
+    .stats-inner{grid-template-columns:1fr 1fr;gap:24px}
+    .stat .v{font-size:40px}
+    .platform-rail,.atlas-list{padding:40px 24px}
+    .sec-head{grid-template-columns:1fr;gap:16px}
+    .timeline{grid-template-columns:1fr}
+    .principles-grid{grid-template-columns:1fr}
+    .principles-grid .p-item{border-right:none;border-top:none;border-bottom:0.5px solid var(--rule);padding:16px 0}
+    .principles-grid .p-item:last-child{border-bottom:none}
+  }
+</style>
+</head>
+<body style="background-color: rgb(229, 227, 227); font-family: Inter">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">
+      <img src="assets/rise8-logo-light.png" alt="RISE8 Companies" style="height:64px;width:auto;display:block">
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#community">Community</a>
+      <a href="#invest">Investors</a>
+      <a href="#news">News</a>
+    </div>
+    <a href="#invest" class="login">Investor Login</a>
+  </div>
+</nav>
+
+<!-- Right-rail TOC -->
+<nav class="toc" id="toc">
+  <a href="#top" data-sec="top"><span class="d"></span><span class="lbl">Home</span></a>
+  <a href="#about" data-sec="about"><span class="d"></span><span class="lbl">About</span></a>
+  <a href="#portfolio" data-sec="portfolio"><span class="d"></span><span class="lbl">Portfolio</span></a>
+  <a href="#leadership" data-sec="leadership"><span class="d"></span><span class="lbl">Leadership</span></a>
+  <a href="#community" data-sec="community"><span class="d"></span><span class="lbl">Community</span></a>
+  <a href="#invest" data-sec="invest"><span class="d"></span><span class="lbl">Invest</span></a>
+</nav>
+
+<!-- ============ HOME ============ -->
+<section id="top" data-screen-label="01 Home">
+  <div class="hero">
+    <div class="hero-bg"><canvas id="hero-canvas"></canvas></div>
+    <div class="hero-arch"></div>
+    <div class="hero-inner">
+      <div class="hero-top">
+        <div class="eyebrow">
+</div>
+        <div class="proverb"><b>七転び八起き</b><span>Nana korobi yaoki.</span></div>
+      </div>
+      <div>
+        <h1 class="hero-title"><span style="color: rgb(229, 229, 229)">Extended</span>-stay hospitality, <em style="color: rgb(0, 181, 31)"><span style="color: #4dc8d3">end to end.</span></em></h1>
+        <p class="hero-sub">One firm. Every function, No seams. That's the moat.</p>
+      </div>
+      <div class="hero-bottom">
+        <div class="hero-cta">
+          <a href="#about" class="btn-primary">Explore RISE8</a>
+        </div>
+        <div class="scroll-hint"><span class="line"></span>Scroll</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="index-strip">
+    <div class="index-inner">
+      <div class="index-head">
+        <div class="h">№</div>
+        <div class="h">Company</div>
+        <div class="h">Discipline</div>
+        <div class="h">Brief</div>
+        <div class="h" style="text-align:right">&nbsp;</div>
+      </div>
+      <a href="RISE8 Development.html" class="index-row">
+        <div class="ix-num">01</div>
+        <div class="ix-name">RISE8 Development</div>
+        <div class="ix-disc">Construction</div>
+        <div class="ix-desc">Ground-up and value-add construction, delivered to our own brand standard.</div>
+        <div class="ix-link">View →</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stats-inner">
+      <div class="stat"><div class="v">1,150</div><div class="l">Keys managed</div></div>
+      <div class="stat"><div class="v">8</div><div class="l">Properties</div></div>
+      <div class="stat"><div class="v">6</div><div class="l">Florida markets</div></div>
+      <div class="stat"><div class="v">100<sup>%</sup></div><div class="l">Stayable branded</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" data-screen-label="03 About" style="background:var(--paper-3)">
+  <div class="wrap">
+    <div class="sec-head" style="border-top-color:var(--ink)">
+      <div class="kicker">02 · About</div>
+    </div>
+
+    <div class="about-head">
+      <div class="proverb-block">
+        <div class="kanji">七転び八起き</div>
+        <p class="romaji">Nana korobi yaoki.</p>
+        <p class="transl">Fall seven times. Rise eight.</p>
+      </div>
+      <div class="letter">
+        <p><em>Dear reader,</em></p>
+        <p>RISE8 was founded on a simple premise drawn from an old Japanese proverb: no matter how many times you fall, you always get back up — one more time.</p>
+        <p>Extended-stay hospitality has been underserved by owners who fragment acquisition, development, financing, management, and brand across misaligned stakeholders.</p>
+        <p>We built RISE8 to change that. A single platform controlling the full value chain, aligned around one thesis: excellent operations compound.</p>
+        <div class="sig">— With respect,<br><span style="color:var(--ink);font-style:normal;font-weight:500">Rob Beyer</span>, CEO</div>
+      </div>
+    </div>
+
+    <div class="principles">
+      <div class="principles-head">
+        <div class="k">Principles · in practice</div>
+        <h3>Eight values, against which we're measured.</h3>
+      </div>
+      <div class="principles-grid">
+        <div class="p-item"><div class="p-num">I</div><h4 class="p-name">Integrity</h4><p class="p-desc">We treat everyone with respect and keep our word. We believe in "win-win."</p></div>
+        <div class="p-item"><div class="p-num">II</div><h4 class="p-name">Accountability</h4><p class="p-desc">We take responsibility for everything we do. We do not point fingers.</p></div>
+        <div class="p-item"><div class="p-num">III</div><h4 class="p-name">Innovation</h4><p class="p-desc">We encourage new ideas and take risks to do things differently.</p></div>
+        <div class="p-item"><div class="p-num">IV</div><h4 class="p-name">Profitability</h4><p class="p-desc">We continually seek ways to increase revenue, reduce costs, and eliminate waste.</p></div>
+        <div class="p-item"><div class="p-num">V</div><h4 class="p-name">Communication</h4><p class="p-desc">Open, clear, and timely communication without fear.</p></div>
+        <div class="p-item"><div class="p-num">VI</div><h4 class="p-name">Teamwork</h4><p class="p-desc">Different strengths make us valuable as a collective unit.</p></div>
+        <div class="p-item"><div class="p-num">VII</div><h4 class="p-name">Living Fully</h4><p class="p-desc">Dedicated to our loved ones as much as our work.</p></div>
+        <div class="p-item"><div class="p-num">VIII</div><h4 class="p-name">Doing Well by Doing Good</h4><p class="p-desc">Returns to our investors, employees, and communities.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section id="portfolio" data-screen-label="03 Portfolio">
+  <div class="wrap-tight">
+    <div class="sec-head">
+      <div class="kicker">03 · Portfolio</div>
+      <h2>Eight Florida addresses, <em>one brand.</em></h2>
+    </div>
+    <p style="font-family:var(--serif);font-style:italic;color:var(--muted);font-size:20px;line-height:1.5;max-width:62ch;margin:0 0 48px">Central and Northeast Florida corridors — I-4, I-95, I-295. Every property owned by RISE8 and operated under Stayable Suites.</p>
+
+    <!-- Property photo cards -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ink);border:1px solid var(--ink);margin-bottom:80px">
+      <div style="display:flex;flex-direction:column;background:var(--paper)">
+        <image-slot id="prop-lakeland" style="width:100%;aspect-ratio:16/10" shape="rect" placeholder="Stayable Lakeland"></image-slot>
+        <div style="padding:24px 28px 28px;border-top:1px solid var(--ink)">
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Lakeland · I-4</div>
+          <div style="font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px">Stayable Lakeland</div>
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">4645 N. Socrum Loop Road</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;background:var(--paper)">
+        <image-slot id="prop-jax-north" style="width:100%;aspect-ratio:16/10" shape="rect" placeholder="Stayable Jacksonville North"></image-slot>
+        <div style="padding:24px 28px 28px;border-top:1px solid var(--ink)">
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Jacksonville N. · I-95</div>
+          <div style="font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px">Stayable Jacksonville North</div>
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">Jacksonville, FL</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;background:var(--paper)">
+        <image-slot id="prop-kissimmee-east" style="width:100%;aspect-ratio:16/10" shape="rect" placeholder="Stayable Kissimmee East"></image-slot>
+        <div style="padding:24px 28px 28px;border-top:1px solid var(--ink)">
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Kissimmee · Central FL</div>
+          <div style="font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px">Stayable Kissimmee East</div>
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">2295 E. Irlo Bronson Mem. Hwy</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;background:var(--paper)">
+        <image-slot id="prop-orlando" style="width:100%;aspect-ratio:16/10" shape="rect" placeholder="Stayable Orlando"></image-slot>
+        <div style="padding:24px 28px 28px;border-top:1px solid var(--ink)">
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Orlando · I-4</div>
+          <div style="font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px">Stayable Orlando</div>
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">8700 S. Orange Blossom Trail</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;background:var(--paper)">
+        <image-slot id="prop-jax-west" style="width:100%;aspect-ratio:16/10" shape="rect" placeholder="Stayable Jacksonville West"></image-slot>
+        <div style="padding:24px 28px 28px;border-top:1px solid var(--ink)">
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Jacksonville W. · I-295</div>
+          <div style="font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px">Stayable Jacksonville West</div>
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">910 Suemac Road</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;background:var(--paper)">
+        <image-slot id="prop-kissimmee-west" style="width:100%;aspect-ratio:16/10" shape="rect" placeholder="Stayable Kissimmee West"></image-slot>
+        <div style="padding:24px 28px 28px;border-top:1px solid var(--ink)">
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Kissimmee W. · Central FL</div>
+          <div style="font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px">Stayable Kissimmee West</div>
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">5399 W. Irlo Bronson Mem. Hwy</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;background:var(--paper)">
+        <image-slot id="prop-st-augustine" style="width:100%;aspect-ratio:16/10" shape="rect" placeholder="Stayable St. Augustine"></image-slot>
+        <div style="padding:24px 28px 28px;border-top:1px solid var(--ink)">
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">St. Augustine · I-95</div>
+          <div style="font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px">Stayable St. Augustine</div>
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">2535 State Road 16</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;background:var(--paper)">
+        <image-slot id="prop-davenport" style="width:100%;aspect-ratio:16/10" shape="rect" placeholder="Stayable Davenport"></image-slot>
+        <div style="padding:24px 28px 28px;border-top:1px solid var(--ink)">
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Davenport · I-4</div>
+          <div style="font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px">Stayable Davenport</div>
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">44199 Hwy 27</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="atlas">
+    <div class="atlas-map">
+      <div class="compass">N</div>
+      <div class="fl">
+        <div class="fl-label">Florida</div>
+      </div>
+      <!-- Pins positioned on the abstract florida shape -->
+      <div class="pin" style="left:28%;top:52%" data-prop="p4"></div>
+      <div class="pin-label" style="left:28%;top:52%">01 · Lakeland</div>
+      <div class="pin" style="left:45%;top:8%" data-prop="p8"></div>
+      <div class="pin-label" style="left:45%;top:8%">02 · Jacksonville N.</div>
+      <div class="pin" style="left:58%;top:45%" data-prop="p2"></div>
+      <div class="pin-label" style="left:58%;top:45%">03 · Kissimmee E.</div>
+      <div class="pin" style="left:63%;top:38%" data-prop="p5"></div>
+      <div class="pin-label" style="left:63%;top:38%">04 · Orlando</div>
+      <div class="pin" style="left:33%;top:13%" data-prop="p1"></div>
+      <div class="pin-label" style="left:33%;top:13%;transform:translate(-112%,-4px)">05 · Jacksonville W.</div>
+      <div class="pin" style="left:52%;top:50%" data-prop="p3"></div>
+      <div class="pin-label" style="left:52%;top:50%;transform:translate(10px,18px)">06 · Kissimmee W.</div>
+      <div class="pin" style="left:58%;top:16%" data-prop="p6"></div>
+      <div class="pin-label" style="left:58%;top:16%">07 · St. Augustine</div>
+      <div class="pin" style="left:42%;top:58%" data-prop="p7"></div>
+      <div class="pin-label" style="left:42%;top:58%">08 · Davenport</div>
+
+      <div class="legend">
+        <b>Legend</b>
+        Eight pins · five markets · I-4, I-95, I-295 corridors.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ LEADERSHIP ============ -->
+<section id="leadership" data-screen-label="04 Leadership" style="background:var(--paper-2);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">04 · Leadership</div>
+      <h2>The people <em>accountable.</em></h2>
+    </div>
+
+    <!-- Tier 1: two principals -->
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--ink);border:1px solid var(--ink);margin-bottom:2px">
+      <div style="background:var(--navy);padding:48px 40px;display:flex;align-items:center;gap:32px;-webkit-font-smoothing:antialiased">
+        <image-slot id="site-robert-beyer" style="width:120px;height:120px;flex:none" shape="circle" placeholder="Robert Beyer"></image-slot>
+        <div>
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(77,200,211,.6);margin-bottom:8px">Founder &amp; Principal</div>
+          <div style="font-family:var(--serif);font-weight:500;font-size:28px;color:#E3E3E3;letter-spacing:-.01em;margin-bottom:8px">Robert Beyer</div>
+          <p style="font-family:var(--serif);font-size:14px;line-height:1.6;color:rgba(227,227,227,.55);margin:0;max-width:32ch">Founder of RISE8 Companies. Leads strategy, capital deployment, and the integrated platform thesis.</p>
+        </div>
+      </div>
+      <div style="background:var(--navy);padding:48px 40px;display:flex;align-items:center;gap:32px;-webkit-font-smoothing:antialiased;border-left:1px solid rgba(255,255,255,.06)">
+        <image-slot id="site-crystal-johnson" style="width:120px;height:120px;flex:none" shape="circle" placeholder="Crystal Johnson"></image-slot>
+        <div>
+          <div style="font:500 9px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(77,200,211,.6);margin-bottom:8px">Principal</div>
+          <div style="font-family:var(--serif);font-weight:500;font-size:28px;color:#E3E3E3;letter-spacing:-.01em;margin-bottom:8px">Crystal Johnson</div>
+          <p style="font-family:var(--serif);font-size:14px;line-height:1.6;color:rgba(227,227,227,.55);margin:0;max-width:32ch">Operations leadership across the RISE8 portfolio. Oversees property management, staffing, and performance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--navy);padding:48px 40px;-webkit-font-smoothing:antialiased">
+      <div style="font:500 9px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(77,200,211,.6);margin-bottom:16px">Full Biography</div>
+      <p style="font-family:var(--serif);font-size:16px;line-height:1.7;color:rgba(227,227,227,.75);margin:0 0 16px;max-width:72ch">Robert Beyer is the founder and managing principal of RISE8 Companies, with more than 20 years of commercial real estate experience. His background spans acquisitions, dispositions, property management, debt and equity raising, joint ventures, loan restructuring, law, and financial advisory work.</p>
+      <p style="font-family:var(--serif);font-size:16px;line-height:1.7;color:rgba(227,227,227,.75);margin:0 0 16px;max-width:72ch">Before founding RISE8, Beyer was Executive Vice President and General Counsel of a real estate investment and management firm holding $750 million in apartment, commercial, and lodging properties. He previously served as a Vice President at RELATED.</p>
+      <p style="font-family:var(--serif);font-size:16px;line-height:1.7;color:rgba(227,227,227,.75);margin:0;max-width:72ch">Beyer earned a B.B.A. in Finance from the University of Miami, a J.D., magna cum laude, from UNLV's William S. Boyd School of Law, and an LL.M. in Taxation from New York University School of Law. He is a member of the Nevada State Bar and holds a Florida real estate broker's license.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMUNITY: EVERYBODY'S HOME ============ -->
+<section id="community" data-screen-label="05 Community" style="background:var(--paper-3);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">05 · Community</div>
+      <h2>An affiliated <em>nonprofit.</em></h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start;margin-bottom:56px">
+      <div>
+        <div style="display:flex;align-items:center;gap:18px;margin-bottom:24px">
+          <div style="width:64px;height:64px;border:0.5px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:500;font-size:26px;color:var(--accent);letter-spacing:-.02em">EH</div>
+          <div>
+            <div style="font:500 11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted)">501(c)(3) · Miami, FL</div>
+            <div style="font-family:var(--serif);font-weight:500;font-size:28px;color:var(--ink);letter-spacing:-.005em;margin-top:2px">Everybody's Home Inc.</div>
+          </div>
+        </div>
+        <p style="font-family:var(--serif);font-style:italic;color:var(--accent);font-size:22px;line-height:1.45;margin:0 0 18px;max-width:38ch">Stable housing. Practical support. New beginnings.</p>
+        <p style="font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--ink);margin:0 0 14px;max-width:52ch">A launch-stage nonprofit building practical pathways toward housing stability for underhoused individuals and families — founded alongside Stayable to extend the reach of extended-stay infrastructure beyond the paying guest.</p>
+        <p style="font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--muted);margin:0 0 26px;max-width:52ch">RISE8 supports Everybody's Home through facility access, operational expertise, and capital, in service of a single conviction: a stable address changes what a person can build next.</p>
+        <a href="https://everybodyshome.org" target="_blank" rel="noopener" class="btn-primary" style="background:var(--ink);color:var(--paper);border-color:var(--ink)">Visit everybodyshome.org →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--ink)">
+        <div style="padding:22px 0;border-bottom:0.5px solid var(--rule);display:grid;grid-template-columns:40px 1fr;gap:18px;align-items:baseline">
+          <div style="font-family:var(--serif);font-weight:500;font-size:22px;color:var(--accent)">I</div>
+          <div>
+            <h4 style="margin:0 0 4px;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);letter-spacing:-.005em">Housing stability pathways</h4>
+            <p style="margin:0;font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--muted)">Transitional stays, case management, and referral networks for guests moving toward long-term housing.</p>
+          </div>
+        </div>
+        <div style="padding:22px 0;border-bottom:0.5px solid var(--rule);display:grid;grid-template-columns:40px 1fr;gap:18px;align-items:baseline">
+          <div style="font-family:var(--serif);font-weight:500;font-size:22px;color:var(--accent)">II</div>
+          <div>
+            <h4 style="margin:0 0 4px;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);letter-spacing:-.005em">Practical support &amp; navigation</h4>
+            <p style="margin:0;font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--muted)">Employment, identification, healthcare, and benefits navigation — the practical work of stabilizing a life.</p>
+          </div>
+        </div>
+        <div style="padding:22px 0;display:grid;grid-template-columns:40px 1fr;gap:18px;align-items:baseline">
+          <div style="font-family:var(--serif);font-weight:500;font-size:22px;color:var(--accent)">III</div>
+          <div>
+            <h4 style="margin:0 0 4px;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);letter-spacing:-.005em">Community partnerships</h4>
+            <p style="margin:0;font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--muted)">Local nonprofits, faith communities, and public agencies — partners against a problem no single organization can solve alone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink);padding-top:22px">
+      <div>
+        <div style="font:500 10px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Office</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--ink);line-height:1.5">390 NE 191st St, Ste. 8139<br>Miami, FL 33179</div>
+      </div>
+      <div>
+        <div style="font:500 10px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Telephone</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--ink)">(305) 782–9225</div>
+      </div>
+      <div>
+        <div style="font:500 10px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Correspondence</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--ink)">eh-info@everybodyshome.org</div>
+      </div>
+      <div>
+        <div style="font:500 10px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Status</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--ink)">501(c)(3) · launch stage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INVESTOR CTA ============ -->
+<section id="invest" class="cta-band" data-screen-label="06 Investors">
+  <div class="cta-inner">
+    <div>
+      <div class="k">Investors</div>
+      <h2>Capital deployed into <em>operational control.</em></h2>
+    </div>
+    <div class="right">
+      <p>RISE8 partners with institutional and accredited investors who value transparent structure, in-house operations, and long-duration hold. We share underwriting and operating data with every partner, quarterly.</p>
+      <div class="cta-row">
+        <a href="#" class="btn-primary">Investor relations</a>
+        <a href="#" class="btn-ghost" style="border-bottom-color:rgba(227,227,227,.5);color:rgba(227,227,227,.85)">Contact IR →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="news">
+  <div class="foot-inner">
+    <div class="brand-col">
+      <div class="logo">
+        <div class="mark">R8</div>
+        <div class="name" style="color:var(--paper)">RISE8 COMPANIES</div>
+      </div>
+      <p>A vertically integrated extended-stay hospitality company. Jacksonville, Florida. Est. 2014.</p>
+    </div>
+    <div>
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="#portfolio">Stayable Extended Stay Suites</a></li>
+        <li><a href="RISE8 Management.html">RISE8 Management</a></li>
+        <li><a href="RISE8 CRE Lending.html">RISE8 Real Estate Finance</a></li>
+        <li><a href="RISE8 Development.html">RISE8 Development</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#community">Everybody's Home Inc.</a></li>
+        <li><a href="#news">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Investors</h4>
+      <ul>
+        <li><a href="#invest">Thesis</a></li>
+        <li><a href="#invest">Criteria</a></li>
+        <li><a href="#invest">Quarterly letters</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">investors@rise8mgmt.com</a></li>
+        <li><a href="#">press@rise8mgmt.com</a></li>
+        <li><a href="#">careers@rise8mgmt.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 2026 RISE8 Companies · Jacksonville, FL</div>
+    <div class="proverb">七転び八起き — nana korobi yaoki.</div>
+  </div>
+</footer>
+
+<script>
+  // Active section in TOC + nav
+  const sections = ['top','platform','about','portfolio','leadership','community','invest','contact'];
+  const tocLinks = document.querySelectorAll('#toc a');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  function onScroll(){
+    const y = window.scrollY + window.innerHeight * 0.35;
+    let cur = 'top';
+    for (const id of sections) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      if (el.offsetTop <= y) cur = id;
+    }
+    tocLinks.forEach(a => a.classList.toggle('active', a.dataset.sec === cur));
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href.length < 2) return;
+      const el = document.querySelector(href);
+      if (el) { e.preventDefault(); window.scrollTo({top: el.offsetTop - 40, behavior:'smooth'}); }
+    });
+  });
+
+  // Map pin highlight linked with list
+  const pins = document.querySelectorAll('.pin');
+  const props = document.querySelectorAll('.prop');
+  pins.forEach(p => {
+    p.addEventListener('mouseenter', () => {
+      const id = p.dataset.prop;
+      p.classList.add('active');
+      props.forEach(pr => pr.classList.toggle('active', pr.dataset.id === id));
+    });
+    p.addEventListener('mouseleave', () => {
+      p.classList.remove('active');
+      props.forEach(pr => pr.classList.remove('active'));
+    });
+  });
+  props.forEach(pr => {
+    pr.addEventListener('mouseenter', () => {
+      const id = pr.dataset.id;
+      pins.forEach(pn => pn.classList.toggle('active', pn.dataset.prop === id));
+    });
+    pr.addEventListener('mouseleave', () => {
+      pins.forEach(pn => pn.classList.remove('active'));
+    });
+  });
+</script>
+
+<!-- ============ TWEAKS PANEL ============ -->
+<style>
+  .tweaks{position:fixed;right:20px;bottom:20px;width:300px;background:var(--paper-3);border:0.5px solid var(--ink);box-shadow:0 20px 40px -20px rgba(20,24,31,.3);padding:20px;z-index:80;display:none;font-family:var(--sans)}
+  .tweaks.open{display:block}
+  .tweaks-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid var(--ink)}
+  .tweaks-head .t{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);letter-spacing:-.005em}
+  .tweaks-head .k{font:500 9px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+  .tw-row{padding:10px 0;border-bottom:0.5px solid var(--rule)}
+  .tw-row:last-child{border-bottom:none}
+  .tw-label{display:block;font:500 9px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .tw-seg{display:flex;gap:0;border:0.5px solid var(--rule)}
+  .tw-seg button{flex:1;padding:7px 8px;background:transparent;border:none;font:500 10px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);cursor:pointer;transition:.15s;border-right:0.5px solid var(--rule)}
+  .tw-seg button:last-child{border-right:none}
+  .tw-seg button.on{background:var(--accent);color:var(--paper)}
+  .tw-swatches{display:flex;gap:8px}
+  .tw-swatch{flex:1;height:28px;border:0.5px solid var(--ink);cursor:pointer;position:relative;transition:.15s}
+  .tw-swatch.on::after{content:"";position:absolute;inset:-3px;border:1px solid var(--ink)}
+  .tw-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .tw-switch{width:36px;height:20px;background:var(--rule);border:0.5px solid var(--ink);position:relative;cursor:pointer;transition:.15s}
+  .tw-switch::after{content:"";position:absolute;top:1px;left:1px;width:16px;height:16px;background:var(--paper);transition:.15s}
+  .tw-switch.on{background:var(--accent)}
+  .tw-switch.on::after{left:17px}
+</style>
+
+<div class="tweaks" id="tweaks">
+  <div class="tweaks-head">
+    <div class="t">Tweaks</div>
+    <div class="k">Live preview</div>
+  </div>
+  <div class="tw-row">
+    <span class="tw-label">Accent color</span>
+    <div class="tw-swatches" data-key="accent">
+      <div class="tw-swatch" data-val="rust" style="background: rgb(77, 200, 211)"></div>
+      <div class="tw-swatch" data-val="forest" style="background:#2F4A34"></div>
+      <div class="tw-swatch" data-val="ochre" style="background:#B8873D"></div>
+      <div class="tw-swatch" data-val="navy" style="background:#2A3E6A"></div>
+      <div class="tw-swatch" data-val="ink" style="background:#2A3140"></div>
+    </div>
+  </div>
+  <div class="tw-row">
+    <span class="tw-label">Hero treatment</span>
+    <div class="tw-seg" data-key="hero">
+      <button data-val="dark">Dark</button>
+      <button data-val="paper">Paper</button>
+    </div>
+  </div>
+  <div class="tw-row">
+    <span class="tw-label">Density</span>
+    <div class="tw-seg" data-key="density">
+      <button data-val="compact">Compact</button>
+      <button data-val="comfortable">Comfortable</button>
+      <button data-val="spacious">Spacious</button>
+    </div>
+  </div>
+  <div class="tw-row">
+    <span class="tw-label">Section numbering</span>
+    <div class="tw-toggle"><span style="font-family:var(--serif);font-size:14px;color:var(--muted)">Show 01/02/03/04 prefixes</span><div class="tw-switch" data-key="numbering"></div></div>
+  </div>
+  <div class="tw-row">
+    <span class="tw-label">Right-rail index</span>
+    <div class="tw-toggle"><span style="font-family:var(--serif);font-size:14px;color:var(--muted)">Floating TOC</span><div class="tw-switch" data-key="toc"></div></div>
+  </div>
+  <div class="tw-row">
+    <span class="tw-label">Japanese proverb</span>
+    <div class="tw-toggle"><span style="font-family:var(--serif);font-size:14px;color:var(--muted)">Show kanji lockup</span><div class="tw-switch" data-key="proverb"></div></div>
+  </div>
+</div>
+
+<script>
+  // === Edit-mode state (persisted to disk between marker pair) ===
+  const TWEAKS = /*EDITMODE-BEGIN*/{
+    "accent": "rust",
+    "hero": "dark",
+    "density": "comfortable",
+    "numbering": true,
+    "toc": true,
+    "proverb": true
+  }/*EDITMODE-END*/;
+
+  const ACCENT_MAP = {
+    rust:   { accent:'#4DC8D3', ink:'#007882' },
+    forest: { accent:'#2F4A34', ink:'#1C2E20' },
+    ochre:  { accent:'#B8873D', ink:'#7A5820' },
+    navy:   { accent:'#2A3E6A', ink:'#182440' },
+    ink:    { accent:'#2A3140', ink:'#14181F' }
+  };
+
+  function applyTweaks() {
+    const root = document.documentElement;
+    const c = ACCENT_MAP[TWEAKS.accent] || ACCENT_MAP.rust;
+    root.style.setProperty('--accent', c.accent);
+    root.style.setProperty('--rust-ink', c.ink);
+
+    // Hero
+    const hero = document.querySelector('.hero');
+    const heroInner = document.querySelector('.hero-inner');
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSub = document.querySelector('.hero-sub');
+    const heroBg = document.querySelector('.hero-bg');
+    if (TWEAKS.hero === 'paper') {
+      hero.style.background = 'var(--paper-2)';
+      heroBg.style.display = 'none';
+      document.querySelector('.hero-arch').style.display = 'none';
+      heroInner.style.color = 'var(--ink)';
+      heroTitle.style.color = 'var(--ink)';
+      heroSub.style.color = 'var(--muted)';
+      document.querySelectorAll('.hero-top .eyebrow, .hero-top .proverb').forEach(el => el.style.color = 'var(--muted)');
+      document.querySelectorAll('.btn-primary').forEach(el => { el.style.background = 'var(--ink)'; el.style.color = 'var(--paper)'; el.style.borderColor = 'var(--ink)'; });
+      document.querySelectorAll('.hero .btn-ghost').forEach(el => { el.style.color = 'var(--ink)'; el.style.borderBottomColor = 'var(--ink)'; });
+      document.querySelector('.scroll-hint').style.color = 'var(--muted)';
+    } else {
+      hero.style.background = 'var(--navy)';
+      heroBg.style.display = '';
+      document.querySelector('.hero-arch').style.display = '';
+      heroInner.style.color = '';
+      heroTitle.style.color = '';
+      heroSub.style.color = '';
+      document.querySelectorAll('.hero-top .eyebrow, .hero-top .proverb').forEach(el => el.style.color = '');
+      document.querySelectorAll('.btn-primary').forEach(el => { el.style.background = ''; el.style.color = ''; el.style.borderColor = ''; });
+      document.querySelectorAll('.hero .btn-ghost').forEach(el => { el.style.color = ''; el.style.borderBottomColor = ''; });
+      document.querySelector('.scroll-hint').style.color = '';
+    }
+
+    // Density
+    const densityMap = { compact: '72px', comfortable: '120px', spacious: '176px' };
+    const padY = densityMap[TWEAKS.density] || '120px';
+    document.querySelectorAll('.wrap').forEach(el => el.style.padding = `${padY} 40px`);
+    document.querySelectorAll('.wrap-tight').forEach(el => el.style.padding = `${Math.round(parseInt(padY)*0.7)}px 40px`);
+
+    // Numbering
+    document.querySelectorAll('.sec-head .kicker').forEach(el => {
+      const raw = el.dataset.raw || el.textContent;
+      el.dataset.raw = raw;
+      if (!TWEAKS.numbering) {
+        el.textContent = raw.replace(/^0\d\s*·\s*/, '');
+      } else {
+        el.textContent = raw;
+      }
+    });
+
+    // TOC
+    const toc = document.getElementById('toc');
+    if (toc) toc.style.display = TWEAKS.toc ? '' : 'none';
+
+    // Proverb
+    document.querySelectorAll('.hero-top .proverb, .proverb-block, .foot-bottom .proverb').forEach(el => {
+      el.style.visibility = TWEAKS.proverb ? '' : 'hidden';
+    });
+  }
+
+  // === Paint UI state from TWEAKS ===
+  function paintTweaksUI() {
+    document.querySelectorAll('.tw-swatches').forEach(group => {
+      const key = group.dataset.key;
+      group.querySelectorAll('.tw-swatch').forEach(sw => sw.classList.toggle('on', sw.dataset.val === TWEAKS[key]));
+    });
+    document.querySelectorAll('.tw-seg').forEach(group => {
+      const key = group.dataset.key;
+      group.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.val === TWEAKS[key]));
+    });
+    document.querySelectorAll('.tw-switch').forEach(sw => {
+      const key = sw.dataset.key;
+      sw.classList.toggle('on', !!TWEAKS[key]);
+    });
+  }
+
+  // === Handlers ===
+  function updateKey(key, val) {
+    TWEAKS[key] = val;
+    applyTweaks();
+    paintTweaksUI();
+    try { window.parent.postMessage({type:'__edit_mode_set_keys', edits:{[key]: val}}, '*'); } catch(e) {}
+  }
+  document.querySelectorAll('.tw-swatches').forEach(group => {
+    const key = group.dataset.key;
+    group.querySelectorAll('.tw-swatch').forEach(sw => {
+      sw.addEventListener('click', () => updateKey(key, sw.dataset.val));
+    });
+  });
+  document.querySelectorAll('.tw-seg').forEach(group => {
+    const key = group.dataset.key;
+    group.querySelectorAll('button').forEach(b => {
+      b.addEventListener('click', () => updateKey(key, b.dataset.val));
+    });
+  });
+  document.querySelectorAll('.tw-switch').forEach(sw => {
+    const key = sw.dataset.key;
+    sw.addEventListener('click', () => updateKey(key, !TWEAKS[key]));
+  });
+
+  // Apply once on load
+  applyTweaks();
+  paintTweaksUI();
+
+  // === Edit-mode host protocol (register FIRST, then announce) ===
+  window.addEventListener('message', (e) => {
+    const d = e.data || {};
+    if (d.type === '__activate_edit_mode')   document.getElementById('tweaks').classList.add('open');
+    if (d.type === '__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('open');
+  });
+  try { window.parent.postMessage({type:'__edit_mode_available'}, '*'); } catch(e) {}
+</script>
+<script>
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  function draw(){
+    const hero = canvas.parentElement.parentElement;
+    const W = hero.offsetWidth, H = hero.offsetHeight;
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext('2d');
+
+    // Base gradient
+    const bg = ctx.createLinearGradient(0, 0, W * 0.6, H);
+    bg.addColorStop(0, '#12151b');
+    bg.addColorStop(0.5, '#1a1e26');
+    bg.addColorStop(1, '#1f2330');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    // Vanishing point — upper right
+    const vpx = W * 0.72, vpy = H * -0.15;
+
+    // Perspective grid lines
+    const cols = 22;
+    for(let i = 0; i <= cols; i++){
+      const bx = (W / cols) * i;
+      const t = i / cols;
+      const alpha = 0.04 + Math.abs(t - 0.5) * 0.06;
+      ctx.beginPath(); ctx.moveTo(bx, H); ctx.lineTo(vpx, vpy);
+      ctx.strokeStyle = `rgba(180,195,210,${alpha})`;
+      ctx.lineWidth = 0.5; ctx.stroke();
+    }
+
+    // Horizontal floor lines
+    const floors = 18;
+    for(let i = 1; i < floors; i++){
+      const frac = Math.pow(i / floors, 1.6);
+      const y = H - frac * (H - vpy) - vpy * frac;
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y);
+      ctx.strokeStyle = `rgba(180,195,210,${0.03 + frac * 0.07})`;
+      ctx.lineWidth = 0.4; ctx.stroke();
+    }
+
+    // Teal accent verticals
+    [0.28, 0.52, 0.71].forEach((pos, idx) => {
+      const bx = W * pos;
+      const gr = ctx.createLinearGradient(bx, H, vpx, vpy);
+      gr.addColorStop(0, 'rgba(77,200,211,0)');
+      gr.addColorStop(0.3, `rgba(77,200,211,${0.18 - idx * 0.04})`);
+      gr.addColorStop(0.7, `rgba(77,200,211,${0.08 - idx * 0.02})`);
+      gr.addColorStop(1, 'rgba(77,200,211,0)');
+      ctx.beginPath(); ctx.moveTo(bx, H); ctx.lineTo(vpx, vpy);
+      ctx.strokeStyle = gr;
+      ctx.lineWidth = 1.2 - idx * 0.3; ctx.stroke();
+    });
+
+    // Window rectangles
+    const winCols = 8, winRows = 5;
+    for(let r = 1; r <= winRows; r++){
+      for(let c = 0; c < winCols; c++){
+        const frac = Math.pow(r / (winRows + 1), 1.5);
+        const y = H - frac * (H - vpy) - vpy * frac;
+        const rowH = H * 0.025 * (1 - frac * 0.6);
+        const xSpread = W * (0.85 + frac * 0.1);
+        const xStart = (W - xSpread) / 2;
+        const cellW = xSpread / winCols;
+        const wx = xStart + c * cellW + cellW * 0.15;
+        const ww = cellW * 0.55;
+        const lean = (wx - vpx) * 0.008 * frac;
+        const alpha = frac * 0.22 + (Math.random() > 0.75 ? 0.12 : 0);
+        ctx.fillStyle = `rgba(77,200,211,${alpha * 0.5})`;
+        ctx.fillRect(wx + lean, y - rowH, ww, rowH * 0.7);
+        ctx.strokeStyle = `rgba(77,200,211,${alpha})`;
+        ctx.lineWidth = 0.4;
+        ctx.strokeRect(wx + lean, y - rowH, ww, rowH * 0.7);
+      }
+    }
+
+    // Teal glow bloom
+    const glow = ctx.createRadialGradient(W*0.6, H*0.22, 0, W*0.6, H*0.22, W*0.35);
+    glow.addColorStop(0, 'rgba(77,200,211,0.09)');
+    glow.addColorStop(0.5, 'rgba(77,200,211,0.03)');
+    glow.addColorStop(1, 'rgba(77,200,211,0)');
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+
+    // Film grain
+    for(let i = 0; i < 6000; i++){
+      ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.018})`;
+      ctx.fillRect(Math.random()*W, Math.random()*H, 1, 1);
+    }
+  }
+  draw();
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

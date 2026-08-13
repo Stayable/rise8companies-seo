@@ -9,3 +9,6 @@ build/
 next-env.d.ts
 .vercel
 .DS_Store
+
+# Design source export (large; kept as the design system of record)
+!RISE8 WEBSITE/

@@ -1,0 +1,7 @@
+/* ============================================================
+   RISE8 — Webfonts
+   Both faces are served from Google Fonts. EB Garamond carries
+   italic + weights 400/500/600; Inter carries 300–700.
+   Consumers get these via the single styles.css import.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');

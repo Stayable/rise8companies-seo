@@ -1,0 +1,42 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Closing / CTA" subtitle="Navy closer with contact register" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  html, body { margin: 0; }
+  .slide { width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--navy); color: var(--paper); display: flex; flex-direction: column; }
+  .slide-bg { position: absolute; inset: 0; background:
+    radial-gradient(ellipse at 70% 35%, rgba(77,200,211,.14), transparent 58%),
+    linear-gradient(160deg, #1D1F24 0%, #25282E 60%, #2E3138 100%); }
+  .inner { position: relative; flex: 1; padding: 80px 88px; display: flex; flex-direction: column; }
+  .kicker { font: 500 13px var(--sans); letter-spacing: .3em; text-transform: uppercase; color: rgba(227,227,227,.55); }
+  h2 { margin: 18px 0 0; font-family: var(--serif); font-weight: 500; font-size: 72px; line-height: 1.04; letter-spacing: -.012em; color: var(--navy-text); max-width: 18ch; }
+  h2 em { font-style: italic; color: var(--accent); }
+  .contact { margin-top: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; border-top: .5px solid rgba(227,227,227,.2); padding-top: 32px; }
+  .c .k { font: 500 11px var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .c .v { font-family: var(--serif); font-size: 19px; color: var(--navy-text); line-height: 1.5; }
+  .foot { position: relative; display: flex; justify-content: space-between; align-items: center; padding: 24px 88px; font-family: var(--serif); font-style: italic; font-size: 15px; color: rgba(227,227,227,.5); }
+  .foot img { height: 44px; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="slide-bg"></div>
+  <div class="inner">
+    <div class="kicker">Investors</div>
+    <h2>Capital deployed into <em>operational control.</em></h2>
+    <div class="contact">
+      <div class="c"><div class="k">Investor relations</div><div class="v">investors@rise8mgmt.com</div></div>
+      <div class="c"><div class="k">Telephone</div><div class="v">(305) 782–9225</div></div>
+      <div class="c"><div class="k">Office</div><div class="v">Miami, Florida</div></div>
+    </div>
+  </div>
+  <div class="foot">
+    <img src="../assets/logos/rise8-logo-light.png" alt="RISE8 Companies" />
+    <span>七転び八起き — nana korobi yaoki.</span>
+  </div>
+</div>
+</body>
+</html>

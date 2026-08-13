@@ -1,0 +1,22 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Accent — teal" subtitle="The one chromatic note: links, numerals, italics" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--paper); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .sw { padding: 26px 20px 18px; min-height: 116px; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; }
+  .name { font: var(--label-md); letter-spacing: var(--track-label-tight); text-transform: uppercase; }
+  .hex { font-family: var(--serif); font-size: 22px; margin-top: 6px; }
+  .var { font: 500 10px var(--sans); margin-top: 2px; opacity: .85; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw" style="background: var(--accent); color: var(--navy)"><div class="name">Accent</div><div class="hex">#4DC8D3</div><div class="var">--accent</div></div>
+    <div class="sw" style="background: var(--accent-deep)"><div class="name">Accent deep</div><div class="hex">#007882</div><div class="var">--accent-deep · on light</div></div>
+  </div>
+</body>
+</html>
