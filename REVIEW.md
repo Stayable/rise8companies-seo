@@ -122,10 +122,11 @@ addresses now live only in the footer).
 
 ## Property photography
 
-All eight photos come from **rentstayable.com** — each property uses the same hero
-image its own Stayable page uses, so the two sites match. One exception: Davenport's
-page image is a 1980 × 366 banner that cannot crop into a card, so it uses
-`davenport_exterior_building_01_crop` from the same media library.
+Six properties now use the originals Kyle supplied in `Image files/` — Lakeland,
+Jacksonville North, Jacksonville West, Kissimmee East, Kissimmee West, and
+Davenport. Orlando and St. Augustine keep the images pulled from rentstayable.com.
+All eight are resized to 1400px wide and re-encoded as WebP (149–308 KB each, down
+from up to 6.4 MB); the masters stay in `Image files/` for re-cropping.
 
 ---
 
