@@ -20,8 +20,10 @@ Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for
 - [ ] Set the canonical hostname in Vercel → Settings → Domains (`www` → apex, or the reverse). Not urgent; both currently serve.
 - [ ] Submit the sitemap in Google Search Console / Bing and confirm the property URL.
 
-> Email addresses verified 2026-08-14 — `ir@`, `finance@`, `info@` (RISE8) and
-> `eh-info@` (Everybody's Home) all confirmed live and monitored.
+> **Contact addresses consolidated to `ir@rise8companies.com`** on the home page —
+> footer Contact column and the "Contact IR" button. `press@` and `careers@` were
+> removed entirely. All four addresses now on the site (`ir@`, `finance@`, `info@`,
+> and `eh-info@` for Everybody's Home) are confirmed live and monitored.
 
 ## Content punch list (shipped as-is by decision — see `REVIEW.md`)
 - [ ] **Rob's biography** — 20+ years, $750M firm, VP at RELATED, three degrees, Nevada Bar, Florida broker's licence. None verified; bar admission and licence are public record. Highest-priority item.
@@ -39,6 +41,10 @@ Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for
 - [ ] **`mail.rise8companies.com` points at SiteGround** while mail runs on Microsoft 365. Check nothing uses it.
 - [ ] **When SiteGround is cancelled, delete `mail`, `autoconfig`, `ftp`, `ssh`** — all still `A` → `34.174.186.164`. Once that IP is reassigned they become a subdomain-takeover risk. **Do not delete before then** — rollback depends on SiteGround serving.
 
+## Reverted this session — do not redo without asking
+- **`/careers` page.** Rebuilt from the WordPress original (intro, EEO statement, JazzHR link) then reverted on request. `/careers` 301s to `/#contact` again. To restore: `git revert e90bd8e`. The JazzHR link, if ever needed, is `https://stayablesuites.applytojob.com/apply/jobs/`.
+- **Property card popup on the map.** Built with photo, description and Book / Start-a-lease links, then removed. Map is pins and labels only. The per-property `desc` strings stay in `content/site.ts`; no leasing URL exists on rentstayable.com.
+
 ## Backlog
 - [ ] Wire a contact form to a submission endpoint (mailto-only today).
 - [ ] Decide on a News page — the design's footer linked one; it does not exist.
@@ -52,5 +58,8 @@ Task tracking lives here (repo `.md` files), never Smartsheet. See `PLAN.md` for
 - [x] Property photos from the supplied originals + rentstayable.com, optimised to WebP.
 - [x] Privacy policy and terms ported verbatim from the live site.
 - [x] Mobile menu; floating index gated to ≥1650px so it stops overlapping the register.
-- [x] 301 map verified live, including `/contact-us` and `/careers` landing on the footer anchor.
+- [x] 301 map verified live; added `id="contact"` to the footer so `/contact-us` and `/careers` land on something real rather than a dead anchor.
 - [x] **DNS cutover** — `CUTOVER.md`. Email, Teams, Intune, DKIM and the investor portal all verified intact.
+- [x] Portfolio map reduced to a single full-width column, matching the design.
+- [x] Contact addresses consolidated to `ir@`; legal-page address set to `info@`.
+- [x] Post-cutover verification: 301 map, all routes, certificates on both hostnames, mail flow end to end.
